@@ -32,15 +32,14 @@ export default function TopBarElements() {
     <Animated.View
       entering={SlideInUp}
       exiting={SlideOutUp}
-      className="w-screen rounded-t-[50px] flex flex-row items-center justify-around py-7 px-5 flex-wrap max-h-screen"
+      className="w-screen z-10 rounded-t-[50px] flex flex-row items-center justify-around py-7 px-5 flex-wrap max-h-screen"
     >
       {data.map((item, index) => (
-        <View className="flex items-center">
+        <View className="flex items-center m-3" key={index}>
           <Avatar.Icon
             className="border-2 border-[#1E9FF2]"
             style={{
               backgroundColor: "transparent",
-              margin: 5,
             }}
             size={80}
             color="#1E9FF2"
