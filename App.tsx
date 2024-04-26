@@ -1,8 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { NativeWindStyleSheet } from 'nativewind';
-import TopBar from './components/TopBar';
-
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import { NativeWindStyleSheet } from "nativewind";
+import TopBar from "./components/TopBar";
+import { Provider } from "react-redux";
+import { store } from "./state/store";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -10,8 +11,10 @@ NativeWindStyleSheet.setOutput({
 
 export default function App() {
   return (
-    <View>
-      <TopBar />
-    </View>
+    <Provider store={store}>
+      <View>
+        <TopBar />
+      </View>
+    </Provider>
   );
 }

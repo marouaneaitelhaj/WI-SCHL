@@ -1,9 +1,22 @@
 import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { FlatList, View, Text } from "react-native";
+import { FlatList, View, Text, Easing } from "react-native";
 import { faClock, faHome, faUser } from "@fortawesome/free-solid-svg-icons";
 import { Avatar } from "react-native-paper";
+import { useSelector } from "react-redux";
+import { RootState } from "../state/store";
+import Animated, {
+  BounceInDown,
+  BounceInUp,
+  FadeIn,
+  FadeInDown,
+  FadeOutDown,
+  FadeOutUp,
+  FlipOutYLeft,
+  SlideInUp,
+  SlideOutUp,
+} from "react-native-reanimated";
 
 const data = [
   { key: "Accueil", icon: "home-circle" },
@@ -13,8 +26,14 @@ const data = [
 ];
 
 export default function TopBarElements() {
+  const { open } = useSelector((state: RootState) => state.topBar);
+
   return (
-    <View className="w-screen rounded-t-[50px] flex flex-row items-center justify-around py-7 px-5 flex-wrap" >
+    <Animated.View
+      entering={SlideInUp}
+      exiting={SlideOutUp}
+      className="w-screen rounded-t-[50px] flex flex-row items-center justify-around py-7 px-5 flex-wrap max-h-screen"
+    >
       {data.map((item, index) => (
         <View className="flex items-center">
           <Avatar.Icon
@@ -30,6 +49,6 @@ export default function TopBarElements() {
           <Text className="text-[#1E9FF2]">{item.key}</Text>
         </View>
       ))}
-    </View>
+    </Animated.View>
   );
 }
