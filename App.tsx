@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { NativeWindStyleSheet } from "nativewind";
 import TopBar from "./components/TopBar";
 import { Provider, useSelector } from "react-redux";
-import { RootState, store } from "./state/store";
+import { RootState, store, useAppDispatch } from "./state/store";
 import "react-native-gesture-handler";
 import Accueil from "./pages/Accueil";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -16,13 +16,17 @@ import Profile from "./pages/Profile";
 import "react-native-gesture-handler";
 import Login from "./pages/Login";
 import ModifierLaMotDePass from "./pages/ModifierLaMotDePass";
+import { useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { setToken } from "./state/Auth/authSlice";
+import { profileAction } from "./state/Auth/authActions";
+import { ActivityIndicator } from "react-native-paper";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
 });
 
 export default function App() {
-
   return (
     <Provider store={store}>
       <Main />
@@ -33,9 +37,19 @@ export default function App() {
 export function Main() {
   const Stack = createStackNavigator();
 
-  const { token } = useSelector((state: RootState) => state.auth);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    AsyncStorage.getItem("token").then((token) => {
+      dispatch(setToken(token));
+      dispatch(profileAction());
+    });
+  }, []);
+
+  const { token, loading } = useSelector((state: RootState) => state.auth);
   return (
     <>
+      {loading && <Loading></Loading>}
       {!token && <Login></Login>}
       {token && (
         <NavigationContainer>
@@ -49,10 +63,21 @@ export function Main() {
             <Stack.Screen name="Annonces" component={Annonces} />
             <Stack.Screen name="Emploi" component={Emploi} />
             <Stack.Screen name="Profile" component={Profile} />
-            <Stack.Screen name="ModifierLaMotDePass" component={ModifierLaMotDePass} />
+            <Stack.Screen
+              name="ModifierLaMotDePass"
+              component={ModifierLaMotDePass}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       )}
     </>
+  );
+}
+
+export function Loading() {
+  return (
+    <View className="w-screen h-screen flex justify-center items-center bg-transparent opacity-70">
+      <ActivityIndicator size="large" color="#C30790" />
+    </View>
   );
 }

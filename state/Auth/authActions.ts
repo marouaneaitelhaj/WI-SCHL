@@ -23,8 +23,6 @@ export const profileAction = createAsyncThunk<{etudiant : Tuser,  fillier : stri
                 Authorization: `Bearer ${token}`
             }
         })
-        console.log(data);
-        
         return data
     }
 )

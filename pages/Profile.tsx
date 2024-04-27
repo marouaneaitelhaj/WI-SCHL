@@ -1,4 +1,4 @@
-import { View, Text, Image, Pressable } from "react-native";
+import { View, Text, Image, Pressable, ScrollView } from "react-native";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../state/store";
 import { secondaryColor } from "../static/colors";
@@ -16,7 +16,7 @@ export default function Profile() {
 
 
   return (
-    <View className="my-2 w-full">
+    <ScrollView className="my-2 w-full">
       <View
         className={
           "space-y-5 flex items-center" + (user?.sexe == "0")
@@ -85,6 +85,6 @@ export default function Profile() {
           </Pressable>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }

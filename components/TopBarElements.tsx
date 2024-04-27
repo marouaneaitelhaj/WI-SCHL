@@ -19,8 +19,9 @@ import Animated, {
   SlideInUp,
   SlideOutUp,
 } from "react-native-reanimated";
-import { toggleTopBar } from "../state/TopBar/TopBarSlice";
+import { toggleTopBar, closeTopBar } from "../state/TopBar/TopBarSlice";
 import { primaryColor } from "../static/colors";
+import { logout } from "../state/Auth/authSlice";
 
 const data = [
   { key: "Accueil", icon: "home-circle" },
@@ -61,6 +62,26 @@ export default function TopBarElements() {
           <Text className="text-[#C30790]">{item.key}</Text>
         </View>
       ))}
+      <View className="flex items-center m-3" key={"logout"}>
+        <IconButton
+          className={"border-2 border-[ " + primaryColor + +"]"}
+          style={{
+            backgroundColor: "transparent",
+            borderColor: primaryColor,
+          }}
+          size={50}
+          iconColor={primaryColor}
+          icon={"logout"}
+          onPress={() => {
+            //navigation.navigate(item.key as never);
+            dispatch(logout());
+            dispatch(closeTopBar())
+          }}
+        />
+        <Text className="text-[#C30790]">
+          {"Déconnexion"}
+          </Text>
+      </View>
     </Animated.View>
   );
 }
