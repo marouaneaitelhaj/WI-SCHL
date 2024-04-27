@@ -9,8 +9,11 @@ import Accueil from "./pages/Accueil";
 import { createStackNavigator } from "@react-navigation/stack";
 import { PushNotificationIOS } from "react-native";
 import Annonces from "./pages/Annonces";
+import { NavigationContainer } from "@react-navigation/native";
 import Emploi from "./pages/Emploi";
 import Profile from "./pages/Profile";
+
+import "react-native-gesture-handler";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -21,13 +24,20 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <TopBar />
-      <Stack.Navigator>
-        <Stack.Screen name="Accueil" component={Accueil} />
-        <Stack.Screen name="Annonces" component={Annonces} />
-        <Stack.Screen name="Emploi" component={Emploi} />
-        <Stack.Screen name="Settings" component={Profile} />
-      </Stack.Navigator>
+      <NavigationContainer>
+        <TopBar />
+        <Stack.Navigator screenOptions={
+          {
+            headerShown: false
+          }
+        
+        }>
+          <Stack.Screen name="Accueil" component={Accueil} />
+          <Stack.Screen name="Annonces" component={Annonces} />
+          <Stack.Screen name="Emploi" component={Emploi} />
+          <Stack.Screen name="Profile" component={Profile} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </Provider>
   );
 }

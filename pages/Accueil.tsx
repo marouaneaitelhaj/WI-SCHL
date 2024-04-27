@@ -1,9 +1,45 @@
-import { View, Text } from "react-native-reanimated/lib/typescript/Animated";
+import { View, Text } from "react-native";
+import { secondaryColor } from "../static/colors";
+import { ScrollView } from "react-native-gesture-handler";
+import AnnonceCard from "../components/AnnonceCard";
 
 export default function Accueil() {
   return (
-    <View>
-        <Text>Accueil</Text>
+    <View className="m-2">
+      <View>
+        <Text className={"my-4 text-[" + secondaryColor + "]"}>Announce</Text>
+        <ScrollView horizontal={true}>
+          <View className="flex flex-row">
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+          </View>
+        </ScrollView>
+      </View>
+      <View>
+        <Text className={"my-4 text-[" + secondaryColor + "]"}>HomeWork</Text>
+        <ScrollView horizontal={true}>
+          <View className="flex flex-row">
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+            <AnnonceCard></AnnonceCard>
+          </View>
+        </ScrollView>
+      </View>
     </View>
   );
 }

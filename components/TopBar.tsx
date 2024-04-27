@@ -5,16 +5,26 @@ import { RootState, useAppDispatch } from "../state/store";
 import { IconButton } from "react-native-paper";
 import { toggleTopBar } from "../state/TopBar/TopBarSlice";
 import { StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { primaryColor } from "../static/colors";
 
 export default function TopBar() {
   const { open } = useSelector((state: RootState) => state.topBar);
 
   const dispatch = useAppDispatch();
 
+  const navigation = useNavigation();
+
   return (
     <>
-      <View className="z-20 py-8 bg-[#1E9FF2] w-screen rounded-bl-[50px] flex flex-row items-center justify-between px-5">
-        <View className="flex flex-row items-center">
+      <View
+        className={
+          "z-20 py-7 bg-[" +
+          primaryColor +
+          "] w-screen rounded-bl-[50px] flex flex-row items-center justify-between px-5"
+        }
+      >
+        <View className="flex flex-row items-center justify-center">
           {open && (
             <IconButton
               onPress={() => dispatch(toggleTopBar())}
@@ -37,10 +47,6 @@ export default function TopBar() {
             className="w-12 h-12 rounded-full"
             source={require("../assets/lloyd-sikeba.jpg")}
           />
-          <View className="m-2">
-            <Text className="text-white">Abilha Ali</Text>
-            <Text className="text-white">Class vip</Text>
-          </View>
         </View>
       </View>
       {open && <TopBarElements />}
