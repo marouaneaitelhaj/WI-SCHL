@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import TopBarReducer from "./TopBar/TopBarSlice";
+import authReducer from "./Auth/authSlice";
 
 export const store = configureStore({
   reducer: {
     topBar: TopBarReducer,
+    auth : authReducer
   },
 });
 

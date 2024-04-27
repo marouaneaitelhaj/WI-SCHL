@@ -2,6 +2,10 @@ import { Text, View, Image, Alert, Pressable } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { Tuser } from "../state/types";
 import { TextInput } from "react-native-paper";
+import { useEffect } from "react";
+import { RootState, useAppDispatch } from "../state/store";
+import { loginAction, profileAction } from "../state/Auth/authActions";
+import { useSelector } from "react-redux";
 
 export default function Login() {
   const {
@@ -14,7 +18,17 @@ export default function Login() {
       password: "",
     },
   });
-  const onSubmit = (data: Tuser) => console.log(data);
+
+  const {error, loading} = useSelector((state : RootState) => state.auth);
+
+  const dispatch = useAppDispatch();
+
+  const onSubmit = (data: Tuser) => {
+    dispatch(loginAction(data)).unwrap().then(() => {
+      dispatch(profileAction())
+    })
+  };
+
 
   return (
     <View className="w-screen h-screen bg-[#C30790] flex justify-center items-center">
@@ -43,7 +57,10 @@ export default function Login() {
             )}
             name="email"
           />
-          {errors.email && <Text className="text-red-400">{errors.email.message}</Text>}
+          {errors.email && <Text className="text-red-400">{
+            errors.email.type === "required" ? "Ce champ est obligatoire" : "Email invalide"
+          }</Text>}
+          {error && <Text className="text-red-400">{error}</Text>}
         </View>
 
         <View>
@@ -68,11 +85,19 @@ export default function Login() {
             )}
             name="password"
           />
-          {errors.password && <Text className="text-red-400">{errors.password.message}</Text>}
+          {errors.password && <Text className="text-red-400">{
+            errors.password.type === "required" ? "Ce champ est obligatoire" : "Mot de pass invalide"
+          }</Text>}
+          {error && <Text className="text-red-400">{error}</Text>}
         </View>
         <View>
-          <Pressable className="bg-[#C30790] flex rounded-md justify-center items-center p-5" onPress={handleSubmit(onSubmit)}>
-            <Text className="text-white text-[20px]">Se connecter</Text>
+          <Pressable className={"flex rounded-md justify-center items-center p-5" + 
+          (loading ? " bg-[#d285be]" : " bg-[#C30790]")
+
+          } onPress={handleSubmit(onSubmit)}>
+            <Text className="text-white text-[20px]">
+              {loading ? "Chargement..." : "Se connecter"}
+            </Text>
           </Pressable>
         </View>
       </View>

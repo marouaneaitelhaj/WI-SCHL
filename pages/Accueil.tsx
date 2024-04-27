@@ -7,7 +7,7 @@ export default function Accueil() {
   return (
     <View className="m-2">
       <View>
-        <Text className={"my-4 text-[" + secondaryColor + "]"}>Announce</Text>
+        <Text className={"my-4 text-[#94CBF6]"}>Announce</Text>
         <ScrollView horizontal={true}>
           <View className="flex flex-row">
             <AnnonceCard></AnnonceCard>
@@ -24,7 +24,7 @@ export default function Accueil() {
         </ScrollView>
       </View>
       <View>
-        <Text className={"my-4 text-[" + secondaryColor + "]"}>HomeWork</Text>
+        <Text className={"my-4 text-[#94CBF6]"}>HomeWork</Text>
         <ScrollView horizontal={true}>
           <View className="flex flex-row">
             <AnnonceCard></AnnonceCard>
