@@ -50,7 +50,7 @@ export default function TopBarElements() {
               backgroundColor: "transparent",
               borderColor: primaryColor,
             }}
-            size={80}
+            size={50}
             iconColor={primaryColor}
             icon={item.icon}
             onPress={() => {
@@ -58,7 +58,7 @@ export default function TopBarElements() {
               dispatch(toggleTopBar());
             }}
           />
-          <Text className="text-[#1E9FF2]">{item.key}</Text>
+          <Text className="text-[#C30790]">{item.key}</Text>
         </View>
       ))}
     </Animated.View>

@@ -14,6 +14,7 @@ import Emploi from "./pages/Emploi";
 import Profile from "./pages/Profile";
 
 import "react-native-gesture-handler";
+import Login from "./pages/Login";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -24,7 +25,8 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <Login></Login>
+      {/* <NavigationContainer>
         <TopBar />
         <Stack.Navigator screenOptions={
           {
@@ -37,7 +39,7 @@ export default function App() {
           <Stack.Screen name="Emploi" component={Emploi} />
           <Stack.Screen name="Profile" component={Profile} />
         </Stack.Navigator>
-      </NavigationContainer>
+      </NavigationContainer> */}
     </Provider>
   );
 }
