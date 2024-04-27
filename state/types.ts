@@ -25,3 +25,14 @@ export type  Tpassword = {
   newPassword : string;
   confirmNewPassword : string;
 }
+
+
+export type Tevent = {
+  id : string,
+  title : string,
+  start : string,
+  end : string,
+  color : string,
+  id_reserv : string,
+  textColor : string,
+}
