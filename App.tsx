@@ -47,6 +47,11 @@ export function Main() {
   }, []);
 
   const { token, loading } = useSelector((state: RootState) => state.auth);
+  useEffect(() => {
+    if (token === null) {
+      AsyncStorage.removeItem("token");
+    }
+  }, [token]);
   return (
     <>
       {loading && <Loading></Loading>}

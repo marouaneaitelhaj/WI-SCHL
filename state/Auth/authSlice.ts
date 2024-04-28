@@ -68,8 +68,9 @@ const authSlice = createSlice({
       })
       .addCase(profileAction.rejected, (state) => {
         state.loading = false;
-        state.error = "Erreur lors de la récupération des données";
+        // state.error = "Erreur lors de la récupération des données";
         state.success = false;
+        state.token = null
       });
   },
 });
