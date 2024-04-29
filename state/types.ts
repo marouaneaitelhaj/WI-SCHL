@@ -18,6 +18,7 @@ export type Tuser = {
   sexe : string;
   tele : string;
   img : string;
+  fillier : string;
 };
 
 export type  Tpassword = {

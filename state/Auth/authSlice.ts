@@ -65,6 +65,7 @@ const authSlice = createSlice({
         state.error = null;
         state.success = true;
         state.user = action.payload.etudiant;
+        state.user.fillier = action.payload.fillier;
       })
       .addCase(profileAction.rejected, (state) => {
         state.loading = false;

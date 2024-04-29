@@ -2,7 +2,7 @@ import { Text, View, Image, Alert, Pressable } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { Tpassword, Tuser } from "../state/types";
 import { TextInput } from "react-native-paper";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { RootState, useAppDispatch } from "../state/store";
 import { loginAction, profileAction } from "../state/Auth/authActions";
 import { useSelector } from "react-redux";
@@ -11,6 +11,7 @@ export default function ModifierLaMotDePass() {
   const {
     control,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<Tpassword>({
     defaultValues: {
@@ -20,25 +21,29 @@ export default function ModifierLaMotDePass() {
     },
   });
 
+  const [secureTextEntry, setSecureTextEntry] = useState<{
+    password: boolean;
+    newPassword: boolean;
+    confirmNewPassword: boolean;
+  }>({ password: true, newPassword: true, confirmNewPassword: true });
+
   const { error, loading } = useSelector((state: RootState) => state.auth);
 
   const dispatch = useAppDispatch();
-
-  
-
-  const onSubmit = (data: Tpassword) => {
-    
-  };
+  const onSubmit = (data: Tpassword) => {};
 
   return (
-    <View className="w-screen h-full flex justify-center items-center">
+    <View className="w-screen h-full flex justify-center items-center ">
       <View className="bg-white w-[90%] px-5 py-10 space-y-10 rounded-md">
         <View>
+          <Text className="text-[#C30790] text-center mb-8 text-[20px]">
+            Modifier le mot de pass
+          </Text>
           <Controller
             control={control}
             rules={{
               required: true,
-              pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+              minLength: 6,
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
@@ -47,9 +52,19 @@ export default function ModifierLaMotDePass() {
                 activeUnderlineColor="#C30790"
                 className="rounded-md bg-white"
                 onBlur={onBlur}
-                secureTextEntry={true}
+                secureTextEntry={secureTextEntry.password}
                 left={<TextInput.Icon icon="lock" />}
-                right={<TextInput.Icon icon="eye" />}
+                right={
+                  <TextInput.Icon
+                    icon="eye"
+                    onPress={() => {
+                      setSecureTextEntry({
+                        ...secureTextEntry,
+                        password: !secureTextEntry.password,
+                      });
+                    }}
+                  />
+                }
                 onChangeText={onChange}
                 value={value}
               />
@@ -60,7 +75,7 @@ export default function ModifierLaMotDePass() {
             <Text className="text-red-400">
               {errors.password.type === "required"
                 ? "Ce champ est obligatoire"
-                : "Email invalide"}
+                : "Mot de pass invalide"}
             </Text>
           )}
           {error && <Text className="text-red-400">{error}</Text>}
@@ -70,19 +85,30 @@ export default function ModifierLaMotDePass() {
           <Controller
             control={control}
             rules={{
-              maxLength: 100,
+              minLength: 6,
               required: true,
+              validate: (value) => value === watch("newPassword"),
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 placeholder="Entrez le nouveau mot de passe"
                 onBlur={onBlur}
-                underlineColor={errors.password ? "red" : "#C30790"}
+                underlineColor={errors.newPassword ? "red" : "#C30790"}
                 activeUnderlineColor="#C30790"
                 className="rounded-md bg-white"
-                secureTextEntry={true}
+                secureTextEntry={secureTextEntry.newPassword}
                 left={<TextInput.Icon icon="lock" />}
-                right={<TextInput.Icon icon="eye" />}
+                right={
+                  <TextInput.Icon
+                    icon="eye"
+                    onPress={() => {
+                      setSecureTextEntry({
+                        ...secureTextEntry,
+                        newPassword: !secureTextEntry.newPassword,
+                      });
+                    }}
+                  />
+                }
                 onChangeText={onChange}
                 value={value}
               />
@@ -93,7 +119,11 @@ export default function ModifierLaMotDePass() {
             <Text className="text-red-400">
               {errors.newPassword.type === "required"
                 ? "Ce champ est obligatoire"
-                : "Mot de pass invalide"}
+                : errors.newPassword.type === "minLength"
+                ? "Mot de pass invalide"
+                : errors.newPassword.type === "validate"
+                ? "Les mots de pass ne sont pas identiques"
+                : ""}
             </Text>
           )}
           {error && <Text className="text-red-400">{error}</Text>}
@@ -102,19 +132,30 @@ export default function ModifierLaMotDePass() {
           <Controller
             control={control}
             rules={{
-              maxLength: 100,
+              minLength: 6,
               required: true,
+              validate: (value) => value === watch("newPassword"),
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 placeholder="Confirmez le nouveau mot de passe"
                 onBlur={onBlur}
-                underlineColor={errors.password ? "red" : "#C30790"}
+                underlineColor={errors.confirmNewPassword ? "red" : "#C30790"}
                 activeUnderlineColor="#C30790"
                 className="rounded-md bg-white"
-                secureTextEntry={true}
+                secureTextEntry={secureTextEntry.confirmNewPassword}
                 left={<TextInput.Icon icon="lock" />}
-                right={<TextInput.Icon icon="eye" />}
+                right={
+                  <TextInput.Icon
+                    icon="eye"
+                    onPress={() => {
+                      setSecureTextEntry({
+                        ...secureTextEntry,
+                        confirmNewPassword: !secureTextEntry.confirmNewPassword,
+                      });
+                    }}
+                  />
+                }
                 onChangeText={onChange}
                 value={value}
               />
@@ -123,9 +164,15 @@ export default function ModifierLaMotDePass() {
           />
           {errors.confirmNewPassword && (
             <Text className="text-red-400">
-              {errors.confirmNewPassword.type === "required"
-                ? "Ce champ est obligatoire"
-                : "Mot de pass invalide"}
+              {errors.confirmNewPassword.type === "required" ? (
+                "Ce champ est obligatoire"
+              ) : errors.confirmNewPassword.type === "minLength" ? (
+                "Mot de pass invalide"
+              ) : errors.confirmNewPassword.type === "validate" ? (
+                "Les mots de pass ne sont pas identiques"
+              ) : (
+                ""
+              )}
             </Text>
           )}
           {error && <Text className="text-red-400">{error}</Text>}

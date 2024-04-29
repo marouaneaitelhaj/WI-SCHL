@@ -24,7 +24,7 @@ export default function Profile() {
             : "bg-[#FFC0CB]"
         }
       >
-        <View className={" flex items-center"}>
+        <View className={" flex items-center py-5"}>
           <Image
             src={
               user?.img
@@ -42,6 +42,10 @@ export default function Profile() {
         <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#C30790]">
           <Text className="text-[black] w-1/3">Email:</Text>
           <Text className="text-[#C30790] w-2/3">{user?.email}</Text>
+        </View>
+        <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#C30790]">
+          <Text className="text-[black] w-1/3">Fillier:</Text>
+          <Text className="text-[#C30790] w-2/3">{user?.fillier}</Text>
         </View>
         <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#C30790]">
           <Text className="text-[black] w-1/3">Cin:</Text>

@@ -21,7 +21,7 @@ export default function TopBar() {
     <>
       <View
         className={
-          "z-20 py-7 bg-[" +
+          "z-20 py-5 bg-[" +
           primaryColor +
           "] w-screen rounded-bl-[50px] flex flex-row items-center justify-between px-5"
         }
