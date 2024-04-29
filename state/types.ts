@@ -22,9 +22,9 @@ export type Tuser = {
 };
 
 export type  Tpassword = {
-  password : string;
-  newPassword : string;
-  confirmNewPassword : string;
+  motPassActuel : string;
+  nvMotPass : string;
+  nvMotPass_confirmation : string;
 }
 
 

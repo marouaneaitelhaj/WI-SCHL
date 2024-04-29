@@ -19,7 +19,7 @@ export default function Login() {
     },
   });
 
-  const {error, loading} = useSelector((state : RootState) => state.auth);
+  const {error, loadingForm} = useSelector((state : RootState) => state.auth);
 
   const dispatch = useAppDispatch();
 
@@ -31,7 +31,7 @@ export default function Login() {
 
 
   return (
-    <View className="w-screen h-screen bg-[#C30790] flex justify-center items-center">
+    <View className="w-screen h-screen bg-[#1E9FF2] flex justify-center items-center">
       <View className="bg-white w-[90%] px-5 py-10 space-y-10 rounded-md">
         <View className="w-full">
             <Image source={require("../assets/ENSEM-270x300.png")} className="w-full h-40"></Image>
@@ -46,8 +46,8 @@ export default function Login() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 placeholder="Entrer l'email"
-                underlineColor={errors.password ? "red" : "#C30790"}
-                activeUnderlineColor="#C30790"
+                underlineColor={errors.password ? "red" : "#1E9FF2"}
+                activeUnderlineColor="#1E9FF2"
                 className="rounded-md bg-white"
                 onBlur={onBlur}
                 left={<TextInput.Icon icon="email" />}
@@ -74,8 +74,8 @@ export default function Login() {
               <TextInput
                 placeholder="Entrer le mot de pass"
                 onBlur={onBlur}
-                underlineColor={errors.password ? "red" : "#C30790"}
-                activeUnderlineColor="#C30790"
+                underlineColor={errors.password ? "red" : "#1E9FF2"}
+                activeUnderlineColor="#1E9FF2"
                 className="rounded-md bg-white"
                 left={<TextInput.Icon icon="lock" />}
                 right={<TextInput.Icon icon="eye" />}
@@ -92,11 +92,11 @@ export default function Login() {
         </View>
         <View>
           <Pressable className={"flex rounded-md justify-center items-center p-5" + 
-          (loading ? " bg-[#d285be]" : " bg-[#C30790]")
+          (loadingForm ? " bg-[#d285be]" : " bg-[#1E9FF2]")
 
           } onPress={handleSubmit(onSubmit)}>
             <Text className="text-white text-[20px]">
-              {loading ? "Chargement..." : "Se connecter"}
+              {loadingForm ? "Chargement..." : "Se connecter"}
             </Text>
           </Pressable>
         </View>

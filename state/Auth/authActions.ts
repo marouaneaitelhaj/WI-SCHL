@@ -27,3 +27,16 @@ export const getProfileAction = createAsyncThunk<{etudiant : Tuser,  fillier : s
     }
 )
 
+export const updateProfilePasswordAction = createAsyncThunk<{message : string}, {motPassActuel : string, nvMotPass : string, nvMotPass_confirmation : string}>(
+    'auth/updatePassword',
+    async ({ motPassActuel, nvMotPass, nvMotPass_confirmation }) => {
+        const token = await AsyncStorage.getItem('token')
+        const { data } = await axios.post('http://ensemc.irma-prod.net/api/etudiant/change-password', { motPassActuel, nvMotPass, nvMotPass_confirmation }, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        
+        return data
+    }
+)

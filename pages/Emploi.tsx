@@ -18,9 +18,6 @@ export default function Emploi() {
     disptach(getEmploisDuTemps());
   }, []);
 
-  useEffect(() => {
-    console.log(markedDates);
-  }, [markedDates]);
 
   useEffect(() => {
     events.map((event) => {

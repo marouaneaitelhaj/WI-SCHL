@@ -1,10 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginAction, getProfileAction } from "./authActions";
+import {
+  loginAction,
+  getProfileAction,
+  updateProfilePasswordAction,
+} from "./authActions";
 import { Tuser } from "../types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type AuthState = {
   loading: boolean;
+  loadingForm: boolean;
   token: string | null;
   user: Tuser | null;
   error: string | null;
@@ -13,6 +18,7 @@ type AuthState = {
 };
 
 const initialState: AuthState = {
+  loadingForm: false,
   token: null,
   loading: false,
   user: null,
@@ -37,12 +43,13 @@ const authSlice = createSlice({
     // Login
     builder
       .addCase(loginAction.pending, (state) => {
-        state.loading = true;
+        state.loadingForm = true;
         state.error = null;
         state.success = false;
       })
       .addCase(loginAction.fulfilled, (state, action) => {
         state.loading = false;
+        state.loadingForm = false;
         state.error = null;
         state.success = true;
         state.token = action.payload.token;
@@ -50,6 +57,7 @@ const authSlice = createSlice({
       })
       .addCase(loginAction.rejected, (state) => {
         state.loading = false;
+        state.loadingForm = false;
         state.error = "E-mail d'utilisateur ou mot de passe invalide";
         state.success = false;
       });
@@ -71,7 +79,28 @@ const authSlice = createSlice({
         state.loading = false;
         // state.error = "Erreur lors de la récupération des données";
         state.success = false;
-        state.token = null
+        state.token = null;
+      });
+
+    // Update password
+    builder
+      .addCase(updateProfilePasswordAction.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.loadingForm = true;
+        state.success = false;
+      })
+      .addCase(updateProfilePasswordAction.fulfilled, (state, action) => {
+        state.loading = false;
+        state.loadingForm = false;
+        state.error = null;
+        state.success = true;
+      })
+      .addCase(updateProfilePasswordAction.rejected, (state) => {
+        state.loading = false;
+        state.loadingForm = false;
+        state.error = "Erreur lors de la modification du mot de passe";
+        state.success = false;
       });
   },
 });

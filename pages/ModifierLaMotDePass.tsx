@@ -4,7 +4,7 @@ import { Tpassword, Tuser } from "../state/types";
 import { TextInput } from "react-native-paper";
 import { useEffect, useState } from "react";
 import { RootState, useAppDispatch } from "../state/store";
-import { loginAction, getProfileAction } from "../state/Auth/authActions";
+import { loginAction, getProfileAction, updateProfilePasswordAction } from "../state/Auth/authActions";
 import { useSelector } from "react-redux";
 
 export default function ModifierLaMotDePass() {
@@ -15,9 +15,9 @@ export default function ModifierLaMotDePass() {
     formState: { errors },
   } = useForm<Tpassword>({
     defaultValues: {
-      confirmNewPassword: "",
-      newPassword: "",
-      password: "",
+      motPassActuel: "",
+      nvMotPass_confirmation: "",
+      nvMotPass: "",
     },
   });
 
@@ -27,16 +27,36 @@ export default function ModifierLaMotDePass() {
     confirmNewPassword: boolean;
   }>({ password: true, newPassword: true, confirmNewPassword: true });
 
-  const { error, loading } = useSelector((state: RootState) => state.auth);
+  const { error, loadingForm } = useSelector((state: RootState) => state.auth);
 
   const dispatch = useAppDispatch();
-  const onSubmit = (data: Tpassword) => {};
+  const onSubmit = (data: Tpassword) => {
+    Alert.alert(
+      "Confirmation",
+      "Voulez-vous vraiment modifier le mot de pass?",
+      [
+        {
+          text: "Annuler",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        {
+          text: "Confirmer",
+          onPress: () => {
+            dispatch(updateProfilePasswordAction(data)).unwrap().then(() => {
+              alert("Mot de pass modifié avec succès");
+            });
+          },
+        },
+      ]
+    );
+  };
 
   return (
     <View className="w-screen h-full flex justify-center items-center ">
       <View className="bg-white w-[90%] px-5 py-10 space-y-10 rounded-md">
         <View>
-          <Text className="text-[#C30790] text-center mb-8 text-[20px]">
+          <Text className="text-[#1E9FF2] text-center mb-8 text-[20px]">
             Modifier le mot de pass
           </Text>
           <Controller
@@ -48,8 +68,8 @@ export default function ModifierLaMotDePass() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 placeholder="Entrez l'ancien mot de passe"
-                underlineColor={errors.password ? "red" : "#C30790"}
-                activeUnderlineColor="#C30790"
+                underlineColor={errors.motPassActuel ? "red" : "#1E9FF2"}
+                activeUnderlineColor="#1E9FF2"
                 className="rounded-md bg-white"
                 onBlur={onBlur}
                 secureTextEntry={secureTextEntry.password}
@@ -69,11 +89,11 @@ export default function ModifierLaMotDePass() {
                 value={value}
               />
             )}
-            name="password"
+            name="motPassActuel"
           />
-          {errors.password && (
+          {errors.motPassActuel && (
             <Text className="text-red-400">
-              {errors.password.type === "required"
+              {errors.motPassActuel.type === "required"
                 ? "Ce champ est obligatoire"
                 : "Mot de pass invalide"}
             </Text>
@@ -87,14 +107,14 @@ export default function ModifierLaMotDePass() {
             rules={{
               minLength: 6,
               required: true,
-              validate: (value) => value === watch("newPassword"),
+              validate: (value) => value === watch("nvMotPass"),
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 placeholder="Entrez le nouveau mot de passe"
                 onBlur={onBlur}
-                underlineColor={errors.newPassword ? "red" : "#C30790"}
-                activeUnderlineColor="#C30790"
+                underlineColor={errors.nvMotPass ? "red" : "#1E9FF2"}
+                activeUnderlineColor="#1E9FF2"
                 className="rounded-md bg-white"
                 secureTextEntry={secureTextEntry.newPassword}
                 left={<TextInput.Icon icon="lock" />}
@@ -113,15 +133,15 @@ export default function ModifierLaMotDePass() {
                 value={value}
               />
             )}
-            name="newPassword"
+            name="nvMotPass"
           />
-          {errors.newPassword && (
+          {errors.nvMotPass && (
             <Text className="text-red-400">
-              {errors.newPassword.type === "required"
+              {errors.nvMotPass.type === "required"
                 ? "Ce champ est obligatoire"
-                : errors.newPassword.type === "minLength"
+                : errors.nvMotPass.type === "minLength"
                 ? "Mot de pass invalide"
-                : errors.newPassword.type === "validate"
+                : errors.nvMotPass.type === "validate"
                 ? "Les mots de pass ne sont pas identiques"
                 : ""}
             </Text>
@@ -134,14 +154,14 @@ export default function ModifierLaMotDePass() {
             rules={{
               minLength: 6,
               required: true,
-              validate: (value) => value === watch("newPassword"),
+              validate: (value) => value === watch("nvMotPass"),
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 placeholder="Confirmez le nouveau mot de passe"
                 onBlur={onBlur}
-                underlineColor={errors.confirmNewPassword ? "red" : "#C30790"}
-                activeUnderlineColor="#C30790"
+                underlineColor={errors.nvMotPass_confirmation ? "red" : "#1E9FF2"}
+                activeUnderlineColor="#1E9FF2"
                 className="rounded-md bg-white"
                 secureTextEntry={secureTextEntry.confirmNewPassword}
                 left={<TextInput.Icon icon="lock" />}
@@ -160,15 +180,15 @@ export default function ModifierLaMotDePass() {
                 value={value}
               />
             )}
-            name="confirmNewPassword"
+            name="nvMotPass_confirmation"
           />
-          {errors.confirmNewPassword && (
+          {errors.nvMotPass_confirmation && (
             <Text className="text-red-400">
-              {errors.confirmNewPassword.type === "required" ? (
+              {errors.nvMotPass_confirmation.type === "required" ? (
                 "Ce champ est obligatoire"
-              ) : errors.confirmNewPassword.type === "minLength" ? (
+              ) : errors.nvMotPass_confirmation.type === "minLength" ? (
                 "Mot de pass invalide"
-              ) : errors.confirmNewPassword.type === "validate" ? (
+              ) : errors.nvMotPass_confirmation.type === "validate" ? (
                 "Les mots de pass ne sont pas identiques"
               ) : (
                 ""
@@ -181,12 +201,12 @@ export default function ModifierLaMotDePass() {
           <Pressable
             className={
               "flex rounded-md justify-center items-center p-5" +
-              (loading ? " bg-[#d285be]" : " bg-[#C30790]")
+              (loadingForm ? " bg-[#d285be]" : " bg-[#1E9FF2]")
             }
             onPress={handleSubmit(onSubmit)}
           >
             <Text className="text-white text-[20px]">
-              {loading ? "Chargement..." : "Modifier le mot de pass"}
+              {loadingForm ? "Chargement..." : "Modifier le mot de pass"}
             </Text>
           </Pressable>
         </View>
