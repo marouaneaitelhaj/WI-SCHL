@@ -14,7 +14,7 @@ export const loginAction = createAsyncThunk<{user : Tuser, token : string}, Tuse
 )
 
 // 'auth/profile',
-export const profileAction = createAsyncThunk<{etudiant : Tuser,  fillier : string, correction : string}, void>(
+export const getProfileAction = createAsyncThunk<{etudiant : Tuser,  fillier : string, correction : string}, void>(
     'auth/profile',
     async () => {
         const token = await AsyncStorage.getItem('token')
@@ -26,3 +26,4 @@ export const profileAction = createAsyncThunk<{etudiant : Tuser,  fillier : stri
         return data
     }
 )
+

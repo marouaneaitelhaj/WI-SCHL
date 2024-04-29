@@ -6,7 +6,8 @@ import { IconButton } from "react-native-paper";
 import { closeTopBar, disableGoBack, toggleTopBar } from "../state/TopBar/TopBarSlice";
 import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { primaryColor } from "../static/colors";
+import { COLORS } from "../static/colors";
+// import { primaryColor } from "../static/colors";
 
 export default function TopBar() {
   const { open, goBack } = useSelector((state: RootState) => state.topBar);
@@ -22,7 +23,7 @@ export default function TopBar() {
       <View
         className={
           "z-20 py-5 bg-[" +
-          primaryColor +
+          COLORS.primaryColor +
           "] w-screen rounded-bl-[50px] flex flex-row items-center justify-between px-5"
         }
       >

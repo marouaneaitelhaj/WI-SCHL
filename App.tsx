@@ -19,7 +19,7 @@ import ModifierLaMotDePass from "./pages/ModifierLaMotDePass";
 import { useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { setToken } from "./state/Auth/authSlice";
-import { profileAction } from "./state/Auth/authActions";
+import { getProfileAction } from "./state/Auth/authActions";
 import { ActivityIndicator } from "react-native-paper";
 
 NativeWindStyleSheet.setOutput({
@@ -42,7 +42,7 @@ export function Main() {
   useEffect(() => {
     AsyncStorage.getItem("token").then((token) => {
       dispatch(setToken(token));
-      dispatch(profileAction());
+      dispatch(getProfileAction());
     });
   }, []);
 

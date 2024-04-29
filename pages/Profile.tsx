@@ -1,7 +1,7 @@
 import { View, Text, Image, Pressable, ScrollView } from "react-native";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../state/store";
-import { secondaryColor } from "../static/colors";
+// import { secondaryColor } from "../static/colors";
 import { useNavigation } from "@react-navigation/native";
 import { enableGoBack } from "../state/TopBar/TopBarSlice";
 
