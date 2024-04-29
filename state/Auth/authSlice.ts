@@ -3,7 +3,7 @@ import {
   loginAction,
   getProfileAction,
   updateProfilePasswordAction,
-} from "./authActions";
+} from "./AuthActions";
 import { Tuser } from "../types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -27,7 +27,7 @@ const initialState: AuthState = {
   message: null,
 };
 
-const authSlice = createSlice({
+const AuthSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
@@ -104,5 +104,5 @@ const authSlice = createSlice({
       });
   },
 });
-export const { setToken, logout } = authSlice.actions;
-export default authSlice.reducer;
+export const { setToken, logout } = AuthSlice.actions;
+export default AuthSlice.reducer;

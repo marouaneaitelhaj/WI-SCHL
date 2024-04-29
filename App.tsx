@@ -18,8 +18,8 @@ import Login from "./pages/Login";
 import ModifierLaMotDePass from "./pages/ModifierLaMotDePass";
 import { useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { setToken } from "./state/Auth/authSlice";
-import { getProfileAction } from "./state/Auth/authActions";
+import { setToken } from "./state/Auth/AuthSlice";
+import { getProfileAction } from "./state/Auth/AuthActions";
 import { ActivityIndicator } from "react-native-paper";
 
 NativeWindStyleSheet.setOutput({

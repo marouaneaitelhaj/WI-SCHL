@@ -12,22 +12,10 @@ export default function Emploi() {
 
   const disptach = useAppDispatch();
 
-  const [markedDates, setMarkedDates] = React.useState<MarkedDates>({});
 
   useEffect(() => {
     disptach(getEmploisDuTemps());
   }, []);
-
-
-  useEffect(() => {
-    events.map((event) => {
-      setMarkedDates({
-        ...markedDates,
-        [event.start.split("T")[0]]: {selected:true, startingDay: true, color: "green", textColor: "white"},
-        [event.end.split("T")[0]]: {selected:true, endingDay: true, color: "green", textColor: "white"},
-      });
-    });
-  }, [events]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -41,7 +29,24 @@ export default function Emploi() {
           "2022-12-06": [] as AgendaEntry[],
         }}
         markingType={"period"}
-        markedDates={{ ...markedDates }}
+        markedDates={
+          events.map((event) => {
+            return {
+              [event.start.split("T")[0]]: {
+                selected: true,
+                startingDay: true,
+                color: "green",
+                textColor: "white",
+              },
+              [event.end.split("T")[0]]: {
+                selected: true,
+                endingDay: true,
+                color: "green",
+                textColor: "white",
+              },
+            };
+          })[0]
+        }
         renderItem={(item, isFirst) => (
           <TouchableOpacity style={styles.item}>
             <Text>{item.name}</Text>

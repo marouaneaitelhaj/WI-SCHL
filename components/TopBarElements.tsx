@@ -20,7 +20,7 @@ import Animated, {
   SlideOutUp,
 } from "react-native-reanimated";
 import { toggleTopBar, closeTopBar } from "../state/TopBar/TopBarSlice";
-import { logout } from "../state/Auth/authSlice";
+import { logout } from "../state/Auth/AuthSlice";
 import { COLORS } from "../static/colors";
 
 const data = [

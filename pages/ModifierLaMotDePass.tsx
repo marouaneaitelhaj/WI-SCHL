@@ -4,7 +4,7 @@ import { Tpassword, Tuser } from "../state/types";
 import { TextInput } from "react-native-paper";
 import { useEffect, useState } from "react";
 import { RootState, useAppDispatch } from "../state/store";
-import { loginAction, getProfileAction, updateProfilePasswordAction } from "../state/Auth/authActions";
+import { loginAction, getProfileAction, updateProfilePasswordAction } from "../state/Auth/AuthActions";
 import { useSelector } from "react-redux";
 
 export default function ModifierLaMotDePass() {

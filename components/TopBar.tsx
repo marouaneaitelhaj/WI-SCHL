@@ -3,11 +3,14 @@ import TopBarElements from "./TopBarElements";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../state/store";
 import { IconButton } from "react-native-paper";
-import { closeTopBar, disableGoBack, toggleTopBar } from "../state/TopBar/TopBarSlice";
+import {
+  closeTopBar,
+  disableGoBack,
+  toggleTopBar,
+} from "../state/TopBar/TopBarSlice";
 import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { COLORS } from "../static/colors";
-// import { primaryColor } from "../static/colors";
 
 export default function TopBar() {
   const { open, goBack } = useSelector((state: RootState) => state.topBar);

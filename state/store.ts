@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import TopBarReducer from "./TopBar/TopBarSlice";
-import authReducer from "./Auth/authSlice";
+import authReducer from "./Auth/AuthSlice";
 import emploisDuTempsReducer from "./EmploisDuTemps/EmploisDuTempsSlice";
 
 export const store = configureStore({
