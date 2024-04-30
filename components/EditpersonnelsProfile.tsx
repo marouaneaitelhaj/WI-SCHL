@@ -1,4 +1,4 @@
-import { Image, Pressable } from "react-native";
+import { Alert, Image, Pressable } from "react-native";
 import { View } from "react-native";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../state/store";
@@ -9,6 +9,7 @@ import { Tuser } from "../state/types";
 import { Controller, useForm } from "react-hook-form";
 import { TextInput } from "react-native-paper";
 import Animated, { SlideInRight, SlideOutLeft } from "react-native-reanimated";
+import { changeInformation } from "../state/Profile/ProfileActions";
 
 export default function EditpersonnelsProfile() {
   const { user } = useSelector((state: RootState) => state.auth);
@@ -38,6 +39,30 @@ export default function EditpersonnelsProfile() {
     },
   });
 
+  const onSubmit = (data: Tuser) => {
+    Alert.alert(
+      "Confirmation",
+      "Voulez-vous vraiment enregistrer les modifications?",
+      [
+        {
+          text: "Annuler",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        {
+          text: "Confirmer",
+          onPress: () => {
+            dispatch(changeInformation(data))
+              .unwrap()
+              .then((message) => {
+                alert(message);
+              });
+          },
+        },
+      ]
+    );
+  };
+
   const dispatch = useAppDispatch();
 
   return (
@@ -59,7 +84,7 @@ export default function EditpersonnelsProfile() {
               />
             )}
             name="prenom_fr"
-            rules={{ required: "Prenom est obligatoire" }}
+            // rules={{ required: "Prenom est obligatoire" }}
           />
           {errors.prenom_fr && (
             <Text className="text-red-500">{errors.prenom_fr.message}</Text>
@@ -81,7 +106,7 @@ export default function EditpersonnelsProfile() {
               />
             )}
             name="nom_fr"
-            rules={{ required: "Nom est obligatoire" }}
+            // rules={{ required: "Nom est obligatoire" }}
           />
           {errors.nom_fr && (
             <Text className="text-red-500">{errors.nom_fr.message}</Text>
@@ -103,7 +128,7 @@ export default function EditpersonnelsProfile() {
               />
             )}
             name="cin"
-            rules={{ required: "Cin est obligatoire" }}
+            // rules={{ required: "Cin est obligatoire" }}
           />
           {errors.cin && (
             <Text className="text-red-500">{errors.cin.message}</Text>
@@ -125,7 +150,7 @@ export default function EditpersonnelsProfile() {
               />
             )}
             name="cne"
-            rules={{ required: "Cne est obligatoire" }}
+            // rules={{ required: "Cne est obligatoire" }}
           />
           {errors.cne && (
             <Text className="text-red-500">{errors.cne.message}</Text>
@@ -147,7 +172,7 @@ export default function EditpersonnelsProfile() {
               />
             )}
             name="date_naissance"
-            rules={{ required: "Date naissance est obligatoire" }}
+            // rules={{ required: "Date naissance est obligatoire" }}
           />
           {errors.date_naissance && (
             <Text className="text-red-500">
@@ -171,7 +196,7 @@ export default function EditpersonnelsProfile() {
               />
             )}
             name="lieu_naissance_ar"
-            rules={{ required: "Lieu naissance ar est obligatoire" }}
+            // rules={{ required: "Lieu naissance ar est obligatoire" }}
           />
           {errors.lieu_naissance_ar && (
             <Text className="text-red-500">
@@ -195,7 +220,7 @@ export default function EditpersonnelsProfile() {
               />
             )}
             name="lieu_naissance_fr"
-            rules={{ required: "Lieu naissance fr est obligatoire" }}
+            // rules={{ required: "Lieu naissance fr est obligatoire" }}
           />
           {errors.lieu_naissance_fr && (
             <Text className="text-red-500">
@@ -219,7 +244,7 @@ export default function EditpersonnelsProfile() {
               />
             )}
             name="adresse_fr"
-            rules={{ required: "Adresse fr est obligatoire" }}
+            // rules={{ required: "Adresse fr est obligatoire" }}
           />
           {errors.adresse_fr && (
             <Text className="text-red-500">{errors.adresse_fr.message}</Text>
@@ -241,7 +266,7 @@ export default function EditpersonnelsProfile() {
               />
             )}
             name="adresse_ar"
-            rules={{ required: "Adresse ar est obligatoire" }}
+            // rules={{ required: "Adresse ar est obligatoire" }}
           />
           {errors.adresse_ar && (
             <Text className="text-red-500">{errors.adresse_ar.message}</Text>
@@ -263,7 +288,7 @@ export default function EditpersonnelsProfile() {
               />
             )}
             name="tele"
-            rules={{ required: "Tele est obligatoire" }}
+            // rules={{ required: "Tele est obligatoire" }}
           />
           {errors.tele && (
             <Text className="text-red-500">{errors.tele.message}</Text>
@@ -285,19 +310,17 @@ export default function EditpersonnelsProfile() {
               />
             )}
             name="email"
-            rules={{ required: "Email est obligatoire" }}
+            // rules={{ required: "Email est obligatoire" }}
           />
           {errors.email && (
             <Text className="text-red-500">{errors.email.message}</Text>
           )}
         </View>
         <Pressable
-          onPress={handleSubmit((data) => {
-            console.log(data);
-          })}
+          onPress={handleSubmit(onSubmit)}
           className="flex rounded-md w-[90%] justify-center items-center  p-5 bg-[#1E9FF2]"
         >
-          <Text className="text-white">Enregistrer</Text>
+          <Text className="text-white">Enregistrer les modifications</Text>
         </Pressable>
       </View>
     </Animated.View>
