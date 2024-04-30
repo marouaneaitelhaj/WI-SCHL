@@ -3,12 +3,14 @@ import { useDispatch } from "react-redux";
 import TopBarReducer from "./TopBar/TopBarSlice";
 import authReducer from "./Auth/AuthSlice";
 import emploisDuTempsReducer from "./EmploisDuTemps/EmploisDuTempsSlice";
+import profileReducer from "./Profile/ProfileSlice";
 
 export const store = configureStore({
   reducer: {
     topBar: TopBarReducer,
     auth : authReducer,
-    emploisDuTemps : emploisDuTempsReducer
+    emploisDuTemps : emploisDuTempsReducer,
+    profile : profileReducer,
   },
 });
 

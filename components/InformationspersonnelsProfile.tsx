@@ -5,6 +5,7 @@ import { RootState, useAppDispatch } from "../state/store";
 import { Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { enableGoBack } from "../state/TopBar/TopBarSlice";
+import Animated, { SlideInRight, SlideOutLeft } from "react-native-reanimated";
 
 export default function InformationspersonnelsProfile() {
   const { user } = useSelector((state: RootState) => state.auth);
@@ -14,7 +15,7 @@ export default function InformationspersonnelsProfile() {
   const dispatch = useAppDispatch();
 
   return (
-    <>
+    <Animated.View entering={SlideInRight} exiting={SlideOutLeft}>
       <View className="space-y-5 px-5 my-5">
         <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#1E9FF2]">
           <Text className="text-[black] w-1/3">Prenom:</Text>
@@ -98,6 +99,6 @@ export default function InformationspersonnelsProfile() {
           </Pressable>
         </View>
       </View>
-    </>
+    </Animated.View>
   );
 }
