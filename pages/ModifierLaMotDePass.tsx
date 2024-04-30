@@ -4,7 +4,11 @@ import { Tpassword, Tuser } from "../state/types";
 import { TextInput } from "react-native-paper";
 import { useEffect, useState } from "react";
 import { RootState, useAppDispatch } from "../state/store";
-import { loginAction, getProfileAction, updateProfilePasswordAction } from "../state/Auth/AuthActions";
+import {
+  loginAction,
+  getProfileAction,
+  updateProfilePasswordAction,
+} from "../state/Auth/AuthActions";
 import { useSelector } from "react-redux";
 
 export default function ModifierLaMotDePass() {
@@ -43,9 +47,11 @@ export default function ModifierLaMotDePass() {
         {
           text: "Confirmer",
           onPress: () => {
-            dispatch(updateProfilePasswordAction(data)).unwrap().then(() => {
-              alert("Mot de pass modifié avec succès");
-            });
+            dispatch(updateProfilePasswordAction(data))
+              .unwrap()
+              .then(() => {
+                alert("Mot de pass modifié avec succès");
+              });
           },
         },
       ]
@@ -55,10 +61,10 @@ export default function ModifierLaMotDePass() {
   return (
     <View className="w-screen h-full flex justify-center items-center ">
       <View className="bg-white w-[90%] px-5 py-10 space-y-10 rounded-md">
+        <Text className="text-[#1E9FF2] text-center mb-8 text-[20px]">
+          Modifier le mot de pass
+        </Text>
         <View>
-          <Text className="text-[#1E9FF2] text-center mb-8 text-[20px]">
-            Modifier le mot de pass
-          </Text>
           <Controller
             control={control}
             rules={{
@@ -160,7 +166,9 @@ export default function ModifierLaMotDePass() {
               <TextInput
                 placeholder="Confirmez le nouveau mot de passe"
                 onBlur={onBlur}
-                underlineColor={errors.nvMotPass_confirmation ? "red" : "#1E9FF2"}
+                underlineColor={
+                  errors.nvMotPass_confirmation ? "red" : "#1E9FF2"
+                }
                 activeUnderlineColor="#1E9FF2"
                 className="rounded-md bg-white"
                 secureTextEntry={secureTextEntry.confirmNewPassword}
@@ -184,15 +192,13 @@ export default function ModifierLaMotDePass() {
           />
           {errors.nvMotPass_confirmation && (
             <Text className="text-red-400">
-              {errors.nvMotPass_confirmation.type === "required" ? (
-                "Ce champ est obligatoire"
-              ) : errors.nvMotPass_confirmation.type === "minLength" ? (
-                "Mot de pass invalide"
-              ) : errors.nvMotPass_confirmation.type === "validate" ? (
-                "Les mots de pass ne sont pas identiques"
-              ) : (
-                ""
-              )}
+              {errors.nvMotPass_confirmation.type === "required"
+                ? "Ce champ est obligatoire"
+                : errors.nvMotPass_confirmation.type === "minLength"
+                ? "Mot de pass invalide"
+                : errors.nvMotPass_confirmation.type === "validate"
+                ? "Les mots de pass ne sont pas identiques"
+                : ""}
             </Text>
           )}
           {error && <Text className="text-red-400">{error}</Text>}
