@@ -121,6 +121,50 @@ export default function EditpersonnelsProfile() {
                 underlineColor="#1E9FF2"
                 activeUnderlineColor="#1E9FF2"
                 className="rounded-md bg-transparent"
+                label="Prenom ar"
+                onBlur={onBlur}
+                onChangeText={(value) => onChange(value)}
+                value={value}
+              />
+            )}
+            name="prenom_ar"
+            // rules={{ required: "Prenom est obligatoire" }}
+          />
+          {errors.prenom_ar && (
+            <Text className="text-red-500">{errors.prenom_ar.message}</Text>
+          )}
+        </View>
+        <View className="w-[90%] px-2 py-4 space-y-10 rounded-md">
+          <Controller
+            control={control}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <TextInput
+                mode="flat"
+                underlineColor="#1E9FF2"
+                activeUnderlineColor="#1E9FF2"
+                className="rounded-md bg-transparent"
+                label="Nom ar"
+                onBlur={onBlur}
+                onChangeText={(value) => onChange(value)}
+                value={value}
+              />
+            )}
+            name="nom_ar"
+            // rules={{ required: "Nom est obligatoire" }}
+          />
+          {errors.nom_ar && (
+            <Text className="text-red-500">{errors.nom_ar.message}</Text>
+          )}
+        </View>
+        <View className="w-[90%] px-2 py-4 space-y-10 rounded-md">
+          <Controller
+            control={control}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <TextInput
+                mode="flat"
+                underlineColor="#1E9FF2"
+                activeUnderlineColor="#1E9FF2"
+                className="rounded-md bg-transparent"
                 label="Cin"
                 onBlur={onBlur}
                 onChangeText={(value) => onChange(value)}
