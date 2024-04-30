@@ -41,7 +41,6 @@ export default function ModifierLaMotDePass() {
       [
         {
           text: "Annuler",
-          onPress: () => console.log("Cancel Pressed"),
           style: "cancel",
         },
         {

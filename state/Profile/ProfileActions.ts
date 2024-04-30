@@ -7,7 +7,6 @@ export const changeInformation = createAsyncThunk<{ message: string }, Tuser>(
   "profile/changeInformation",
   async (user) => {
     const token = await AsyncStorage.getItem("token");
-    console.log(user);
     
     const { data } = await axios.post(
       "http://ensemc.irma-prod.net/api/etudiant/change-information",

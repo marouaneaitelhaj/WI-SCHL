@@ -77,7 +77,6 @@ export default function TopBarElements() {
             Alert.alert("Déconnexion", "Voulez-vous vraiment vous déconnecter?", [
               {
                 text: "Annuler",
-                onPress: () => console.log("Cancel Pressed"),
                 style: "cancel",
               },
               { text: "OK", onPress: () => {
