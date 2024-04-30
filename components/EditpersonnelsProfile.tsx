@@ -7,19 +7,44 @@ import { useNavigation } from "@react-navigation/native";
 import { enableGoBack } from "../state/TopBar/TopBarSlice";
 import { Tuser } from "../state/types";
 import { Controller, useForm } from "react-hook-form";
+import * as ImagePicker from "expo-image-picker";
 import { TextInput } from "react-native-paper";
 import Animated, { SlideInRight, SlideOutLeft } from "react-native-reanimated";
 import { changeInformation } from "../state/Profile/ProfileActions";
+import { useEffect, useState } from "react";
+import { Platform } from "react-native";
+import * as FileSystem from "expo-file-system";
+import axios from "axios";
 
 export default function EditpersonnelsProfile() {
   const { user } = useSelector((state: RootState) => state.auth);
 
+  const [selectedImage, setSelectedImage] = useState<ImagePicker.ImageInfo>();
+
   const navigation = useNavigation();
+
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== "web") {
+        const libraryStatus =
+          await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (libraryStatus.status !== "granted") {
+          alert("Sorry, we need camera roll permissions to make this work!");
+        }
+
+        const cameraStatus = await ImagePicker.requestCameraPermissionsAsync();
+        if (cameraStatus.status !== "granted") {
+          alert("Sorry, we need camera permissions to make this work!");
+        }
+      }
+    })();
+  }, []);
 
   const {
     control,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm<Tuser>({
     defaultValues: {
@@ -35,9 +60,14 @@ export default function EditpersonnelsProfile() {
       adresse_fr: user?.adresse_fr,
       adresse_ar: user?.adresse_ar,
       tele: user?.tele,
+      img: user?.img,
       email: user?.email,
     },
   });
+
+  // useEffect(() => {
+
+  // }, [image]);
 
   const onSubmit = (data: Tuser) => {
     Alert.alert(
@@ -46,7 +76,6 @@ export default function EditpersonnelsProfile() {
       [
         {
           text: "Annuler",
-          onPress: () => console.log("Cancel Pressed"),
           style: "cancel",
         },
         {
@@ -56,11 +85,45 @@ export default function EditpersonnelsProfile() {
               .unwrap()
               .then((message) => {
                 alert(message);
+              })
+              .catch((error) => {
+                alert(error.message);
               });
           },
         },
       ]
     );
+  };
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 4],
+      quality: 1,
+    })
+      .then((result) => {
+        if (!result.canceled) {
+          if (result.assets.length > 0) {
+            const form = new FormData();
+            form.append("img", {
+              uri: result.assets[0].uri,
+              name: result.assets[0].fileName,
+              type: result.assets[0].type,
+            } as any);
+            axios.post("http://192.168.11.184:8000/api/uploadfile" , form, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            }).then((res) => {
+              console.log(res.data);
+            }).catch((error) => {
+              console.log(error);
+            });
+          }
+        }
+      })
+      .catch((error) => {});
   };
 
   const dispatch = useAppDispatch();
@@ -359,6 +422,18 @@ export default function EditpersonnelsProfile() {
           {errors.email && (
             <Text className="text-red-500">{errors.email.message}</Text>
           )}
+        </View>
+        <View className="w-[90%] px-2 py-4 space-y-10 rounded-md">
+          <Text>{user?.img.toString()}</Text>
+          <Controller
+            control={control}
+            name="img"
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Pressable className="" onPress={pickImage}>
+                <Text>Changer l'image</Text>
+              </Pressable>
+            )}
+          />
         </View>
         <Pressable
           onPress={handleSubmit(onSubmit)}
