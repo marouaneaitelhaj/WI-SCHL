@@ -19,9 +19,10 @@ import axios from "axios";
 export default function EditpersonnelsProfile() {
   const { user } = useSelector((state: RootState) => state.auth);
 
-  const [selectedImage, setSelectedImage] = useState<ImagePicker.ImageInfo>();
-
   const navigation = useNavigation();
+
+  // declare image use state
+  const [image, setImage] = useState<string>("");
 
   useEffect(() => {
     (async () => {
@@ -65,10 +66,6 @@ export default function EditpersonnelsProfile() {
     },
   });
 
-  // useEffect(() => {
-
-  // }, [image]);
-
   const onSubmit = (data: Tuser) => {
     Alert.alert(
       "Confirmation",
@@ -97,28 +94,35 @@ export default function EditpersonnelsProfile() {
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      aspect: [4, 4],
+      aspect: [3, 3],
       quality: 1,
+      base64: true,
     })
       .then((result) => {
         if (!result.canceled) {
           if (result.assets.length > 0) {
-            const form = new FormData();
-            form.append("img", {
-              uri: result.assets[0].uri,
-              name: result.assets[0].fileName,
-              type: result.assets[0].type,
-            } as any);
-            axios.post("http://192.168.11.184:8000/api/uploadfile" , form, {
+            setImage(result.assets[0].uri);
+            fetch("http://192.168.43.136:8000/api/uploadfile", {
+              method: "POST",
               headers: {
-                "Content-Type": "multipart/form-data",
+                Accept: "application/json",
+                "Content-Type": "application/json",
               },
-            }).then((res) => {
-              console.log(res.data);
-            }).catch((error) => {
-              console.log(error);
+              body: JSON.stringify({
+                img: result.assets[0].base64,
+              }),
+            }).then((response) => {
+              response.json().then((data) => {
+                if (data) {
+                  console.log(data);
+                  
+                } else {
+                  console.log("error");
+                  
+                }
+              });
             });
           }
         }
@@ -423,14 +427,17 @@ export default function EditpersonnelsProfile() {
             <Text className="text-red-500">{errors.email.message}</Text>
           )}
         </View>
-        <View className="w-[90%] px-2 py-4 space-y-10 rounded-md">
-          <Text>{user?.img.toString()}</Text>
+        <View className="w-[90%] px-2 py-4 justify-around rounded-md flex flex-row items-center">
+          <Image
+            source={{ uri: image ? image : user?.img.toString() }}
+            style={{ width: 50, height: 50 , borderRadius: 50, borderColor : "#1E9FF2", borderWidth: 1}}
+          />
           <Controller
             control={control}
             name="img"
             render={({ field: { onChange, onBlur, value } }) => (
-              <Pressable className="" onPress={pickImage}>
-                <Text>Changer l'image</Text>
+              <Pressable className=" bg-[#1E9FF2] p-3 rounded-md" onPress={pickImage}>
+                <Text className="text-white">Changer l'image</Text>
               </Pressable>
             )}
           />

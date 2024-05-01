@@ -41,8 +41,10 @@ export function Main() {
 
   useEffect(() => {
     AsyncStorage.getItem("token").then((token) => {
+      console.log(token);
+      
       dispatch(setToken(token));
-      dispatch(getProfileAction());
+      dispatch(getProfileAction()).unwrap().then(() => {}).catch(() => {});
     });
   }, []);
 

@@ -21,6 +21,10 @@ export type Tuser = {
   fillier: string;
 };
 
+export type eventsType = {
+  [key: string]: string;
+};
+
 export type Tpassword = {
   motPassActuel: string;
   nvMotPass: string;
@@ -28,13 +32,14 @@ export type Tpassword = {
 };
 
 export type Tevent = {
-  id: string;
-  title: string;
-  start: string;
-  end: string;
-  color: string;
-  id_reserv: string;
-  textColor: string;
+  color : string;
+  end : string;
+  id : string;
+  textColor : string;
+  id_reserv : string;
+  start : string;
+  title : string;
+  type : string;
 };
 
 export type Tseance = {
