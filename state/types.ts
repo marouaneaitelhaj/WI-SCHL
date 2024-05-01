@@ -39,7 +39,7 @@ export type Tevent = {
   id_reserv : string;
   start : string;
   title : string;
-  type : string;
+  type : number;
 };
 
 export type Tseance = {

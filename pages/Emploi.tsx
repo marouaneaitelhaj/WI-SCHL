@@ -16,44 +16,16 @@ export default function Emploi() {
 
   const disptach = useAppDispatch();
 
-  const [agendaSchedule, setAgendaSchedule] = useState<AgendaSchedule>({});
-
   useEffect(() => {
     disptach(getEmploisDuTemps());
   }, []);
-
-  useEffect(() => {
-    const markedDates: AgendaSchedule = {};
-
-    events.forEach((event) => {
-      // markedDates[event.start]
-      const eventStart = event.start.split("T")[0];
-
-      const agendaEntry: AgendaEntry = {
-        name: event.title + " " + eventsTypes[event.type],
-        day: eventStart,
-        height: 50,
-      };
-      if (markedDates[eventStart] === undefined) {
-        markedDates[eventStart] = [agendaEntry];
-      } else {
-        markedDates[eventStart].push(agendaEntry);
-      }
-    });
-
-    setAgendaSchedule(markedDates);
-  }, [events]);
-
-  useEffect(() => {
-    console.log(agendaSchedule);
-  }, [agendaSchedule]);
 
   return (
     <SafeAreaView style={styles.container}>
       <Agenda
         // markingType={""}
         selected={new Date().toISOString().split("T")[0]}
-        items={agendaSchedule}
+        markingType="period"
         renderItem={(item, isFirst) => (
           <TouchableOpacity style={styles.item}>
             <Text>{item.name}</Text>
