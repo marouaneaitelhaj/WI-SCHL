@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.marwaneaitelhaj001.wiensem"
     },
     "web": {
       "favicon": "./assets/menu_icon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "145e05d1-4518-4b1f-a530-ce9941cbca42"
+      }
     }
   }
 }

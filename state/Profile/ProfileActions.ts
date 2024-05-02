@@ -8,7 +8,7 @@ export const changeInformation = createAsyncThunk<{ message: string }, Tuser>(
   async (user) => {
     const token = await AsyncStorage.getItem("token");
 
-    // console.log(user);
+    // console.log(user.img);
     
     
     const { data } = await axios.post(

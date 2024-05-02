@@ -22,7 +22,6 @@ export default function TopBar() {
   const navigation = useNavigation();
 
 
-  const image = {uri: 'https://legacy.reactjs.org/logo-og.png'};
 
 
   return (
