@@ -14,6 +14,17 @@ export default function Emploi() {
     (state: RootState) => state.emploisDuTemps
   );
 
+
+  const [agendaSchedule, setAgendaSchedule] = useState<AgendaSchedule>({});
+
+  useEffect(() => {
+    const agendaSchedule: AgendaSchedule = {};
+    events.forEach((event) => {
+        
+    });
+    setAgendaSchedule(agendaSchedule);
+  }, [events]);
+
   const disptach = useAppDispatch();
 
   useEffect(() => {
@@ -23,9 +34,9 @@ export default function Emploi() {
   return (
     <SafeAreaView style={styles.container}>
       <Agenda
-        // markingType={""}
         selected={new Date().toISOString().split("T")[0]}
         markingType="period"
+        items={agendaSchedule}
         renderItem={(item, isFirst) => (
           <TouchableOpacity style={styles.item}>
             <Text>{item.name}</Text>

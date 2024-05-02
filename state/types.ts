@@ -17,7 +17,7 @@ export type Tuser = {
   adresse_ar: string;
   sexe: string;
   tele: string;
-  img: string | FormData;
+  img: string;
   fillier: string;
 };
 

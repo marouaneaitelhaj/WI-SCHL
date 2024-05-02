@@ -22,7 +22,10 @@ export default function EditpersonnelsProfile() {
   const navigation = useNavigation();
 
   // declare image use state
-  const [image, setImage] = useState<string>("");
+  const [image, setImage] = useState<{
+    uri: string;
+    base64: string;
+  }>({} as any);
 
   useEffect(() => {
     (async () => {
@@ -78,6 +81,7 @@ export default function EditpersonnelsProfile() {
         {
           text: "Confirmer",
           onPress: () => {
+            setValue("img", image.base64);
             dispatch(changeInformation(data))
               .unwrap()
               .then((message) => {
@@ -103,26 +107,9 @@ export default function EditpersonnelsProfile() {
       .then((result) => {
         if (!result.canceled) {
           if (result.assets.length > 0) {
-            setImage(result.assets[0].uri);
-            fetch("http://192.168.43.136:8000/api/uploadfile", {
-              method: "POST",
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                img: result.assets[0].base64,
-              }),
-            }).then((response) => {
-              response.json().then((data) => {
-                if (data) {
-                  console.log(data);
-                  
-                } else {
-                  console.log("error");
-                  
-                }
-              });
+            setImage({
+              uri: result.assets[0].uri,
+              base64: result.assets[0].base64 as string,
             });
           }
         }
@@ -399,7 +386,6 @@ export default function EditpersonnelsProfile() {
               />
             )}
             name="tele"
-            // rules={{ required: "Tele est obligatoire" }}
           />
           {errors.tele && (
             <Text className="text-red-500">{errors.tele.message}</Text>
@@ -429,14 +415,27 @@ export default function EditpersonnelsProfile() {
         </View>
         <View className="w-[90%] px-2 py-4 justify-around rounded-md flex flex-row items-center">
           <Image
-            source={{ uri: image ? image : user?.img.toString() }}
-            style={{ width: 50, height: 50 , borderRadius: 50, borderColor : "#1E9FF2", borderWidth: 1}}
+            source={{
+              uri: image.uri
+                ? image.uri
+                : "http://ensemc.irma-prod.net/storage/" + user?.img,
+            }}
+            style={{
+              width: 50,
+              height: 50,
+              borderRadius: 50,
+              borderColor: "#1E9FF2",
+              borderWidth: 1,
+            }}
           />
           <Controller
             control={control}
             name="img"
             render={({ field: { onChange, onBlur, value } }) => (
-              <Pressable className=" bg-[#1E9FF2] p-3 rounded-md" onPress={pickImage}>
+              <Pressable
+                className=" bg-[#1E9FF2] p-3 rounded-md"
+                onPress={pickImage}
+              >
                 <Text className="text-white">Changer l'image</Text>
               </Pressable>
             )}
