@@ -40,7 +40,7 @@ export default function TopBarElements() {
     <Animated.View
       entering={SlideInUp}
       exiting={SlideOutUp}
-      className="w-screen z-10 rounded-t-[50px] flex flex-row items-center justify-around py-7 px-5 flex-wrap h-screen"
+      className="w-screen z-20 rounded-t-[50px] flex flex-row items-center justify-around py-7 px-5 flex-wrap h-screen"
     >
       {data.map((item, index) => (
         <View className="flex items-center m-3" key={index}>
@@ -54,6 +54,8 @@ export default function TopBarElements() {
             iconColor={COLORS.primaryColor}
             icon={item.icon}
             onPress={() => {
+              console.log(item.key);
+              
               navigation.navigate(item.key as never);
               dispatch(toggleTopBar());
             }}

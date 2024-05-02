@@ -1,4 +1,7 @@
 {
+  "cli": {
+    "version": ">= 8.0.0"
+  },
   "build": {
     "preview": {
       "android": {
@@ -13,9 +16,9 @@
     "preview3": {
       "developmentClient": true
     },
-    "preview4": {
-      "distribution": "internal"
-    },
+    "production": {}
+  },
+  "submit": {
     "production": {}
   }
 }
