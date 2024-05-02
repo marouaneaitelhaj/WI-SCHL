@@ -42,13 +42,17 @@ export function Main() {
   useEffect(() => {
     AsyncStorage.getItem("token").then((token) => {
       console.log(token);
-      
+
       dispatch(setToken(token));
-      dispatch(getProfileAction()).unwrap().then(() => {}).catch(() => {});
+      dispatch(getProfileAction())
+        .unwrap()
+        .then(() => {})
+        .catch(() => {});
     });
   }, []);
 
   const { token, loading } = useSelector((state: RootState) => state.auth);
+  const { showProfile } = useSelector((state: RootState) => state.profile);
   useEffect(() => {
     if (token === null) {
       AsyncStorage.removeItem("token");
@@ -60,7 +64,8 @@ export function Main() {
       {!token && <Login></Login>}
       {token && (
         <NavigationContainer>
-          <TopBar />
+          {!showProfile && <TopBar />}
+          {showProfile && <Profile />}
           <Stack.Navigator
             screenOptions={{
               headerShown: false,
@@ -69,7 +74,7 @@ export function Main() {
             <Stack.Screen name="Accueil" component={Accueil} />
             <Stack.Screen name="Annonces" component={Annonces} />
             <Stack.Screen name="Emploi" component={Emploi} />
-            <Stack.Screen name="Profile" component={Profile} />
+            {/* <Stack.Screen name="Profile" component={Profile} /> */}
             <Stack.Screen
               name="ModifierLaMotDePass"
               component={ModifierLaMotDePass}

@@ -14,15 +14,73 @@ export default function Emploi() {
     (state: RootState) => state.emploisDuTemps
   );
 
-
-  const [agendaSchedule, setAgendaSchedule] = useState<AgendaSchedule>({});
+  const [markedDates, setMarkedDates] = useState<MarkedDates>({});
 
   useEffect(() => {
-    const agendaSchedule: AgendaSchedule = {};
+    const markedDates: MarkedDates = {};
     events.forEach((event) => {
-        
+      const start = event.start.split("T")[0];
+      const end = event.end.split("T")[0];
+      const startDate = new Date(start);
+      const endDate = new Date(end);
+
+      // log how much time is between the start and end dates
+
+      const diff = endDate.getTime() - startDate.getTime();
+      const diffDays = diff / (1000 * 3600 * 24);
+
+      if (diffDays === 1) {
+        const markingProps: MarkingProps = {
+          startingDay: true,
+          endingDay: true,
+          color: event.color,
+        };
+        markedDates[start] = markingProps;
+      } else {
+        for (let i = 1; i <= diffDays; i++) {
+          if (i === 1) {
+            const markingProps: MarkingProps = {
+              startingDay: true,
+              color: event.color,
+            };
+
+            const date = new Date(start);
+            date.setDate(date.getDate() + i);
+            
+            console.log("part 1", date.toISOString().split("T")[0], i);
+
+            
+
+            markedDates[start] = markingProps;
+          } else if (i === diffDays) {
+            const markingProps: MarkingProps = {
+              endingDay: true,
+              color: event.color,
+            };
+            const date = new Date(start);
+            date.setDate(date.getDate() + i);
+
+            
+            console.log("part 2", date.toISOString().split("T")[0]);
+            markedDates[end] = markingProps;
+          } else {
+            
+            const markingProps: MarkingProps = {
+              color: event.color,
+              selected: true,
+            };
+            const date = new Date(start);
+            date.setDate(date.getDate() + i);
+            
+            console.log("part 3", date.toISOString().split("T")[0]);
+            markedDates[date.toISOString().split("T")[0]] = markingProps;
+          }
+        }
+      }
     });
-    setAgendaSchedule(agendaSchedule);
+    console.log(markedDates);
+
+    setMarkedDates(markedDates);
   }, [events]);
 
   const disptach = useAppDispatch();
@@ -36,7 +94,7 @@ export default function Emploi() {
       <Agenda
         selected={new Date().toISOString().split("T")[0]}
         markingType="period"
-        items={agendaSchedule}
+        markedDates={markedDates}
         renderItem={(item, isFirst) => (
           <TouchableOpacity style={styles.item}>
             <Text>{item.name}</Text>

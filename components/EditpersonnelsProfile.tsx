@@ -82,12 +82,15 @@ export default function EditpersonnelsProfile() {
           text: "Confirmer",
           onPress: () => {
             setValue("img", image.base64);
+            
             dispatch(changeInformation(data))
               .unwrap()
               .then((message) => {
                 alert(message);
               })
               .catch((error) => {
+                console.log(error);
+                
                 alert(error.message);
               });
           },
@@ -120,7 +123,7 @@ export default function EditpersonnelsProfile() {
   const dispatch = useAppDispatch();
 
   return (
-    <Animated.View entering={SlideInRight} exiting={SlideOutLeft}>
+    <Animated.View  entering={SlideInRight} exiting={SlideOutLeft}>
       <View className="w-screen h-full flex items-center ">
         <View className="w-[90%] px-2 py-4 space-y-10 rounded-md">
           <Controller

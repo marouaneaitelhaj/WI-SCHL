@@ -27,8 +27,6 @@ const data = [
   { key: "Accueil", icon: "home-circle" },
   { key: "Emploi", icon: "clock-time-eight" },
   { key: "Annonces", icon: "bullhorn" },
-  { key: "Profile", icon: "account-circle" },
-  { key: "Profile", icon: "account-circle" },
 ];
 
 export default function TopBarElements() {
