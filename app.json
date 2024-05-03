@@ -7,7 +7,7 @@
     "icon": "./assets/app_icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/logo-letter-w-blue-glowing-vector-22855325.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,7 +19,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo-letter-w-blue-glowing-vector-22855325.jpg",
         "backgroundColor": "#ffffff"
       },
       "package": "com.marwaneaitelhaj001.wiensem"
@@ -29,7 +29,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "145e05d1-4518-4b1f-a530-ce9941cbca42"
+        "projectId": "52be1899-bbd0-4603-9099-c1832a152018"
       }
     }
   }
