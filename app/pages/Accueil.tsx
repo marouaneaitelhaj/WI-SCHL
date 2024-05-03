@@ -14,9 +14,8 @@ export default function Accueil() {
     dispatch(getAnnonces());
   }, []);
 
-
   return (
-    <View className="m-2">
+    <View>
       <View>
         <Text className={"my-4 text-[#1E9FF2] font-bold text-xl"}>
           Announce
@@ -24,8 +23,11 @@ export default function Accueil() {
         <ScrollView horizontal={true}>
           <View className="flex flex-row">
             {annonces &&
-              annonces.map((annonce) => (
-                <AnnonceCard key={annonce.annonce_body} annonce={annonce}></AnnonceCard>
+              annonces?.map((annonce) => (
+                <AnnonceCard
+                  key={annonce.annonce_body}
+                  annonce={annonce}
+                ></AnnonceCard>
               ))}
           </View>
         </ScrollView>

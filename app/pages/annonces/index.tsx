@@ -16,9 +16,9 @@ export default function Annonces() {
   return (
     <View>
       <Text className={"my-4 text-[#1E9FF2] font-bold text-xl"}>Announce</Text>
-      <ScrollView horizontal={false}>
-        <View className="flex flex-row flex-wrap">
-          {annonces &&
+      <ScrollView className="flex flex-col">
+        <View className="flex flex-row pb-64 flex-wrap">
+          {(annonces.length != 0) &&
             annonces.map((annonce) => (
               <AnnonceCard
                 key={annonce.annonce_body}

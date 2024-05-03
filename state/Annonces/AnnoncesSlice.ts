@@ -20,13 +20,11 @@ export const AnnoncesSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getAnnonces.fulfilled, (state, action) => {
-            console.log(action.payload);
-            
             state.annonces = action.payload;
         }).addCase(getAnnonces.rejected, (state) => {
-            state.annonces = [];
+            // state.annonces = [];
         }).addCase(getAnnonces.pending, (state) => {
-            state.annonces = [];
+            // state.annonces = [];
         })
     }
 });

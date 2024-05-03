@@ -1,12 +1,18 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Pressable } from "react-native";
 import { Icon } from "react-native-paper";
 import { Tannonce } from "state/types";
+import { router } from 'expo-router';
 
 export default function AnnonceCard(
   props : {annonce : Tannonce}
 ) {
   return (
-    <View className="bg-[#D4F4FF] flex space-y-4 p-3 m-3 rounded-xl w-40">
+    <Pressable onPress={()=>{
+      // we are now in pages/annonces and we want to navigate to pages/annonces/[body]
+      router.push({ pathname: "/pages/annonces/2"});
+      
+      
+    }}  className="bg-[#D4F4FF] flex space-y-4 p-3 m-3 rounded-xl w-40">
       <View className="bg-white w-[30px] rounded-md">
         <Image source={require("@assets/notice.png")} className="w-[40px] h-[40px]" />
       </View>
@@ -16,6 +22,6 @@ export default function AnnonceCard(
         </Text>
       </View>
       <Text className="font-light text-gray-400">12 Juin 2021</Text>
-    </View>
+    </Pressable>
   );
 }

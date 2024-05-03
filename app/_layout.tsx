@@ -45,7 +45,7 @@ export function HomeLayout() {
         <>
           {!showProfile && <TopBar />}
           {showProfile && <Profile></Profile>}
-          <View className="bg-white px-3 w-screen min-h-screen rounded-tr-[50px]">
+          <View className="bg-white p-5 w-screen min-h-screen rounded-tr-[50px]">
             <Slot />
           </View>
         </>
