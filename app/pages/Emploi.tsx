@@ -45,6 +45,9 @@ export default function Emploi() {
   return (
     <SafeAreaView className="h-screen bg-white">
       <Calendar
+      onMonthChange={(month) => {
+        setSelectedMonth(month.dateString.split("-")[0] + "-" + month.dateString.split("-")[1]);
+      }}
         markedDates={{
           [selectedMonth + "-" + selectedDay]: {
             selected: true,
