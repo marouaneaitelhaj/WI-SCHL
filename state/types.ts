@@ -170,3 +170,9 @@ export type Tseance_element = {
   element : Telement;
   prof : Tprof;
 };
+
+
+export type Tannonce = {
+  annonce_body: string;
+  annonce_title: string;
+};
