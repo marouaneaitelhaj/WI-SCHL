@@ -26,17 +26,17 @@ export default function TopBarElements() {
     <Animated.View
       entering={SlideInUp}
       exiting={SlideOutUp}
-      className="w-screen z-20 rounded-t-[50px] flex flex-row items-center justify-around py-7 px-5 flex-wrap h-screen"
+      className="w-screen z-20 space-y-5 rounded-t-[50px] flex flex-row items-center justify-start py-7 px-5 flex-wrap h-screen"
     >
       {data.map((item, index) => (
-        <View  className="flex items-center m-3" key={index}>
+        <View  className="flex w-1/3 items-center " key={index}>
           <IconButton
             className={"border-2 border-[ " + COLORS.primaryColor + +"]"}
             style={{
               backgroundColor: "transparent",
               borderColor: COLORS.primaryColor,
             }}
-            size={50}
+            size={60}
             iconColor={COLORS.primaryColor}
             icon={item.icon}
             onPress={() => {
@@ -48,14 +48,14 @@ export default function TopBarElements() {
           <Text className="text-[#1E9FF2]">{item.text}</Text>
         </View>
       ))}
-      <View className="flex items-center m-3" key={"logout"}>
+      <View className="flex  w-1/3 items-center" key={"logout"}>
         <IconButton
           className={"border-2 border-[ " + COLORS.primaryColor + +"]"}
           style={{
             backgroundColor: "transparent",
             borderColor: COLORS.primaryColor,
           }}
-          size={50}
+          size={60}
           iconColor={COLORS.primaryColor}
           icon={"logout"}
           onPress={() => {

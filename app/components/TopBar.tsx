@@ -66,7 +66,7 @@ export default function TopBar() {
         <Pressable
           className="flex flex-row items-center justify-center"
           onPress={() => {
-            // navigation.navigate("Profile" as never);
+            // navigation.navigate("pages/Profile" as never);
             // console.log("profile");
 
             dispatch(setShowProfile(true));

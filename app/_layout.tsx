@@ -10,6 +10,7 @@ import { setToken } from "state/Auth/AuthSlice";
 import { getProfileAction } from "state/Auth/AuthActions";
 import Loading from "app/components/Loading";
 import Login from "@pages/Login";
+import Profile from "@pages/Profile";
 
 export function HomeLayout() {
   const dispatch = useAppDispatch();
@@ -41,7 +42,8 @@ export function HomeLayout() {
       {!token && <Login></Login>}
       {token && (
         <>
-          <TopBar />
+          {!showProfile && <TopBar />}
+          {showProfile && <Profile></Profile>}
           <Slot />
         </>
       )}
