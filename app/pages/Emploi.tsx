@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { SafeAreaView, ScrollView, StyleSheet,TouchableOpacity,  Text, View } from "react-native";
-import { Agenda, AgendaEntry, Calendar } from "react-native-calendars";
+import React, { useEffect } from "react";
+import { SafeAreaView, ScrollView, View } from "react-native";
+import { Calendar } from "react-native-calendars";
 import { RootState, useAppDispatch } from "../../state/store";
 import { useSelector } from "react-redux";
 import { getEmploisDuTemps } from "../../state/EmploisDuTemps/EmploisDuTempsActions";
-import {
-  AgendaSchedule,
-  DateData,
-  MarkedDates,
-} from "react-native-calendars/src/types";
-import { MarkingProps } from "react-native-calendars/src/calendar/day/marking";
-import { set } from "react-hook-form";
+import { DateData } from "react-native-calendars/src/types";
 import EventCard from "../components/EventCard";
 import {
   setSelectedDay,
@@ -31,9 +25,17 @@ export default function Emploi() {
   useEffect(() => {
     // get month of today
     const today = new Date();
-    let month = today.getFullYear() + "-" + ((today.getMonth() + 1).toString().length === 1 ? "0" + (today.getMonth() + 1) : (today.getMonth() + 1));
+    let month =
+      today.getFullYear() +
+      "-" +
+      ((today.getMonth() + 1).toString().length === 1
+        ? "0" + (today.getMonth() + 1)
+        : today.getMonth() + 1);
     console.log(month); // 2024-5
-    let day = today.getDate().toString().length === 1 ? "0" + today.getDate() : today.getDate();
+    let day =
+      today.getDate().toString().length === 1
+        ? "0" + today.getDate()
+        : today.getDate();
     console.log(day); // 3
 
     disptach(setSelectedDay(day.toString()));
@@ -45,9 +47,13 @@ export default function Emploi() {
   return (
     <SafeAreaView className="h-screen bg-white">
       <Calendar
-      onMonthChange={(month) => {
-        setSelectedMonth(month.dateString.split("-")[0] + "-" + month.dateString.split("-")[1]);
-      }}
+        onMonthChange={(month) => {
+          setSelectedMonth(
+            month.dateString.split("-")[0] +
+              "-" +
+              month.dateString.split("-")[1]
+          );
+        }}
         markedDates={{
           [selectedMonth + "-" + selectedDay]: {
             selected: true,
