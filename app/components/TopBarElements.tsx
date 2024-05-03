@@ -3,7 +3,6 @@ import { View, Text, Alert } from "react-native";
 import { IconButton } from "react-native-paper";
 import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
-import { Link } from "expo-router";
 import { RootState, useAppDispatch } from "../../state/store";
 import Animated, { SlideInUp, SlideOutUp } from "react-native-reanimated";
 import { toggleTopBar, closeTopBar } from "../../state/TopBar/TopBarSlice";
@@ -30,7 +29,7 @@ export default function TopBarElements() {
       className="w-screen z-20 rounded-t-[50px] flex flex-row items-center justify-around py-7 px-5 flex-wrap h-screen"
     >
       {data.map((item, index) => (
-        <Link href={item.key} className="flex items-center m-3" key={index}>
+        <View  className="flex items-center m-3" key={index}>
           <IconButton
             className={"border-2 border-[ " + COLORS.primaryColor + +"]"}
             style={{
@@ -40,14 +39,14 @@ export default function TopBarElements() {
             size={50}
             iconColor={COLORS.primaryColor}
             icon={item.icon}
-            // onPress={() => {
-            //   console.log(item.key);
-            //   navigation.navigate(item.key as never);
-            //   dispatch(toggleTopBar());
-            // }}
+            onPress={() => {
+              console.log(item.key);
+              navigation.navigate(item.key as never);
+              dispatch(toggleTopBar());
+            }}
           />
           <Text className="text-[#1E9FF2]">{item.text}</Text>
-        </Link>
+        </View>
       ))}
       <View className="flex items-center m-3" key={"logout"}>
         <IconButton
