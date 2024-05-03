@@ -2,8 +2,8 @@ import { Image, Pressable, View } from "react-native";
 import { Text } from "react-native";
 import { Icon } from "react-native-paper";
 import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../state/store";
-import { setEditProfile, setShowProfile } from "../state/Profile/ProfileSlice";
+import { RootState, useAppDispatch } from "../../state/store";
+import { setEditProfile, setShowProfile } from "../../state/Profile/ProfileSlice";
 
 export default function TopSectionForProfile() {
   const { user } = useSelector((state: RootState) => state.auth);

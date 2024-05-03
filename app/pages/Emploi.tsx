@@ -12,7 +12,7 @@ import {
 } from "react-native-calendars/src/types";
 import { MarkingProps } from "react-native-calendars/src/calendar/day/marking";
 import { set } from "react-hook-form";
-import EventCard from "../../components/EventCard";
+import EventCard from "../components/EventCard";
 import {
   setSelectedDay,
   setSelectedMonth,

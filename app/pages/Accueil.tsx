@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import AnnonceCard from "../../components/AnnonceCard";
+import AnnonceCard from "../components/AnnonceCard";
 
 export default function Accueil() {
   return (

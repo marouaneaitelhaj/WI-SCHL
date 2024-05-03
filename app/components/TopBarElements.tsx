@@ -4,11 +4,11 @@ import { IconButton } from "react-native-paper";
 import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { Link } from "expo-router";
-import { RootState, useAppDispatch } from "../state/store";
+import { RootState, useAppDispatch } from "../../state/store";
 import Animated, { SlideInUp, SlideOutUp } from "react-native-reanimated";
-import { toggleTopBar, closeTopBar } from "../state/TopBar/TopBarSlice";
-import { logout } from "../state/Auth/AuthSlice";
-import { COLORS } from "../static/colors";
+import { toggleTopBar, closeTopBar } from "../../state/TopBar/TopBarSlice";
+import { logout } from "../../state/Auth/AuthSlice";
+import { COLORS } from "../../static/colors";
 
 const data = [
   { key: "pages/Accueil", text: "Accueil", icon: "home-circle" },

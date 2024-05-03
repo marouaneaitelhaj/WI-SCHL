@@ -1,16 +1,16 @@
 import { Text, View, Image, Pressable, ImageBackground } from "react-native";
 import TopBarElements from "./TopBarElements";
 import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../state/store";
+import { RootState, useAppDispatch } from "../../state/store";
 import { IconButton } from "react-native-paper";
 import {
   closeTopBar,
   disableGoBack,
   toggleTopBar,
-} from "../state/TopBar/TopBarSlice";
+} from "../../state/TopBar/TopBarSlice";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { COLORS } from "../static/colors";
-import { setShowProfile } from "../state/Profile/ProfileSlice";
+import { COLORS } from "../../static/colors";
+import { setShowProfile } from "../../state/Profile/ProfileSlice";
 
 export default function TopBar() {
   const { open, goBack } = useSelector((state: RootState) => state.topBar);
@@ -31,7 +31,7 @@ export default function TopBar() {
         }
       >
         <Image
-          source={require("../assets/backround_pattern.png")}
+          source={require("@assets/backround_pattern.png")}
           className="absolute"
         />
         <View className="flex flex-row items-center justify-center">
