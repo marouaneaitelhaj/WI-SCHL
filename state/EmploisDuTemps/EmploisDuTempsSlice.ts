@@ -5,6 +5,8 @@ import { getEmploisDuTemps } from "./EmploisDuTempsActions";
 type EmploisDuTempsState = {
   events: Tevent[];
   eventsTypes: eventsType[];
+  selectedMonth: string;
+  selectedDay: string;
 };
 
 
@@ -12,12 +14,21 @@ type EmploisDuTempsState = {
 const initialState: EmploisDuTempsState = {
   events: [],
   eventsTypes: [],
+  selectedMonth: "",
+  selectedDay: "",
 };
 
 export const EmploisDuTempsSlice = createSlice({
   name: "EmploisDuTemps",
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedMonth: (state, action) => {
+      state.selectedMonth = action.payload;
+    },
+    setSelectedDay: (state, action) => {
+      state.selectedDay = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(getEmploisDuTemps.pending, (state) => {})
@@ -29,4 +40,5 @@ export const EmploisDuTempsSlice = createSlice({
   },
 });
 
+export const { setSelectedMonth, setSelectedDay } = EmploisDuTempsSlice.actions;
 export default EmploisDuTempsSlice.reducer;
