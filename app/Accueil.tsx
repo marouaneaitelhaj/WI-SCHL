@@ -1,5 +1,4 @@
 import { View, Text } from "react-native";
-import { secondaryColor } from "../static/colors";
 import { ScrollView } from "react-native-gesture-handler";
 import AnnonceCard from "../components/AnnonceCard";
 

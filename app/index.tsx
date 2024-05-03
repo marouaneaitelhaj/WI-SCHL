@@ -1,15 +1,11 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { View } from "react-native";
 import { NativeWindStyleSheet } from "nativewind";
-import TopBar from "./components/TopBar";
+import TopBar from "../components/TopBar";
 import { Provider, useSelector } from "react-redux";
-import { RootState, store, useAppDispatch } from "./state/store";
+import { RootState, store, useAppDispatch } from "../state/store";
 import "react-native-gesture-handler";
 import Accueil from "./pages/Accueil";
-import { createStackNavigator } from "@react-navigation/stack";
-import { PushNotificationIOS } from "react-native";
 import Annonces from "./pages/Annonces";
-import { NavigationContainer } from "@react-navigation/native";
 import Emploi from "./pages/Emploi";
 import Profile from "./pages/Profile";
 
@@ -18,9 +14,10 @@ import Login from "./pages/Login";
 import ModifierLaMotDePass from "./pages/ModifierLaMotDePass";
 import { useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { setToken } from "./state/Auth/AuthSlice";
-import { getProfileAction } from "./state/Auth/AuthActions";
+import { setToken } from "../state/Auth/AuthSlice";
+import { getProfileAction } from "../state/Auth/AuthActions";
 import { ActivityIndicator } from "react-native-paper";
+import { Slot, Stack } from "expo-router";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -35,7 +32,7 @@ export default function App() {
 }
 
 export function Main() {
-  const Stack = createStackNavigator();
+  // const Stack = createStackNavigator();
 
   const dispatch = useAppDispatch();
 
@@ -63,24 +60,14 @@ export function Main() {
       {loading && <Loading></Loading>}
       {!token && <Login></Login>}
       {token && (
-        <NavigationContainer>
-          {!showProfile && <TopBar />}
-          {showProfile && <Profile />}
-          <Stack.Navigator
-            screenOptions={{
-              headerShown: false,
-            }}
-          >
-            <Stack.Screen name="Accueil" component={Accueil} />
-            <Stack.Screen name="Annonces" component={Annonces} />
-            <Stack.Screen name="Emploi" component={Emploi} />
-            {/* <Stack.Screen name="Profile" component={Profile} /> */}
-            <Stack.Screen
-              name="ModifierLaMotDePass"
-              component={ModifierLaMotDePass}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <>
+          <TopBar />
+          <Stack>
+            <Stack.Screen name="Accueil" />
+            <Stack.Screen name="Emploi" />
+            <Stack.Screen name="Annonces" />
+          </Stack>
+        </>
       )}
     </>
   );

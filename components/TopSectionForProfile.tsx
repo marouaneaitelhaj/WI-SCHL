@@ -60,7 +60,7 @@ export default function TopSectionForProfile() {
         </View>
       </View>
       <Image
-        source={require("../assets/backround pattern.png")}
+        source={require("@assets/backround_pattern.png")}
         className="absolute -z-20"
       />
     </View>

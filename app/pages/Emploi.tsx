@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Agenda, AgendaEntry, Calendar } from "react-native-calendars";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { RootState, useAppDispatch } from "../state/store";
+import { RootState, useAppDispatch } from "../../state/store";
 import { useSelector } from "react-redux";
-import { getEmploisDuTemps } from "../state/EmploisDuTemps/EmploisDuTempsActions";
+import { getEmploisDuTemps } from "../../state/EmploisDuTemps/EmploisDuTempsActions";
 import {
   AgendaSchedule,
   DateData,
@@ -12,11 +12,11 @@ import {
 } from "react-native-calendars/src/types";
 import { MarkingProps } from "react-native-calendars/src/calendar/day/marking";
 import { set } from "react-hook-form";
-import EventCard from "../components/EventCard";
+import EventCard from "../../components/EventCard";
 import {
   setSelectedDay,
   setSelectedMonth,
-} from "../state/EmploisDuTemps/EmploisDuTempsSlice";
+} from "../../state/EmploisDuTemps/EmploisDuTempsSlice";
 
 export default function Emploi() {
   const { events, eventsTypes } = useSelector(

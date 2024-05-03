@@ -1,10 +1,9 @@
 import { Text, View, Image, Alert, Pressable } from "react-native";
 import { useForm, Controller } from "react-hook-form";
-import { Tuser } from "../state/types";
+import { Tuser } from "../../state/types";
 import { TextInput } from "react-native-paper";
-import { useEffect } from "react";
-import { RootState, useAppDispatch } from "../state/store";
-import { loginAction, getProfileAction } from "../state/Auth/AuthActions";
+import { RootState, useAppDispatch } from "../../state/store";
+import { loginAction, getProfileAction } from "../../state/Auth/AuthActions";
 import { useSelector } from "react-redux";
 
 export default function Login() {
@@ -34,7 +33,7 @@ export default function Login() {
     <View className="w-screen h-screen bg-[#1E9FF2] flex justify-center items-center">
       <View className="bg-white w-[90%] px-5 py-10 space-y-10 rounded-md">
         <View className="w-full">
-            <Image source={require("../assets/ENSEM-270x300.png")} className="w-full h-40"></Image>
+            <Image source={require("@assets/ENSEM-270x300.png")} className="w-full h-40"></Image>
         </View>
         <View>
           <Controller

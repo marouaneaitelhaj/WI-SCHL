@@ -31,7 +31,7 @@ export default function TopBar() {
         }
       >
         <Image
-          source={require("../assets/backround pattern.png")}
+          source={require("../assets/backround_pattern.png")}
           className="absolute"
         />
         <View className="flex flex-row items-center justify-center">

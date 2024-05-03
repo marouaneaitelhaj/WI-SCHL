@@ -1,32 +1,19 @@
-import React, { useEffect } from "react";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { FlatList, View, Text, Easing, Alert } from "react-native";
-import { faClock, faHome, faUser } from "@fortawesome/free-solid-svg-icons";
-import { Avatar, IconButton } from "react-native-paper";
+import React from "react";
+import { View, Text, Alert } from "react-native";
+import { IconButton } from "react-native-paper";
 import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
-
+import { Link } from "expo-router";
 import { RootState, useAppDispatch } from "../state/store";
-import Animated, {
-  BounceInDown,
-  BounceInUp,
-  FadeIn,
-  FadeInDown,
-  FadeOutDown,
-  FadeOutUp,
-  FlipOutYLeft,
-  SlideInUp,
-  SlideOutUp,
-} from "react-native-reanimated";
+import Animated, { SlideInUp, SlideOutUp } from "react-native-reanimated";
 import { toggleTopBar, closeTopBar } from "../state/TopBar/TopBarSlice";
 import { logout } from "../state/Auth/AuthSlice";
 import { COLORS } from "../static/colors";
 
 const data = [
-  { key: "Accueil", icon: "home-circle" },
-  { key: "Emploi", icon: "clock-time-eight" },
-  { key: "Annonces", icon: "bullhorn" },
+  { key: "pages/Accueil", text: "Accueil", icon: "home-circle" },
+  { key: "pages/Emploi", text: "Emploi", icon: "clock-time-eight" },
+  { key: "pages/Annonces", text: "Annonces", icon: "bullhorn" },
 ];
 
 export default function TopBarElements() {
@@ -43,7 +30,7 @@ export default function TopBarElements() {
       className="w-screen z-20 rounded-t-[50px] flex flex-row items-center justify-around py-7 px-5 flex-wrap h-screen"
     >
       {data.map((item, index) => (
-        <View className="flex items-center m-3" key={index}>
+        <Link href={item.key} className="flex items-center m-3" key={index}>
           <IconButton
             className={"border-2 border-[ " + COLORS.primaryColor + +"]"}
             style={{
@@ -53,15 +40,14 @@ export default function TopBarElements() {
             size={50}
             iconColor={COLORS.primaryColor}
             icon={item.icon}
-            onPress={() => {
-              console.log(item.key);
-              
-              navigation.navigate(item.key as never);
-              dispatch(toggleTopBar());
-            }}
+            // onPress={() => {
+            //   console.log(item.key);
+            //   navigation.navigate(item.key as never);
+            //   dispatch(toggleTopBar());
+            // }}
           />
-          <Text className="text-[#1E9FF2]">{item.key}</Text>
-        </View>
+          <Text className="text-[#1E9FF2]">{item.text}</Text>
+        </Link>
       ))}
       <View className="flex items-center m-3" key={"logout"}>
         <IconButton
@@ -74,21 +60,26 @@ export default function TopBarElements() {
           iconColor={COLORS.primaryColor}
           icon={"logout"}
           onPress={() => {
-            Alert.alert("Déconnexion", "Voulez-vous vraiment vous déconnecter?", [
-              {
-                text: "Annuler",
-                style: "cancel",
-              },
-              { text: "OK", onPress: () => {
-                dispatch(logout());
-                dispatch(closeTopBar())
-              } },
-            ]);
+            Alert.alert(
+              "Déconnexion",
+              "Voulez-vous vraiment vous déconnecter?",
+              [
+                {
+                  text: "Annuler",
+                  style: "cancel",
+                },
+                {
+                  text: "OK",
+                  onPress: () => {
+                    dispatch(logout());
+                    dispatch(closeTopBar());
+                  },
+                },
+              ]
+            );
           }}
         />
-        <Text className="text-[#1E9FF2]">
-          {"Déconnexion"}
-          </Text>
+        <Text className="text-[#1E9FF2]">{"Déconnexion"}</Text>
       </View>
     </Animated.View>
   );
