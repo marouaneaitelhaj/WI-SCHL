@@ -4,7 +4,7 @@ import { router } from "expo-router";
 import Animated, { SlideInUp, SlideOutUp } from "react-native-reanimated";
 import { COLORS } from "static/colors";
 import { useAppDispatch } from "state/store";
-import { closeTopBar, toggleTopBar } from "state/TopBar/TopBarSlice";
+import { closeTopBar, enableGoBack, toggleTopBar } from "state/TopBar/TopBarSlice";
 import { logout } from "state/Auth/AuthSlice";
 
 export default function Demandes() {
@@ -70,6 +70,7 @@ export default function Demandes() {
               iconColor={COLORS.primaryColor}
               icon={item.icon}
               onPress={() => {
+                // dispatch(enableGoBack());
                 router.replace(item.key as never);
               }}
             />

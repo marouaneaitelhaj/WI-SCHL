@@ -22,18 +22,16 @@ export default function Accueil() {
         </Text>
         <ScrollView horizontal={true}>
           <View className="flex flex-row">
-            {annonces &&
-              annonces?.map((annonce) => (
-                <AnnonceCard
-                  key={annonce.annonce_body}
-                  annonce={annonce}
-                ></AnnonceCard>
-              ))}
+            {annonces.map((annonce) => (
+              <AnnonceCard key={annonce.annonce_body} annonce={annonce} />
+            ))}
           </View>
         </ScrollView>
       </View>
       <View>
-        <Text className={"my-4 text-[#1E9FF2] px-5 font-bold text-xl"}>HomeWork</Text>
+        <Text className={"my-4 text-[#1E9FF2] px-5 font-bold text-xl"}>
+          HomeWork
+        </Text>
         <ScrollView horizontal={true}>
           <View className="flex flex-row">
             {/* <AnnonceCard></AnnonceCard>

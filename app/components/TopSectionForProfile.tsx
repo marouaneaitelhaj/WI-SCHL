@@ -3,12 +3,15 @@ import { Text } from "react-native";
 import { Icon } from "react-native-paper";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../state/store";
-import { setEditProfile, setShowProfile } from "../../state/Profile/ProfileSlice";
+import {
+  setProfileStatus,
+  setShowProfile,
+} from "../../state/Profile/ProfileSlice";
 
 export default function TopSectionForProfile() {
   const { user } = useSelector((state: RootState) => state.auth);
 
-  const { editProfile } = useSelector((state: RootState) => state.profile);
+  const { profileStatus } = useSelector((state: RootState) => state.profile);
 
   const dispatch = useAppDispatch();
 
@@ -18,7 +21,6 @@ export default function TopSectionForProfile() {
         "space-y-5 py-10 relative  rounded-bl-[50px] rounded-br-[50px] flex items-center bg-[#1E9FF2] rounded-tl-3xl"
       }
     >
-      
       <View className="absolute top-10 flex flex-row  w-screen">
         <Pressable
           className="flex flex-row space-x-4 absolute left-4"
@@ -30,15 +32,20 @@ export default function TopSectionForProfile() {
           <Text className="text-white text-xl">Profile</Text>
         </Pressable>
         <View className="absolute right-4">
-          <Pressable
+          {(profileStatus == 0) &&<Pressable
             // className="absolute top-5 right-5"
             onPress={() => {
-              dispatch(setEditProfile(!editProfile));
-            }}
-          >
-            {!editProfile && <Icon source="pencil" size={30} color="white" />}
-            {editProfile && <Icon source="eye" size={30} color="white" />}
-          </Pressable>
+              dispatch(setProfileStatus(1));
+            }}>
+            <Icon source="pencil" size={30} color="white" />
+          </Pressable>}
+          {(profileStatus == 1 || profileStatus == 2) && <Pressable
+            // className="absolute top-5 right-5"
+            onPress={() => {
+              dispatch(setProfileStatus(0));
+            }}>
+            <Icon source="eye" size={30} color="white" />
+          </Pressable>}
         </View>
       </View>
       <View className={" flex items-center py-5 space-y-3"}>

@@ -15,16 +15,17 @@ export default function Annonces() {
   }, []);
   return (
     <View>
-      <Text className={"my-4 text-[#1E9FF2] px-5 font-bold text-xl"}>Announce</Text>
-      <ScrollView className="flex flex-col" showsVerticalScrollIndicator={false}>
+      <Text className={"my-4 text-[#1E9FF2] px-5 font-bold text-xl"}>
+        Announce
+      </Text>
+      <ScrollView
+        className="flex flex-col"
+        showsVerticalScrollIndicator={false}
+      >
         <View className="flex flex-row pb-64 flex-wrap">
-          {(annonces.length != 0) &&
-            annonces.map((annonce) => (
-              <AnnonceCard
-                key={annonce.annonce_body}
-                annonce={annonce}
-              ></AnnonceCard>
-            ))}
+          {annonces.map((annonce) => (
+            <AnnonceCard key={annonce.annonce_body} annonce={annonce} />
+          ))}
         </View>
       </ScrollView>
     </View>

@@ -7,7 +7,7 @@ type AnnonceState = {
 }
 
 const initialState: AnnonceState = {
-    annonces: []
+    annonces: [] as Tannonce[]
 }
 
 export const AnnoncesSlice = createSlice({

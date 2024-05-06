@@ -7,6 +7,7 @@ import { disableGoBack, toggleTopBar } from "../../state/TopBar/TopBarSlice";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { COLORS } from "../../static/colors";
 import { setShowProfile } from "../../state/Profile/ProfileSlice";
+import { router } from "expo-router";
 
 export default function TopBar() {
   const { open, goBack } = useSelector((state: RootState) => state.topBar);
@@ -50,7 +51,7 @@ export default function TopBar() {
           {!open && goBack && (
             <IconButton
               onPress={() => {
-                navigation.goBack();
+                router.back();
                 dispatch(disableGoBack());
               }}
               icon="arrow-left"
@@ -62,9 +63,6 @@ export default function TopBar() {
         <Pressable
           className="flex flex-row items-center justify-center"
           onPress={() => {
-            // navigation.navigate("pages/Profile" as never);
-            // console.log("profile");
-
             dispatch(setShowProfile(true));
           }}
         >

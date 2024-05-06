@@ -6,6 +6,7 @@ import { Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { enableGoBack } from "../../state/TopBar/TopBarSlice";
 import Animated, { SlideInRight, SlideOutLeft } from "react-native-reanimated";
+import { setProfileStatus } from "state/Profile/ProfileSlice";
 
 export default function InformationspersonnelsProfile() {
   const { user } = useSelector((state: RootState) => state.auth);
@@ -86,8 +87,7 @@ export default function InformationspersonnelsProfile() {
         <View className="w-full flex justify-center items-center ">
           <Pressable
             onPress={() => {
-              navigation.navigate("ModifierLaMotDePass" as never);
-              dispatch(enableGoBack());
+              dispatch(setProfileStatus(2));
             }}
             className={
               "flex rounded-md w-[90%] justify-center items-center  p-5 bg-[#1E9FF2]"
