@@ -15,7 +15,7 @@ export default function Annonces() {
   }, []);
   return (
     <View>
-      <Text className={"my-4 text-[#1E9FF2] px-5 font-bold text-xl"}>
+      <Text className={" text-[#1E9FF2] px-5 font-bold text-xl"}>
         Announce
       </Text>
       <ScrollView

@@ -13,6 +13,7 @@ import { COLORS } from "../../static/colors";
 const data = [
   { key: "/pages/Accueil", text: "Accueil", icon: "home-circle" },
   { key: "/pages/Demandes", text: "Demandes", icon: "inbox" },
+  { key: "/pages/Absences", text: "Absences", icon: "table-account" },
   { key: "/pages/Emploi", text: "Emploi", icon: "clock-time-eight" },
   { key: "/pages/annonces", text: "Annonces", icon: "bullhorn" },
 ];
