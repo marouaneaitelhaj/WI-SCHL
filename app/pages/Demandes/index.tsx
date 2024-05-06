@@ -15,21 +15,21 @@ export default function Demandes() {
       icon: "file-document",
     },
     {
-      key: "/pages/Demandes",
+      key: "/pages/Demandes/AttestationScolarite",
       text: "Attestations de scolarité",
       icon: "file-document",
     },
     {
-      key: "/pages/Demandes",
+      key: "/pages/Demandes/AttestationReussite",
       text: "Attestations de réussite",
       icon: "file-document",
     },
     {
-      key: "/pages/Demandes",
+      key: "/pages/Demandes/ConventionStage",
       text: "Conventions de stage",
       icon: "file-document",
     },
-    { key: "/pages/Demandes", text: "Relevé de notes", icon: "file-document" },
+    { key: "/pages/Demandes/ReleveNote", text: "Relevé de notes", icon: "file-document" },
     {
       key: "/pages/Demandes/RetraitDiplome",
       text: "Retrait de diplôme",

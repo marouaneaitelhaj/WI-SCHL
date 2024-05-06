@@ -2,7 +2,7 @@ import { View, Text, Pressable, Alert } from "react-native";
 import { Modal, Title } from "react-native-paper";
 export default function AttestationInscription() {
   return (
-    <View className="flex justify-center">
+    <View className="flex justify-center px-5">
       <Title className="text-center font-bold">Attestation d'inscription</Title>
       <View className="flex items-center space-y-5 my-10">
         <Text className="text-center">
