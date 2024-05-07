@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { Text, View } from "react-native";
 import React, { useEffect } from "react";
 import { SafeAreaView, ScrollView } from "react-native";
@@ -6,13 +6,11 @@ import { Calendar } from "react-native-calendars";
 import { useSelector } from "react-redux";
 import { DateData } from "react-native-calendars/src/types";
 
-export default function Absences(
-    // props: { present?: number; absent: number; beingProcessed: number }
-) {
+export default function Absences() {
+// props: { present?: number; absent: number; beingProcessed: number }
   const { month } = useLocalSearchParams();
 
-  useEffect(() => {
-  }  , []);
+  useEffect(() => {}, []);
 
   return (
     <SafeAreaView className="h-screen bg-white">
@@ -30,7 +28,6 @@ export default function Absences(
             selectedColor: "#D4FFEB",
             textColor: "black",
             color: "black",
-
           },
         }}
         onDayPress={(date: DateData) => {
@@ -38,6 +35,7 @@ export default function Absences(
             date.day.toString().length === 1 ? "0" + date.day : date.day;
           const month =
             date.month.toString().length === 1 ? "0" + date.month : date.month;
+            router.push(`/pages/Absences/${month}/${day}`);
           //   disptach(setSelectedDay(day));
           //   disptach(setSelectedMonth(date.year + "-" + month));
         }}
@@ -45,25 +43,19 @@ export default function Absences(
       />
       <View className="flex flex-row justify-around py-6">
         <View className="w-20  flex justify-center items-center h-14 rounded-lg bg-[#D4FFEB]">
-          <Text className=" text-center font-bold text-[#25A168]">
-            30
-          </Text>
+          <Text className=" text-center font-bold text-[#25A168]">30</Text>
           <Text className=" text-center font-normal text-[#25A168]">
             Present
           </Text>
         </View>
         <View className="w-20  flex justify-center items-center  h-14 rounded-lg bg-[#FED4D5]">
-          <Text className=" text-center font-bold text-[#F83A6C]">
-            30
-          </Text>
+          <Text className=" text-center font-bold text-[#F83A6C]">30</Text>
           <Text className=" text-center font-normal text-[#F83A6C]">
             Absent
           </Text>
         </View>
         <View className="w-20  flex justify-center items-center  h-14 rounded-lg bg-[#e0e1f3]">
-          <Text className=" text-center font-bold text-[#607E97]">
-            30
-          </Text>
+          <Text className=" text-center font-bold text-[#607E97]">30</Text>
           <Text className=" text-center font-normal text-[#607E97]">
             .........
           </Text>
