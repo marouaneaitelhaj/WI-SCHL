@@ -18,16 +18,14 @@ export function HomeLayout() {
 
   useEffect(() => {
     AsyncStorage.getItem("token").then((token) => {
-      console.log(token);
-
       dispatch(setToken(token));
-      dispatch(getProfileAction())
-        .unwrap()
-        .then(() => {})
-        .catch(() => {});
+      if (token)
+        dispatch(getProfileAction(token))
+          .unwrap()
+          .then(() => {})
+          .catch(() => {});
     });
   }, []);
-
 
   const { token, loading } = useSelector((state: RootState) => state.auth);
   const { showProfile } = useSelector((state: RootState) => state.profile);
