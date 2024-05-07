@@ -1,18 +1,21 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export const createAttestationInscriptionAction = createAsyncThunk<
-    {},{}
->("demandes/attestationInscription", async () => {
-    const token = await AsyncStorage.getItem("token");
-    const { data } = await axios.post(
-        "http://ensemc.irma-prod.net/api/etudiant/attestation-inscription/save-demande",
-        {},
-        {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        }
+export const getAttestationInscriptionValues = createAsyncThunk(
+  "attestationInscription/fetchValues",
+  async () => {
+    const response = await axios.get("/attestation-inscription");
+    return response.data;
+  }
+);
+
+export const demandeAttestation = createAsyncThunk(
+  "attestationInscription/saveDemande",
+  async () => {
+    const response = await axios.post(
+      "/attestation-inscription/save-demande",
+      {}
     );
-});
+    return response.data;
+  }
+);
