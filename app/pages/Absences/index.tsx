@@ -1,5 +1,5 @@
 import { View, Text, ScrollView } from "react-native";
-import AbsenceCard from "./AbsenceCard";
+import AbsenceCard from "../../components/AbsenceCard";
 
 export default function Absences() {
   return (
