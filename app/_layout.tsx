@@ -12,6 +12,7 @@ import Loading from "app/components/Loading";
 import Login from "@pages/Login";
 import Profile from "@pages/Profile";
 import { View } from "react-native";
+import '../static/LocaleConfig';
 
 export function HomeLayout() {
   const dispatch = useAppDispatch();
@@ -27,8 +28,11 @@ export function HomeLayout() {
     });
   }, []);
 
-  const { token, loading } = useSelector((state: RootState) => state.auth);
+  
+
+  const { token, loading, user } = useSelector((state: RootState) => state.auth);
   const { showProfile } = useSelector((state: RootState) => state.profile);
+
 
   useEffect(() => {
     if (token === null) {
