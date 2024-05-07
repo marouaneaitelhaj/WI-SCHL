@@ -3,19 +3,49 @@ import { Tevent, Tseance, eventsType } from "../types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
-export const getEmploisDuTemps = createAsyncThunk<
-  { events: Tevent[]; type: eventsType[] },
-  void
->("EmploisDuTemps/getEmploisDuTemps", async () => {
+export const getEmploisDuTempsByMonth = createAsyncThunk<
+  Tevent[],
+  { selectedMonth: string }
+>("EmploisDuTemps/getEmploisDuTempsByMonth", async ({ selectedMonth }) => {
   const token = await AsyncStorage.getItem("token");
   const { data } = await axios.get(
-    "http://ensemc.irma-prod.net/api/etudiant/emploi-temps",
+    "http://ensemc.irma-prod.net/api/etudiant/emploi-temps/?mois=" +
+      selectedMonth,
     {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     }
   );
-  
-  return data;
+
+  return data.events as Tevent[];
 });
+
+export const getEmploisDuTempsByDay = createAsyncThunk<
+  Tevent[],
+  { selectedDay: string; selectedMonth: string }
+>(
+  "EmploisDuTemps/getEmploisDuTempsByDay",
+  async ({ selectedDay, selectedMonth }) => {
+    const token = await AsyncStorage.getItem("token");
+    console.log("getEmploisDuTempsByDay", "http://ensemc.irma-prod.net/api/etudiant/emploi-temps/?day=" +
+    selectedDay +
+      "/" +
+      selectedMonth);
+    const { data } = await axios.get(
+      "http://ensemc.irma-prod.net/api/etudiant/emploi-temps/?day=" +
+      selectedDay +
+        "/" +
+        selectedMonth,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    
+
+    return data.events as Tevent[];
+  }
+);

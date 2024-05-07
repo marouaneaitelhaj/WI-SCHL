@@ -21,6 +21,7 @@ export const getProfileAction = createAsyncThunk<
   { etudiant: Tuser; fillier: string; correction: string },
   string
 >("auth/profile", async (token) => {
+  
   const { data } = await axios.get(
     "http://ensemc.irma-prod.net/api/etudiant/profile",
     {

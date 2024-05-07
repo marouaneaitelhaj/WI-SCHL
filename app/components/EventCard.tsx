@@ -1,14 +1,32 @@
 import { View, Text } from "react-native";
+import { Tevent } from "state/types";
 
-export default function EventCard() {
+export default function EventCard(
+  props : {
+    event : Tevent
+  }
+) {
   return (
     <View className="flex flex-row w-full p-3 space-x-3 items-center">
       <View className="h-16 w-16 flex rounded-full justify-center items-center bg-[#5156BE]">
-        <Text className="text-white">66</Text>
+        <Text className="text-white text-xs">
+          {props.event.start.split("T")[1].split(":")[0] +
+            ":" +
+            props.event.start.split("T")[1].split(":")[1]}
+        </Text>
+        <Text className="text-white text-xs">
+          {props.event.end.split("T")[1].split(":")[0] +
+            ":" +
+            props.event.end.split("T")[1].split(":")[1]}
+        </Text>
       </View>
-      <View className="bg-[#5156BE] h-16 w-4/5 rounded-md flex justify-center p-5">
-        <Text className="text-white font-bold">EventCard</Text>
-        <Text className="text-gray-200 text-xs">EventCard</Text>
+      <View className={"h-16 w-4/5 rounded-md flex justify-center p-5 bg-[#5156BE]"}>
+        <Text className="text-white font-bold">
+          {props.event.title}
+        </Text>
+        <Text className="text-gray-200 text-xs">
+          {props.event.color}
+        </Text>
       </View>
     </View>
   );
