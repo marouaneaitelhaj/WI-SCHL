@@ -1,30 +1,34 @@
 import { View, Text, Pressable, Alert } from "react-native";
 import { Modal, Title } from "react-native-paper";
-export default function AttestationInscription() {
+export default function Demande_reservation() {
   return (
     <View className="flex justify-center">
-      <Title className="text-center font-bold">Attestation d'inscription</Title>
+      <Title className="text-center font-bold">
+        Demande de réservation de locaux
+      </Title>
       <View className="flex items-center space-y-5 my-10">
-        <Text className="text-center">
-          Mes demandes d'attestations d'inscription
-        </Text>
+        <Text className="text-center">Demande de réservation de locaux</Text>
         <Pressable
           className="flex  rounded-md w-[90%] justify-center items-center  p-5 bg-[#1E9FF2]"
           onPress={() => {
-            Alert.alert("Envoyer la demande", "Êtes-vous sûr de vouloir créer cette demande ?", [
+            Alert.alert(
+              "Envoyer la demande",
+              "Êtes-vous sûr de vouloir créer cette demande ?",
+              [
                 {
-                    text: "Annuler",
-                    style: "cancel",
+                  text: "Annuler",
+                  style: "cancel",
                 },
                 {
-                    text: "Confirmer et Envoyer",
-                    style: "destructive",
-                    onPress: () => {
+                  text: "Confirmer et Envoyer",
+                  style: "destructive",
+                  onPress: () => {
                     // dispatch(logout());
                     // dispatch(closeTopBar());
-                    },
+                  },
                 },
-            ])
+              ]
+            );
           }}
         >
           <Text className="text-white text-center">

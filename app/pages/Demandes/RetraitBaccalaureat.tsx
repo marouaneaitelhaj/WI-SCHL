@@ -1,12 +1,12 @@
 import { View, Text, Pressable, Alert } from "react-native";
 import { Modal, Title } from "react-native-paper";
-export default function AttestationInscription() {
+export default function RetraitBaccalaureat() {
   return (
     <View className="flex justify-center">
-      <Title className="text-center font-bold">Attestation d'inscription</Title>
+      <Title className="text-center font-bold">Retrait du Baccalauréat</Title>
       <View className="flex items-center space-y-5 my-10">
         <Text className="text-center">
-          Mes demandes d'attestations d'inscription
+        Mes demandes de retrait du Baccalauréat
         </Text>
         <Pressable
           className="flex  rounded-md w-[90%] justify-center items-center  p-5 bg-[#1E9FF2]"
