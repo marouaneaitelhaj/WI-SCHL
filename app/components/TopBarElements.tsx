@@ -47,7 +47,7 @@ export default function TopBarElements() {
               dispatch(toggleTopBar());
             }}
           />
-          <Text className="text-[#1E9FF2]">{item.text}</Text>
+          <Text className="text-[#5156BE]">{item.text}</Text>
         </View>
       ))}
       <View className="flex  w-1/3 items-center" key={"logout"}>
@@ -80,7 +80,7 @@ export default function TopBarElements() {
             );
           }}
         />
-        <Text className="text-[#1E9FF2]">{"Déconnexion"}</Text>
+        <Text className="text-[#5156BE]">{"Déconnexion"}</Text>
       </View>
     </Animated.View>
   );

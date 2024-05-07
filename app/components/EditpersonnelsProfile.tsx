@@ -131,8 +131,8 @@ export default function EditpersonnelsProfile() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 mode="flat"
-                underlineColor="#1E9FF2"
-                activeUnderlineColor="#1E9FF2"
+                underlineColor="#5156BE"
+                activeUnderlineColor="#5156BE"
                 className="rounded-md bg-transparent"
                 label="Prenom"
                 onBlur={onBlur}
@@ -153,8 +153,8 @@ export default function EditpersonnelsProfile() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 mode="flat"
-                underlineColor="#1E9FF2"
-                activeUnderlineColor="#1E9FF2"
+                underlineColor="#5156BE"
+                activeUnderlineColor="#5156BE"
                 className="rounded-md bg-transparent"
                 label="Nom"
                 onBlur={onBlur}
@@ -175,8 +175,8 @@ export default function EditpersonnelsProfile() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 mode="flat"
-                underlineColor="#1E9FF2"
-                activeUnderlineColor="#1E9FF2"
+                underlineColor="#5156BE"
+                activeUnderlineColor="#5156BE"
                 className="rounded-md bg-transparent"
                 label="Prenom ar"
                 onBlur={onBlur}
@@ -197,8 +197,8 @@ export default function EditpersonnelsProfile() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 mode="flat"
-                underlineColor="#1E9FF2"
-                activeUnderlineColor="#1E9FF2"
+                underlineColor="#5156BE"
+                activeUnderlineColor="#5156BE"
                 className="rounded-md bg-transparent"
                 label="Nom ar"
                 onBlur={onBlur}
@@ -219,8 +219,8 @@ export default function EditpersonnelsProfile() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 mode="flat"
-                underlineColor="#1E9FF2"
-                activeUnderlineColor="#1E9FF2"
+                underlineColor="#5156BE"
+                activeUnderlineColor="#5156BE"
                 className="rounded-md bg-transparent"
                 label="Cin"
                 onBlur={onBlur}
@@ -241,8 +241,8 @@ export default function EditpersonnelsProfile() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 mode="flat"
-                underlineColor="#1E9FF2"
-                activeUnderlineColor="#1E9FF2"
+                underlineColor="#5156BE"
+                activeUnderlineColor="#5156BE"
                 className="rounded-md bg-transparent"
                 label="Cne"
                 onBlur={onBlur}
@@ -263,8 +263,8 @@ export default function EditpersonnelsProfile() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 mode="flat"
-                underlineColor="#1E9FF2"
-                activeUnderlineColor="#1E9FF2"
+                underlineColor="#5156BE"
+                activeUnderlineColor="#5156BE"
                 className="rounded-md bg-transparent"
                 label="Date naissance"
                 onBlur={onBlur}
@@ -287,8 +287,8 @@ export default function EditpersonnelsProfile() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 mode="flat"
-                underlineColor="#1E9FF2"
-                activeUnderlineColor="#1E9FF2"
+                underlineColor="#5156BE"
+                activeUnderlineColor="#5156BE"
                 className="rounded-md bg-transparent"
                 label="Lieu naissance ar"
                 onBlur={onBlur}
@@ -311,8 +311,8 @@ export default function EditpersonnelsProfile() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 mode="flat"
-                underlineColor="#1E9FF2"
-                activeUnderlineColor="#1E9FF2"
+                underlineColor="#5156BE"
+                activeUnderlineColor="#5156BE"
                 className="rounded-md bg-transparent"
                 label="Lieu naissance fr"
                 onBlur={onBlur}
@@ -335,8 +335,8 @@ export default function EditpersonnelsProfile() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 mode="flat"
-                underlineColor="#1E9FF2"
-                activeUnderlineColor="#1E9FF2"
+                underlineColor="#5156BE"
+                activeUnderlineColor="#5156BE"
                 className="rounded-md bg-transparent"
                 label="Adresse fr"
                 onBlur={onBlur}
@@ -357,8 +357,8 @@ export default function EditpersonnelsProfile() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 mode="flat"
-                underlineColor="#1E9FF2"
-                activeUnderlineColor="#1E9FF2"
+                underlineColor="#5156BE"
+                activeUnderlineColor="#5156BE"
                 className="rounded-md bg-transparent"
                 label="Adresse ar"
                 onBlur={onBlur}
@@ -379,8 +379,8 @@ export default function EditpersonnelsProfile() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 mode="flat"
-                underlineColor="#1E9FF2"
-                activeUnderlineColor="#1E9FF2"
+                underlineColor="#5156BE"
+                activeUnderlineColor="#5156BE"
                 className="rounded-md bg-transparent"
                 label="Tele"
                 onBlur={onBlur}
@@ -400,8 +400,8 @@ export default function EditpersonnelsProfile() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 mode="flat"
-                underlineColor="#1E9FF2"
-                activeUnderlineColor="#1E9FF2"
+                underlineColor="#5156BE"
+                activeUnderlineColor="#5156BE"
                 className="rounded-md bg-transparent"
                 label="Email"
                 onBlur={onBlur}
@@ -427,7 +427,7 @@ export default function EditpersonnelsProfile() {
               width: 50,
               height: 50,
               borderRadius: 50,
-              borderColor: "#1E9FF2",
+              borderColor: "#5156BE",
               borderWidth: 1,
             }}
           />
@@ -436,7 +436,7 @@ export default function EditpersonnelsProfile() {
             name="img"
             render={({ field: { onChange, onBlur, value } }) => (
               <Pressable
-                className=" bg-[#1E9FF2] p-3 rounded-md"
+                className=" bg-[#5156BE] p-3 rounded-md"
                 onPress={pickImage}
               >
                 <Text className="text-white">Changer l'image</Text>
@@ -446,7 +446,7 @@ export default function EditpersonnelsProfile() {
         </View>
         <Pressable
           onPress={handleSubmit(onSubmit)}
-          className="flex rounded-md w-[90%] justify-center items-center  p-5 bg-[#1E9FF2]"
+          className="flex rounded-md w-[90%] justify-center items-center  p-5 bg-[#5156BE]"
         >
           <Text className="text-white">Enregistrer les modifications</Text>
         </Pressable>

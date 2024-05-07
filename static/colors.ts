@@ -1,8 +1,8 @@
-// export const primaryColor = '#1E9FF2';
-// export const secondaryColor = '#94CBF6';
+// export const primaryColor = '#5156BE';
+// export const secondaryColor = '#e0e1f3';
 
 
 export const COLORS = {
-    primaryColor: '#1E9FF2',
-    secondaryColor: '#94CBF6',
+    primaryColor: '#5156BE',
+    secondaryColor: '#e0e1f3',
 }

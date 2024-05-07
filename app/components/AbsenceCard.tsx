@@ -15,7 +15,7 @@ export default function AbsenceCard(props: {
       className="flex flex-row w-full justify-center my-3 space-x-3"
     >
       <View className=" h-14 w-14 flex rounded-full justify-center items-center bg-[#D0EBFE]">
-        <Text className=" text-center font-bold text-[#1E9FF2]">
+        <Text className=" text-center font-bold text-[#5156BE]">
           {props.month}
         </Text>
       </View>
@@ -31,7 +31,7 @@ export default function AbsenceCard(props: {
         </Text>
         <Text className=" text-center font-normal text-[#F83A6C]">Absent</Text>
       </View>
-      <View className="w-20  flex justify-center items-center  h-14 rounded-lg bg-[#D4F4FF]">
+      <View className="w-20  flex justify-center items-center  h-14 rounded-lg bg-[#e0e1f3]">
         <Text className=" text-center font-bold text-[#607E97]">
           {props.beingProcessed}
         </Text>

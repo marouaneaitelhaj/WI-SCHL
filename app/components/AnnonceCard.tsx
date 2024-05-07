@@ -9,7 +9,7 @@ export default function AnnonceCard(props: { annonce: Tannonce }) {
       onPress={() => {
         router.push({ pathname: "/pages/annonces/2" });
       }}
-      className="bg-[#D4F4FF] flex space-y-4 p-3 m-3 rounded-xl w-40"
+      className="bg-[#e0e1f3] flex space-y-4 p-3 m-3 rounded-xl w-40"
     >
       <View className="bg-white w-[30px] rounded-md">
         <Image

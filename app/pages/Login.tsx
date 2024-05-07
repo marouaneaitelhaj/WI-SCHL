@@ -31,7 +31,7 @@ export default function Login() {
   };
 
   return (
-    <View className="w-screen h-screen bg-[#1E9FF2] flex justify-center items-center">
+    <View className="w-screen h-screen bg-[#5156BE] flex justify-center items-center">
       <View className="bg-white w-[90%] px-5 py-10 space-y-10 rounded-md">
         <View className="w-full">
           <Image
@@ -49,8 +49,8 @@ export default function Login() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 placeholder="Entrer l'email"
-                underlineColor={errors.password ? "red" : "#1E9FF2"}
-                activeUnderlineColor="#1E9FF2"
+                underlineColor={errors.password ? "red" : "#5156BE"}
+                activeUnderlineColor="#5156BE"
                 className="rounded-md bg-white"
                 onBlur={onBlur}
                 left={<TextInput.Icon icon="email" />}
@@ -81,8 +81,8 @@ export default function Login() {
               <TextInput
                 placeholder="Entrer le mot de pass"
                 onBlur={onBlur}
-                underlineColor={errors.password ? "red" : "#1E9FF2"}
-                activeUnderlineColor="#1E9FF2"
+                underlineColor={errors.password ? "red" : "#5156BE"}
+                activeUnderlineColor="#5156BE"
                 className="rounded-md bg-white"
                 left={<TextInput.Icon icon="lock" />}
                 right={<TextInput.Icon icon="eye" />}
@@ -105,7 +105,7 @@ export default function Login() {
           <Pressable
             className={
               "flex rounded-md justify-center items-center p-5" +
-              (loadingForm ? " bg-[#d285be]" : " bg-[#1E9FF2]")
+              (loadingForm ? " bg-[#d285be]" : " bg-[#5156BE]")
             }
             onPress={handleSubmit(onSubmit)}
           >

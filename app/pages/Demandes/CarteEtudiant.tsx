@@ -9,7 +9,7 @@ export default function CarteEtudiant() {
         Demande de retrait de la carte d'étudiant
         </Text>
         <Pressable
-          className="flex  rounded-md w-[90%] justify-center items-center  p-5 bg-[#1E9FF2]"
+          className="flex  rounded-md w-[90%] justify-center items-center  p-5 bg-[#5156BE]"
           onPress={() => {
             Alert.alert("Envoyer la demande", "Êtes-vous sûr de vouloir créer cette demande ?", [
                 {

@@ -60,7 +60,7 @@ export default function Absences(
             Absent
           </Text>
         </View>
-        <View className="w-20  flex justify-center items-center  h-14 rounded-lg bg-[#D4F4FF]">
+        <View className="w-20  flex justify-center items-center  h-14 rounded-lg bg-[#e0e1f3]">
           <Text className=" text-center font-bold text-[#607E97]">
             30
           </Text>

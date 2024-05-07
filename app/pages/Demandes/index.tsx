@@ -74,7 +74,7 @@ export default function Demandes() {
                 router.replace(item.key as never);
               }}
             />
-            <Text className="text-[#1E9FF2] text-center">{item.text}</Text>
+            <Text className="text-[#5156BE] text-center">{item.text}</Text>
           </View>
         ))}
       </View>

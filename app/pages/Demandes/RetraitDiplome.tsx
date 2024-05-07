@@ -7,7 +7,7 @@ export default function RetraitDiplome() {
       <View className="flex items-center space-y-5 my-10">
         <Text className="text-center">Demande de retrait de diplôme</Text>
         <Pressable
-          className="flex  rounded-md w-[90%] justify-center items-center  p-5 bg-[#1E9FF2]"
+          className="flex  rounded-md w-[90%] justify-center items-center  p-5 bg-[#5156BE]"
           onPress={() => {
             Alert.alert(
               "Envoyer la demande",

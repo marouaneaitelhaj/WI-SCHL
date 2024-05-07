@@ -78,7 +78,7 @@ export default function TopBar() {
       </View>
       <View style={{
         shadowColor: "#000",
-      }} className="absolute w-32 bg-[#1E9FF2] z-50  h-32 -bottom-28 right-0 "></View>
+      }} className="absolute w-32 bg-[#5156BE] z-50  h-32 -bottom-28 right-0 "></View>
       {open && <TopBarElements />}
     </View>
   );

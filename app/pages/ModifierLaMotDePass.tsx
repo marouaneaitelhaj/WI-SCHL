@@ -61,7 +61,7 @@ export default function ModifierLaMotDePass() {
     <ScrollView className="my-2 w-full">
       <View className="w-screen flex justify-center items-center ">
         <View className="bg-white w-[90%] px-5 py-10 space-y-10 rounded-md">
-          <Text className="text-[#1E9FF2] text-center mb-8 text-[20px]">
+          <Text className="text-[#5156BE] text-center mb-8 text-[20px]">
             Modifier le mot de pass
           </Text>
           <View>
@@ -74,8 +74,8 @@ export default function ModifierLaMotDePass() {
               render={({ field: { onChange, onBlur, value } }) => (
                 <TextInput
                   placeholder="Entrez l'ancien mot de passe"
-                  underlineColor={errors.motPassActuel ? "red" : "#1E9FF2"}
-                  activeUnderlineColor="#1E9FF2"
+                  underlineColor={errors.motPassActuel ? "red" : "#5156BE"}
+                  activeUnderlineColor="#5156BE"
                   className="rounded-md bg-white"
                   onBlur={onBlur}
                   secureTextEntry={secureTextEntry.password}
@@ -119,8 +119,8 @@ export default function ModifierLaMotDePass() {
                 <TextInput
                   placeholder="Entrez le nouveau mot de passe"
                   onBlur={onBlur}
-                  underlineColor={errors.nvMotPass ? "red" : "#1E9FF2"}
-                  activeUnderlineColor="#1E9FF2"
+                  underlineColor={errors.nvMotPass ? "red" : "#5156BE"}
+                  activeUnderlineColor="#5156BE"
                   className="rounded-md bg-white"
                   secureTextEntry={secureTextEntry.newPassword}
                   left={<TextInput.Icon icon="lock" />}
@@ -167,9 +167,9 @@ export default function ModifierLaMotDePass() {
                   placeholder="Confirmez le nouveau mot de passe"
                   onBlur={onBlur}
                   underlineColor={
-                    errors.nvMotPass_confirmation ? "red" : "#1E9FF2"
+                    errors.nvMotPass_confirmation ? "red" : "#5156BE"
                   }
-                  activeUnderlineColor="#1E9FF2"
+                  activeUnderlineColor="#5156BE"
                   className="rounded-md bg-white"
                   secureTextEntry={secureTextEntry.confirmNewPassword}
                   left={<TextInput.Icon icon="lock" />}
@@ -208,7 +208,7 @@ export default function ModifierLaMotDePass() {
             <Pressable
               className={
                 "flex rounded-md justify-center items-center p-5" +
-                (loadingForm ? " bg-[#d285be]" : " bg-[#1E9FF2]")
+                (loadingForm ? " bg-[#d285be]" : " bg-[#5156BE]")
               }
               onPress={handleSubmit(onSubmit)}
             >

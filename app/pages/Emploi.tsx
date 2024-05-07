@@ -57,7 +57,7 @@ export default function Emploi() {
         markedDates={{
           [selectedMonth + "-" + selectedDay]: {
             selected: true,
-            selectedColor: "#1E9FF2",
+            selectedColor: "#5156BE",
           },
         }}
         onDayPress={(date: DateData) => {

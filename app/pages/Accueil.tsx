@@ -17,7 +17,7 @@ export default function Accueil() {
   return (
     <View>
       <View>
-        <Text className={"my-4 text-[#1E9FF2] px-5 font-bold text-xl"}>
+        <Text className={"my-4 text-[#5156BE] px-5 font-bold text-xl"}>
           Announce
         </Text>
         <ScrollView horizontal={true}>
@@ -29,7 +29,7 @@ export default function Accueil() {
         </ScrollView>
       </View>
       <View>
-        <Text className={"my-4 text-[#1E9FF2] px-5 font-bold text-xl"}>
+        <Text className={"my-4 text-[#5156BE] px-5 font-bold text-xl"}>
           HomeWork
         </Text>
         <ScrollView horizontal={true}>

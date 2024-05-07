@@ -18,7 +18,7 @@ export default function TopSectionForProfile() {
   return (
     <View
       className={
-        "space-y-5 py-10 relative  rounded-bl-[50px] rounded-br-[50px] flex items-center bg-[#1E9FF2] rounded-tl-3xl"
+        "space-y-5 py-10 relative  rounded-bl-[50px] rounded-br-[50px] flex items-center bg-[#5156BE] rounded-tl-3xl"
       }
     >
       <View className="absolute top-10 flex flex-row  w-screen">
