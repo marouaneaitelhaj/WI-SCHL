@@ -1,11 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  ActivityIndicator,
-  SafeAreaView,
-  ScrollView,
-  Text,
-  View,
-} from "react-native";
+import { ActivityIndicator, Modal, ScrollView, Text, View } from "react-native";
 import { Calendar } from "react-native-calendars";
 import { RootState, useAppDispatch } from "../../state/store";
 import { useSelector } from "react-redux";
@@ -91,75 +85,81 @@ export default function Emploi() {
   }, [eventsForMonth]);
 
   return (
-    <View className="bg-white">
-      <ScrollView
-        style={{
-          height: "45%",
-        }}
-      >
-        <Calendar
-          markingType={"multi-period"}
-          markedDates={{
-            [selectedMonth + "-" + selectedDay]: {
-              color: "#e0e1f3",
-              startingDay: true,
-              endingDay: true,
-            },
-            ...markedDates,
+    <>
+      <View className="bg-white">
+        <ScrollView
+          style={{
+            height: "45%",
           }}
-          onMonthChange={(month) => {
-            setSelectedMonth(
-              month.dateString.split("-")[0] +
-                "-" +
-                month.dateString.split("-")[1]
-            );
-            disptach(
-              getEmploisDuTempsByMonth({
-                selectedMonth:
-                  month.dateString.split("-")[0] +
+        >
+          <Calendar
+            markingType={"multi-period"}
+            markedDates={{
+              [selectedMonth + "-" + selectedDay]: {
+                color: "#e0e1f3",
+                startingDay: true,
+                endingDay: true,
+              },
+              ...markedDates,
+            }}
+            onMonthChange={(month) => {
+              setSelectedMonth(
+                month.dateString.split("-")[0] +
                   "-" +
-                  month.dateString.split("-")[1],
-              })
-            );
+                  month.dateString.split("-")[1]
+              );
+              disptach(
+                getEmploisDuTempsByMonth({
+                  selectedMonth:
+                    month.dateString.split("-")[0] +
+                    "-" +
+                    month.dateString.split("-")[1],
+                })
+              );
+            }}
+            // markedDates={}
+            initialDate="2024-05-04"
+            onDayPress={(date: DateData) => {
+              const day =
+                date.day.toString().length === 1 ? "0" + date.day : date.day;
+              const month =
+                date.month.toString().length === 1
+                  ? "0" + date.month
+                  : date.month;
+              disptach(setSelectedDay(day));
+              disptach(setSelectedMonth(date.year + "-" + month));
+              disptach(
+                getEmploisDuTempsByDay({
+                  selectedDay: day.toString(),
+                  selectedMonth: selectedMonth,
+                })
+              );
+            }}
+          />
+        </ScrollView>
+        <ScrollView
+          style={{
+            height: "45%",
           }}
-          // markedDates={}
-          initialDate="2024-05-04"
-          onDayPress={(date: DateData) => {
-            const day =
-              date.day.toString().length === 1 ? "0" + date.day : date.day;
-            const month =
-              date.month.toString().length === 1
-                ? "0" + date.month
-                : date.month;
-            disptach(setSelectedDay(day));
-            disptach(setSelectedMonth(date.year + "-" + month));
-            disptach(
-              getEmploisDuTempsByDay({
-                selectedDay: day.toString(),
-                selectedMonth: selectedMonth,
-              })
-            );
-          }}
-        />
-      </ScrollView>
-      <ScrollView
-        style={{
-          height: "45%",
-        }}
-      >
-        {eventsForDay &&
-          eventsForDay.map((event) => <EventCard event={event} key={event.id} />)}
-        {eventsForDay.length === 0 && !loading && (
-          <View className="flex justify-center items-center h-[30px] ">
-            <Text className="text-[#5156BE] font-bold text-xl">No events</Text>
-          </View>
-        )}
-        {loading && (
-          <View className="flex justify-center items-center">
-            <ActivityIndicator size="large" color="#5156BE" />
-          </View>
-        )}
-      </ScrollView>
-    </View>
+        >
+          {eventsForDay &&
+            eventsForDay.map((event) => (
+              <EventCard event={event} key={event.id} />
+            ))}
+          {eventsForDay.length === 0 && !loading && (
+            <View className="flex justify-center items-center h-[30px] ">
+              <Text className="text-[#5156BE] font-bold text-xl">
+                No events
+              </Text>
+            </View>
+          )}
+          {loading && (
+            <View className="flex justify-center items-center">
+              <ActivityIndicator size="large" color="#5156BE" />
+            </View>
+          )}
+        </ScrollView>
+      </View>
+    </>
   );
 }
