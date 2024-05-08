@@ -28,23 +28,24 @@ export const getEmploisDuTempsByDay = createAsyncThunk<
   "EmploisDuTemps/getEmploisDuTempsByDay",
   async ({ selectedDay, selectedMonth }) => {
     const token = await AsyncStorage.getItem("token");
-    console.log("getEmploisDuTempsByDay", "http://ensemc.irma-prod.net/api/etudiant/emploi-temps/?day=" +
-    selectedDay +
-      "/" +
-      selectedMonth);
+    console.log(
+      "http://ensemc.irma-prod.net/api/etudiant/emploi-temps/?day=" +
+        selectedMonth +
+        "-" +
+        selectedDay
+    );
+
     const { data } = await axios.get(
       "http://ensemc.irma-prod.net/api/etudiant/emploi-temps/?day=" +
-      selectedDay +
-        "/" +
-        selectedMonth,
+        selectedMonth +
+        "-" +
+        selectedDay,
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
     );
-
-    
 
     return data.events as Tevent[];
   }
