@@ -4,7 +4,7 @@ import { IconButton } from "react-native-paper";
 import { useSelector } from "react-redux";
 import { useNavigation } from 'expo-router';
 import { RootState, useAppDispatch } from "../../state/store";
-import Animated, { SlideInUp, SlideOutUp } from "react-native-reanimated";
+import Animated, { Easing, SlideInUp, SlideOutUp } from "react-native-reanimated";
 import { toggleTopBar, closeTopBar } from "../../state/TopBar/TopBarSlice";
 import { logout } from "../../state/Auth/AuthSlice";
 import { router } from 'expo-router';
@@ -27,8 +27,9 @@ export default function TopBarElements() {
 
   return (
     <Animated.View
-      entering={SlideInUp}
-      exiting={SlideOutUp}
+      entering={SlideInUp.duration(100)}
+      exiting={SlideOutUp.duration(100).easing(Easing.ease)}
+      
       className="w-screen z-20 space-y-5 rounded-t-[50px] flex flex-row items-center justify-start py-7 px-5 flex-wrap h-screen"
     >
       {data.map((item, index) => (

@@ -52,8 +52,8 @@ export default function TopSectionForProfile() {
         <Image
           src={
             user?.img
-              ? "http://ensemc.irma-prod.net/storage/" + user?.img
-              : "http://ensemc.irma-prod.net/" + user?.image
+              ? "https://ensemc.irma-prod.net/storage/" + user?.img
+              : "https://ensemc.irma-prod.net/" + user?.image
           }
           className="w-28 rounded-full h-28"
         />

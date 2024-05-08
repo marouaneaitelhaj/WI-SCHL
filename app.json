@@ -19,6 +19,7 @@
       "supportsTablet": true
     },
     "android": {
+      "usesCleartextTraffic": true,
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo-letter-w-blue-glowing-vector-22855325.jpg",
         "backgroundColor": "#ffffff"
@@ -30,7 +31,10 @@
     },
     "extra": {
       "eas": {
-        "projectId": "52be1899-bbd0-4603-9099-c1832a152018"
+        "projectId": "80424be7-bf5c-4fde-8522-12fd714396fe"
+      },
+      "router": {
+        "origin": false
       }
     },
     "plugins": [

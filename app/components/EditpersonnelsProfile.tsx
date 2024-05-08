@@ -420,7 +420,7 @@ export default function EditpersonnelsProfile() {
             source={{
               uri: image.uri
                 ? image.uri
-                : "http://ensemc.irma-prod.net/storage/" + user?.img,
+                : "https://ensemc.irma-prod.net/storage/" + user?.img,
             }}
             style={{
               width: 50,
