@@ -7,7 +7,9 @@ export default function EventCard(
   }
 ) {
   return (
-    <Pressable  className="flex flex-row w-full p-3 space-x-3 items-center">
+    <Pressable onLongPress={()=>{
+      // console.log(props.event)
+    }}  className="flex flex-row w-full p-3 space-x-3 items-center">
       <View className={"h-16 w-16 flex rounded-full justify-center items-center"} style={{
         backgroundColor: props.event.color
       }}>

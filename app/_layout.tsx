@@ -13,6 +13,11 @@ import Login from "@pages/Login";
 import Profile from "@pages/Profile";
 import { View } from "react-native";
 import "../static/LocaleConfig";
+import { NativeWindStyleSheet } from "nativewind";
+
+NativeWindStyleSheet.setOutput({
+  default: "native",
+});
 
 export function HomeLayout() {
   const [checked, setIschecked] = useState(false);
@@ -23,6 +28,7 @@ export function HomeLayout() {
   const { showProfile } = useSelector((state: RootState) => state.profile);
 
   useEffect(() => {
+    // AsyncStorage.removeItem("token");
     AsyncStorage.getItem("token").then((token) => {
       dispatch(setToken(token));
       if (token) {
@@ -33,8 +39,9 @@ export function HomeLayout() {
           })
           .catch(() => {
             setIschecked(true);
+            AsyncStorage.removeItem("token");
           });
-      }else{
+      } else {
         setIschecked(true);
       }
     });

@@ -19,7 +19,7 @@ const data = [
 ];
 
 export default function TopBarElements() {
-  const { open } = useSelector((state: RootState) => state.topBar);
+  // const { open } = useSelector((state: RootState) => state.topBar);
 
   const dispatch = useAppDispatch();
 

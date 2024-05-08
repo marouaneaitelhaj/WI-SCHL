@@ -44,7 +44,6 @@ export const EmploisDuTempsSlice = createSlice({
         state.loading = false;
       })
       .addCase(getEmploisDuTempsByMonth.rejected, (state) => {
-        console.log("rejected");
         state.loading = false;
       });
 
@@ -58,7 +57,6 @@ export const EmploisDuTempsSlice = createSlice({
         state.loading = false;
       })
       .addCase(getEmploisDuTempsByDay.rejected, (state) => {
-        console.log("rejected");
         state.loading = false;
         
       });

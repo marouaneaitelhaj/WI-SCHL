@@ -6,7 +6,6 @@ export default function Annonce() {
   // get param body
   const { id } = useLocalSearchParams();
   useEffect(() => {
-    console.log(id);
   }, []);
 
   return (

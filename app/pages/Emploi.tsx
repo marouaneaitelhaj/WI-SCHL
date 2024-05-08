@@ -19,6 +19,8 @@ import {
   getEmploisDuTempsByDay,
   getEmploisDuTempsByMonth,
 } from "state/EmploisDuTemps/EmploisDuTempsActions";
+import { useState } from "react";
+import { Dialog, Portal } from "react-native-paper";
 
 export default function Emploi() {
   const { events, loading } = useSelector(
@@ -30,6 +32,8 @@ export default function Emploi() {
   );
 
   const disptach = useAppDispatch();
+
+  const [markedDates, setMarkedDates] = useState<MarkedDates>({});
 
   useEffect(() => {
     const today = new Date();
@@ -49,147 +53,114 @@ export default function Emploi() {
     disptach(setSelectedDay(day));
 
     disptach(getEmploisDuTempsByMonth({ selectedMonth: month }));
-    console.log("heloo", selectedMonth + "-" + selectedDay);
   }, []);
 
   useEffect(() => {
-    let markedDates: MarkedDates = {};
-    events.map((event) => {
-      if (event.type == 3) {
-        console.log("start as YYYY-MM-DD", event.start.split("T")[0]);
-        console.log("END as YYYY-MM-DD", event.end.split("T")[0]);
-        // loop through the days between start and end
-        const start = new Date(event.start.split("T")[0]);
-        const end = new Date(event.end.split("T")[0]);
-        let currentDate = new Date(start);
-        while (currentDate <= end) {
-          console.log("current date", currentDate);
-          let day =
-            currentDate.getDate().toString().length === 1
-              ? "0" + currentDate.getDate()
-              : currentDate.getDate();
-          let month =
-            (currentDate.getMonth() + 1).toString().length === 1
-              ? "0" + (currentDate.getMonth() + 1)
-              : currentDate.getMonth() + 1;
-          markedDates[`${currentDate.getFullYear()}-${month}-${day}`] = {
-            selected: true,
-            selectedColor: "#5156BE",
-            endingDay: currentDate.getDate() === end.getDate(),
-            startingDay: currentDate.getDate() === start.getDate(),
-          };
-          currentDate.setDate(currentDate.getDate() + 1);
+    let markedDates: { [key: string]: any } = {};
+
+    events.forEach((event) => {
+      let start = new Date(event.start);
+      let end = new Date(event.end);
+      let currentDate = start;
+
+      while (currentDate <= end) {
+        let day =
+          currentDate.getDate().toString().length === 1
+            ? "0" + currentDate.getDate()
+            : currentDate.getDate();
+        let month =
+          (currentDate.getMonth() + 1).toString().length === 1
+            ? "0" + (currentDate.getMonth() + 1)
+            : currentDate.getMonth() + 1;
+        let dateKey = `${currentDate.getFullYear()}-${month}-${day}`;
+
+        if (!markedDates[dateKey]) {
+          markedDates[dateKey] = { periods: [] };
         }
-        console.log("markedDates", markedDates);
+
+        markedDates[dateKey].periods.push({
+          startingDay: currentDate.getDate() === start.getDate(),
+          endingDay: currentDate.getDate() === end.getDate(),
+          color: event.color,
+        });
+
+        currentDate.setDate(currentDate.getDate() + 1);
       }
     });
+
+    setMarkedDates(markedDates);
   }, [events]);
 
   return (
-    <SafeAreaView className="h-screen bg-white">
-      <Calendar
-        // current={selectedMonth + "-" + selectedDay}
-        markingType="period"
-        markedDates={{
-          "2024-04-29": {
-            endingDay: false,
-            selected: true,
-            selectedColor: "#5156BE",
-            startingDay: true,
-          },
-          "2024-04-30": {
-            endingDay: false,
-            selected: true,
-            selectedColor: "#5156BE",
-            startingDay: false,
-          },
-          "2024-05-01": {
-            endingDay: false,
-            selected: true,
-            selectedColor: "#5156BE",
-            startingDay: true,
-          },
-          "2024-05-02": {
-            endingDay: true,
-            selected: true,
-            selectedColor: "#5156BE",
-            startingDay: false,
-          },
-          "2024-05-03": {
-            endingDay: false,
-            selected: true,
-            selectedColor: "#5156BE",
-            startingDay: false,
-          },
-          "2024-05-04": {
-            endingDay: false,
-            selected: true,
-            selectedColor: "#5156BE",
-            startingDay: false,
-          },
-          "2024-05-05": {
-            endingDay: false,
-            selected: true,
-            selectedColor: "#5156BE",
-            startingDay: false,
-          },
-          "2024-05-06": {
-            endingDay: true,
-            selected: true,
-            selectedColor: "#5156BE",
-            startingDay: false,
-          },
+    <View className="bg-white">
+      <ScrollView
+        style={{
+          height: "45%",
         }}
-        onMonthChange={(month) => {
-          setSelectedMonth(
-            month.dateString.split("-")[1] +
-              "-" +
-              month.dateString.split("-")[0]
-          );
-          disptach(
-            getEmploisDuTempsByMonth({
-              selectedMonth:
-                month.dateString.split("-")[1] +
+      >
+        <Calendar
+          markingType={"multi-period"}
+          markedDates={{
+            [selectedMonth + "-" + selectedDay]: {
+              color: "#e0e1f3",
+              startingDay: true,
+              endingDay: true,
+            },
+            ...markedDates,
+          }}
+          onMonthChange={(month) => {
+            setSelectedMonth(
+              month.dateString.split("-")[0] +
                 "-" +
-                month.dateString.split("-")[0],
-            })
-          );
+                month.dateString.split("-")[1]
+            );
+            disptach(
+              getEmploisDuTempsByMonth({
+                selectedMonth:
+                  month.dateString.split("-")[0] +
+                  "-" +
+                  month.dateString.split("-")[1],
+              })
+            );
+          }}
+          // markedDates={}
+          initialDate="2024-05-04"
+          onDayPress={(date: DateData) => {
+            const day =
+              date.day.toString().length === 1 ? "0" + date.day : date.day;
+            const month =
+              date.month.toString().length === 1
+                ? "0" + date.month
+                : date.month;
+            disptach(setSelectedDay(day));
+            disptach(setSelectedMonth(date.year + "-" + month));
+            disptach(
+              getEmploisDuTempsByDay({
+                selectedDay: day.toString(),
+                selectedMonth: selectedMonth,
+              })
+            );
+          }}
+        />
+      </ScrollView>
+      <ScrollView
+        style={{
+          height: "45%",
         }}
-        // markedDates={}
-        initialDate="2024-05-04"
-        onDayPress={(date: DateData) => {
-          const day =
-            date.day.toString().length === 1 ? "0" + date.day : date.day;
-          const month =
-            date.month.toString().length === 1 ? "0" + date.month : date.month;
-          disptach(setSelectedDay(day));
-          disptach(setSelectedMonth(date.year + "-" + month));
-          disptach(
-            getEmploisDuTempsByDay({
-              selectedDay: day.toString(),
-              selectedMonth: selectedMonth,
-            })
-          );
-        }}
-      />
-      <View className="">
-        <ScrollView className="flex flex-col">
-          {events &&
-            events.map((event) => <EventCard event={event} key={event.id} />)}
-          {events.length === 0 && !loading && (
-            <View className="flex justify-center items-center h-[30px] ">
-              <Text className="text-[#5156BE] font-bold text-xl">
-                No events
-              </Text>
-            </View>
-          )}
-          {loading && (
-            <View className="flex justify-center items-center">
-              <ActivityIndicator size="large" color="#5156BE" />
-            </View>
-          )}
-        </ScrollView>
-      </View>
-    </SafeAreaView>
+      >
+        {events &&
+          events.map((event) => <EventCard event={event} key={event.id} />)}
+        {events.length === 0 && !loading && (
+          <View className="flex justify-center items-center h-[30px] ">
+            <Text className="text-[#5156BE] font-bold text-xl">No events</Text>
+          </View>
+        )}
+        {loading && (
+          <View className="flex justify-center items-center">
+            <ActivityIndicator size="large" color="#5156BE" />
+          </View>
+        )}
+      </ScrollView>
+    </View>
   );
 }

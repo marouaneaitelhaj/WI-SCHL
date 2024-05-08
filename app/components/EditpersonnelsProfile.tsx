@@ -89,7 +89,6 @@ export default function EditpersonnelsProfile() {
                 alert(message);
               })
               .catch((error) => {
-                console.log(error);
                 
                 alert(error.message);
               });

@@ -7,9 +7,10 @@ export const getEmploisDuTempsByMonth = createAsyncThunk<
   Tevent[],
   { selectedMonth: string }
 >("EmploisDuTemps/getEmploisDuTempsByMonth", async ({ selectedMonth }) => {
+  
   const token = await AsyncStorage.getItem("token");
   const { data } = await axios.get(
-    "http://ensemc.irma-prod.net/api/etudiant/emploi-temps/?mois=" +
+    "http://ensemc.irma-prod.net/api/etudiant/emploi-temps?mois=" +
       selectedMonth,
     {
       headers: {
@@ -17,6 +18,9 @@ export const getEmploisDuTempsByMonth = createAsyncThunk<
       },
     }
   );
+
+  // console.log(data.events);
+  
 
   return data.events as Tevent[];
 });
@@ -27,16 +31,10 @@ export const getEmploisDuTempsByDay = createAsyncThunk<
 >(
   "EmploisDuTemps/getEmploisDuTempsByDay",
   async ({ selectedDay, selectedMonth }) => {
-    const token = await AsyncStorage.getItem("token");
-    console.log(
-      "http://ensemc.irma-prod.net/api/etudiant/emploi-temps/?day=" +
-        selectedMonth +
-        "-" +
-        selectedDay
-    );
+    const token = await AsyncStorage.getItem("token");  
 
     const { data } = await axios.get(
-      "http://ensemc.irma-prod.net/api/etudiant/emploi-temps/?day=" +
+      "http://ensemc.irma-prod.net/api/etudiant/emploi-temps?day=" +
         selectedMonth +
         "-" +
         selectedDay,
@@ -46,6 +44,9 @@ export const getEmploisDuTempsByDay = createAsyncThunk<
         },
       }
     );
+
+  // console.log(data.events);r
+
 
     return data.events as Tevent[];
   }
