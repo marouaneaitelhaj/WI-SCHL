@@ -6,7 +6,8 @@ import {
 } from "./EmploisDuTempsActions";
 
 type EmploisDuTempsState = {
-  events: Tevent[];
+  eventsForDay: Tevent[];
+  eventsForMonth: Tevent[];
   eventsTypes: eventsType[];
   selectedMonth: string;
   selectedDay: string;
@@ -14,7 +15,8 @@ type EmploisDuTempsState = {
 };
 
 const initialState: EmploisDuTempsState = {
-  events: [],
+  eventsForDay: [],
+  eventsForMonth: [],
   eventsTypes: [],
   selectedMonth: "",
   selectedDay: "",
@@ -36,29 +38,31 @@ export const EmploisDuTempsSlice = createSlice({
 
     builder
       .addCase(getEmploisDuTempsByMonth.pending, (state) => {
-        state.events = [];
+        state.eventsForMonth = [];
+        state.eventsForDay = [];
         state.loading = true;
       })
       .addCase(getEmploisDuTempsByMonth.fulfilled, (state, action) => {
-        state.events = action.payload;
+        state.eventsForMonth = action.payload;
+        state.eventsForDay = action.payload;
         state.loading = false;
       })
       .addCase(getEmploisDuTempsByMonth.rejected, (state) => {
         state.loading = false;
+
       });
 
     builder
       .addCase(getEmploisDuTempsByDay.pending, (state) => {
-        state.events = [];
+        state.eventsForDay = [];
         state.loading = true;
       })
       .addCase(getEmploisDuTempsByDay.fulfilled, (state, action) => {
-        state.events = action.payload;
+        state.eventsForDay = action.payload;
         state.loading = false;
       })
       .addCase(getEmploisDuTempsByDay.rejected, (state) => {
         state.loading = false;
-        
       });
   },
 });

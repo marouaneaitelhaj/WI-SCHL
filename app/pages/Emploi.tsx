@@ -20,10 +20,9 @@ import {
   getEmploisDuTempsByMonth,
 } from "state/EmploisDuTemps/EmploisDuTempsActions";
 import { useState } from "react";
-import { Dialog, Portal } from "react-native-paper";
 
 export default function Emploi() {
-  const { events, loading } = useSelector(
+  const { eventsForMonth, eventsForDay, loading } = useSelector(
     (state: RootState) => state.emploisDuTemps
   );
 
@@ -58,7 +57,7 @@ export default function Emploi() {
   useEffect(() => {
     let markedDates: { [key: string]: any } = {};
 
-    events.forEach((event) => {
+    eventsForMonth.forEach((event) => {
       let start = new Date(event.start);
       let end = new Date(event.end);
       let currentDate = start;
@@ -89,7 +88,7 @@ export default function Emploi() {
     });
 
     setMarkedDates(markedDates);
-  }, [events]);
+  }, [eventsForMonth]);
 
   return (
     <View className="bg-white">
@@ -148,9 +147,9 @@ export default function Emploi() {
           height: "45%",
         }}
       >
-        {events &&
-          events.map((event) => <EventCard event={event} key={event.id} />)}
-        {events.length === 0 && !loading && (
+        {eventsForDay &&
+          eventsForDay.map((event) => <EventCard event={event} key={event.id} />)}
+        {eventsForDay.length === 0 && !loading && (
           <View className="flex justify-center items-center h-[30px] ">
             <Text className="text-[#5156BE] font-bold text-xl">No events</Text>
           </View>
