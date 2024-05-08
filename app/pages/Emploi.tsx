@@ -95,11 +95,9 @@ export default function Emploi() {
           <Calendar
             markingType={"multi-period"}
             markedDates={{
-              [selectedMonth + "-" + selectedDay]: {
-                color: "#e0e1f3",
-                startingDay: true,
-                endingDay: true,
-              },
+              // [selectedMonth + "-" + selectedDay]: {
+              //   periods: [{ startingDay: true, endingDay: true, color: "#5156BE"}],
+              // },
               ...markedDates,
             }}
             onMonthChange={(month) => {
@@ -117,7 +115,6 @@ export default function Emploi() {
                 })
               );
             }}
-            // markedDates={}
             initialDate="2024-05-04"
             onDayPress={(date: DateData) => {
               const day =
@@ -147,14 +144,14 @@ export default function Emploi() {
               <EventCard event={event} key={event.id} />
             ))}
           {eventsForDay.length === 0 && !loading && (
-            <View className="flex justify-center items-center h-[30px] ">
+            <View className="flex  my-14 justify-center items-center h-[30px] ">
               <Text className="text-[#5156BE] font-bold text-xl">
                 No events
               </Text>
             </View>
           )}
           {loading && (
-            <View className="flex justify-center items-center">
+            <View className="flex my-14 justify-center items-center">
               <ActivityIndicator size="large" color="#5156BE" />
             </View>
           )}

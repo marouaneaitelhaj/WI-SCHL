@@ -7,7 +7,7 @@ export default function AnnonceCard(props: { annonce: Tannonce }) {
   return (
     <Pressable
       onPress={() => {
-        router.push({ pathname: "/pages/annonces/2" });
+        router.push({ pathname: "/pages/annonces/" + props.annonce.id });
       }}
       className="bg-[#e0e1f3] flex space-y-4 p-3 m-3 rounded-xl w-40"
     >

@@ -9,7 +9,6 @@ export default function EventCard(props: { event: Tevent }) {
   return (
     <Pressable
       onLongPress={() => {
-        // console.log(props.event)
       }}
       className="flex flex-row w-full p-3 space-x-3 items-center"
     >
@@ -40,7 +39,7 @@ export default function EventCard(props: { event: Tevent }) {
             props.event.end.split("T")[1].split(":")[1]}
         </Text>
       </View>
-      <Animated.View 
+      <View
         className={"w-4/5 rounded-md flex flex-row items-center p-5" + (expanded ? " h-32" : " h-16") }
         style={{
           backgroundColor: props.event.color,
@@ -62,7 +61,7 @@ export default function EventCard(props: { event: Tevent }) {
           }}
           iconColor={props.event.textColor}
         />
-      </Animated.View>
+      </View>
     </Pressable>
   );
 }

@@ -19,10 +19,11 @@ export default function Annonces() {
         Announce
       </Text>
       <ScrollView
-        className="flex flex-col"
+        className="flex flex-col" 
+        style={{ height: "85%" }}
         showsVerticalScrollIndicator={false}
       >
-        <View className="flex flex-row pb-64 flex-wrap">
+        <View className="flex flex-row flex-wrap">
           {annonces.map((annonce) => (
             <AnnonceCard key={annonce.annonce_body} annonce={annonce} />
           ))}

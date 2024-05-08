@@ -173,6 +173,7 @@ export type Tseance_element = {
 
 
 export type Tannonce = {
+  id: string;
   annonce_body: string;
   annonce_title: string;
 };

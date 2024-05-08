@@ -19,7 +19,6 @@ export const getEmploisDuTempsByMonth = createAsyncThunk<
     }
   );
 
-  // console.log(data.events);
   
 
   return data.events as Tevent[];
@@ -45,7 +44,6 @@ export const getEmploisDuTempsByDay = createAsyncThunk<
       }
     );
 
-  // console.log(data.events);r
 
 
     return data.events as Tevent[];
