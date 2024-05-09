@@ -19,7 +19,7 @@ export default function ChangementFiliere() {
           <Pressable
             className="flex  rounded-md w-[90%] justify-center items-center  p-5 bg-[#5156BE]"
             onPress={() => {
-              dispatch(openModal(<ChangementFiliereForm /> as React.ReactNode));
+              // dispatch(openModal(<ChangementFiliereForm /> as React.ReactNode));
             }}
           >
             <Text className="text-white text-center">
