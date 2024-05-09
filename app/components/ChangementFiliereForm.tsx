@@ -4,7 +4,6 @@ import { Controller, useForm } from "react-hook-form";
 import { SelectList } from "react-native-dropdown-select-list";
 import { TextInput } from "react-native-paper";
 import { Dispatch, SetStateAction } from "react";
-import { Modal } from "./Modal";
 
 export default function ChangementFiliereForm() {
   const {
@@ -93,7 +92,7 @@ export default function ChangementFiliereForm() {
       </View>
       <View className="flex justify-center flex-row space-x-5">
         <Pressable
-          className="flex  rounded-md w-[40%] justify-center items-center  p-3 bg-[#5156BE]"
+          className="flex  rounded-md w-[100%] justify-center items-center  p-3 bg-[#5156BE]"
           onPress={handleSubmit((data) => {
             Alert.alert(
               "Envoyer la demande",
@@ -117,9 +116,9 @@ export default function ChangementFiliereForm() {
         >
           <Text className="text-white text-center text-xs">Envoyer</Text>
         </Pressable>
-        <Pressable className="flex  rounded-md w-[40%] justify-center items-center  p-3 bg-[#e0e1f3]">
+        {/* <Pressable className="flex  rounded-md w-[40%] justify-center items-center  p-3 bg-[#e0e1f3]">
           <Text>Annuler</Text>
-        </Pressable>
+        </Pressable> */}
       </View>
     </View>
   );

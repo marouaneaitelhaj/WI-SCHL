@@ -4,7 +4,7 @@ import { Provider, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { RootState, useAppDispatch } from "state/store";
-import Tesst from "./components/TestCom";
+import Modal from "./components/Modal";
 import { store } from "state/store";
 import { setToken } from "state/Auth/AuthSlice";
 import { getProfileAction } from "state/Auth/AuthActions";
@@ -27,10 +27,6 @@ export function HomeLayout() {
     (state: RootState) => state.auth
   );
   const { showProfile } = useSelector((state: RootState) => state.profile);
-  const { children, isVisible } = useSelector(
-    (state: RootState) => state.modal
-  );
-
 
   useEffect(() => {
     AsyncStorage.getItem("token").then((token) => {
@@ -78,10 +74,9 @@ export default function Layout() {
         flex: 1,
       }}
     >
-      {/* <Provider store={store}>
+      <Provider store={store}>
         <HomeLayout />
-      </Provider> */}
-      <Tesst />
+      </Provider>
     </View>
   );
 }

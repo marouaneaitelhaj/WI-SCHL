@@ -1,9 +1,16 @@
+import { useEffect } from "react";
 import { View, Text, Pressable, Alert } from "react-native";
 import { Modal, Title } from "react-native-paper";
-import { demandeAttestation } from "state/Demandes/AttestationInscription/AttestationInscriptionActions";
+import { demandeAttestation, getAttestationInscriptionValues } from "state/Demandes/AttestationInscription/AttestationInscriptionActions";
 import { useAppDispatch } from "state/store";
 export default function AttestationInscription() {
   const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getAttestationInscriptionValues()).unwrap().then((data) => {
+      console.log(data);
+      
+    }).catch((error) => {});
+  }, []);
   return (
     <View className="flex justify-center px-5">
       <Title className="text-center font-bold">Attestation d'inscription</Title>

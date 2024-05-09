@@ -1,8 +1,12 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { demandeAttestation, getAttestationInscriptionValues } from "./AttestationInscriptionActions";
+import {
+  demandeAttestation,
+  getAttestationInscriptionValues,
+} from "./AttestationInscriptionActions";
+import { TAttestationInscriptions } from "../../types";
 
 const initialState = {
-  data: null,
+  data: [] as TAttestationInscriptions[],
   status: "idle",
   error: null,
 };
@@ -19,7 +23,7 @@ const attestationInscriptionSlice = createSlice({
       })
       .addCase(
         getAttestationInscriptionValues.fulfilled,
-        (state, action: PayloadAction<any>) => {
+        (state, action: { payload: TAttestationInscriptions[] }) => {
           state.status = "succeeded";
           state.data = action.payload;
         }

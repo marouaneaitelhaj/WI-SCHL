@@ -32,14 +32,14 @@ export type Tpassword = {
 };
 
 export type Tevent = {
-  color : string;
-  end : string;
-  id : string;
-  textColor : string;
-  id_reserv : string;
-  start : string;
-  title : string;
-  type : number;
+  color: string;
+  end: string;
+  id: string;
+  textColor: string;
+  id_reserv: string;
+  start: string;
+  title: string;
+  type: number;
 };
 
 export type Tseance = {
@@ -161,19 +161,28 @@ export type Tetudiant_classes = {
 };
 
 export type Tseance_element = {
-  id : string;
-  seance_id : string;
-  element_id : string;
-  created_at : string;
-  updated_at : string;
-  deleted_at : string;
-  element : Telement;
-  prof : Tprof;
+  id: string;
+  seance_id: string;
+  element_id: string;
+  created_at: string;
+  updated_at: string;
+  deleted_at: string;
+  element: Telement;
+  prof: Tprof;
 };
-
 
 export type Tannonce = {
   id: string;
   annonce_body: string;
   annonce_title: string;
+};
+
+export type TAttestationInscriptions = {
+  num_dem: string;
+  anneUniversitaire: string;
+  etat_dem: string;
+  date_dem: string;
+  notes: string;
+  inscription_id: string;
+  file : string;
 };
