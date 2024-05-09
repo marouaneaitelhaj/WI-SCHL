@@ -1,15 +1,20 @@
 import { useEffect } from "react";
 import { View, Text, Pressable, Alert } from "react-native";
 import { Modal, Title } from "react-native-paper";
-import { demandeAttestation, getAttestationInscriptionValues } from "state/Demandes/AttestationInscription/AttestationInscriptionActions";
+import {
+  demandeAttestation,
+  getAttestationInscriptionValues,
+} from "state/Demandes/AttestationInscription/AttestationInscriptionActions";
 import { useAppDispatch } from "state/store";
 export default function AttestationInscription() {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getAttestationInscriptionValues()).unwrap().then((data) => {
-      console.log(data);
-      
-    }).catch((error) => {});
+    dispatch(getAttestationInscriptionValues())
+      .unwrap()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {});
   }, []);
   return (
     <View className="flex justify-center px-5">
@@ -21,19 +26,23 @@ export default function AttestationInscription() {
         <Pressable
           className="flex  rounded-md w-[90%] justify-center items-center  p-5 bg-[#5156BE]"
           onPress={() => {
-            Alert.alert("Envoyer la demande", "Êtes-vous sûr de vouloir créer cette demande ?", [
+            Alert.alert(
+              "Envoyer la demande",
+              "Êtes-vous sûr de vouloir créer cette demande ?",
+              [
                 {
-                    text: "Annuler",
-                    style: "cancel",
+                  text: "Annuler",
+                  style: "cancel",
                 },
                 {
-                    text: "Confirmer et Envoyer",
-                    style: "destructive",
-                    onPress: () => {
+                  text: "Confirmer et Envoyer",
+                  style: "destructive",
+                  onPress: () => {
                     dispatch(demandeAttestation());
-                    },
+                  },
                 },
-            ])
+              ]
+            );
           }}
         >
           <Text className="text-white text-center">

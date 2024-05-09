@@ -49,6 +49,8 @@ const attestationInscriptionSlice = createSlice({
         demandeAttestation.rejected,
         (state, action: PayloadAction<any>) => {
           state.status = "failed";
+          console.log(action.payload);
+          
           state.error = action.payload;
         }
       );

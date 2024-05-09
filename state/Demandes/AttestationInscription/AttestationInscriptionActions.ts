@@ -16,7 +16,7 @@ export const getAttestationInscriptionValues = createAsyncThunk<
       },
     }
   );
-  return response.data;
+  return response.data.demAttestationInscriptions;
 });
 
 export const demandeAttestation = createAsyncThunk(
@@ -24,24 +24,16 @@ export const demandeAttestation = createAsyncThunk(
   async () => {
     const token = await AsyncStorage.getItem("token");
 
-    const response = await axios
-      .post(
-        "http://ensemc.irma-prod.net/api/etudiant/attestation-inscription/save-demande",
-        null,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((response) => {})
-      .catch((error) => {
-        console.error(error);
-      });
-    console.log(response);
+    const res = axios.post(
+      "http://ensemc.irma-prod.net/api/etudiant/attestation-inscription/save-demande",
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
-    return {
-      "hello world": "hello world",
-    };
+    // return res.demAttestationInscriptions;
   }
 );
