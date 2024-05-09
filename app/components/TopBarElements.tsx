@@ -1,10 +1,10 @@
 import React from "react";
-import { View, Text, Alert } from "react-native";
+import { View, Text, Alert, StatusBar } from "react-native";
 import { IconButton } from "react-native-paper";
 import { useSelector } from "react-redux";
 import { useNavigation } from 'expo-router';
 import { RootState, useAppDispatch } from "../../state/store";
-import Animated, { Easing, SlideInUp, SlideOutUp } from "react-native-reanimated";
+import Animated, { Easing, SlideInUp,SlideInDown, SlideOutUp, SlideOutDown } from "react-native-reanimated";
 import { toggleTopBar, closeTopBar } from "../../state/TopBar/TopBarSlice";
 import { logout } from "../../state/Auth/AuthSlice";
 import { router } from 'expo-router';
@@ -19,6 +19,7 @@ const data = [
 ];
 
 export default function TopBarElements() {
+  const statusBarHeight = StatusBar.currentHeight || 0;
   // const { open } = useSelector((state: RootState) => state.topBar);
 
   const dispatch = useAppDispatch();
@@ -27,9 +28,8 @@ export default function TopBarElements() {
 
   return (
     <Animated.View
-      entering={SlideInUp.duration(100)}
-      exiting={SlideOutUp.duration(100).easing(Easing.ease)}
-      
+      entering={SlideInDown.duration(100)}
+      exiting={SlideOutDown.duration(100).easing(Easing.ease)}
       className="w-screen z-20 space-y-5 rounded-t-[50px] flex flex-row items-center justify-start py-7 px-5 flex-wrap h-screen"
     >
       {data.map((item, index) => (

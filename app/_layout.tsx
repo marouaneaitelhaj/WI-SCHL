@@ -11,7 +11,7 @@ import { getProfileAction } from "state/Auth/AuthActions";
 import Loading from "app/components/Loading";
 import Login from "@pages/Login";
 import Profile from "@pages/Profile";
-import { View } from "react-native";
+import { Platform, StatusBar, View } from "react-native";
 import "../static/LocaleConfig";
 import { NativeWindStyleSheet } from "nativewind";
 
@@ -46,7 +46,7 @@ export function HomeLayout() {
       }
     });
   }, [token]);
-
+  
   if (!checked) return <Loading></Loading>;
 
   return (
@@ -68,8 +68,15 @@ export function HomeLayout() {
 
 export default function Layout() {
   return (
-    <Provider store={store}>
-      <HomeLayout />
-    </Provider>
+    <View
+      style={{
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        flex: 1,
+      }}
+    >
+      <Provider store={store}>
+        <HomeLayout />
+      </Provider>
+    </View>
   );
 }

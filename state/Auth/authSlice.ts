@@ -1,11 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  loginAction,
-  getProfileAction,
-  updateProfilePasswordAction,
-} from "./AuthActions";
 import { Tuser } from "../types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getProfileAction, loginAction, updateProfilePasswordAction } from "./AuthActions";
 
 type AuthState = {
   loading: boolean;

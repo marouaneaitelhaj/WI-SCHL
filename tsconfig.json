@@ -6,6 +6,7 @@
     "paths": {
         "@assets/*": ["assets/*"],
         "@pages/*": ["app/pages/*"],
+        "@state/*": ["state/*"],
     }
   }
 }

@@ -22,7 +22,7 @@ export default function TopBar() {
     <View className="bg-white">
       <View
         className={
-          "z-20 pt-11 pb-5  bg-[" +
+          "z-20 pt-3 pb-5  bg-[" +
           COLORS.primaryColor +
           "] w-screen rounded-bl-[50px]  flex flex-row items-center justify-between px-5"
         }
