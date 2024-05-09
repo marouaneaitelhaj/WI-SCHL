@@ -11,9 +11,11 @@ import { getProfileAction } from "state/Auth/AuthActions";
 import Loading from "app/components/Loading";
 import Login from "@pages/Login";
 import Profile from "@pages/Profile";
-import { Platform, StatusBar, View } from "react-native";
+import { Button, Platform, StatusBar, View } from "react-native";
 import "../static/LocaleConfig";
 import { NativeWindStyleSheet } from "nativewind";
+import { Modal } from "./components/Modal";
+import { Text } from "react-native";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -26,9 +28,12 @@ export function HomeLayout() {
     (state: RootState) => state.auth
   );
   const { showProfile } = useSelector((state: RootState) => state.profile);
+  const { children, isVisible } = useSelector(
+    (state: RootState) => state.modal
+  );
+
 
   useEffect(() => {
-    // AsyncStorage.removeItem("token");
     AsyncStorage.getItem("token").then((token) => {
       dispatch(setToken(token));
       if (token) {
@@ -46,7 +51,7 @@ export function HomeLayout() {
       }
     });
   }, [token]);
-  
+
   if (!checked) return <Loading></Loading>;
 
   return (
@@ -59,6 +64,7 @@ export function HomeLayout() {
           {showProfile && <Profile></Profile>}
           <View className="bg-white p-2 py-7 w-screen min-h-screen rounded-tr-[50px]">
             <Slot />
+            <Modal children={children} isVisible={isVisible} />
           </View>
         </>
       )}

@@ -60,7 +60,7 @@ export default function ModifierLaMotDePass() {
   return (
     <ScrollView className="my-2 w-full">
       <View className="w-screen flex justify-center items-center ">
-        <View className="bg-white w-[90%] px-5 py-10 space-y-10 rounded-md">
+        <View className="bg-white w-[90%]  py-10 space-y-10 rounded-md">
           <Text className="text-[#5156BE] text-center mb-8 text-[20px]">
             Modifier le mot de pass
           </Text>
@@ -79,7 +79,7 @@ export default function ModifierLaMotDePass() {
                   className="rounded-md bg-white"
                   onBlur={onBlur}
                   secureTextEntry={secureTextEntry.password}
-                  left={<TextInput.Icon icon="lock" />}
+                  // left={<TextInput.Icon icon="lock" />}
                   right={
                     <TextInput.Icon
                       icon="eye"
@@ -123,7 +123,7 @@ export default function ModifierLaMotDePass() {
                   activeUnderlineColor="#5156BE"
                   className="rounded-md bg-white"
                   secureTextEntry={secureTextEntry.newPassword}
-                  left={<TextInput.Icon icon="lock" />}
+                  // left={<TextInput.Icon icon="lock" />}
                   right={
                     <TextInput.Icon
                       icon="eye"
@@ -172,7 +172,7 @@ export default function ModifierLaMotDePass() {
                   activeUnderlineColor="#5156BE"
                   className="rounded-md bg-white"
                   secureTextEntry={secureTextEntry.confirmNewPassword}
-                  left={<TextInput.Icon icon="lock" />}
+                  // left={<TextInput.Icon icon="lock" />}
                   right={
                     <TextInput.Icon
                       icon="eye"

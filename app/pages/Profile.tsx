@@ -1,4 +1,4 @@
-import { Pressable, ScrollView } from "react-native";
+import { Pressable, ScrollView, View, Text } from "react-native";
 import InformationspersonnelsProfile from "../components/InformationspersonnelsProfile";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../state/store";
@@ -27,5 +27,40 @@ export default function Profile() {
         {profileStatus == 2 && <ModifierLaMotDePass />}
       </ScrollView>
     </Animated.View>
+  );
+}
+
+
+
+export function DropDownMenu() {
+  return (
+    <View className="absolute w-32 bg-white rounded-md border-white border-2 z-50  h-32 -bottom-32 right-0 ">
+      <View className="flex w-full items-start px-2 justify-center">
+        <Pressable
+          onPress={() => {
+            // dispatch(logout());
+            // dispatch(closeTopBar());
+          }}
+        >
+          <Text className="text-[#5156BE]">Informations personnels</Text>
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            // dispatch(logout());
+            // dispatch(closeTopBar());
+          }}
+        >
+          <Text className="text-[#5156BE]">Corriger mes informations</Text>
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            // dispatch(logout());
+            // dispatch(closeTopBar());
+          }}
+        >
+          <Text className="text-[#5156BE]">Changer le mot de pass</Text>
+        </Pressable>
+      </View>
+    </View>
   );
 }

@@ -5,6 +5,7 @@ import authReducer from "./Auth/AuthSlice";
 import emploisDuTempsReducer from "./EmploisDuTemps/EmploisDuTempsSlice";
 import profileReducer from "./Profile/ProfileSlice";
 import AnnoncesReducer from "./Annonces/AnnoncesSlice";
+import modalReducer from "./Modal/ModalSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,7 +13,8 @@ export const store = configureStore({
     auth : authReducer,
     emploisDuTemps : emploisDuTempsReducer,
     profile : profileReducer,
-    annonces : AnnoncesReducer
+    annonces : AnnoncesReducer,
+    modal : modalReducer,
   },
 });
 

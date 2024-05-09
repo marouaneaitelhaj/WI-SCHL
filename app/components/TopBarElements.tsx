@@ -28,7 +28,7 @@ export default function TopBarElements() {
 
   return (
     <Animated.View
-      entering={SlideInDown.duration(100)}
+      entering={SlideInDown.duration(200)}
       exiting={SlideOutDown.duration(100).easing(Easing.ease)}
       className="w-screen z-20 space-y-5 rounded-t-[50px] flex flex-row items-center justify-start py-7 px-5 flex-wrap h-screen"
     >
