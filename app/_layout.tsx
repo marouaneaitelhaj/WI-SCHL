@@ -4,7 +4,7 @@ import { Provider, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { RootState, useAppDispatch } from "state/store";
-
+import Tesst from "./components/TestCom";
 import { store } from "state/store";
 import { setToken } from "state/Auth/AuthSlice";
 import { getProfileAction } from "state/Auth/AuthActions";
@@ -14,7 +14,6 @@ import Profile from "@pages/Profile";
 import { Button, Platform, StatusBar, View } from "react-native";
 import "../static/LocaleConfig";
 import { NativeWindStyleSheet } from "nativewind";
-import { Modal } from "./components/Modal";
 import { Text } from "react-native";
 
 NativeWindStyleSheet.setOutput({
@@ -64,7 +63,6 @@ export function HomeLayout() {
           {showProfile && <Profile></Profile>}
           <View className="bg-white p-2 py-7 w-screen min-h-screen rounded-tr-[50px]">
             <Slot />
-            <Modal children={children} isVisible={isVisible} />
           </View>
         </>
       )}
@@ -80,9 +78,10 @@ export default function Layout() {
         flex: 1,
       }}
     >
-      <Provider store={store}>
+      {/* <Provider store={store}>
         <HomeLayout />
-      </Provider>
+      </Provider> */}
+      <Tesst />
     </View>
   );
 }
