@@ -22,23 +22,43 @@ export const getAttestationInscriptionValues = createAsyncThunk<
       },
     }
   );
-  
+
   return response.data.demAttestationInscriptions as TAttestationInscriptions[];
 });
 
-export const demandeAttestation = createAsyncThunk(
-  "attestationInscription/demandeAttestation",
-  async () => {
+export const demandeAttestation = createAsyncThunk<
+  TAttestationInscriptions,
+  void
+>("attestationInscription/demandeAttestation", async () => {
+  const token = await AsyncStorage.getItem("token");
+  const response = await axios.post(
+    "http://ensemc.irma-prod.net/api/etudiant/attestation-inscription/save-demande",
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  return response.data.demAtt;
+});
+
+export const cancelDemandeAttestation = createAsyncThunk<string, string>(
+  "attestationInscription/cancelDemandeAttestation",
+  async (id: string) => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.post(
-      "http://ensemc.irma-prod.net/api/etudiant/attestation-inscription/save-demande",
-      {},
+      "http://ensemc.irma-prod.net/api/etudiant/attestation-inscription/change-statut",
+      {
+        num_dem: id,
+      },
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
     );
-    return response.data.demAtt;
+
+    return id;
   }
 );

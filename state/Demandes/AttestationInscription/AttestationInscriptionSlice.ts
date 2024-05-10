@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import {
+  cancelDemandeAttestation,
   demandeAttestation,
   getAttestationInscriptionValues,
 } from "./AttestationInscriptionActions";
@@ -25,7 +26,6 @@ const attestationInscriptionSlice = createSlice({
         getAttestationInscriptionValues.fulfilled,
         (state, action: { payload: TAttestationInscriptions[] }) => {
           state.status = "succeeded";
-          console.log(action.payload);
           state.data = action.payload;
         }
       )
@@ -41,20 +41,27 @@ const attestationInscriptionSlice = createSlice({
       })
       .addCase(
         demandeAttestation.fulfilled,
-        (state, action: PayloadAction<any>) => {
+        (state, action: PayloadAction<TAttestationInscriptions>) => {
           state.status = "succeeded";
+          
+          console.log(state.data);
           state.data = [...state.data, action.payload];
+          console.log(state.data);
         }
       )
       .addCase(
         demandeAttestation.rejected,
         (state, action: PayloadAction<any>) => {
           state.status = "failed";
-          // console.log(action.payload);
-          
-          // state.error = action.payload;
         }
-      );
+      ).addCase(cancelDemandeAttestation.fulfilled, (state, action) => {
+        state.data = state.data.map((item) => {
+          if (item.num_dem === action.payload) {
+            return { ...item, etat_dem: "4" };
+          }
+          return item;
+        });
+      });
   },
 });
 

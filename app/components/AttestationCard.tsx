@@ -7,16 +7,19 @@ import Animated, {
   withTiming,
   useSharedValue,
 } from "react-native-reanimated";
+import { useAppDispatch } from "@state/store";
+import { cancelDemandeAttestation } from "@state/Demandes/AttestationInscription/AttestationInscriptionActions";
 
 export default function AttestationCard(props: {
   data: TAttestationInscriptions;
 }) {
   const [expanded, setExpanded] = useState(false);
+  const dispatch = useAppDispatch();
   const animatedHeight = useSharedValue(0);
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      height: withTiming(expanded ? 150 : 0),
+      height: withTiming((expanded && props.data.etat_dem !== "4") ? 150 : (expanded && props.data.etat_dem === "4") ? 128 : 0),
       paddingTop: withTiming(expanded ? 10 : 0),
       paddingBottom: withTiming(expanded ? 10 : 0),
     };
@@ -52,56 +55,62 @@ export default function AttestationCard(props: {
         </View>
         <View className="flex flex-row space-x-5 ">
           <Text>Statut :</Text>
-          <Text>{props.data.etat_dem === "1" ? "En attente" : "Validée"}</Text>
-        </View>
-        <View className="flex flex-row space-x-5  items-center ">
-          <Text>Actions :</Text>
-          {expanded && (
-            <IconButton
-              size={20}
-              icon={props.data.etat_dem === "1" ? "close" : "download"}
-              onPress={() => {
-                if (props.data.etat_dem === "1") {
-                  Alert.alert(
-                    "Annuler la demande",
-                    "Êtes-vous sûr de vouloir annuler cette demande ?",
-                    [
-                      {
-                        text: "Annuler",
-                        style: "cancel",
-                      },
-                      {
-                        text: "Confirmer et Annuler",
-                        style: "destructive",
-                        onPress: () => {
-                          // dispatch(cancelAttestation(props.data.num_dem));
-                        },
-                      },
-                    ]
-                  );
-                } else {
-                  Alert.alert(
-                    "Télécharger l'attestation",
-                    "Voulez-vous télécharger l'attestation ?",
-                    [
-                      {
-                        text: "Annuler",
-                        style: "cancel",
-                      },
-                      {
-                        text: "Télécharger",
-                        style: "destructive",
-                        onPress: () => {
-                          // dispatch(demandeAttestation());
-                        },
-                      },
-                    ]
-                  );
-                }
-              }}
-            />
+          {props.data.etat_dem === "4" && (
+            <Text className="text-red-500">Annulée</Text>
           )}
         </View>
+        {props.data.etat_dem !== "4" && (
+          <View className="flex flex-row space-x-5  items-center ">
+            <Text>Actions :</Text>
+            {expanded && (
+              <IconButton
+                size={20}
+                icon={props.data.etat_dem === "1" ? "close" : "download"}
+                onPress={() => {
+                  if (props.data.etat_dem === "1") {
+                    Alert.alert(
+                      "Annuler la demande",
+                      "Êtes-vous sûr de vouloir annuler cette demande ?",
+                      [
+                        {
+                          text: "Annuler",
+                          style: "cancel",
+                        },
+                        {
+                          text: "Confirmer et Annuler",
+                          style: "destructive",
+                          onPress: () => {
+                            dispatch(
+                              cancelDemandeAttestation(props.data.num_dem)
+                            );
+                          },
+                        },
+                      ]
+                    );
+                  } else {
+                    Alert.alert(
+                      "Télécharger l'attestation",
+                      "Voulez-vous télécharger l'attestation ?",
+                      [
+                        {
+                          text: "Annuler",
+                          style: "cancel",
+                        },
+                        {
+                          text: "Télécharger",
+                          style: "destructive",
+                          onPress: () => {
+                            // dispatch(demandeAttestation());
+                          },
+                        },
+                      ]
+                    );
+                  }
+                }}
+              />
+            )}
+          </View>
+        )}
       </Animated.View>
     </View>
   );
