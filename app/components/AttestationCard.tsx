@@ -1,6 +1,8 @@
 import { Alert, Text, View } from "react-native";
 import { TAttestationInscriptions } from "../../state/types";
 import { IconButton } from "react-native-paper";
+import * as FileSystem from "expo-file-system";
+import { shareAsync } from "expo-sharing";
 import { useState } from "react";
 import Animated, {
   useAnimatedStyle,
@@ -9,6 +11,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { useAppDispatch } from "@state/store";
 import { cancelDemandeAttestation } from "@state/Demandes/AttestationInscription/AttestationInscriptionActions";
+import { Platform } from "react-native";
 
 export default function AttestationCard(props: {
   data: TAttestationInscriptions;
@@ -17,9 +20,46 @@ export default function AttestationCard(props: {
   const dispatch = useAppDispatch();
   const animatedHeight = useSharedValue(0);
 
+  async function saveFile(uri: string, filename: string, mimetype: string) {
+    if (Platform.OS === "android") {
+      console.log("helooooo");
+
+      const permissions =
+        await FileSystem.StorageAccessFramework.requestDirectoryPermissionsAsync();
+
+      if (permissions.granted) {
+        const base64 = await FileSystem.readAsStringAsync(uri, {
+          encoding: FileSystem.EncodingType.Base64,
+        });
+
+        await FileSystem.StorageAccessFramework.createFileAsync(
+          permissions.directoryUri,
+          filename,
+          mimetype
+        )
+          .then(async (uri) => {
+            await FileSystem.writeAsStringAsync(uri, base64, {
+              encoding: FileSystem.EncodingType.Base64,
+            });
+          })
+          .catch((e) => console.log(e));
+      } else {
+        shareAsync(uri);
+      }
+    } else {
+      shareAsync(uri);
+    }
+  }
+
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      height: withTiming((expanded && props.data.etat_dem !== "4") ? 150 : (expanded && props.data.etat_dem === "4") ? 128 : 0),
+      height: withTiming(
+        expanded && props.data.etat_dem !== "4"
+          ? 150
+          : expanded && props.data.etat_dem === "4"
+          ? 128
+          : 0
+      ),
       paddingTop: withTiming(expanded ? 10 : 0),
       paddingBottom: withTiming(expanded ? 10 : 0),
     };
@@ -92,7 +132,7 @@ export default function AttestationCard(props: {
                         },
                       ]
                     );
-                  } else {
+                  } else if (props.data.etat_dem === "3") {
                     Alert.alert(
                       "Télécharger l'attestation",
                       "Voulez-vous télécharger l'attestation ?",
@@ -105,7 +145,22 @@ export default function AttestationCard(props: {
                           text: "Télécharger",
                           style: "destructive",
                           onPress: () => {
-                            // dispatch(demandeAttestation());
+                            const uri = props.data.file;
+                            const filename = uri.substring(
+                              uri.lastIndexOf("/") + 1
+                            );
+                            const fileUri =
+                              FileSystem.documentDirectory + filename;
+
+                              FileSystem.downloadAsync(uri, fileUri, {})
+                              .then((result) => {
+                                saveFile(
+                                  result.uri,
+                                  filename,
+                                  result.headers["Content-Type"]
+                                );
+                              })
+                              .catch((e) => console.log(e));
                           },
                         },
                       ]

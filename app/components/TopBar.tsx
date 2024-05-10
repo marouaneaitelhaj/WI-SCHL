@@ -56,7 +56,7 @@ export default function TopBar() {
               }}
               icon="arrow-left"
               iconColor="white"
-              size={50}
+              size={40}
             />
           )}
         </View>

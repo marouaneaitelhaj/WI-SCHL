@@ -70,8 +70,8 @@ export default function Demandes() {
               iconColor={COLORS.primaryColor}
               icon={item.icon}
               onPress={() => {
-                // dispatch(enableGoBack());
-                router.replace(item.key as never);
+                dispatch(enableGoBack());
+                router.push(item.key as never);
               }}
             />
             <Text className="text-[#5156BE] text-center">{item.text}</Text>

@@ -15,7 +15,6 @@ export default function AttestationInscription() {
     (state: RootState) => state.attestationInscription
   );
   useEffect(() => {
-    dispatch(enableGoBack())
     dispatch(getAttestationInscriptionValues());
   }, []);
   return (
