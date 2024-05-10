@@ -43,16 +43,16 @@ const attestationInscriptionSlice = createSlice({
         demandeAttestation.fulfilled,
         (state, action: PayloadAction<any>) => {
           state.status = "succeeded";
-          state.data = action.payload;
+          state.data = [...state.data, action.payload];
         }
       )
       .addCase(
         demandeAttestation.rejected,
         (state, action: PayloadAction<any>) => {
           state.status = "failed";
-          console.log(action.payload);
+          // console.log(action.payload);
           
-          state.error = action.payload;
+          // state.error = action.payload;
         }
       );
   },

@@ -39,6 +39,6 @@ export const demandeAttestation = createAsyncThunk(
         },
       }
     );
-    return response.data;
+    return response.data.demAtt;
   }
 );

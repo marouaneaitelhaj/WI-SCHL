@@ -23,7 +23,7 @@ export default function AttestationCard(props: {
   });
 
   return (
-    <View className="rounded-lg relative bg-[#e0e1f3] p-5">
+    <View className="rounded-lg relative bg-[#e0e1f3] p-5 my-2">
       <View className="">
         <Text>Demande envoyée au responsable scoalrité</Text>
       </View>

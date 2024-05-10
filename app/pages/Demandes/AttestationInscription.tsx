@@ -1,6 +1,6 @@
 import AttestationCard from "app/components/AttestationCard";
 import { useEffect } from "react";
-import { View, Text, Pressable, Alert } from "react-native";
+import { View, Text, Pressable, Alert, ScrollView } from "react-native";
 import { Modal, Title } from "react-native-paper";
 import { useSelector } from "react-redux";
 import {
@@ -10,19 +10,18 @@ import {
 import { RootState, useAppDispatch } from "state/store";
 export default function AttestationInscription() {
   const dispatch = useAppDispatch();
-  const {data} = useSelector((state: RootState) => state.attestationInscription);
+  const { data } = useSelector(
+    (state: RootState) => state.attestationInscription
+  );
   useEffect(() => {
     dispatch(getAttestationInscriptionValues());
   }, []);
   return (
-    <View className="flex justify-center px-5">
+    <View className="space-y-5 flex items-center w-full">
       <Title className="text-center font-bold">Attestation d'inscription</Title>
-      <View className="flex items-center space-y-5 my-10">
-        <Text className="text-center">
-          Mes demandes d'attestations d'inscription
-        </Text>
+      <View className="flex  w-full items-center">
         <Pressable
-          className="flex  rounded-md w-[90%] justify-center items-center  p-5 bg-[#5156BE]"
+          className="flex  rounded-md w-[100%] justify-center items-center  p-5 bg-[#5156BE]"
           onPress={() => {
             Alert.alert(
               "Envoyer la demande",
@@ -48,20 +47,24 @@ export default function AttestationInscription() {
           </Text>
         </Pressable>
       </View>
-      <View>
-        {data.map((item) => (
-          <AttestationCard key={item.inscription_id} data={item} />
-        ))}
+      <ScrollView className="w-full h-[40%]">
+        <View className="flex w-full">
+          {/* <Text className="font-bold">Mes demandes d'attestations d'inscription</Text> */}
+          {data.map((item) => (
+            <AttestationCard key={item.num_dem} data={item} />
+          ))}
+        </View>
+      </ScrollView>
+      <View className="w-full">
+        <Text className="font-bold">Remarques</Text>
+        <Text>
+          L'attestation d'inscription est pour l'année en cours seulement
+        </Text>
+        <Text>
+          L'étudiant doit conserver l’original d'attestation d'inscription et
+          fournir une copie identique de l’original au besoin
+        </Text>
       </View>
-      <Text>Demande est en cours de traitement</Text>
-      <Text className="font-bold">Remarques</Text>
-      <Text>
-        L'attestation d'inscription est pour l'année en cours seulement
-      </Text>
-      <Text>
-        L'étudiant doit conserver l’original d'attestation d'inscription et
-        fournir une copie identique de l’original au besoin
-      </Text>
     </View>
   );
 }
