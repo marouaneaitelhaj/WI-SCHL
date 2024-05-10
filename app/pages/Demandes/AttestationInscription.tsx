@@ -1,20 +1,18 @@
+import AttestationCard from "app/components/AttestationCard";
 import { useEffect } from "react";
 import { View, Text, Pressable, Alert } from "react-native";
 import { Modal, Title } from "react-native-paper";
+import { useSelector } from "react-redux";
 import {
   demandeAttestation,
   getAttestationInscriptionValues,
 } from "state/Demandes/AttestationInscription/AttestationInscriptionActions";
-import { useAppDispatch } from "state/store";
+import { RootState, useAppDispatch } from "state/store";
 export default function AttestationInscription() {
   const dispatch = useAppDispatch();
+  const {data} = useSelector((state: RootState) => state.attestationInscription);
   useEffect(() => {
-    dispatch(getAttestationInscriptionValues())
-      .unwrap()
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {});
+    dispatch(getAttestationInscriptionValues());
   }, []);
   return (
     <View className="flex justify-center px-5">
@@ -49,6 +47,11 @@ export default function AttestationInscription() {
             Déposer une nouvelle demande
           </Text>
         </Pressable>
+      </View>
+      <View>
+        {data.map((item) => (
+          <AttestationCard key={item.inscription_id} data={item} />
+        ))}
       </View>
       <Text>Demande est en cours de traitement</Text>
       <Text className="font-bold">Remarques</Text>

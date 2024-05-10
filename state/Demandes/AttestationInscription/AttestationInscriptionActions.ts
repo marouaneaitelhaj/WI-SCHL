@@ -9,21 +9,22 @@ import axios from "axios";
 // with the token in the header
 // post request have no body
 
-export const getAttestationInscriptionValues = createAsyncThunk(
-  "attestationInscription/getAttestationInscriptionValues",
-  async () => {
-    const token = await AsyncStorage.getItem("token");
-    const response = await axios.get(
-      "http://ensemc.irma-prod.net/api/etudiant/attestation-inscription",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    return response.data;
-  }
-);
+export const getAttestationInscriptionValues = createAsyncThunk<
+  TAttestationInscriptions[],
+  void
+>("attestationInscription/getAttestationInscriptionValues", async () => {
+  const token = await AsyncStorage.getItem("token");
+  const response = await axios.get(
+    "http://ensemc.irma-prod.net/api/etudiant/attestation-inscription",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  
+  return response.data.demAttestationInscriptions as TAttestationInscriptions[];
+});
 
 export const demandeAttestation = createAsyncThunk(
   "attestationInscription/demandeAttestation",

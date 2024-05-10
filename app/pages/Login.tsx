@@ -18,8 +18,7 @@ export default function Login() {
     },
   });
 
-  StatusBar.setBackgroundColor("#5156BE", true);
-  StatusBar.setBarStyle("light-content", true);
+  
 
   const { error, loadingForm } = useSelector((state: RootState) => state.auth);
 

@@ -5,6 +5,7 @@ import authReducer from "./Auth/AuthSlice";
 import emploisDuTempsReducer from "./EmploisDuTemps/EmploisDuTempsSlice";
 import profileReducer from "./Profile/ProfileSlice";
 import AnnoncesReducer from "./Annonces/AnnoncesSlice";
+import AttestationInscriptionReducer from "./Demandes/AttestationInscription/AttestationInscriptionSlice";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     emploisDuTemps : emploisDuTempsReducer,
     profile : profileReducer,
     annonces : AnnoncesReducer,
+    attestationInscription : AttestationInscriptionReducer,
   },
 });
 

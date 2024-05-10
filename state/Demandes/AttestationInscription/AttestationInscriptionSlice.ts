@@ -25,6 +25,7 @@ const attestationInscriptionSlice = createSlice({
         getAttestationInscriptionValues.fulfilled,
         (state, action: { payload: TAttestationInscriptions[] }) => {
           state.status = "succeeded";
+          console.log(action.payload);
           state.data = action.payload;
         }
       )

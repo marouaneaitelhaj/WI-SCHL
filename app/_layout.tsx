@@ -29,6 +29,8 @@ export function HomeLayout() {
   const { showProfile } = useSelector((state: RootState) => state.profile);
 
   useEffect(() => {
+    StatusBar.setBackgroundColor("#5156BE", true);
+    StatusBar.setBarStyle("light-content", true);
     AsyncStorage.getItem("token").then((token) => {
       dispatch(setToken(token));
       if (token) {
