@@ -1,3 +1,4 @@
+import { enableGoBack } from "@state/TopBar/TopBarSlice";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { View, Text, ScrollView } from "react-native";
@@ -11,6 +12,7 @@ export default function Annonce() {
   const [annonce, setAnnonce] = useState<Tannonce>({} as Tannonce);
   const dispatch = useAppDispatch();
   useEffect(() => {
+    dispatch(enableGoBack())
     dispatch(getAnnonce(id as string))
       .unwrap()
       .then((data) => {

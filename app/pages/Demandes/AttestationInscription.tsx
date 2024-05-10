@@ -1,3 +1,4 @@
+import { enableGoBack } from "@state/TopBar/TopBarSlice";
 import AttestationCard from "app/components/AttestationCard";
 import { useEffect } from "react";
 import { View, Text, Pressable, Alert, ScrollView } from "react-native";
@@ -14,6 +15,7 @@ export default function AttestationInscription() {
     (state: RootState) => state.attestationInscription
   );
   useEffect(() => {
+    dispatch(enableGoBack())
     dispatch(getAttestationInscriptionValues());
   }, []);
   return (
@@ -35,7 +37,12 @@ export default function AttestationInscription() {
                   text: "Confirmer et Envoyer",
                   style: "destructive",
                   onPress: () => {
-                    dispatch(demandeAttestation());
+                    dispatch(demandeAttestation()).then((res) => {
+                      Alert.alert(
+                        "Demande envoyée",
+                        "Votre demande a été envoyée avec succès"
+                      );
+                    });
                   },
                 },
               ]

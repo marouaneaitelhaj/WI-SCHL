@@ -82,7 +82,12 @@ export default function AttestationCard(props: {
                           onPress: () => {
                             dispatch(
                               cancelDemandeAttestation(props.data.num_dem)
-                            );
+                            ).then((res) => {
+                              Alert.alert(
+                                "Demande annulée",
+                                "Votre demande a été annulée avec succès"
+                              );
+                            });
                           },
                         },
                       ]

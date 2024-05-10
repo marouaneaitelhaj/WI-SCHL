@@ -29,7 +29,7 @@ export const getAttestationInscriptionValues = createAsyncThunk<
 export const demandeAttestation = createAsyncThunk<
   TAttestationInscriptions,
   void
->("attestationInscription/demandeAttestation", async () => {
+>("attestationInscription/demandeAttestation", async (_,api) => {
   const token = await AsyncStorage.getItem("token");
   const response = await axios.post(
     "http://ensemc.irma-prod.net/api/etudiant/attestation-inscription/save-demande",
@@ -40,6 +40,7 @@ export const demandeAttestation = createAsyncThunk<
       },
     }
   );
+  api.dispatch(getAttestationInscriptionValues());
   return response.data.demAtt;
 });
 

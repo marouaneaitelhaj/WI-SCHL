@@ -43,10 +43,6 @@ const attestationInscriptionSlice = createSlice({
         demandeAttestation.fulfilled,
         (state, action: PayloadAction<TAttestationInscriptions>) => {
           state.status = "succeeded";
-          
-          console.log(state.data);
-          state.data = [...state.data, action.payload];
-          console.log(state.data);
         }
       )
       .addCase(
