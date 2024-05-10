@@ -1,4 +1,4 @@
-import { Text, View, Image, Alert, Pressable } from "react-native";
+import { Text, View, Image, Alert, Pressable, StatusBar } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { Tuser } from "../../state/types";
 import { TextInput } from "react-native-paper";
@@ -17,6 +17,9 @@ export default function Login() {
       password: "",
     },
   });
+
+  StatusBar.setBackgroundColor("#5156BE", true);
+  StatusBar.setBarStyle("light-content", true);
 
   const { error, loadingForm } = useSelector((state: RootState) => state.auth);
 
@@ -53,7 +56,7 @@ export default function Login() {
                 activeUnderlineColor="#5156BE"
                 className="rounded-md bg-white"
                 onBlur={onBlur}
-                left={<TextInput.Icon icon="email" />}
+                // left={<TextInput.Icon icon="email" />}
                 onChangeText={onChange}
                 value={value}
               />
@@ -84,7 +87,7 @@ export default function Login() {
                 underlineColor={errors.password ? "red" : "#5156BE"}
                 activeUnderlineColor="#5156BE"
                 className="rounded-md bg-white"
-                left={<TextInput.Icon icon="lock" />}
+                // left={<TextInput.Icon icon="lock" />}
                 right={<TextInput.Icon icon="eye" />}
                 onChangeText={onChange}
                 value={value}
