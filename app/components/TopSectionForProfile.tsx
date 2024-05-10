@@ -22,9 +22,9 @@ export default function TopSectionForProfile() {
           "space-y-5 py-10 relative  rounded-bl-[50px] rounded-br-[50px] flex items-center bg-[#5156BE]"
         }
       >
-        <View className="absolute top-5 flex flex-row  w-screen">
+        <View className="absolute top-6 flex flex-row  w-screen">
           <Pressable
-            className="flex flex-row space-x-4 absolute left-4"
+            className="flex flex-row space-x-4 absolute left-7"
             onPress={() => {
               dispatch(setShowProfile(false));
             }}
@@ -32,7 +32,7 @@ export default function TopSectionForProfile() {
             <Icon source="arrow-left" size={30} color="white" />
             <Text className="text-white text-xl">Profile</Text>
           </Pressable>
-          <View className="absolute right-4">
+          <View className="absolute right-7">
             {/* {(profileStatus == 0) &&<Pressable
             // className="absolute top-5 right-5"
             onPress={() => {

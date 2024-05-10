@@ -47,7 +47,7 @@ export default function AttestationInscription() {
           </Text>
         </Pressable>
       </View>
-      <ScrollView className="w-full h-[40%]">
+      <ScrollView className="w-full h-[50%]">
         <View className="flex w-full">
           {/* <Text className="font-bold">Mes demandes d'attestations d'inscription</Text> */}
           {data.map((item) => (

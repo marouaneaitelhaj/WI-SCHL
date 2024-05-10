@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Alert, Text, View } from "react-native";
 import { TAttestationInscriptions } from "../../state/types";
 import { IconButton } from "react-native-paper";
 import { useState } from "react";
@@ -16,7 +16,7 @@ export default function AttestationCard(props: {
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      height: withTiming(expanded ? 100 : 0),
+      height: withTiming(expanded ? 150 : 0),
       paddingTop: withTiming(expanded ? 10 : 0),
       paddingBottom: withTiming(expanded ? 10 : 0),
     };
@@ -49,6 +49,58 @@ export default function AttestationCard(props: {
         <View className="flex flex-row space-x-5 ">
           <Text>Année scolaire :</Text>
           <Text>{props.data.anneUniversitaire}</Text>
+        </View>
+        <View className="flex flex-row space-x-5 ">
+          <Text>Statut :</Text>
+          <Text>{props.data.etat_dem === "1" ? "En attente" : "Validée"}</Text>
+        </View>
+        <View className="flex flex-row space-x-5  items-center ">
+          <Text>Actions :</Text>
+          {expanded && (
+            <IconButton
+              size={20}
+              icon={props.data.etat_dem === "1" ? "close" : "download"}
+              onPress={() => {
+                if (props.data.etat_dem === "1") {
+                  Alert.alert(
+                    "Annuler la demande",
+                    "Êtes-vous sûr de vouloir annuler cette demande ?",
+                    [
+                      {
+                        text: "Annuler",
+                        style: "cancel",
+                      },
+                      {
+                        text: "Confirmer et Annuler",
+                        style: "destructive",
+                        onPress: () => {
+                          // dispatch(cancelAttestation(props.data.num_dem));
+                        },
+                      },
+                    ]
+                  );
+                } else {
+                  Alert.alert(
+                    "Télécharger l'attestation",
+                    "Voulez-vous télécharger l'attestation ?",
+                    [
+                      {
+                        text: "Annuler",
+                        style: "cancel",
+                      },
+                      {
+                        text: "Télécharger",
+                        style: "destructive",
+                        onPress: () => {
+                          // dispatch(demandeAttestation());
+                        },
+                      },
+                    ]
+                  );
+                }
+              }}
+            />
+          )}
         </View>
       </Animated.View>
     </View>

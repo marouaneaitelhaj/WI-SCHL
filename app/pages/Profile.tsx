@@ -20,7 +20,7 @@ export default function Profile() {
       entering={SlideInRight.duration(100)}
       exiting={SlideOutLeft.duration(100).easing(Easing.ease)}
     >
-      <ScrollView className="my-2 h-screen">
+      <ScrollView className="h-screen">
         <TopSectionForProfile />
         {profileStatus == 0 && <InformationspersonnelsProfile />}
         {profileStatus == 1 && <EditpersonnelsProfile />}
@@ -29,8 +29,6 @@ export default function Profile() {
     </Animated.View>
   );
 }
-
-
 
 export function DropDownMenu() {
   return (
