@@ -1,15 +1,29 @@
-import { View, Text, Pressable, Alert } from "react-native";
+import { enableGoBack } from "@state/TopBar/TopBarSlice";
+import AttestationCard from "app/components/AttestationCard";
+import { useEffect } from "react";
+import { ActivityIndicator } from "react-native";
+import { View, Text, Pressable, Alert, ScrollView } from "react-native";
 import { Modal, Title } from "react-native-paper";
+import { useSelector } from "react-redux";
+import {
+  createDemande,
+  getDemandes,
+} from "state/Demandes/Demande_reservation/Demande_reservationActions";
+import { RootState, useAppDispatch } from "state/store";
 export default function Demande_reservation() {
+  const dispatch = useAppDispatch();
+  const { data, status } = useSelector(
+    (state: RootState) => state.demande_reservation
+  );
+  useEffect(() => {
+    dispatch(getDemandes());
+  }, []);
   return (
-    <View className="flex justify-center">
-      <Title className="text-center font-bold">
-        Demande de réservation de locaux
-      </Title>
-      <View className="flex items-center space-y-5 my-10">
-        <Text className="text-center">Demande de réservation de locaux</Text>
+    <View className="space-y-5 flex items-center w-full">
+      <Title className="text-center font-bold uppercase">Demande de réservation de locaux</Title>
+      <View className="flex  w-full items-center">
         <Pressable
-          className="flex  rounded-md w-[90%] justify-center items-center  p-5 bg-[#5156BE]"
+          className="flex  rounded-md w-[100%] justify-center items-center  p-5 bg-[#5156BE]"
           onPress={() => {
             Alert.alert(
               "Envoyer la demande",
@@ -23,8 +37,12 @@ export default function Demande_reservation() {
                   text: "Confirmer et Envoyer",
                   style: "destructive",
                   onPress: () => {
-                    // dispatch(logout());
-                    // dispatch(closeTopBar());
+                    dispatch(createDemande()).then((res) => {
+                      Alert.alert(
+                        "Demande envoyée",
+                        "Votre demande a été envoyée avec succès"
+                      );
+                    });
                   },
                 },
               ]
@@ -36,15 +54,17 @@ export default function Demande_reservation() {
           </Text>
         </Pressable>
       </View>
-      <Text>Demande est en cours de traitement</Text>
-      <Text className="font-bold">Remarques</Text>
-      <Text>
-        L'attestation d'inscription est pour l'année en cours seulement
-      </Text>
-      <Text>
-        L'étudiant doit conserver l’original d'attestation d'inscription et
-        fournir une copie identique de l’original au besoin
-      </Text>
+      <ScrollView className="w-full h-[70%]">
+        <View className="flex w-full">
+          {status === "loading" && (
+            <ActivityIndicator size="large" color="#5156BE" />
+          )}
+          {status !== "loading" &&
+            data.map((item) => (
+              <AttestationCard key={item.num_dem} data={item} />
+            ))}
+        </View>
+      </ScrollView>
     </View>
   );
 }

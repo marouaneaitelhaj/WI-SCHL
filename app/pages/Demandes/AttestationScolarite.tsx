@@ -7,7 +7,7 @@ import { Modal, Title } from "react-native-paper";
 import { useSelector } from "react-redux";
 import {
   createDemande,
-  geScolariteValues,
+  getDemandes,
 } from "state/Demandes/AttestationScolarite/AttestationScolariteActions";
 import { RootState, useAppDispatch } from "state/store";
 export default function AttestationScolarite() {
@@ -16,11 +16,11 @@ export default function AttestationScolarite() {
     (state: RootState) => state.attestationScolarite
   );
   useEffect(() => {
-    dispatch(geScolariteValues());
+    dispatch(getDemandes());
   }, []);
   return (
     <View className="space-y-5 flex items-center w-full">
-      <Title className="text-center font-bold">Attestations de scolarité</Title>
+      <Title className="text-center font-bold uppercase">Attestations de scolarité</Title>
       <View className="flex  w-full items-center">
         <Pressable
           className="flex  rounded-md w-[100%] justify-center items-center  p-5 bg-[#5156BE]"

@@ -8,6 +8,11 @@ import AnnoncesReducer from "./Annonces/AnnoncesSlice";
 import AttestationInscriptionReducer from "./Demandes/AttestationInscription/AttestationInscriptionSlice";
 import AttestationScolariteReducer from "./Demandes/AttestationScolarite/AttestationScolariteSlice";
 import AttestationReussiteReducer from "./Demandes/AttestationReussite/AttestationReussiteSlice";
+import RetraitDiplomeReducer from "./Demandes/RetraitDiplome/RetraitDiplomeSlice";
+import CarteEtudiantReducer from "./Demandes/CarteEtudiant/CarteEtudiantSlice";
+import ConventionStageReducer from "./Demandes/ConventionStage/ConventionStageSlice";
+import ChangementFiliereReducer from "./Demandes/ChangementFiliere/ChangementFiliereSlice";
+import RetraitBaccalaureatReducer from "./Demandes/RetraitBaccalaureat/RetraitBaccalaureatSlice";
 
 export const store = configureStore({
   reducer: {
@@ -19,6 +24,13 @@ export const store = configureStore({
     attestationInscription : AttestationInscriptionReducer,
     attestationScolarite : AttestationScolariteReducer,
     attestationReussite : AttestationReussiteReducer,
+    retraitDiplome : RetraitDiplomeReducer,
+    retraitBaccalaureat : RetraitBaccalaureatReducer,
+    carteEtudiant : CarteEtudiantReducer,
+    conventionStage : ConventionStageReducer,
+    changementFiliere : ChangementFiliereReducer,
+    releveNote : RetraitBaccalaureatReducer,
+    demande_reservation : RetraitBaccalaureatReducer,
   },
 });
 

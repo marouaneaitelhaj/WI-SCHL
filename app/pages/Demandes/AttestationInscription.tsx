@@ -20,7 +20,7 @@ export default function AttestationInscription() {
   }, []);
   return (
     <View className="space-y-5 flex items-center w-full">
-      <Title className="text-center font-bold">Attestation d'inscription</Title>
+      <Title className="text-center font-bold uppercase">Attestation d'inscription</Title>
       <View className="flex  w-full items-center">
         <Pressable
           className="flex  rounded-md w-[100%] justify-center items-center  p-5 bg-[#5156BE]"

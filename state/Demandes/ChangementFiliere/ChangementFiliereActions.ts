@@ -16,7 +16,7 @@ export const getDemandes = createAsyncThunk<TDemande[], void>(
       }
     );
 
-    return response.data.demAttestationScolarites as TDemande[];
+    return response.data.dem_changement_filiere as TDemande[];
   }
 );
 

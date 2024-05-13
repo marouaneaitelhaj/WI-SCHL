@@ -8,19 +8,19 @@ import { useSelector } from "react-redux";
 import {
   createDemande,
   getDemandes,
-} from "state/Demandes/AttestationInscription/AttestationInscriptionActions";
+} from "state/Demandes/RetraitDiplome/RetraitDiplomeActions";
 import { RootState, useAppDispatch } from "state/store";
 export default function RetraitDiplome() {
   const dispatch = useAppDispatch();
   const { data, status } = useSelector(
-    (state: RootState) => state.attestationInscription
+    (state: RootState) => state.retraitDiplome
   );
   useEffect(() => {
     dispatch(getDemandes());
   }, []);
   return (
     <View className="space-y-5 flex items-center w-full">
-      <Title className="text-center font-bold">Retrait de diplôme</Title>
+      <Title className="text-center font-bold uppercase">Retrait de diplôme</Title>
       <View className="flex  w-full items-center">
         <Pressable
           className="flex  rounded-md w-[100%] justify-center items-center  p-5 bg-[#5156BE]"
