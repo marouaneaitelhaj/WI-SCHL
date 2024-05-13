@@ -4,10 +4,11 @@ import {
   createDemande,
   getDemandes,
 } from "./Demande_reservationActions";
-import { TDemande } from "../../types";
+import { TDemande, Tsalle } from "../../types";
 
 const initialState = {
   data: [] as TDemande[],
+  salles : [] as Tsalle[],
   status: "idle",
   error: null,
 };
@@ -24,9 +25,10 @@ const Demande_reservationSlice = createSlice({
       })
       .addCase(
         getDemandes.fulfilled,
-        (state, action: { payload: TDemande[] }) => {
+        (state, action: { payload: { demandes : TDemande[], salles : Tsalle[] } }) => {
           state.status = "succeeded";
-          state.data = action.payload;
+          state.data = action.payload.demandes;
+          state.salles = action.payload.salles;
         }
       )
       .addCase(

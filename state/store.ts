@@ -13,6 +13,7 @@ import CarteEtudiantReducer from "./Demandes/CarteEtudiant/CarteEtudiantSlice";
 import ConventionStageReducer from "./Demandes/ConventionStage/ConventionStageSlice";
 import ChangementFiliereReducer from "./Demandes/ChangementFiliere/ChangementFiliereSlice";
 import RetraitBaccalaureatReducer from "./Demandes/RetraitBaccalaureat/RetraitBaccalaureatSlice";
+import Demande_reservationReducer from "./Demandes/Demande_reservation/Demande_reservationSlice";
 
 export const store = configureStore({
   reducer: {
@@ -30,7 +31,7 @@ export const store = configureStore({
     conventionStage : ConventionStageReducer,
     changementFiliere : ChangementFiliereReducer,
     releveNote : RetraitBaccalaureatReducer,
-    demande_reservation : RetraitBaccalaureatReducer,
+    demande_reservation : Demande_reservationReducer,
   },
 });
 

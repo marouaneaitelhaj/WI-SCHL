@@ -22,12 +22,15 @@ type MyModalProps = {
   children: any;
   showModal: boolean;
   title: string;
-  close : Function;
+  close: Function;
 };
 
-export default function MyModal(
-  { children, showModal, title, close }: MyModalProps
-) {
+export default function MyModal({
+  children,
+  showModal,
+  title,
+  close,
+}: MyModalProps) {
   return (
     <GluestackUIProvider config={config}>
       <Modal
@@ -40,7 +43,7 @@ export default function MyModal(
         }}
         height={Platform.OS === "web" ? "auto" : "90%"}
       >
-        <ModalBackdrop />
+        {/* <ModalBackdrop /> */}
         <ModalContent>
           <ModalHeader>
             <VStack space="sm">

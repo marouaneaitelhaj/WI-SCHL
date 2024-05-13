@@ -1,9 +1,12 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { TDemande } from "@state/types";
+import { TDemande, Tsalle } from "@state/types";
 import axios from "axios";
 
-export const getDemandes = createAsyncThunk<TDemande[], void>(
+export const getDemandes = createAsyncThunk<{
+  demandes : TDemande[],
+  salles : Tsalle[]
+}, void>(
   "demande_reservation/getDemandes",
   async () => {
     const token = await AsyncStorage.getItem("token");
@@ -16,7 +19,10 @@ export const getDemandes = createAsyncThunk<TDemande[], void>(
       }
     );
 
-    return response.data.demReservation as TDemande[];
+    return {
+      demandes : response.data.demReservation as TDemande[],
+      salles : response.data.salles as Tsalle[]
+    }
   }
 );
 
