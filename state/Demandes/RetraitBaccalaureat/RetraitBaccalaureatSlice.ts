@@ -13,8 +13,8 @@ const initialState = {
 };
 
 // Slice
-const attestationInscriptionSlice = createSlice({
-  name: "AttestationInscription",
+const retraitBaccalaureatSlice = createSlice({
+  name: "RetraitBaccalaureat",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -61,4 +61,4 @@ const attestationInscriptionSlice = createSlice({
   },
 });
 
-export default attestationInscriptionSlice.reducer;
+export default retraitBaccalaureatSlice.reducer;

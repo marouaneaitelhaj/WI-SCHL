@@ -4,7 +4,7 @@ import { TDemande } from "@state/types";
 import axios from "axios";
 
 export const getDemandes = createAsyncThunk<TDemande[], void>(
-  "RetraitBaccalaureat/getDemandes",
+  "retraitBaccalaureat/getDemandes",
   async () => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.get(
@@ -21,7 +21,7 @@ export const getDemandes = createAsyncThunk<TDemande[], void>(
 );
 
 export const createDemande = createAsyncThunk<TDemande, void>(
-  "RetraitBaccalaureat/createDemande",
+  "retraitBaccalaureat/createDemande",
   async (_, api) => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.post(
@@ -39,7 +39,7 @@ export const createDemande = createAsyncThunk<TDemande, void>(
 );
 
 export const cancelDemande = createAsyncThunk<string, string>(
-  "RetraitBaccalaureat/cancelDemande",
+  "retraitBaccalaureat/cancelDemande",
   async (id: string) => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.post(
