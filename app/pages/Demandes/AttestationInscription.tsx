@@ -1,6 +1,7 @@
 import { enableGoBack } from "@state/TopBar/TopBarSlice";
 import AttestationCard from "app/components/AttestationCard";
 import { useEffect } from "react";
+import { ActivityIndicator } from "react-native";
 import { View, Text, Pressable, Alert, ScrollView } from "react-native";
 import { Modal, Title } from "react-native-paper";
 import { useSelector } from "react-redux";
@@ -11,7 +12,7 @@ import {
 import { RootState, useAppDispatch } from "state/store";
 export default function AttestationInscription() {
   const dispatch = useAppDispatch();
-  const { data } = useSelector(
+  const { data, status } = useSelector(
     (state: RootState) => state.attestationInscription
   );
   useEffect(() => {
@@ -55,10 +56,13 @@ export default function AttestationInscription() {
       </View>
       <ScrollView className="w-full h-[50%]">
         <View className="flex w-full">
-          {/* <Text className="font-bold">Mes demandes d'attestations d'inscription</Text> */}
-          {data.map((item) => (
-            <AttestationCard key={item.num_dem} data={item} />
-          ))}
+          {status === "loading" && (
+            <ActivityIndicator size="large" color="#5156BE" />
+          )}
+          {status !== "loading" &&
+            data.map((item) => (
+              <AttestationCard key={item.num_dem} data={item} />
+            ))}
         </View>
       </ScrollView>
       <View className="w-full">
