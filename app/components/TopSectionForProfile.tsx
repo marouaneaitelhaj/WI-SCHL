@@ -7,13 +7,38 @@ import {
   setProfileStatus,
   setShowProfile,
 } from "../../state/Profile/ProfileSlice";
+import { useEffect, useState } from "react";
+import Animated, {
+  SlideInRight,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated";
 
 export default function TopSectionForProfile() {
   const { user } = useSelector((state: RootState) => state.auth);
 
   const { profileStatus } = useSelector((state: RootState) => state.profile);
 
+  const [showDropDown, setShowDropDown] = useState(false);
+
   const dispatch = useAppDispatch();
+
+  const animatedHeight = useSharedValue(0);
+
+  useEffect(() => {
+    // Animate height when showDropDown changes
+    animatedHeight.value = withTiming(showDropDown ? 120 : 0, {
+      duration: 300,
+    });
+  }, [showDropDown, animatedHeight]);
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      height: animatedHeight.value,
+      overflow: "hidden",
+    };
+  });
 
   return (
     <>
@@ -32,24 +57,44 @@ export default function TopSectionForProfile() {
             <Icon source="arrow-left" size={30} color="white" />
             <Text className="text-white text-xl">Profile</Text>
           </Pressable>
-          <View className="absolute right-7">
-            {/* {(profileStatus == 0) &&<Pressable
-            // className="absolute top-5 right-5"
-            onPress={() => {
-              dispatch(setProfileStatus(1));
-            }}>
-            <Icon source="pencil" size={30} color="white" />
-          </Pressable>}
-          {(profileStatus == 1 || profileStatus == 2) && <Pressable
-            // className="absolute top-5 right-5"
-            onPress={() => {
-              dispatch(setProfileStatus(0));
-            }}>
-            <Icon source="eye" size={30} color="white" />
-          </Pressable>} */}
-            <Pressable>
-              <Icon source="dots-vertical" size={30} color="white" />
+          <View className="absolute right-7 flex flex-col space-y-3">
+            <Pressable onPress={() => setShowDropDown(!showDropDown)}>
+              <Icon
+                source={showDropDown ? "menu-up" : "menu-down"}
+                size={30}
+                color="white"
+              />
             </Pressable>
+            <Animated.View style={animatedStyle} className={"space-y-3"}>
+              {showDropDown && (
+                <>
+                  <Pressable
+                    onPress={() => {
+                      dispatch(setProfileStatus(0));
+                      setShowDropDown(false);
+                    }}
+                  >
+                    <Icon source="eye" size={30} color="white" />
+                  </Pressable>
+                  <Pressable
+                    onPress={() => {
+                      dispatch(setProfileStatus(1));
+                      setShowDropDown(false);
+                    }}
+                  >
+                    <Icon source="pen" size={30} color="white" />
+                  </Pressable>
+                  <Pressable
+                    onPress={() => {
+                      dispatch(setProfileStatus(2));
+                      setShowDropDown(false);
+                    }}
+                  >
+                    <Icon source="lock" size={30} color="white" />
+                  </Pressable>
+                </>
+              )}
+            </Animated.View>
           </View>
         </View>
         <View className={" flex items-center py-5 space-y-3"}>

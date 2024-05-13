@@ -10,6 +10,7 @@ import {
   updateProfilePasswordAction,
 } from "../../state/Auth/AuthActions";
 import { useSelector } from "react-redux";
+import Animated, { SlideInRight, SlideOutLeft } from "react-native-reanimated";
 
 export default function ModifierLaMotDePass() {
   const {
@@ -58,167 +59,169 @@ export default function ModifierLaMotDePass() {
   };
 
   return (
-    <ScrollView className="my-2 w-full">
-      <View className="w-screen flex justify-center items-center ">
-        <View className="bg-white w-[90%]  py-10 space-y-10 rounded-md">
-          <Text className="text-[#5156BE] text-center mb-8 text-[20px]">
-            Modifier le mot de pass
-          </Text>
-          <View>
-            <Controller
-              control={control}
-              rules={{
-                required: true,
-                minLength: 6,
-              }}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
-                  placeholder="Entrez l'ancien mot de passe"
-                  underlineColor={errors.motPassActuel ? "red" : "#5156BE"}
-                  activeUnderlineColor="#5156BE"
-                  className="rounded-md bg-white"
-                  onBlur={onBlur}
-                  secureTextEntry={secureTextEntry.password}
-                  // left={<TextInput.Icon icon="lock" />}
-                  right={
-                    <TextInput.Icon
-                      icon="eye"
-                      onPress={() => {
-                        setSecureTextEntry({
-                          ...secureTextEntry,
-                          password: !secureTextEntry.password,
-                        });
-                      }}
-                    />
-                  }
-                  onChangeText={onChange}
-                  value={value}
-                />
+    <Animated.View entering={SlideInRight} exiting={SlideOutLeft}>
+      <ScrollView className="my-2 w-full">
+        <View className="w-screen flex justify-center items-center ">
+          <View className="bg-white w-[90%]  py-10 space-y-10 rounded-md">
+            <Text className="text-[#5156BE] text-center mb-8 text-[20px]">
+              Modifier le mot de pass
+            </Text>
+            <View>
+              <Controller
+                control={control}
+                rules={{
+                  required: true,
+                  minLength: 6,
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                  <TextInput
+                    placeholder="Entrez l'ancien mot de passe"
+                    underlineColor={errors.motPassActuel ? "red" : "#5156BE"}
+                    activeUnderlineColor="#5156BE"
+                    className="rounded-md bg-white"
+                    onBlur={onBlur}
+                    secureTextEntry={secureTextEntry.password}
+                    // left={<TextInput.Icon icon="lock" />}
+                    right={
+                      <TextInput.Icon
+                        icon="eye"
+                        onPress={() => {
+                          setSecureTextEntry({
+                            ...secureTextEntry,
+                            password: !secureTextEntry.password,
+                          });
+                        }}
+                      />
+                    }
+                    onChangeText={onChange}
+                    value={value}
+                  />
+                )}
+                name="motPassActuel"
+              />
+              {errors.motPassActuel && (
+                <Text className="text-red-400">
+                  {errors.motPassActuel.type === "required"
+                    ? "Ce champ est obligatoire"
+                    : "Mot de pass invalide"}
+                </Text>
               )}
-              name="motPassActuel"
-            />
-            {errors.motPassActuel && (
-              <Text className="text-red-400">
-                {errors.motPassActuel.type === "required"
-                  ? "Ce champ est obligatoire"
-                  : "Mot de pass invalide"}
-              </Text>
-            )}
-            {error && <Text className="text-red-400">{error}</Text>}
-          </View>
+              {error && <Text className="text-red-400">{error}</Text>}
+            </View>
 
-          <View>
-            <Controller
-              control={control}
-              rules={{
-                minLength: 6,
-                required: true,
-                validate: (value) => value === watch("nvMotPass"),
-              }}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
-                  placeholder="Entrez le nouveau mot de passe"
-                  onBlur={onBlur}
-                  underlineColor={errors.nvMotPass ? "red" : "#5156BE"}
-                  activeUnderlineColor="#5156BE"
-                  className="rounded-md bg-white"
-                  secureTextEntry={secureTextEntry.newPassword}
-                  // left={<TextInput.Icon icon="lock" />}
-                  right={
-                    <TextInput.Icon
-                      icon="eye"
-                      onPress={() => {
-                        setSecureTextEntry({
-                          ...secureTextEntry,
-                          newPassword: !secureTextEntry.newPassword,
-                        });
-                      }}
-                    />
-                  }
-                  onChangeText={onChange}
-                  value={value}
-                />
+            <View>
+              <Controller
+                control={control}
+                rules={{
+                  minLength: 6,
+                  required: true,
+                  validate: (value) => value === watch("nvMotPass"),
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                  <TextInput
+                    placeholder="Entrez le nouveau mot de passe"
+                    onBlur={onBlur}
+                    underlineColor={errors.nvMotPass ? "red" : "#5156BE"}
+                    activeUnderlineColor="#5156BE"
+                    className="rounded-md bg-white"
+                    secureTextEntry={secureTextEntry.newPassword}
+                    // left={<TextInput.Icon icon="lock" />}
+                    right={
+                      <TextInput.Icon
+                        icon="eye"
+                        onPress={() => {
+                          setSecureTextEntry({
+                            ...secureTextEntry,
+                            newPassword: !secureTextEntry.newPassword,
+                          });
+                        }}
+                      />
+                    }
+                    onChangeText={onChange}
+                    value={value}
+                  />
+                )}
+                name="nvMotPass"
+              />
+              {errors.nvMotPass && (
+                <Text className="text-red-400">
+                  {errors.nvMotPass.type === "required"
+                    ? "Ce champ est obligatoire"
+                    : errors.nvMotPass.type === "minLength"
+                    ? "Mot de pass invalide"
+                    : errors.nvMotPass.type === "validate"
+                    ? "Les mots de pass ne sont pas identiques"
+                    : ""}
+                </Text>
               )}
-              name="nvMotPass"
-            />
-            {errors.nvMotPass && (
-              <Text className="text-red-400">
-                {errors.nvMotPass.type === "required"
-                  ? "Ce champ est obligatoire"
-                  : errors.nvMotPass.type === "minLength"
-                  ? "Mot de pass invalide"
-                  : errors.nvMotPass.type === "validate"
-                  ? "Les mots de pass ne sont pas identiques"
-                  : ""}
-              </Text>
-            )}
-            {error && <Text className="text-red-400">{error}</Text>}
-          </View>
-          <View>
-            <Controller
-              control={control}
-              rules={{
-                minLength: 6,
-                required: true,
-                validate: (value) => value === watch("nvMotPass"),
-              }}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
-                  placeholder="Confirmez le nouveau mot de passe"
-                  onBlur={onBlur}
-                  underlineColor={
-                    errors.nvMotPass_confirmation ? "red" : "#5156BE"
-                  }
-                  activeUnderlineColor="#5156BE"
-                  className="rounded-md bg-white"
-                  secureTextEntry={secureTextEntry.confirmNewPassword}
-                  // left={<TextInput.Icon icon="lock" />}
-                  right={
-                    <TextInput.Icon
-                      icon="eye"
-                      onPress={() => {
-                        setSecureTextEntry({
-                          ...secureTextEntry,
-                          confirmNewPassword:
-                            !secureTextEntry.confirmNewPassword,
-                        });
-                      }}
-                    />
-                  }
-                  onChangeText={onChange}
-                  value={value}
-                />
+              {error && <Text className="text-red-400">{error}</Text>}
+            </View>
+            <View>
+              <Controller
+                control={control}
+                rules={{
+                  minLength: 6,
+                  required: true,
+                  validate: (value) => value === watch("nvMotPass"),
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                  <TextInput
+                    placeholder="Confirmez le nouveau mot de passe"
+                    onBlur={onBlur}
+                    underlineColor={
+                      errors.nvMotPass_confirmation ? "red" : "#5156BE"
+                    }
+                    activeUnderlineColor="#5156BE"
+                    className="rounded-md bg-white"
+                    secureTextEntry={secureTextEntry.confirmNewPassword}
+                    // left={<TextInput.Icon icon="lock" />}
+                    right={
+                      <TextInput.Icon
+                        icon="eye"
+                        onPress={() => {
+                          setSecureTextEntry({
+                            ...secureTextEntry,
+                            confirmNewPassword:
+                              !secureTextEntry.confirmNewPassword,
+                          });
+                        }}
+                      />
+                    }
+                    onChangeText={onChange}
+                    value={value}
+                  />
+                )}
+                name="nvMotPass_confirmation"
+              />
+              {errors.nvMotPass_confirmation && (
+                <Text className="text-red-400">
+                  {errors.nvMotPass_confirmation.type === "required"
+                    ? "Ce champ est obligatoire"
+                    : errors.nvMotPass_confirmation.type === "minLength"
+                    ? "Mot de pass invalide"
+                    : errors.nvMotPass_confirmation.type === "validate"
+                    ? "Les mots de pass ne sont pas identiques"
+                    : ""}
+                </Text>
               )}
-              name="nvMotPass_confirmation"
-            />
-            {errors.nvMotPass_confirmation && (
-              <Text className="text-red-400">
-                {errors.nvMotPass_confirmation.type === "required"
-                  ? "Ce champ est obligatoire"
-                  : errors.nvMotPass_confirmation.type === "minLength"
-                  ? "Mot de pass invalide"
-                  : errors.nvMotPass_confirmation.type === "validate"
-                  ? "Les mots de pass ne sont pas identiques"
-                  : ""}
-              </Text>
-            )}
-            {error && <Text className="text-red-400">{error}</Text>}
-          </View>
-          <View>
-            <Pressable
-              className={
-                "flex rounded-md justify-center items-center p-5" +
-                (loadingForm ? " bg-[#d285be]" : " bg-[#5156BE]")
-              }
-              onPress={handleSubmit(onSubmit)}
-            >
-              <Text className="text-white text-[20px]">
-                {loadingForm ? "Chargement..." : "Modifier le mot de pass"}
-              </Text>
-            </Pressable>
+              {error && <Text className="text-red-400">{error}</Text>}
+            </View>
+            <View>
+              <Pressable
+                className={
+                  "flex rounded-md justify-center items-center p-5" +
+                  (loadingForm ? " bg-[#d285be]" : " bg-[#5156BE]")
+                }
+                onPress={handleSubmit(onSubmit)}
+              >
+                <Text className="text-white text-[20px]">
+                  {loadingForm ? "Chargement..." : "Modifier le mot de pass"}
+                </Text>
+              </Pressable>
+            </View>
           </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </Animated.View>
   );
 }
