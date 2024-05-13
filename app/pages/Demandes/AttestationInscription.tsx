@@ -7,7 +7,7 @@ import { Modal, Title } from "react-native-paper";
 import { useSelector } from "react-redux";
 import {
   demandeAttestation,
-  getAttestationInscriptionValues,
+  geAttestationValues,
 } from "state/Demandes/AttestationInscription/AttestationInscriptionActions";
 import { RootState, useAppDispatch } from "state/store";
 export default function AttestationInscription() {
@@ -16,7 +16,7 @@ export default function AttestationInscription() {
     (state: RootState) => state.attestationInscription
   );
   useEffect(() => {
-    dispatch(getAttestationInscriptionValues());
+    dispatch(geAttestationValues());
   }, []);
   return (
     <View className="space-y-5 flex items-center w-full">
@@ -54,7 +54,7 @@ export default function AttestationInscription() {
           </Text>
         </Pressable>
       </View>
-      <ScrollView className="w-full h-[50%]">
+      <ScrollView className="w-full h-[70%]">
         <View className="flex w-full">
           {status === "loading" && (
             <ActivityIndicator size="large" color="#5156BE" />
@@ -65,16 +65,6 @@ export default function AttestationInscription() {
             ))}
         </View>
       </ScrollView>
-      <View className="w-full">
-        <Text className="font-bold">Remarques</Text>
-        <Text>
-          L'attestation d'inscription est pour l'année en cours seulement
-        </Text>
-        <Text>
-          L'étudiant doit conserver l’original d'attestation d'inscription et
-          fournir une copie identique de l’original au besoin
-        </Text>
-      </View>
     </View>
   );
 }

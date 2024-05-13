@@ -1,5 +1,5 @@
 import { Alert, Text, View } from "react-native";
-import { TAttestationInscriptions } from "../../state/types";
+import { Inscriptions } from "../../state/types";
 import { IconButton } from "react-native-paper";
 import * as FileSystem from "expo-file-system";
 import { shareAsync } from "expo-sharing";
@@ -14,11 +14,42 @@ import { cancelDemandeAttestation } from "@state/Demandes/AttestationInscription
 import { Platform } from "react-native";
 
 export default function AttestationCard(props: {
-  data: TAttestationInscriptions;
+  data: Inscriptions;
 }) {
   const [expanded, setExpanded] = useState(false);
   const dispatch = useAppDispatch();
   const animatedHeight = useSharedValue(0);
+
+  interface StatusMap {
+    [key: string]: { text: string; color: string };
+  }
+
+  const statuts: StatusMap = {
+    "1": {
+      text: "En attente de traitement",
+      color: "#e0e1f3",
+    },
+    "2": {
+      text: "En cours de traitement",
+      color: "#FFA500",
+    },
+    "3": {
+      text: "Traitée",
+      color: "#D4FFEB",
+    },
+    "4": {
+      text: "Annulée",
+      color: "#FED4D5",
+    },
+    "5": {
+      text: "Signée électroniquement",
+      color: "#1E90FF",
+    },
+    "6": {
+      text: "Rejetée",
+      color: "#4B0082",
+    },
+  };
 
   async function saveFile(uri: string, filename: string, mimetype: string) {
     if (Platform.OS === "android") {
@@ -66,7 +97,10 @@ export default function AttestationCard(props: {
   });
 
   return (
-    <View className="rounded-lg relative bg-[#e0e1f3] p-5 my-2">
+    <View
+      className="rounded-lg relative p-5 my-2"
+      style={{ backgroundColor: statuts[props.data.etat_dem]?.color }}
+    >
       <View className="">
         <Text>Demande envoyée au responsable scoalrité</Text>
       </View>
@@ -95,13 +129,20 @@ export default function AttestationCard(props: {
         </View>
         <View className="flex flex-row space-x-5 ">
           <Text>Statut :</Text>
-          {props.data.etat_dem === "4" && (
-            <Text className="text-red-500">Annulée</Text>
-          )}
+          <Text className="text-red-500">
+            {statuts[props.data.etat_dem]?.text}
+          </Text>
         </View>
         {props.data.etat_dem !== "4" && (
           <View className="flex flex-row space-x-5  items-center ">
             <Text>Actions :</Text>
+            {expanded && (
+              <Text>
+                {props.data.etat_dem === "1"
+                  ? "Annuler la demande"
+                  : "Télécharger l'attestation"}
+              </Text>
+            )}
             {expanded && (
               <IconButton
                 size={20}
@@ -152,7 +193,7 @@ export default function AttestationCard(props: {
                             const fileUri =
                               FileSystem.documentDirectory + filename;
 
-                              FileSystem.downloadAsync(uri, fileUri, {})
+                            FileSystem.downloadAsync(uri, fileUri, {})
                               .then((result) => {
                                 saveFile(
                                   result.uri,

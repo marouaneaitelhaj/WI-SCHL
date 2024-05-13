@@ -3,7 +3,7 @@ import {
   cancelDemandeAttestation,
   demandeAttestation,
   geAttestationValues,
-} from "./AttestationInscriptionActions";
+} from "./AttestationScolariteActions";
 import { TAttestation } from "../../types";
 
 const initialState = {
@@ -13,8 +13,8 @@ const initialState = {
 };
 
 // Slice
-const attestationInscriptionSlice = createSlice({
-  name: "AttestationInscription",
+const attestationScolariteSlice = createSlice({
+  name: "AttestationScolarite",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -61,4 +61,4 @@ const attestationInscriptionSlice = createSlice({
   },
 });
 
-export default attestationInscriptionSlice.reducer;
+export default attestationScolariteSlice.reducer;

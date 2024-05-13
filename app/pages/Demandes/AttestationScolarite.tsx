@@ -1,15 +1,29 @@
-import { View, Text, Pressable, Alert } from "react-native";
+import { enableGoBack } from "@state/TopBar/TopBarSlice";
+import AttestationCard from "app/components/AttestationCard";
+import { useEffect } from "react";
+import { ActivityIndicator } from "react-native";
+import { View, Text, Pressable, Alert, ScrollView } from "react-native";
 import { Modal, Title } from "react-native-paper";
-export default function AttestationInscription() {
+import { useSelector } from "react-redux";
+import {
+  demandeAttestation,
+  geScolariteValues,
+} from "state/Demandes/AttestationScolarite/AttestationScolariteActions";
+import { RootState, useAppDispatch } from "state/store";
+export default function AttestationScolarite() {
+  const dispatch = useAppDispatch();
+  const { data, status } = useSelector(
+    (state: RootState) => state.attestationScolarite
+  );
+  useEffect(() => {
+    dispatch(geScolariteValues());
+  }, []);
   return (
-    <View className="flex justify-center">
+    <View className="space-y-5 flex items-center w-full">
       <Title className="text-center font-bold">Attestations de scolarité</Title>
-      <View className="flex items-center space-y-5 my-10">
-        <Text className="text-center">
-          Mes demandes d'attestations de scolarité
-        </Text>
+      <View className="flex  w-full items-center">
         <Pressable
-          className="flex  rounded-md w-[90%] justify-center items-center  p-5 bg-[#5156BE]"
+          className="flex  rounded-md w-[100%] justify-center items-center  p-5 bg-[#5156BE]"
           onPress={() => {
             Alert.alert(
               "Envoyer la demande",
@@ -23,8 +37,12 @@ export default function AttestationInscription() {
                   text: "Confirmer et Envoyer",
                   style: "destructive",
                   onPress: () => {
-                    // dispatch(logout());
-                    // dispatch(closeTopBar());
+                    dispatch(demandeAttestation()).then((res) => {
+                      Alert.alert(
+                        "Demande envoyée",
+                        "Votre demande a été envoyée avec succès"
+                      );
+                    });
                   },
                 },
               ]
@@ -36,15 +54,17 @@ export default function AttestationInscription() {
           </Text>
         </Pressable>
       </View>
-      <Text>Demande est en cours de traitement</Text>
-      <Text className="font-bold">Remarques</Text>
-      <Text>
-        L'attestation de scolarité est pour l'année en cours seulement
-      </Text>
-      <Text>
-        L'étudiant doit conserver l’original d'attestation scolaire et fournir
-        une copie identique de l’original au besoin
-      </Text>
+      <ScrollView className="w-full h-[70%]">
+        <View className="flex w-full">
+          {status === "loading" && (
+            <ActivityIndicator size="large" color="#5156BE" />
+          )}
+          {status !== "loading" &&
+            data.map((item) => (
+              <AttestationCard key={item.num_dem} data={item} />
+            ))}
+        </View>
+      </ScrollView>
     </View>
   );
 }

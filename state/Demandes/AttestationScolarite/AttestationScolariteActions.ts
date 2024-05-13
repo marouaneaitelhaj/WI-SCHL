@@ -4,11 +4,11 @@ import { TAttestation } from "@state/types";
 import axios from "axios";
 
 export const geAttestationValues = createAsyncThunk<TAttestation[], void>(
-  "attestationInscription/geAttestationValues",
+  "attestationScolarite/geAttestationValues",
   async () => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.get(
-      "http://ensemc.irma-prod.net/api/etudiant/attestation-inscription",
+      "http://ensemc.irma-prod.net/api/etudiant/attestation-scolarite",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -16,16 +16,16 @@ export const geAttestationValues = createAsyncThunk<TAttestation[], void>(
       }
     );
 
-    return response.data.demAttestationInscriptions as TAttestation[];
+    return response.data.demAttestationScolarites as TAttestation[];
   }
 );
 
 export const demandeAttestation = createAsyncThunk<TAttestation, void>(
-  "attestationInscription/demandeAttestation",
+  "attestationScolarite/demandeAttestation",
   async (_, api) => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.post(
-      "http://ensemc.irma-prod.net/api/etudiant/attestation-inscription/save-demande",
+      "http://ensemc.irma-prod.net/api/etudiant/attestation-scolarite/save-demande",
       {},
       {
         headers: {
@@ -39,11 +39,11 @@ export const demandeAttestation = createAsyncThunk<TAttestation, void>(
 );
 
 export const cancelDemandeAttestation = createAsyncThunk<string, string>(
-  "attestationInscription/cancelDemandeAttestation",
+  "attestationScolarite/cancelDemandeAttestation",
   async (id: string) => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.post(
-      "http://ensemc.irma-prod.net/api/etudiant/attestation-inscription/change-statut",
+      "http://ensemc.irma-prod.net/api/etudiant/attestation-scolarite/change-statut",
       {
         num_dem: id,
       },
