@@ -8,7 +8,7 @@ export const getDemandes = createAsyncThunk<TDemande[], void>(
   async () => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.get(
-      "http://ensemc.irma-prod.net/api/etudiant/carte-etudiant",
+      "http://ensemc.irma-prod.net/api/etudiant/attestation-inscription",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -25,7 +25,7 @@ export const createDemande = createAsyncThunk<TDemande, void>(
   async (_, api) => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.post(
-      "http://ensemc.irma-prod.net/api/etudiant/carte-etudiant/save-demande",
+      "http://ensemc.irma-prod.net/api/etudiant/attestation-inscription/save-demande",
       {},
       {
         headers: {
@@ -43,7 +43,7 @@ export const cancelDemande = createAsyncThunk<string, string>(
   async (id: string) => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.post(
-      "http://ensemc.irma-prod.net/api/etudiant/carte-etudiant/change-statut",
+      "http://ensemc.irma-prod.net/api/etudiant/attestation-inscription/change-statut",
       {
         num_dem: id,
       },

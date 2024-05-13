@@ -4,11 +4,11 @@ import { TDemande } from "@state/types";
 import axios from "axios";
 
 export const getDemandes = createAsyncThunk<TDemande[], void>(
-  "carteEtudiant/getDemandes",
+  "conventionStage/getDemandes",
   async () => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.get(
-      "http://ensemc.irma-prod.net/api/etudiant/carte-etudiant",
+      "http://ensemc.irma-prod.net/api/etudiant/convention-stage",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -21,11 +21,11 @@ export const getDemandes = createAsyncThunk<TDemande[], void>(
 );
 
 export const createDemande = createAsyncThunk<TDemande, void>(
-  "carteEtudiant/createDemande",
+  "conventionStage/createDemande",
   async (_, api) => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.post(
-      "http://ensemc.irma-prod.net/api/etudiant/carte-etudiant/save-demande",
+      "http://ensemc.irma-prod.net/api/etudiant/convention-stage/save-demande",
       {},
       {
         headers: {
@@ -39,11 +39,11 @@ export const createDemande = createAsyncThunk<TDemande, void>(
 );
 
 export const cancelDemande = createAsyncThunk<string, string>(
-  "carteEtudiant/cancelDemande",
+  "conventionStage/cancelDemande",
   async (id: string) => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.post(
-      "http://ensemc.irma-prod.net/api/etudiant/carte-etudiant/change-statut",
+      "http://ensemc.irma-prod.net/api/etudiant/convention-stage/change-statut",
       {
         num_dem: id,
       },
