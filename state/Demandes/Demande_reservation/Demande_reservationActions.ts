@@ -5,7 +5,7 @@ import axios from "axios";
 
 export const getDemandes = createAsyncThunk<{
   demandes : TDemande[],
-  salles : Tsalle[]
+  salles : { [key: string]: Tsalle[]; }
 }, void>(
   "demande_reservation/getDemandes",
   async () => {
@@ -21,7 +21,7 @@ export const getDemandes = createAsyncThunk<{
 
     return {
       demandes : response.data.demReservation as TDemande[],
-      salles : response.data.salles as Tsalle[]
+      salles : response.data.salles as { [key: string]: Tsalle[]; }
     }
   }
 );
