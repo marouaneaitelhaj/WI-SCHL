@@ -6,8 +6,8 @@ import { View, Text, Pressable, Alert, ScrollView } from "react-native";
 import { Modal, Title } from "react-native-paper";
 import { useSelector } from "react-redux";
 import {
-  demandeAttestation,
-  geAttestationValues,
+  createDemande,
+  getDemandes,
 } from "state/Demandes/AttestationInscription/AttestationInscriptionActions";
 import { RootState, useAppDispatch } from "state/store";
 export default function RetraitDiplome() {
@@ -16,7 +16,7 @@ export default function RetraitDiplome() {
     (state: RootState) => state.attestationInscription
   );
   useEffect(() => {
-    dispatch(geAttestationValues());
+    dispatch(getDemandes());
   }, []);
   return (
     <View className="space-y-5 flex items-center w-full">
@@ -37,7 +37,7 @@ export default function RetraitDiplome() {
                   text: "Confirmer et Envoyer",
                   style: "destructive",
                   onPress: () => {
-                    dispatch(demandeAttestation()).then((res) => {
+                    dispatch(createDemande()).then((res) => {
                       Alert.alert(
                         "Demande envoyée",
                         "Votre demande a été envoyée avec succès"

@@ -1,10 +1,10 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { TAttestation } from "@state/types";
+import { TDemande } from "@state/types";
 import axios from "axios";
 
-export const geAttestationValues = createAsyncThunk<TAttestation[], void>(
-  "attestationReussite/geAttestationValues",
+export const getDemandes = createAsyncThunk<TDemande[], void>(
+  "attestationReussite/getDemandes",
   async () => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.get(
@@ -16,12 +16,12 @@ export const geAttestationValues = createAsyncThunk<TAttestation[], void>(
       }
     );
 
-    return response.data.demAttestationReussites as TAttestation[];
+    return response.data.demAttestationReussites as TDemande[];
   }
 );
 
-export const demandeAttestation = createAsyncThunk<TAttestation, void>(
-  "attestationReussite/demandeAttestation",
+export const createDemande = createAsyncThunk<TDemande, void>(
+  "attestationReussite/createDemande",
   async (_, api) => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.post(
@@ -33,13 +33,13 @@ export const demandeAttestation = createAsyncThunk<TAttestation, void>(
         },
       }
     );
-    api.dispatch(geAttestationValues());
+    api.dispatch(getDemandes());
     return response.data.demAtt;
   }
 );
 
-export const cancelDemandeAttestation = createAsyncThunk<string, string>(
-  "attestationReussite/cancelDemandeAttestation",
+export const cancelDemande = createAsyncThunk<string, string>(
+  "attestationReussite/cancelDemande",
   async (id: string) => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.post(

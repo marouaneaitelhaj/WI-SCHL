@@ -1,13 +1,13 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import {
-  cancelDemandeAttestation,
-  demandeAttestation,
-  geAttestationValues,
+  cancelDemande,
+  createDemande,
+  getDemandes,
 } from "./AttestationReussiteActions";
-import { TAttestation } from "../../types";
+import { TDemande } from "../../types";
 
 const initialState = {
-  data: [] as TAttestation[],
+  data: [] as TDemande[],
   status: "idle",
   error: null,
 };
@@ -19,38 +19,38 @@ const attestationReussiteSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(geAttestationValues.pending, (state) => {
+      .addCase(getDemandes.pending, (state) => {
         state.status = "loading";
       })
       .addCase(
-        geAttestationValues.fulfilled,
-        (state, action: { payload: TAttestation[] }) => {
+        getDemandes.fulfilled,
+        (state, action: { payload: TDemande[] }) => {
           state.status = "succeeded";
           state.data = action.payload;
         }
       )
       .addCase(
-        geAttestationValues.rejected,
+        getDemandes.rejected,
         (state, action: PayloadAction<any>) => {
           state.status = "failed";
           state.error = action.payload;
         }
       )
-      .addCase(demandeAttestation.pending, (state) => {
+      .addCase(createDemande.pending, (state) => {
         state.status = "loading";
       })
       .addCase(
-        demandeAttestation.fulfilled,
-        (state, action: PayloadAction<TAttestation>) => {
+        createDemande.fulfilled,
+        (state, action: PayloadAction<TDemande>) => {
           state.status = "succeeded";
         }
       )
       .addCase(
-        demandeAttestation.rejected,
+        createDemande.rejected,
         (state, action: PayloadAction<any>) => {
           state.status = "failed";
         }
-      ).addCase(cancelDemandeAttestation.fulfilled, (state, action) => {
+      ).addCase(cancelDemande.fulfilled, (state, action) => {
         state.data = state.data.map((item) => {
           if (item.num_dem === action.payload) {
             return { ...item, etat_dem: "4" };

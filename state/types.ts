@@ -177,7 +177,7 @@ export type Tannonce = {
   annonce_title: string;
 };
 
-export type TAttestation = {
+export type TDemande = {
   num_dem: string;
   anneUniversitaire: string;
   etat_dem: string;

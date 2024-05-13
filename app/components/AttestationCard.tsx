@@ -10,7 +10,7 @@ import Animated, {
   useSharedValue,
 } from "react-native-reanimated";
 import { useAppDispatch } from "@state/store";
-import { cancelDemandeAttestation } from "@state/Demandes/AttestationInscription/AttestationInscriptionActions";
+import { cancelDemande } from "@state/Demandes/AttestationInscription/AttestationInscriptionActions";
 import { Platform } from "react-native";
 
 export default function AttestationCard(props: {
@@ -162,7 +162,7 @@ export default function AttestationCard(props: {
                           style: "destructive",
                           onPress: () => {
                             dispatch(
-                              cancelDemandeAttestation(props.data.num_dem)
+                              cancelDemande(props.data.num_dem)
                             ).then((res) => {
                               Alert.alert(
                                 "Demande annulée",

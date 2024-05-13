@@ -6,7 +6,7 @@ import { View, Text, Pressable, Alert, ScrollView } from "react-native";
 import { Modal, Title } from "react-native-paper";
 import { useSelector } from "react-redux";
 import {
-  demandeAttestation,
+  createDemande,
   geScolariteValues,
 } from "state/Demandes/AttestationScolarite/AttestationScolariteActions";
 import { RootState, useAppDispatch } from "state/store";
@@ -37,7 +37,7 @@ export default function AttestationScolarite() {
                   text: "Confirmer et Envoyer",
                   style: "destructive",
                   onPress: () => {
-                    dispatch(demandeAttestation()).then((res) => {
+                    dispatch(createDemande()).then((res) => {
                       Alert.alert(
                         "Demande envoyée",
                         "Votre demande a été envoyée avec succès"
