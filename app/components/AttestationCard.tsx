@@ -11,11 +11,13 @@ import Animated, {
   useSharedValue,
 } from "react-native-reanimated";
 import { useAppDispatch } from "@state/store";
-import { cancelDemande } from "@state/Demandes/AttestationInscription/AttestationInscriptionActions";
 import { Platform } from "react-native";
+import { AsyncThunk } from "@reduxjs/toolkit";
+import { AsyncThunkConfig } from "@reduxjs/toolkit/dist/createAsyncThunk";
 
 export default function AttestationCard(props: {
   data: TDemande;
+  cancelDemande: AsyncThunk<string, string, AsyncThunkConfig>
 }) {
   const [expanded, setExpanded] = useState(false);
   const dispatch = useAppDispatch();
@@ -132,7 +134,7 @@ export default function AttestationCard(props: {
                           style: "destructive",
                           onPress: () => {
                             dispatch(
-                              cancelDemande(props.data.num_dem)
+                              props.cancelDemande(props.data.num_dem)
                             ).then((res) => {
                               Alert.alert(
                                 "Demande annulée",

@@ -7,6 +7,7 @@ import { Modal, Title } from "react-native-paper";
 import { useSelector } from "react-redux";
 import {
   createDemande,
+  cancelDemande,
   getDemandes,
 } from "state/Demandes/CarteEtudiant/CarteEtudiantActions";
 import { RootState, useAppDispatch } from "state/store";
@@ -61,7 +62,7 @@ export default function CarteEtudiant() {
           )}
           {status !== "loading" &&
             data.map((item) => (
-              <AttestationCard key={item.num_dem} data={item} />
+              <AttestationCard  cancelDemande={cancelDemande} key={item.num_dem} data={item} />
             ))}
         </View>
       </ScrollView>
