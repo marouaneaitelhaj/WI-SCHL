@@ -22,6 +22,18 @@ export default function ConventionStage() {
   return (
     <View className="space-y-5 flex items-center w-full">
       <Title className="text-center font-bold uppercase">Conventions de stage</Title>
+      
+      <ScrollView className="w-full h-[70%]">
+        <View className="flex w-full">
+          {status === "loading" && (
+            <ActivityIndicator size="large" color="#5156BE" />
+          )}
+          {status !== "loading" &&
+            data.map((item) => (
+              <AttestationCard  cancelDemande={cancelDemande} key={item.num_dem} data={item} />
+            ))}
+        </View>
+      </ScrollView>
       <View className="flex  w-full items-center">
         <Pressable
           className="flex  rounded-md w-[100%] justify-center items-center  p-5 bg-[#5156BE]"
@@ -63,17 +75,6 @@ export default function ConventionStage() {
           </Text>
         </Pressable>
       </View>
-      <ScrollView className="w-full h-[70%]">
-        <View className="flex w-full">
-          {status === "loading" && (
-            <ActivityIndicator size="large" color="#5156BE" />
-          )}
-          {status !== "loading" &&
-            data.map((item) => (
-              <AttestationCard  cancelDemande={cancelDemande} key={item.num_dem} data={item} />
-            ))}
-        </View>
-      </ScrollView>
     </View>
   );
 }

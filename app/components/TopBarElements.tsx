@@ -13,6 +13,7 @@ import { COLORS } from "../../static/colors";
 const data = [
   { key: "/pages/Accueil", text: "Accueil", icon: "home-circle" },
   { key: "/pages/Demandes", text: "Demandes", icon: "inbox" },
+  { key: "/pages/Notes", text: "Notes", icon: "numeric" },
   { key: "/pages/Absences", text: "Absences", icon: "table-account" },
   { key: "/pages/Emploi", text: "Emploi", icon: "clock-time-eight" },
   { key: "/pages/annonces", text: "Annonces", icon: "bullhorn" },
@@ -48,7 +49,7 @@ export default function TopBarElements() {
               dispatch(toggleTopBar());
             }}
           />
-          <Text className="text-[#5156BE]">{item.text}</Text>
+          <Text className="text-[#5156BE] uppercase">{item.text}</Text>
         </View>
       ))}
       <View className="flex  w-1/3 items-center" key={"logout"}>

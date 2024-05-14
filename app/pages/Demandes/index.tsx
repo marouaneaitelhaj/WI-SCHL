@@ -65,7 +65,7 @@ export default function Demandes() {
     <ScrollView className="flex flex-col" showsVerticalScrollIndicator={false}>
       <View className="flex pb-64 flex-row flex-wrap">
         {data.map((item, index) => (
-          <View className="flex my-4 w-1/3 items-center " key={index}>
+          <View className="flex my-4 w-1/3 items-center" key={index}>
             <IconButton
               className={"border-2 border-[ " + COLORS.primaryColor + +"]"}
               style={{
@@ -80,7 +80,7 @@ export default function Demandes() {
                 router.push(item.key as never);
               }}
             />
-            <Text className="text-[#5156BE] text-center">{item.text}</Text>
+            <Text className="text-[#5156BE] text-center font-bold uppercase">{item.text}</Text>
           </View>
         ))}
       </View>

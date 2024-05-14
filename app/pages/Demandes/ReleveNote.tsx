@@ -13,15 +13,28 @@ import {
 import { RootState, useAppDispatch } from "state/store";
 export default function ReleveNote() {
   const dispatch = useAppDispatch();
-  const { data, status } = useSelector(
-    (state: RootState) => state.releveNote
-  );
+  const { data, status } = useSelector((state: RootState) => state.releveNote);
   useEffect(() => {
     dispatch(getDemandes());
   }, []);
   return (
     <View className="space-y-5 flex items-center w-full">
       <Title className="text-center font-bold uppercase">Relevé de notes</Title>
+      <ScrollView className="w-full h-[70%]">
+        <View className="flex w-full">
+          {status === "loading" && (
+            <ActivityIndicator size="large" color="#5156BE" />
+          )}
+          {status !== "loading" &&
+            data.map((item) => (
+              <AttestationCard
+                cancelDemande={cancelDemande}
+                key={item.num_dem}
+                data={item}
+              />
+            ))}
+        </View>
+      </ScrollView>
       <View className="flex  w-full items-center">
         <Pressable
           className="flex  rounded-md w-[100%] justify-center items-center  p-5 bg-[#5156BE]"
@@ -38,21 +51,22 @@ export default function ReleveNote() {
                   text: "Confirmer et Envoyer",
                   style: "destructive",
                   onPress: () => {
-                    dispatch(createDemande()).unwrap().then((res) => {
-                      console.log(res);
-                      
-                      
-                      Alert.alert(
-                        "Demande envoyée",
-                        "Votre demande a été envoyée avec succès"
-                      );
-                    }).catch((err) => {
-                      
-                      Alert.alert(
-                        "Erreur",
-                        "Une erreur s'est produite lors de l'envoi de la demande"
-                      );
-                    });
+                    dispatch(createDemande())
+                      .unwrap()
+                      .then((res) => {
+                        console.log(res);
+
+                        Alert.alert(
+                          "Demande envoyée",
+                          "Votre demande a été envoyée avec succès"
+                        );
+                      })
+                      .catch((err) => {
+                        Alert.alert(
+                          "Erreur",
+                          "Une erreur s'est produite lors de l'envoi de la demande"
+                        );
+                      });
                   },
                 },
               ]
@@ -64,17 +78,6 @@ export default function ReleveNote() {
           </Text>
         </Pressable>
       </View>
-      <ScrollView className="w-full h-[70%]">
-        <View className="flex w-full">
-          {status === "loading" && (
-            <ActivityIndicator size="large" color="#5156BE" />
-          )}
-          {status !== "loading" &&
-            data.map((item) => (
-              <AttestationCard  cancelDemande={cancelDemande} key={item.num_dem} data={item} />
-            ))}
-        </View>
-      </ScrollView>
     </View>
   );
 }
