@@ -26,6 +26,7 @@ const ReleveNoteSlice = createSlice({
         getDemandes.fulfilled,
         (state, action: { payload: TDemande[] }) => {
           state.status = "succeeded";
+          console.log(action.payload);
           state.data = action.payload;
         }
       )

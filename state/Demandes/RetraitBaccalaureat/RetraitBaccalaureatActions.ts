@@ -20,13 +20,15 @@ export const getDemandes = createAsyncThunk<TDemande[], void>(
   }
 );
 
-export const createDemande = createAsyncThunk<TDemande, void>(
+export const createDemande = createAsyncThunk<TDemande, number>(
   "retraitBaccalaureat/createDemande",
-  async (_, api) => {
+  async (typeRetBac, api) => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.post(
       "http://ensemc.irma-prod.net/api/etudiant/retrait-baccalaureat/save-demande",
-      {},
+      {
+        "typeRetBac" : typeRetBac
+      },
       {
         headers: {
           Authorization: `Bearer ${token}`,

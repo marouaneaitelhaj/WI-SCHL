@@ -39,6 +39,7 @@ export default function ReleveNote() {
                   style: "destructive",
                   onPress: () => {
                     dispatch(createDemande()).unwrap().then((res) => {
+                      console.log(res);
                       
                       
                       Alert.alert(

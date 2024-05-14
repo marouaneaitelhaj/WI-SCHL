@@ -15,7 +15,7 @@ export const getDemandes = createAsyncThunk<TDemande[], void>(
         },
       }
     );
-
+    
     return response.data.demRelveNote as TDemande[];
   }
 );
@@ -33,8 +33,9 @@ export const createDemande = createAsyncThunk<TDemande, void>(
         },
       }
     );
+    
     api.dispatch(getDemandes());
-    return response.data.demAtt;
+    return response.data.demRelveNote;
   }
 );
 
