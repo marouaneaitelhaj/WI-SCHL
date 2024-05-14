@@ -186,3 +186,11 @@ export type TDemande = {
   inscription_id: string;
   file : string;
 };
+
+
+export type Tfiliere = {
+  id: string;
+  code: string;
+  libelle_fr: string;
+  pole_id: string;
+};

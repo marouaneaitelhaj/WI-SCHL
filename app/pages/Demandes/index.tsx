@@ -1,11 +1,9 @@
-import { Alert, ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { IconButton } from "react-native-paper";
 import { router } from "expo-router";
-import Animated, { SlideInUp, SlideOutUp } from "react-native-reanimated";
 import { COLORS } from "static/colors";
 import { useAppDispatch } from "state/store";
-import { closeTopBar, enableGoBack, toggleTopBar } from "state/TopBar/TopBarSlice";
-import { logout } from "state/Auth/AuthSlice";
+import { enableGoBack } from "state/TopBar/TopBarSlice";
 
 export default function Demandes() {
   const data = [
@@ -29,7 +27,11 @@ export default function Demandes() {
       text: "Conventions de stage",
       icon: "file-document",
     },
-    { key: "/pages/Demandes/ReleveNote", text: "Relevé de notes", icon: "file-document" },
+    {
+      key: "/pages/Demandes/ReleveNote",
+      text: "Relevé de notes",
+      icon: "file-document",
+    },
     {
       key: "/pages/Demandes/RetraitDiplome",
       text: "Retrait de diplôme",
@@ -40,7 +42,11 @@ export default function Demandes() {
       text: "Retrait du Baccalauréat",
       icon: "file-document",
     },
-    { key: "/pages/Demandes/CarteEtudiant", text: "Carte d'étudiant", icon: "file-document" },
+    {
+      key: "/pages/Demandes/CarteEtudiant",
+      text: "Carte d'étudiant",
+      icon: "file-document",
+    },
     {
       key: "/pages/Demandes/ChangementFiliere",
       text: "Changement de filière",

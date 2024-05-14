@@ -4,12 +4,13 @@ import {
   createDemande,
   getDemandes,
 } from "./ChangementFiliereActions";
-import { TDemande } from "../../types";
+import { TDemande, Tfiliere } from "../../types";
 
 const initialState = {
   data: [] as TDemande[],
   status: "idle",
   error: null,
+  filieres: [] as Tfiliere[],
 };
 
 // Slice
@@ -24,9 +25,10 @@ const ChangementFiliereSlice = createSlice({
       })
       .addCase(
         getDemandes.fulfilled,
-        (state, action: { payload: TDemande[] }) => {
+        (state, action: { payload: {filieres : Tfiliere[], dem_changement_filiere : TDemande[]} }) => {
           state.status = "succeeded";
-          state.data = action.payload;
+          state.data = action.payload.dem_changement_filiere;
+          state.filieres = action.payload.filieres;
         }
       )
       .addCase(

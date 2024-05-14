@@ -1,9 +1,11 @@
-import Animated, { SlideInRight, SlideOutLeft } from "react-native-reanimated";
 import { View, Text, Alert, Pressable } from "react-native";
 import { Controller, useForm } from "react-hook-form";
-import { SelectList } from "react-native-dropdown-select-list";
 import { TextInput } from "react-native-paper";
-import { Dispatch, SetStateAction } from "react";
+import { SelectList } from "react-native-dropdown-select-list";
+import { RootState, useAppDispatch } from "@state/store";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { createDemande } from "@state/Demandes/ChangementFiliere/ChangementFiliereActions";
 
 export default function ChangementFiliereForm() {
   const {
@@ -22,15 +24,67 @@ export default function ChangementFiliereForm() {
     },
   });
 
-  const data = [
-    { key: "1", value: "Mobiles", disabled: true },
-    { key: "2", value: "Appliances" },
-    { key: "3", value: "Cameras" },
-    { key: "4", value: "Computers", disabled: true },
-    { key: "5", value: "Vegetables" },
-    { key: "6", value: "Diary Products" },
-    { key: "7", value: "Drinks" },
-  ];
+  const { filieres } = useSelector(
+    (state: RootState) => state.changementFiliere
+  );
+
+  const dispatch = useAppDispatch();
+
+  const [data, setData] = useState([] as any);
+
+  useEffect(() => {
+    const newData = filieres.map((item) => {
+      return {
+        key: item.id,
+        value: item.code,
+      };
+    });
+    setData(newData);
+  }, [filieres]);
+
+  // submit
+  const onSubmit = (data: any) => {
+    Alert.alert(
+      "Envoyer la demande",
+      "Êtes-vous sûr de vouloir créer cette demande ?",
+      [
+        {
+          text: "Annuler",
+          style: "cancel",
+        },
+        {
+          text: "Confirmer et Envoyer",
+          style: "destructive",
+          onPress: () => {
+            dispatch(createDemande(data))
+              .unwrap()
+              .then((res) => {
+                Alert.alert(
+                  "Demande envoyée",
+                  "Votre demande a été envoyée avec succès"
+                );
+              })
+              .catch((err) => {
+                Alert.alert(
+                  "Erreur",
+                  "Une erreur s'est produite lors de l'envoi de la demande"
+                );
+              });
+          },
+        },
+      ]
+    );
+  };
+
+  // const data = [
+  //   { key: "1", value: "Mobiles", disabled: true },
+  //   { key: "2", value: "Appliances" },
+  //   { key: "3", value: "Cameras" },
+  //   { key: "4", value: "Computers", disabled: true },
+  //   { key: "5", value: "Vegetables" },
+  //   { key: "6", value: "Diary Products" },
+  //   { key: "7", value: "Drinks" },
+  // ];
 
   return (
     <View className="bg-white p-5 flex items-center ">
@@ -39,22 +93,7 @@ export default function ChangementFiliereForm() {
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
             <SelectList
-              setSelected={(val: any) => {
-                setValue("filiere", val);
-              }}
-              boxStyles={{
-                borderColor: "#5156BE",
-                borderWidth: 1,
-                borderRadius: 5,
-                padding: 10,
-                backgroundColor: "white",
-              }}
-              inputStyles={{
-                color: "black",
-                fontSize: 16,
-                padding: 0,
-                borderColor: "#5156BE",
-              }}
+              setSelected={(val: any) => setValue("filiere", val)}
               data={data}
               save="value"
             />
@@ -93,26 +132,7 @@ export default function ChangementFiliereForm() {
       <View className="flex justify-center flex-row space-x-5">
         <Pressable
           className="flex  rounded-md w-[100%] justify-center items-center  p-3 bg-[#5156BE]"
-          onPress={handleSubmit((data) => {
-            Alert.alert(
-              "Envoyer la demande",
-              "Êtes-vous sûr de vouloir créer cette demande ?",
-              [
-                {
-                  text: "Annuler",
-                  style: "cancel",
-                },
-                {
-                  text: "Confirmer et Envoyer",
-                  style: "destructive",
-                  onPress: () => {
-                    // dispatch(logout());
-                    // dispatch(closeTopBar());
-                  },
-                },
-              ]
-            );
-          })}
+          onPress={handleSubmit(onSubmit)}
         >
           <Text className="text-white text-center text-xs">Envoyer</Text>
         </Pressable>
