@@ -43,10 +43,18 @@ export default function Demande_reservation() {
                   text: "Confirmer et Envoyer",
                   style: "destructive",
                   onPress: () => {
-                    dispatch(createDemande()).then((res) => {
+                    dispatch(createDemande()).unwrap().then((res) => {
+                      console.log(res);
+                      
                       Alert.alert(
                         "Demande envoyée",
                         "Votre demande a été envoyée avec succès"
+                      );
+                    }).catch((err) => {
+                      console.log(err);
+                      Alert.alert(
+                        "Erreur",
+                        "Une erreur s'est produite lors de l'envoi de la demande"
                       );
                     });
                   },
