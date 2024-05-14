@@ -16,7 +16,7 @@ import {
 } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config";
 import { Icon } from "react-native-paper";
-import { Platform } from "react-native";
+import { Platform, Pressable, View } from "react-native";
 
 type MyModalProps = {
   children: any;
@@ -43,14 +43,20 @@ export default function MyModal({
         }}
         height={Platform.OS === "web" ? "auto" : "90%"}
       >
+        <Pressable onPress={() => {
+          console.log("pressed");
+          
+          close();
+        }} className="h-screen absolute w-screen bg-[#000005] opacity-50 my-10"></Pressable>
         {/* <ModalBackdrop /> */}
         <ModalContent>
           <ModalHeader>
-            <VStack space="sm">
-              <Heading size="lg">
-                <Text>{title}</Text>
-              </Heading>
-            </VStack>
+            <Heading size="lg">
+              <Text>{title}</Text>
+            </Heading>
+            <ModalCloseButton>
+              <Icon size={20} source={"close"} />
+            </ModalCloseButton>
           </ModalHeader>
           <ModalBody>{children}</ModalBody>
         </ModalContent>

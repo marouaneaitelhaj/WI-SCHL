@@ -59,7 +59,7 @@ export default function ChangementFiliere() {
         close={() => {
           setShowModal(false);
         }}
-        title=""
+        title="Changement de filière"
       >
         <ChangementFiliereForm />
       </Modal>
