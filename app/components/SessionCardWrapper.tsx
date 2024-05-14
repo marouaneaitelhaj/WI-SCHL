@@ -6,18 +6,16 @@ import Animated, {
   useSharedValue,
 } from "react-native-reanimated";
 import ModuleCardWrapper from "./ModuleCardWrapper";
+import { Pressable } from "react-native";
 
 export default function AbsenceCardWrapper() {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <View className="bg-[#e0e1f3] my-3 rounded-md">
+    <Pressable onPress={() => { setExpanded(!expanded); }} className="bg-[#e0e1f3] my-3 rounded-md">
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <IconButton
           icon={expanded ? "chevron-up" : "chevron-down"}
-          onPress={() => {
-            setExpanded(!expanded);
-          }}
         />
         <Text>1st Session</Text>
       </View>
@@ -29,6 +27,6 @@ export default function AbsenceCardWrapper() {
           <ModuleCardWrapper />
         </Animated.View>
       )}
-    </View>
+    </Pressable>
   );
 }
