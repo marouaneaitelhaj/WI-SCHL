@@ -17,7 +17,7 @@ export default function AbsenceCardWrapper() {
         <IconButton
           icon={expanded ? "chevron-up" : "chevron-down"}
         />
-        <Text>1st Session</Text>
+        <Text>1st Semestre</Text>
       </View>
       {expanded && (
         <Animated.View>

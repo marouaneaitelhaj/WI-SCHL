@@ -15,6 +15,7 @@ import { Button, Platform, StatusBar, View } from "react-native";
 import "../static/LocaleConfig";
 import { NativeWindStyleSheet } from "nativewind";
 import { Text } from "react-native";
+import { StyleSheet } from "react-native";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
