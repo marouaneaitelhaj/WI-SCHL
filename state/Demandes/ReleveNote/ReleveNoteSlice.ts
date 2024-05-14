@@ -54,7 +54,7 @@ const ReleveNoteSlice = createSlice({
       ).addCase(cancelDemande.fulfilled, (state, action) => {
         state.data = state.data.map((item) => {
           if (item.num_dem === action.payload) {
-            return { ...item, etat_dem: "4" };
+            return { ...item, etat_dem: "0" };
           }
           return item;
         });

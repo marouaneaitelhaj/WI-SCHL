@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, Alert, StatusBar } from "react-native";
 import { IconButton } from "react-native-paper";
 import { useSelector } from "react-redux";
-import { useNavigation } from 'expo-router';
+import { useNavigation } from "expo-router";
 import { RootState, useAppDispatch } from "../../state/store";
-import Animated, { Easing, SlideInUp,SlideInDown, SlideOutUp, SlideOutDown } from "react-native-reanimated";
+import Animated, {
+  Easing,
+  SlideInUp,
+  SlideInDown,
+  SlideOutUp,
+  SlideOutDown,
+} from "react-native-reanimated";
 import { toggleTopBar, closeTopBar } from "../../state/TopBar/TopBarSlice";
 import { logout } from "../../state/Auth/AuthSlice";
-import { router } from 'expo-router';
+import { router } from "expo-router";
 import { COLORS } from "../../static/colors";
 
 const data = [
@@ -25,6 +31,11 @@ export default function TopBarElements() {
 
   const dispatch = useAppDispatch();
 
+  useEffect(() => {
+    // log current route
+    console.log(router);
+  }, [router]);
+
   const navigation = useNavigation();
 
   return (
@@ -34,7 +45,7 @@ export default function TopBarElements() {
       className="w-screen z-20 space-y-5 rounded-t-[50px] flex flex-row items-center justify-start py-7 px-5 flex-wrap h-screen"
     >
       {data.map((item, index) => (
-        <View  className="flex w-1/3 items-center " key={index}>
+        <View className="flex w-1/3 items-center " key={index}>
           <IconButton
             className={"border-2 border-[ " + COLORS.primaryColor + +"]"}
             style={{
@@ -49,7 +60,9 @@ export default function TopBarElements() {
               dispatch(toggleTopBar());
             }}
           />
-          <Text className="text-[#5156BE] uppercase">{item.text}</Text>
+          <Text className="text-[#5156BE] uppercase font-bold">
+            {item.text}
+          </Text>
         </View>
       ))}
       <View className="flex  w-1/3 items-center" key={"logout"}>

@@ -40,7 +40,7 @@ export default function AttestationCard(props: {
       text: "Traitée",
       color: "#D4FFEB",
     },
-    "4": {
+    "0": {
       text: "Annulée",
       color: "#FED4D5",
     },
@@ -57,9 +57,9 @@ export default function AttestationCard(props: {
   const animatedStyles = useAnimatedStyle(() => {
     return {
       height: withTiming(
-        expanded && props.data.etat_dem !== "4"
+        expanded && props.data.etat_dem !== "0"
           ? 150
-          : expanded && props.data.etat_dem === "4"
+          : expanded && props.data.etat_dem === "0"
           ? 128
           : 0
       ),
@@ -105,7 +105,7 @@ export default function AttestationCard(props: {
             {statuts[props.data.etat_dem]?.text}
           </Text>
         </View>
-        {props.data.etat_dem !== "4" && (
+        {props.data.etat_dem !== "0" && (
           <View className="flex flex-row space-x-5  items-center ">
             <Text>Actions :</Text>
             {expanded && (
