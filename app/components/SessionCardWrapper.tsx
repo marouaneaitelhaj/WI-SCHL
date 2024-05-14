@@ -9,7 +9,7 @@ import ModuleCardWrapper from "./ModuleCardWrapper";
 import { Pressable } from "react-native";
 
 export default function AbsenceCardWrapper() {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   return (
     <Pressable onPress={() => { setExpanded(!expanded); }} className="bg-[#e0e1f3] my-3 rounded-md">

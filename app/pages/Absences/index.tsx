@@ -12,12 +12,6 @@ export default function Absences() {
       >
         <AbsenceCardWrapper />
         <AbsenceCardWrapper />
-        <AbsenceCardWrapper />
-        <AbsenceCardWrapper />
-        <AbsenceCardWrapper />
-        <AbsenceCardWrapper />
-        <AbsenceCardWrapper />
-        <AbsenceCardWrapper />
       </ScrollView>
     </View>
   );
