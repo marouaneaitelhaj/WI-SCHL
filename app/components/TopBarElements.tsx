@@ -32,8 +32,6 @@ export default function TopBarElements() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    // log current route
-    console.log(router);
   }, [router]);
 
   const navigation = useNavigation();

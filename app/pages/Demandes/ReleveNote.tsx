@@ -54,8 +54,6 @@ export default function ReleveNote() {
                     dispatch(createDemande())
                       .unwrap()
                       .then((res) => {
-                        console.log(res);
-
                         Alert.alert(
                           "Demande envoyée",
                           "Votre demande a été envoyée avec succès"

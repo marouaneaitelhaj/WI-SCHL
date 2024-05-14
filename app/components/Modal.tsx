@@ -44,7 +44,6 @@ export default function MyModal({
         height={Platform.OS === "web" ? "auto" : "90%"}
       >
         <Pressable onPress={() => {
-          console.log("pressed");
           
           close();
         }} className="h-screen absolute w-screen bg-[#000005] opacity-50 my-10"></Pressable>
