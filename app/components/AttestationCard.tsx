@@ -74,7 +74,9 @@ export default function AttestationCard(props: {
       style={{ backgroundColor: statuts[props.data.etat_dem]?.color }}
     >
       <View className="">
-        <Text>Demande envoyée au responsable scoalrité</Text>
+        <Text>
+        {statuts[props.data.etat_dem]?.text}
+        </Text>
       </View>
       <IconButton
         className="absolute top-0 right-0"
