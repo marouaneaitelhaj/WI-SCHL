@@ -13,6 +13,10 @@ import { useSelector } from "react-redux";
 import Animated, { SlideInRight, SlideOutLeft } from "react-native-reanimated";
 
 export default function ModifierLaMotDePass() {
+  console.log("ModifierLaMotDePass");
+
+  const { profileStatus } = useSelector((state: RootState) => state.profile);
+
   const {
     control,
     handleSubmit,
@@ -57,15 +61,14 @@ export default function ModifierLaMotDePass() {
       ]
     );
   };
-
+  if (profileStatus != 2) {
+    return null;
+  }
   return (
     <Animated.View entering={SlideInRight} exiting={SlideOutLeft}>
       <ScrollView className="my-2 w-full">
         <View className="w-screen flex justify-center items-center ">
-          <View className="bg-white w-[90%]  py-10 space-y-10 rounded-md">
-            <Text className="text-[#5156BE] text-center mb-8 text-[20px]">
-              Modifier le mot de pass
-            </Text>
+          <View className="bg-white w-[90%]  py-4 space-y-10 rounded-md">
             <View>
               <Controller
                 control={control}

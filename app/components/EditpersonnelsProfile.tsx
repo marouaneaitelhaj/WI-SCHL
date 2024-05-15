@@ -17,6 +17,9 @@ import * as FileSystem from "expo-file-system";
 import axios from "axios";
 
 export default function EditpersonnelsProfile() {
+  console.log("EditpersonnelsProfile");
+
+  const { profileStatus } = useSelector((state: RootState) => state.profile);
   const { user } = useSelector((state: RootState) => state.auth);
 
   const navigation = useNavigation();
@@ -82,14 +85,13 @@ export default function EditpersonnelsProfile() {
           text: "Confirmer",
           onPress: () => {
             setValue("img", image.base64);
-            
+
             dispatch(changeInformation(data))
               .unwrap()
               .then((message) => {
                 alert(message);
               })
               .catch((error) => {
-                
                 alert(error.message);
               });
           },
@@ -120,9 +122,11 @@ export default function EditpersonnelsProfile() {
   };
 
   const dispatch = useAppDispatch();
-
+  if (profileStatus != 1) {
+    return null;
+  }
   return (
-    <Animated.View  entering={SlideInRight} exiting={SlideOutLeft}>
+    <Animated.View entering={SlideInRight} exiting={SlideOutLeft}>
       <View className="w-screen h-full flex items-center ">
         <View className="w-[90%] px-2 py-4 space-y-10 rounded-md">
           <Controller

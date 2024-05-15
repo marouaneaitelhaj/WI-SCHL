@@ -71,7 +71,7 @@ export default function TopSectionForProfile() {
                   <Pressable
                     onPress={() => {
                       dispatch(setProfileStatus(0));
-                      setShowDropDown(false);
+                      // setShowDropDown(false);
                     }}
                   >
                     <Icon source="eye" size={30} color="white" />
@@ -79,7 +79,7 @@ export default function TopSectionForProfile() {
                   <Pressable
                     onPress={() => {
                       dispatch(setProfileStatus(1));
-                      setShowDropDown(false);
+                      // setShowDropDown(false);
                     }}
                   >
                     <Icon source="pen" size={30} color="white" />
@@ -87,7 +87,7 @@ export default function TopSectionForProfile() {
                   <Pressable
                     onPress={() => {
                       dispatch(setProfileStatus(2));
-                      setShowDropDown(false);
+                      // setShowDropDown(false);
                     }}
                   >
                     <Icon source="lock" size={30} color="white" />
