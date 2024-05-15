@@ -13,7 +13,7 @@ export default function NotesCard(props: {}) {
         <Text className=" text-center font-bold text-[#607E97]">30</Text>
       </View>
       <View className="w-20 flex justify-center items-center h-full rounded-lg bg-[#e0e1f3]">
-        <Text className=" text-center font-normal text-[#607E97]">
+        <Text className="px-3 text-center font-normal text-[#607E97]">
           Note normal
         </Text>
         <Text className=" text-center font-bold text-[#607E97]">40</Text>
