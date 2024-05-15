@@ -8,17 +8,15 @@ import { enableGoBack } from "../../state/TopBar/TopBarSlice";
 import Animated, { SlideInRight, SlideOutLeft } from "react-native-reanimated";
 import { setProfileStatus } from "state/Profile/ProfileSlice";
 
-export default function InformationspersonnelsProfile() {
-  console.log("InformationspersonnelsProfile");
-  
-  const { profileStatus } = useSelector((state: RootState) => state.profile);
-  
+export default function InformationspersonnelsProfile(props: {
+  profileStatus: number;
+}) {
   const { user } = useSelector((state: RootState) => state.auth);
 
   const navigation = useNavigation();
 
   const dispatch = useAppDispatch();
-  if (profileStatus != 0) {
+  if (props.profileStatus != 0) {
     return null;
   }
   return (

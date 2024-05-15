@@ -8,11 +8,31 @@ import Animated, {
   SlideOutLeft,
 } from "react-native-reanimated";
 import ModifierLaMotDePass from "./ModifierLaMotDePass";
-import { memo } from "react";
+import { memo, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@state/store";
 
 function Profile(props: { showProfile: boolean }) {
+  const { profileStatus } = useSelector((state: RootState) => state.profile);
+
+  const InformationspersonnelsProfileMemo = useMemo(() => {
+    if (profileStatus == 0) {
+      return <InformationspersonnelsProfile profileStatus={profileStatus} />;
+    }
+  }, [profileStatus]);
+
+  const EditpersonnelsProfileMemo = useMemo(() => {
+    if (profileStatus == 1) {
+      return <EditpersonnelsProfile profileStatus={profileStatus} />;
+    }
+  }, [profileStatus]);
+
+  const ModifierLaMotDePassMemo = useMemo(() => {
+    if (profileStatus == 2) {
+      return <ModifierLaMotDePass profileStatus={profileStatus} />;
+    }
+  }, [profileStatus]);
+
   if (!props.showProfile) return null;
   return (
     <Animated.View
@@ -21,9 +41,9 @@ function Profile(props: { showProfile: boolean }) {
     >
       <ScrollView className="h-screen">
         <TopSectionForProfile />
-        <InformationspersonnelsProfile />
-        <EditpersonnelsProfile />
-        <ModifierLaMotDePass />
+        {InformationspersonnelsProfileMemo}
+        {EditpersonnelsProfileMemo}
+        {ModifierLaMotDePassMemo}
       </ScrollView>
     </Animated.View>
   );

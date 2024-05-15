@@ -16,10 +16,11 @@ import { Platform } from "react-native";
 import * as FileSystem from "expo-file-system";
 import axios from "axios";
 
-export default function EditpersonnelsProfile() {
+export default function EditpersonnelsProfile(props: {
+  profileStatus: number;
+}) {
   console.log("EditpersonnelsProfile");
 
-  const { profileStatus } = useSelector((state: RootState) => state.profile);
   const { user } = useSelector((state: RootState) => state.auth);
 
   const navigation = useNavigation();
@@ -122,7 +123,7 @@ export default function EditpersonnelsProfile() {
   };
 
   const dispatch = useAppDispatch();
-  if (profileStatus != 1) {
+  if (props.profileStatus != 1) {
     return null;
   }
   return (

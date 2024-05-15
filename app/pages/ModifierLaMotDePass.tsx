@@ -12,10 +12,8 @@ import {
 import { useSelector } from "react-redux";
 import Animated, { SlideInRight, SlideOutLeft } from "react-native-reanimated";
 
-export default function ModifierLaMotDePass() {
+export default function ModifierLaMotDePass(props: { profileStatus: number }) {
   console.log("ModifierLaMotDePass");
-
-  const { profileStatus } = useSelector((state: RootState) => state.profile);
 
   const {
     control,
@@ -61,7 +59,7 @@ export default function ModifierLaMotDePass() {
       ]
     );
   };
-  if (profileStatus != 2) {
+  if (props.profileStatus != 2) {
     return null;
   }
   return (
