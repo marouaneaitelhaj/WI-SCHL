@@ -1,10 +1,11 @@
 import { enableGoBack } from "@state/TopBar/TopBarSlice";
 import AttestationCard from "app/components/AttestationCard";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ActivityIndicator } from "react-native";
 import { View, Text, Pressable, Alert, ScrollView } from "react-native";
-import { Modal, Title } from "react-native-paper";
+import { Checkbox, Title } from "react-native-paper";
 import { useSelector } from "react-redux";
+import Modal from "app/components/Modal";
 import {
   createDemande,
   cancelDemande,
@@ -13,6 +14,10 @@ import {
 import { RootState, useAppDispatch } from "state/store";
 export default function ReleveNote() {
   const dispatch = useAppDispatch();
+  const [showModal, setShowModal] = useState(false);
+
+  const [checkedNumber, setCheckedNumber] = useState(1);
+
   const { data, status } = useSelector((state: RootState) => state.releveNote);
   useEffect(() => {
     dispatch(getDemandes());
@@ -39,8 +44,40 @@ export default function ReleveNote() {
         <Pressable
           className="flex  rounded-md w-[100%] justify-center items-center  p-5 bg-[#5156BE]"
           onPress={() => {
+            setShowModal(true);
+          }}
+        >
+          <Text className="text-white text-center">
+            Déposer une nouvelle demande
+          </Text>
+        </Pressable>
+      </View>
+      <Modal
+        title="Êtes-vous sûr de vouloir créer cette demande ?"
+        showModal={showModal}
+        close={() => setShowModal(false)}
+      >
+        <Checkbox.Item
+          onPress={() => setCheckedNumber(1)}
+          status={checkedNumber == 1 ? "checked" : "unchecked"}
+          label="1ère session"
+        />
+        <Checkbox.Item
+          onPress={() => setCheckedNumber(2)}
+          status={checkedNumber == 2 ? "checked" : "unchecked"}
+          label="2ème session"
+        />
+        <Checkbox.Item
+          onPress={() => setCheckedNumber(3)}
+          status={checkedNumber == 3 ? "checked" : "unchecked"}
+          label="Annuel"
+        />
+        <Pressable
+          className="bg-[#5156BE] my-2 p-2 rounded-md w-[100%] justify-center items-center"
+          onPress={() => {
+            setShowModal(false);
             Alert.alert(
-              "Envoyer la demande",
+              "Êtes-vous sûr de vouloir créer cette demande ?",
               "Êtes-vous sûr de vouloir créer cette demande ?",
               [
                 {
@@ -48,10 +85,10 @@ export default function ReleveNote() {
                   style: "cancel",
                 },
                 {
-                  text: "Confirmer et Envoyer",
+                  text: "Confirmer",
                   style: "destructive",
                   onPress: () => {
-                    dispatch(createDemande())
+                    dispatch(createDemande(checkedNumber))
                       .unwrap()
                       .then((res) => {
                         Alert.alert(
@@ -71,11 +108,9 @@ export default function ReleveNote() {
             );
           }}
         >
-          <Text className="text-white text-center">
-            Déposer une nouvelle demande
-          </Text>
+          <Text className="text-white">Confirmer</Text>
         </Pressable>
-      </View>
+      </Modal>
     </View>
   );
 }

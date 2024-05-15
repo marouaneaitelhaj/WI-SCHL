@@ -8,8 +8,12 @@ import Animated, {
   SlideOutLeft,
 } from "react-native-reanimated";
 import ModifierLaMotDePass from "./ModifierLaMotDePass";
+import { memo } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "@state/store";
 
-export default function Profile() {
+function Profile(props: { showProfile: boolean }) {
+  if (!props.showProfile) return null;
   return (
     <Animated.View
       entering={SlideInRight.duration(100)}
@@ -24,3 +28,4 @@ export default function Profile() {
     </Animated.View>
   );
 }
+export default Profile;
