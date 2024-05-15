@@ -19,7 +19,9 @@ export default function BottomSectionNotes(props: {}) {
         <Text className=" text-center font-normal px-2 text-[#607E97]">
           Décision générale
         </Text>
-        <Text className=" text-center font-bold text-[#607E97]">30</Text>
+        <Text className=" text-center font-bold text-[#607E97]">
+          Non validé
+        </Text>
       </View>
     </View>
   );
