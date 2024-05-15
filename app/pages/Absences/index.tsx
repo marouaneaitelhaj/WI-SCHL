@@ -10,7 +10,105 @@ export default function Absences() {
         showsVerticalScrollIndicator={false}
         style={{ height: "90%", width: "100%" }}
       >
-        <CardWrapper expandedProp={true} title="Semestre 2">
+        <CardWrapper bg="#e0e1f3" expandedProp={true} title="Semestre 2">
+          <CardWrapper title="module 1">
+            <AbsenceCard
+              month="JAN"
+              present={30}
+              beingProcessed={30}
+              absent={40}
+            />
+            <AbsenceCard
+              month="JAN"
+              present={30}
+              beingProcessed={30}
+              absent={40}
+            />
+            <AbsenceCard
+              month="JAN"
+              present={30}
+              beingProcessed={30}
+              absent={40}
+            />
+            <AbsenceCard
+              month="JAN"
+              present={30}
+              beingProcessed={30}
+              absent={40}
+            />
+            <AbsenceCard
+              month="JAN"
+              present={30}
+              beingProcessed={30}
+              absent={40}
+            />
+          </CardWrapper>
+          <CardWrapper title="module 2">
+            <AbsenceCard
+              month="JAN"
+              present={30}
+              beingProcessed={30}
+              absent={40}
+            />
+            <AbsenceCard
+              month="JAN"
+              present={30}
+              beingProcessed={30}
+              absent={40}
+            />
+            <AbsenceCard
+              month="JAN"
+              present={30}
+              beingProcessed={30}
+              absent={40}
+            />
+            <AbsenceCard
+              month="JAN"
+              present={30}
+              beingProcessed={30}
+              absent={40}
+            />
+            <AbsenceCard
+              month="JAN"
+              present={30}
+              beingProcessed={30}
+              absent={40}
+            />
+          </CardWrapper>
+          <CardWrapper title="module 3">
+            <AbsenceCard
+              month="JAN"
+              present={30}
+              beingProcessed={30}
+              absent={40}
+            />
+            <AbsenceCard
+              month="JAN"
+              present={30}
+              beingProcessed={30}
+              absent={40}
+            />
+            <AbsenceCard
+              month="JAN"
+              present={30}
+              beingProcessed={30}
+              absent={40}
+            />
+            <AbsenceCard
+              month="JAN"
+              present={30}
+              beingProcessed={30}
+              absent={40}
+            />
+            <AbsenceCard
+              month="JAN"
+              present={30}
+              beingProcessed={30}
+              absent={40}
+            />
+          </CardWrapper>
+        </CardWrapper>
+        <CardWrapper bg="#e0e1f3" expandedProp={true} title="Semestre 2">
           <CardWrapper title="module 1">
             <AbsenceCard
               month="JAN"

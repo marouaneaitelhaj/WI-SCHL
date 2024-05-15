@@ -10,12 +10,14 @@ import { Pressable } from "react-native";
 type CardWrapperProps = {
   children: any;
   title?: string;
+  bg?: string;
   expandedProp?: boolean;
 };
 
 export default function CardWrapper({
   children,
   title,
+  bg = "#eff0f9",
   expandedProp = false,
 }: CardWrapperProps) {
   const [expanded, setExpanded] = useState(expandedProp);
@@ -25,13 +27,14 @@ export default function CardWrapper({
       onPress={() => {
         setExpanded(!expanded);
       }}
-      className="bg-[#e0e1f3] my-3 rounded-md"
+      className={"my-3 rounded-md"}
+      style={{
+        backgroundColor: bg
+      }}
     >
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <IconButton icon={expanded ? "chevron-up" : "chevron-down"} />
-        <Text>
-          {title}
-        </Text>
+        <Text>{title}</Text>
       </View>
       {expanded && <Animated.View className={"ml-5"}>{children}</Animated.View>}
     </Pressable>
