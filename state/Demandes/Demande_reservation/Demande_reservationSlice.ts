@@ -40,6 +40,8 @@ const Demande_reservationSlice = createSlice({
         }
       )
       .addCase(getDemandes.rejected, (state, action: PayloadAction<any>) => {
+        console.log(action);
+        
         state.status = "failed";
         state.error = action.payload;
       })

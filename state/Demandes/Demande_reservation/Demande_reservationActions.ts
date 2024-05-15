@@ -11,6 +11,8 @@ export const getDemandes = createAsyncThunk<
   void
 >("demande_reservation/getDemandes", async () => {
   const token = await AsyncStorage.getItem("token");
+  console.log(token);
+
   const response = await axios.get(
     "http://ensemc.irma-prod.net/api/etudiant/demande-reservation",
     {
@@ -26,13 +28,30 @@ export const getDemandes = createAsyncThunk<
   };
 });
 
-export const createDemande = createAsyncThunk<TDemande, void>(
+export const createDemande = createAsyncThunk<
+  TDemande,
+  {
+    salle_id: string;
+    date_debut: string;
+    date_fin: string;
+    hr_debut: string;
+    hr_fin: string;
+    raison: string;
+  }
+>(
   "demande_reservation/createDemande",
-  async (_, api) => {
+  async ({ salle_id, date_debut, date_fin, hr_debut, hr_fin, raison }, api) => {
     const token = await AsyncStorage.getItem("token");
     const response = await axios.post(
       "http://ensemc.irma-prod.net/api/etudiant/demande-reservation/save-demande",
-      {},
+      {
+        salle_id,
+        date_debut,
+        date_fin,
+        hr_debut,
+        hr_fin,
+        raison,
+      },
       {
         headers: {
           Authorization: `Bearer ${token}`,

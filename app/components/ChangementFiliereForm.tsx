@@ -32,17 +32,7 @@ export default function ChangementFiliereForm() {
 
   const [data, setData] = useState([] as any);
 
-  const getFiliereIdByCode = (code: string) => {
-    const filiere = filieres.find((item) => item.code === code);
-    if (filiere) {
-      return filiere.id;
-    }
-    return "";
-  };
-
   useEffect(() => {
-    console.log(filieres);
-
     const newData = filieres.map((item) => {
       return {
         key: item.id,
@@ -104,10 +94,10 @@ export default function ChangementFiliereForm() {
           render={({ field: { onChange, onBlur, value } }) => (
             <SelectList
               setSelected={(val: any) => {
-                setValue("filiere", getFiliereIdByCode(val));
+                setValue("filiere", val);
               }}
               data={data}
-              save="value"
+              save="key"
             />
           )}
           name="raison"

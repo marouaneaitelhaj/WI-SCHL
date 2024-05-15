@@ -3,11 +3,15 @@ import { View, Text, Alert, Pressable } from "react-native";
 import { Controller, useForm } from "react-hook-form";
 import { SelectList } from "react-native-dropdown-select-list";
 import { TextInput } from "react-native-paper";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "@state/store";
+import { RootState, useAppDispatch } from "@state/store";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import { createDemande } from "@state/Demandes/Demande_reservation/Demande_reservationActions";
 
 export default function Demande_reservationForm() {
+  const [picker, setPicker] = useState(0);
+  const dispatch = useAppDispatch();
   const {
     control,
     handleSubmit,
@@ -15,14 +19,28 @@ export default function Demande_reservationForm() {
     setValue,
     formState: { errors },
   } = useForm<{
-    filiere: string;
+    salle_id: string;
+    date_debut: string;
+    date_fin: string;
+    hr_debut: string;
+    hr_fin: string;
     raison: string;
   }>({
     defaultValues: {
-      filiere: "",
+      salle_id: "",
+      date_debut: "",
+      date_fin: "",
+      hr_debut: "",
+      hr_fin: "",
       raison: "",
     },
   });
+
+  const getIdSalleByCodeAndBloc = (code: string) => {
+    return (
+      salles.find((item) => item.code + " - " + item.bloc === code)?.id || ""
+    );
+  };
 
   const { salles } = useSelector(
     (state: RootState) => state.demande_reservation
@@ -31,17 +49,13 @@ export default function Demande_reservationForm() {
   const [data, setData] = useState<Array<{}>>([]);
 
   useEffect(() => {
-    console.log(salles);
-    
     setData([]);
     salles.map((item) => {
-      console.log(item);
-      
       setData((prev) => [
         ...prev,
         {
           key: item.id,
-          value: item.code,
+          value: item.code + " - " + item.bloc,
         },
       ]);
     });
@@ -54,8 +68,9 @@ export default function Demande_reservationForm() {
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
             <SelectList
+              placeholder="Sélectionner une salle"
               setSelected={(val: any) => {
-                setValue("filiere", val);
+                setValue("salle_id", val);
               }}
               boxStyles={{
                 borderColor: "#5156BE",
@@ -71,12 +86,123 @@ export default function Demande_reservationForm() {
                 borderColor: "#5156BE",
               }}
               data={data}
-              save="value"
+              save="key"
             />
           )}
-          name="raison"
-          // rules={{ required: "Prenom est obligatoire" }}
+          name="salle_id"
         />
+        {errors.raison && (
+          <Text className="text-red-500">{errors.raison?.message}</Text>
+        )}
+      </View>
+      <View className="w-full  py-4 space-y-10 rounded-md">
+        <Pressable
+          onPress={() => setPicker(1)}
+          className="w-full p-3 bg-gray-100"
+        >
+          <Text className="text-gray-500">
+            Date de début : {watch("date_debut")}
+          </Text>
+        </Pressable>
+        {picker == 1 && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={new Date()}
+            mode="date"
+            is24Hour={true}
+            display="default"
+            onChange={(event, selectedDate) => {
+              if (event.type == "dismissed") return setPicker(0);
+              if (selectedDate)
+                setValue("date_debut", selectedDate.toDateString());
+              setPicker(0);
+            }}
+          />
+        )}
+        {errors.raison && (
+          <Text className="text-red-500">{errors.raison?.message}</Text>
+        )}
+      </View>
+      <View className="w-full  py-4 space-y-10 rounded-md">
+        <Pressable
+          onPress={() => setPicker(2)}
+          className="w-full p-3 bg-gray-100"
+        >
+          <Text className="text-gray-500">Date fin : {watch("date_fin")}</Text>
+        </Pressable>
+        {picker == 2 && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={new Date()}
+            mode="date"
+            is24Hour={true}
+            display="default"
+            onChange={(event, selectedDate) => {
+              if (event.type == "dismissed") return setPicker(0);
+              if (selectedDate)
+                setValue("date_fin", selectedDate.toDateString());
+              setPicker(0);
+            }}
+          />
+        )}
+        {errors.raison && (
+          <Text className="text-red-500">{errors.raison?.message}</Text>
+        )}
+      </View>
+      <View className="w-full  py-4 space-y-10 rounded-md">
+        <Pressable
+          onPress={() => setPicker(3)}
+          className="w-full p-3 bg-gray-100"
+        >
+          <Text className="text-gray-500">Heure début : {watch("hr_debut")}</Text>
+        </Pressable>
+        {picker == 3 && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={new Date()}
+            mode="time"
+            display="default"
+            onChange={(event, selectedDate) => {
+              if (event.type == "dismissed") return setPicker(0);
+              if (selectedDate)
+                // sett hour and minute like this 12:30
+                setValue(
+                  "hr_debut",
+                  selectedDate.getHours() + ":" + selectedDate.getMinutes()
+                );
+              setPicker(0);
+            }}
+          />
+        )}
+        {errors.raison && (
+          <Text className="text-red-500">{errors.raison?.message}</Text>
+        )}
+      </View>
+      <View className="w-full  py-4 space-y-10 rounded-md">
+        <Pressable
+          onPress={() => setPicker(3)}
+          className="w-full p-3 bg-gray-100"
+        >
+          <Text className="text-gray-500">Heure fin : {watch("hr_fin")}</Text>
+        </Pressable>
+        {picker == 3 && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={new Date()}
+            mode="time"
+            display="default"
+            onChange={(event, selectedDate) => {
+              if (event.type == "dismissed") return setPicker(0);
+              if (selectedDate)
+                // sett hour and minute like this 12:30
+                setValue(
+                  "hr_fin",
+                  selectedDate.getHours() + ":" + selectedDate.getMinutes()
+                );
+              setPicker(0);
+            }}
+          />
+        )}
         {errors.raison && (
           <Text className="text-red-500">{errors.raison?.message}</Text>
         )}
@@ -121,8 +247,7 @@ export default function Demande_reservationForm() {
                   text: "Confirmer et Envoyer",
                   style: "destructive",
                   onPress: () => {
-                    // dispatch(logout());
-                    // dispatch(closeTopBar());
+                    dispatch(createDemande(data));
                   },
                 },
               ]
