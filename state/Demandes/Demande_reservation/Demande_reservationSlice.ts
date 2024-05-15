@@ -8,9 +8,7 @@ import { TDemande, Tsalle } from "../../types";
 
 const initialState = {
   data: [] as TDemande[],
-  salles: {} as {
-    [key: string]: Tsalle[];
-  },
+  salles: [] as Tsalle[],
   status: "idle",
   error: null,
 };
@@ -29,7 +27,12 @@ const Demande_reservationSlice = createSlice({
         getDemandes.fulfilled,
         (
           state,
-          action: { payload: { demandes: TDemande[]; salles: { [key: string]: Tsalle[]; } } }
+          action: {
+            payload: {
+              demandes: TDemande[];
+              salles: Tsalle[];
+            };
+          }
         ) => {
           state.status = "succeeded";
           state.data = action.payload.demandes;

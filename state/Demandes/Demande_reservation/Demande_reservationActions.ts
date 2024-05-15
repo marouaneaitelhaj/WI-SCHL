@@ -3,28 +3,28 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { TDemande, Tsalle } from "@state/types";
 import axios from "axios";
 
-export const getDemandes = createAsyncThunk<{
-  demandes : TDemande[],
-  salles : { [key: string]: Tsalle[]; }
-}, void>(
-  "demande_reservation/getDemandes",
-  async () => {
-    const token = await AsyncStorage.getItem("token");
-    const response = await axios.get(
-      "http://ensemc.irma-prod.net/api/etudiant/demande-reservation",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
-    return {
-      demandes : response.data.demReservation as TDemande[],
-      salles : response.data.salles as { [key: string]: Tsalle[]; }
+export const getDemandes = createAsyncThunk<
+  {
+    demandes: TDemande[];
+    salles: Tsalle[];
+  },
+  void
+>("demande_reservation/getDemandes", async () => {
+  const token = await AsyncStorage.getItem("token");
+  const response = await axios.get(
+    "http://ensemc.irma-prod.net/api/etudiant/demande-reservation",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     }
-  }
-);
+  );
+
+  return {
+    demandes: response.data.demReservation as TDemande[],
+    salles: response.data.salles as Tsalle[],
+  };
+});
 
 export const createDemande = createAsyncThunk<TDemande, void>(
   "demande_reservation/createDemande",

@@ -3,7 +3,7 @@ import { View, Text, Alert, Pressable } from "react-native";
 import { Controller, useForm } from "react-hook-form";
 import { SelectList } from "react-native-dropdown-select-list";
 import { TextInput } from "react-native-paper";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@state/store";
 
@@ -28,6 +28,25 @@ export default function Demande_reservationForm() {
     (state: RootState) => state.demande_reservation
   );
 
+  const [data, setData] = useState<Array<{}>>([]);
+
+  useEffect(() => {
+    console.log(salles);
+    
+    setData([]);
+    salles.map((item) => {
+      console.log(item);
+      
+      setData((prev) => [
+        ...prev,
+        {
+          key: item.id,
+          value: item.code,
+        },
+      ]);
+    });
+  }, [salles]);
+
   return (
     <View className="bg-white p-5 flex items-center ">
       <View className="w-full  py-4 space-y-10 rounded-md">
@@ -51,7 +70,7 @@ export default function Demande_reservationForm() {
                 padding: 0,
                 borderColor: "#5156BE",
               }}
-              data={salles}
+              data={data}
               save="value"
             />
           )}

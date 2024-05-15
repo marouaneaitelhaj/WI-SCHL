@@ -15,7 +15,7 @@ export const getDemandes = createAsyncThunk<TDemande[], void>(
         },
       }
     );
-    
+
     return response.data.demRelveNote as TDemande[];
   }
 );
@@ -27,7 +27,7 @@ export const createDemande = createAsyncThunk<TDemande, number>(
     const response = await axios.post(
       "http://ensemc.irma-prod.net/api/etudiant/releve-note/save-demande",
       {
-        "releve_type": number,
+        releve_type: number,
       },
       {
         headers: {
@@ -35,7 +35,7 @@ export const createDemande = createAsyncThunk<TDemande, number>(
         },
       }
     );
-    
+
     api.dispatch(getDemandes());
     return response.data.demRelveNote;
   }
