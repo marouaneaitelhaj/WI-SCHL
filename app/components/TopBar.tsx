@@ -49,7 +49,6 @@ export default function TopBar() {
             <IconButton
               onPress={() => {
                 router.back();
-                dispatch(disableGoBack());
               }}
               icon="arrow-left"
               iconColor="white"
