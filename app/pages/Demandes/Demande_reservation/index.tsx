@@ -1,4 +1,5 @@
 import AttestationCard from "app/components/AttestationCard";
+import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { ActivityIndicator } from "react-native";
 import { View, Text, Pressable, Alert, ScrollView } from "react-native";
@@ -11,7 +12,6 @@ import {
 import { RootState, useAppDispatch } from "state/store";
 export default function Demande_reservation() {
   const dispatch = useAppDispatch();
-  const [showModal, setShowModal] = useState(false);
   const { data, status } = useSelector(
     (state: RootState) => state.demande_reservation
   );
@@ -42,7 +42,7 @@ export default function Demande_reservation() {
         <Pressable
           className="flex  rounded-md w-[100%] justify-center items-center  p-5 bg-[#5156BE]"
           onPress={() => {
-            setShowModal(true);
+            router.push("/pages/Demandes/Demande_reservation/Demande_reservationForm");
           }}
         >
           <Text className="text-white text-center">
@@ -50,15 +50,6 @@ export default function Demande_reservation() {
           </Text>
         </Pressable>
       </View>
-      {/* <Modal
-        showModal={showModal}
-        close={() => {
-          setShowModal(false);
-        }}
-        title="Changement de filière"
-      >
-        <Demande_reservationForm />
-      </Modal> */}
     </View>
   );
 }
