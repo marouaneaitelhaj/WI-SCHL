@@ -10,11 +10,12 @@ import { getProfileAction } from "state/Auth/AuthActions";
 import Loading from "app/components/Loading";
 import Login from "@pages/Login";
 import Profile from "@pages/Profile";
-import { Button, Platform, StatusBar, View } from "react-native";
+import { Button, Platform, Pressable, StatusBar, View } from "react-native";
 import "../static/LocaleConfig";
 import { NativeWindStyleSheet } from "nativewind";
 import { Text } from "react-native";
 import { StyleSheet } from "react-native";
+import { toggleTopBar } from "@state/TopBar/TopBarSlice";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
@@ -26,13 +27,13 @@ export function HomeLayout() {
   const { token, loading } = useSelector((state: RootState) => state.auth);
   const { showProfile } = useSelector((state: RootState) => state.profile);
 
-  useEffect(() => {
-  }, [router.canGoBack]);
+  useEffect(() => {}, [router.canGoBack]);
 
   const profileMemo = useMemo(
     () => <Profile showProfile={showProfile} />,
     [showProfile]
   );
+  const [startY, setStartY] = useState(0); // Initialize startY state
 
   useEffect(() => {
     StatusBar.setBackgroundColor("#5156BE", true);
@@ -65,9 +66,21 @@ export function HomeLayout() {
         <>
           {!showProfile && <TopBar />}
           {profileMemo}
-          <View className="bg-white p-2 py-7 w-screen min-h-screen rounded-tr-[50px]">
+          <Pressable
+            onTouchStart={(e) => {
+              setStartY(e.nativeEvent.touches[0].pageY); // Set startY
+            }}
+            onTouchEnd={(e) => {
+              const endY = e.nativeEvent.changedTouches[0].pageY;
+
+              if (endY < startY) {
+                dispatch(toggleTopBar());
+              }
+            }}
+            className="bg-white p-2 py-7 w-screen min-h-screen rounded-tr-[50px]"
+          >
             <Slot />
-          </View>
+          </Pressable>
         </>
       )}
     </>

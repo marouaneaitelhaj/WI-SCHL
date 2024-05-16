@@ -18,7 +18,6 @@ import axios from "axios";
 export default function EditpersonnelsProfile(props: {
   profileStatus: number;
 }) {
-
   const { user } = useSelector((state: RootState) => state.auth);
 
   const navigation = useNavigation();
