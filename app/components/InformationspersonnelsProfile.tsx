@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../state/store";
 import { Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { enableGoBack } from "../../state/TopBar/TopBarSlice";
 import Animated, { SlideInRight, SlideOutLeft } from "react-native-reanimated";
 import { setProfileStatus } from "state/Profile/ProfileSlice";
 

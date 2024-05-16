@@ -54,7 +54,7 @@ export default function TopBarElements() {
             iconColor={COLORS.primaryColor}
             icon={item.icon}
             onPress={() => {
-              router.replace(item.key as never);
+              router.push(item.key as never);
               dispatch(toggleTopBar());
             }}
           />

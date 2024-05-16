@@ -76,7 +76,7 @@ export default function Demandes() {
               iconColor={COLORS.primaryColor}
               icon={item.icon}
               onPress={() => {
-                dispatch(enableGoBack());
+                // dispatch(enableGoBack());
                 router.push(item.key as never);
               }}
             />

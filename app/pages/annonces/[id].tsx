@@ -12,7 +12,7 @@ export default function Annonce() {
   const [annonce, setAnnonce] = useState<Tannonce>({} as Tannonce);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(enableGoBack())
+    // dispatch(enableGoBack())
     dispatch(getAnnonce(id as string))
       .unwrap()
       .then((data) => {

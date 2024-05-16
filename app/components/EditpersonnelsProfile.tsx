@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../state/store";
 import { Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { enableGoBack } from "../../state/TopBar/TopBarSlice";
 import { Tuser } from "../../state/types";
 import { Controller, useForm } from "react-hook-form";
 import * as ImagePicker from "expo-image-picker";

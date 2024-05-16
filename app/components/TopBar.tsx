@@ -40,7 +40,7 @@ export default function TopBar() {
               size={40}
             />
           )}
-          {!open && !goBack && (
+          {!open && (router.canGoBack()) && (
             <IconButton
               onPress={() => dispatch(toggleTopBar())}
               icon="dots-grid"
@@ -48,7 +48,7 @@ export default function TopBar() {
               size={40}
             />
           )}
-          {!open && goBack && (
+          {!open && (!router.canGoBack()) && (
             <IconButton
               onPress={() => {
                 router.back();

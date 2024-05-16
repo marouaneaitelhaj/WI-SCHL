@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { createDemande } from "@state/Demandes/ChangementFiliere/ChangementFiliereActions";
 
-export default function ChangementFiliereForm() {
+export default function Modal() {
   const {
     control,
     handleSubmit,

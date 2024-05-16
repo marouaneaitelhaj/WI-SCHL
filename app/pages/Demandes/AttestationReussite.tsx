@@ -1,4 +1,3 @@
-import { enableGoBack } from "@state/TopBar/TopBarSlice";
 import AttestationCard from "app/components/AttestationCard";
 import { useEffect } from "react";
 import { ActivityIndicator } from "react-native";
