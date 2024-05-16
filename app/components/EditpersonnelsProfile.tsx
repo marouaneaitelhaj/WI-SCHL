@@ -18,7 +18,6 @@ import axios from "axios";
 export default function EditpersonnelsProfile(props: {
   profileStatus: number;
 }) {
-  console.log("EditpersonnelsProfile");
 
   const { user } = useSelector((state: RootState) => state.auth);
 

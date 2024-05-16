@@ -4,19 +4,16 @@ import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../state/store";
 import { IconButton } from "react-native-paper";
 import { disableGoBack, toggleTopBar } from "../../state/TopBar/TopBarSlice";
-import { useNavigation, useRoute } from "@react-navigation/native";
 import { COLORS } from "../../static/colors";
 import { setShowProfile } from "../../state/Profile/ProfileSlice";
 import { router } from "expo-router";
 
 export default function TopBar() {
-  const { open, goBack } = useSelector((state: RootState) => state.topBar);
+  const { open } = useSelector((state: RootState) => state.topBar);
 
   const dispatch = useAppDispatch();
 
   const { user } = useSelector((state: RootState) => state.auth);
-
-  const navigation = useNavigation();
 
   return (
     <View className="bg-white">
@@ -40,7 +37,7 @@ export default function TopBar() {
               size={40}
             />
           )}
-          {!open && (router.canGoBack()) && (
+          {!open && !router.canGoBack() && (
             <IconButton
               onPress={() => dispatch(toggleTopBar())}
               icon="dots-grid"
@@ -48,7 +45,7 @@ export default function TopBar() {
               size={40}
             />
           )}
-          {!open && (!router.canGoBack()) && (
+          {!open && router.canGoBack() && (
             <IconButton
               onPress={() => {
                 router.back();
@@ -76,9 +73,12 @@ export default function TopBar() {
           />
         </Pressable>
       </View>
-      <View style={{
-        shadowColor: "#000",
-      }} className="absolute w-32 bg-[#5156BE] z-50  h-32 -bottom-28 right-0 "></View>
+      <View
+        style={{
+          shadowColor: "#000",
+        }}
+        className="absolute w-32 bg-[#5156BE] z-50  h-32 -bottom-28 right-0 "
+      ></View>
       {open && <TopBarElements />}
     </View>
   );

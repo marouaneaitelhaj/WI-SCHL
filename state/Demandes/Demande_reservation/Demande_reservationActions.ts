@@ -11,7 +11,6 @@ export const getDemandes = createAsyncThunk<
   void
 >("demande_reservation/getDemandes", async () => {
   const token = await AsyncStorage.getItem("token");
-  console.log(token);
 
   const response = await axios.get(
     "http://ensemc.irma-prod.net/api/etudiant/demande-reservation",

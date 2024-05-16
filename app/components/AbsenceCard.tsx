@@ -10,7 +10,7 @@ export default function AbsenceCard(props: {
   return (
     <Pressable
       onPress={() => {
-        router.push("pages/Absences/" + props.month);
+        router.push("/pages/Absences/" + props.month);
       }}
       className="flex flex-row w-full justify-center my-3 space-x-3"
     >

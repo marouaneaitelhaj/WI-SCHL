@@ -1,5 +1,5 @@
 import TopBar from "app/components/TopBar";
-import { Slot } from "expo-router";
+import { Slot, router } from "expo-router";
 import { Provider, useSelector } from "react-redux";
 import { useEffect, useMemo, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";

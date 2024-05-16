@@ -13,7 +13,6 @@ import { useSelector } from "react-redux";
 import Animated, { SlideInRight, SlideOutLeft } from "react-native-reanimated";
 
 export default function ModifierLaMotDePass(props: { profileStatus: number }) {
-  console.log("ModifierLaMotDePass");
 
   const {
     control,
