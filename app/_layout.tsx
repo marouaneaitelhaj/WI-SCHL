@@ -26,6 +26,9 @@ export function HomeLayout() {
   const { token, loading } = useSelector((state: RootState) => state.auth);
   const { showProfile } = useSelector((state: RootState) => state.profile);
 
+  useEffect(() => {
+  }, [router.canGoBack]);
+
   const profileMemo = useMemo(
     () => <Profile showProfile={showProfile} />,
     [showProfile]

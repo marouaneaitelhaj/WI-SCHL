@@ -40,7 +40,7 @@ export default function ChangementFiliere() {
       </ScrollView>
       <View className="flex  w-full items-center">
         <Pressable className="flex  rounded-md w-[100%] justify-center items-center  p-5 bg-[#5156BE]" onPress={() => {
-            router.push("/modal");
+            router.push("pages/Demandes/ChangementFiliere/ChangementFiliereForm");
         }}>
           <Text className="text-white text-center">
             Déposer une nouvelle demande

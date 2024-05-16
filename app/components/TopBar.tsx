@@ -6,7 +6,8 @@ import { IconButton } from "react-native-paper";
 import { disableGoBack, toggleTopBar } from "../../state/TopBar/TopBarSlice";
 import { COLORS } from "../../static/colors";
 import { setShowProfile } from "../../state/Profile/ProfileSlice";
-import { router } from "expo-router";
+import { router, useRootNavigationState } from "expo-router";
+import { useEffect } from "react";
 
 export default function TopBar() {
   const { open } = useSelector((state: RootState) => state.topBar);
@@ -14,6 +15,10 @@ export default function TopBar() {
   const dispatch = useAppDispatch();
 
   const { user } = useSelector((state: RootState) => state.auth);
+  const navState = useRootNavigationState();
+
+  useEffect(() => {
+  }, [navState]);
 
   return (
     <View className="bg-white">
@@ -31,30 +36,32 @@ export default function TopBar() {
         <View className="flex flex-row items-center justify-center">
           {open && (
             <IconButton
-              onPress={() => dispatch(toggleTopBar())}
+              onPress={() => {
+                dispatch(toggleTopBar());
+              }}
               icon="close"
               iconColor="white"
               size={40}
             />
           )}
-          {!open && !router.canGoBack() && (
-            <IconButton
-              onPress={() => dispatch(toggleTopBar())}
-              icon="dots-grid"
-              iconColor="white"
-              size={40}
-            />
-          )}
-          {!open && router.canGoBack() && (
-            <IconButton
-              onPress={() => {
-                router.back();
-              }}
-              icon="arrow-left"
-              iconColor="white"
-              size={40}
-            />
-          )}
+          {!open &&
+            (router.canGoBack() === true ? (
+              <IconButton
+                onPress={() => {
+                  router.back();
+                }}
+                icon="arrow-left"
+                iconColor="white"
+                size={40}
+              />
+            ) : (
+              <IconButton
+                onPress={() => dispatch(toggleTopBar())}
+                icon="dots-grid"
+                iconColor="white"
+                size={40}
+              />
+            ))}
         </View>
         <Pressable
           className="flex flex-row items-center justify-center"
