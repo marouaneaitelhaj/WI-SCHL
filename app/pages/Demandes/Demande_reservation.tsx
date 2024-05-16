@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { ActivityIndicator } from "react-native";
 import { View, Text, Pressable, Alert, ScrollView } from "react-native";
 import { Title } from "react-native-paper";
-import Modal from "app/components/Modal";
 import { useSelector } from "react-redux";
 import {
   createDemande,
@@ -55,7 +54,7 @@ export default function Demande_reservation() {
           </Text>
         </Pressable>
       </View>
-      <Modal
+      {/* <Modal
         showModal={showModal}
         close={() => {
           setShowModal(false);
@@ -63,7 +62,7 @@ export default function Demande_reservation() {
         title="Changement de filière"
       >
         <Demande_reservationForm />
-      </Modal>
+      </Modal> */}
     </View>
   );
 }

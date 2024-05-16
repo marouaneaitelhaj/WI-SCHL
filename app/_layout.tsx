@@ -4,7 +4,6 @@ import { Provider, useSelector } from "react-redux";
 import { useEffect, useMemo, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { RootState, useAppDispatch } from "state/store";
-import Modal from "./components/Modal";
 import { store } from "state/store";
 import { setToken } from "state/Auth/AuthSlice";
 import { getProfileAction } from "state/Auth/AuthActions";

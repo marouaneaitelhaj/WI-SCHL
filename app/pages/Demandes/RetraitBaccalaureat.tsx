@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { ActivityIndicator } from "react-native";
 import { View, Text, Pressable, Alert, ScrollView } from "react-native";
 import { Checkbox, Title } from "react-native-paper";
-import Modal from "app/components/Modal";
 import { useSelector } from "react-redux";
 import {
   createDemande,
@@ -54,7 +53,7 @@ export default function RetraitBaccalaureat() {
           </Text>
         </Pressable>
       </View>
-      <Modal
+      {/* <Modal
         title="Êtes-vous sûr de vouloir créer cette demande ?"
         showModal={showModal}
         close={() => setShowModal(false)}
@@ -107,7 +106,7 @@ export default function RetraitBaccalaureat() {
         >
           <Text className="text-white">Confirmer</Text>
         </Pressable>
-      </Modal>
+      </Modal> */}
     </View>
   );
 }
