@@ -6,6 +6,7 @@ import { RootState, useAppDispatch } from "@state/store";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { createDemande } from "@state/Demandes/ChangementFiliere/ChangementFiliereActions";
+import { router } from "expo-router";
 
 export default function Modal() {
   const {
@@ -61,7 +62,15 @@ export default function Modal() {
               .then((res) => {
                 Alert.alert(
                   "Demande envoyée",
-                  "Votre demande a été envoyée avec succès"
+                  "Votre demande a été envoyée avec succès",
+                  [
+                    {
+                      text: "OK",
+                      onPress: () => {
+                        router.back();
+                      },
+                    },
+                  ]
                 );
               })
               .catch((err) => {

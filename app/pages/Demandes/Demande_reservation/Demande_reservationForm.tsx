@@ -3,7 +3,7 @@ import { View, Text, Alert, Pressable } from "react-native";
 import { Controller, useForm } from "react-hook-form";
 import { SelectList } from "react-native-dropdown-select-list";
 import { TextInput } from "react-native-paper";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "@state/store";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -154,7 +154,9 @@ export default function Demande_reservationForm() {
           onPress={() => setPicker(3)}
           className="w-full p-3 bg-gray-100"
         >
-          <Text className="text-gray-500">Heure début : {watch("hr_debut")}</Text>
+          <Text className="text-gray-500">
+            Heure début : {watch("hr_debut")}
+          </Text>
         </Pressable>
         {picker == 3 && (
           <DateTimePicker
@@ -247,7 +249,27 @@ export default function Demande_reservationForm() {
                   text: "Confirmer et Envoyer",
                   style: "destructive",
                   onPress: () => {
-                    dispatch(createDemande(data));
+                    dispatch(createDemande(data))
+                      .then(() => {
+                        Alert.alert("Demande envoyée avec succès", "", [
+                          {
+                            text: "OK",
+                            style: "cancel",
+                          },
+                        ]);
+                      })
+                      .catch((err) => {
+                        Alert.alert(
+                          "Erreur lors de l'envoi de la demande",
+                          "",
+                          [
+                            {
+                              text: "OK",
+                              style: "cancel",
+                            },
+                          ]
+                        );
+                      });
                   },
                 },
               ]

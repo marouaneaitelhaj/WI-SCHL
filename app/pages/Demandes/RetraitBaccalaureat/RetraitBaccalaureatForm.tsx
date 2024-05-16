@@ -9,6 +9,7 @@ import { Alert, Pressable } from "react-native";
 import { Checkbox } from "react-native-paper";
 import { useAppDispatch } from "@state/store";
 import { Text } from "react-native";
+import { router } from "expo-router";
 
 export default function RetraitBaccalaureatForm() {
   const [checkedNumber, setCheckedNumber] = useState(1);
@@ -48,7 +49,15 @@ export default function RetraitBaccalaureatForm() {
                     .then((res) => {
                       Alert.alert(
                         "Demande envoyée",
-                        "Votre demande a été envoyée avec succès"
+                        "Votre demande a été envoyée avec succès",
+                        [
+                          {
+                            text: "OK",
+                            onPress: () => {
+                              router.back();
+                            },
+                          },
+                        ]
                       );
                     })
                     .catch((err) => {

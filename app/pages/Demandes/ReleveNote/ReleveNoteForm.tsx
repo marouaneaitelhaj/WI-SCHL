@@ -7,6 +7,7 @@ import {
 } from "state/Demandes/ReleveNote/ReleveNoteActions";
 import { Checkbox, Text } from "react-native-paper";
 import { useAppDispatch } from "@state/store";
+import { router } from "expo-router";
 
 export default function ReleveNoteForm() {
   const [showModal, setShowModal] = useState(false);
@@ -51,7 +52,15 @@ export default function ReleveNoteForm() {
                     .then((res) => {
                       Alert.alert(
                         "Demande envoyée",
-                        "Votre demande a été envoyée avec succès"
+                        "Votre demande a été envoyée avec succès",
+                        [
+                          {
+                            text: "OK",
+                            onPress: () => {
+                              router.back();
+                            },
+                          },
+                        ]
                       );
                     })
                     .catch((err) => {
