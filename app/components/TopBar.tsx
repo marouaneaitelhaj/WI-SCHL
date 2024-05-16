@@ -3,7 +3,7 @@ import TopBarElements from "./TopBarElements";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../state/store";
 import { IconButton } from "react-native-paper";
-import { disableGoBack, toggleTopBar } from "../../state/TopBar/TopBarSlice";
+import { toggleTopBar } from "../../state/TopBar/TopBarSlice";
 import { COLORS } from "../../static/colors";
 import { setShowProfile } from "../../state/Profile/ProfileSlice";
 import { router, useRootNavigationState } from "expo-router";
@@ -17,8 +17,7 @@ export default function TopBar() {
   const { user } = useSelector((state: RootState) => state.auth);
   const navState = useRootNavigationState();
 
-  useEffect(() => {
-  }, [navState]);
+  useEffect(() => {}, [navState]);
 
   return (
     <View className="bg-white">
@@ -45,7 +44,7 @@ export default function TopBar() {
             />
           )}
           {!open &&
-            (router.canGoBack() === true ? (
+            (router.canGoBack() ? (
               <IconButton
                 onPress={() => {
                   router.back();

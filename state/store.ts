@@ -15,6 +15,7 @@ import ChangementFiliereReducer from "./Demandes/ChangementFiliere/ChangementFil
 import RetraitBaccalaureatReducer from "./Demandes/RetraitBaccalaureat/RetraitBaccalaureatSlice";
 import ReleveNoteReducer from "./Demandes/ReleveNote/ReleveNoteSlice";
 import Demande_reservationReducer from "./Demandes/Demande_reservation/Demande_reservationSlice";
+import NoteReducer from "./Notes/NotesSlice";
 
 export const store = configureStore({
   reducer: {
@@ -33,6 +34,7 @@ export const store = configureStore({
     changementFiliere : ChangementFiliereReducer,
     releveNote : ReleveNoteReducer,
     demande_reservation : Demande_reservationReducer,
+    note : NoteReducer,
   },
 });
 

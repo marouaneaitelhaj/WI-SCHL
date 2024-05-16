@@ -194,3 +194,29 @@ export type Tfiliere = {
   libelle_fr: string;
   pole_id: string;
 };
+
+
+
+export type Element = {
+  libelle_fr: string;
+  coefficient: string;
+  note_n: number | null;
+  note_r: number | null;
+};
+
+export type TModule = {
+  id: number;
+  libelle_fr: string;
+  resultat_n: number | null;
+  resultat_r: number | null;
+  decision_g: string | null;
+  elements: Element[];
+};
+
+type Semester = {
+  modules: TModule[][];
+};
+
+export type StudentRecord = {
+  [semesterName: string]: Semester;
+};
