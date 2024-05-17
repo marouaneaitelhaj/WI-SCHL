@@ -4,10 +4,12 @@ import { getNotes } from "./NotesActions";
 
 type AnnonceState = {
     notes: StudentRecord;
+    status ?: string;
 }
 
 const initialState: AnnonceState = {
-    notes: {} as StudentRecord
+    notes: {} as StudentRecord,
+    status: "idle"
 }
 
 export const NotesSlice = createSlice({
@@ -21,10 +23,13 @@ export const NotesSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getNotes.fulfilled, (state, action) => {
             state.notes = action.payload;
+            state.status = "success";
         }).addCase(getNotes.rejected, (state) => {
             // state.notes = [];
+            state.status = "failed";
         }).addCase(getNotes.pending, (state) => {
             // state.notes = [];
+            state.status = "loading";
         })
     }
 });
