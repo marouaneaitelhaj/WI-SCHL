@@ -9,8 +9,8 @@ export default function NotesCard(props: { element: Element }) {
           {props.element.libelle_fr}
         </Text>
       </View>
-      <View className="flex py-3 flex-row w-full justify-around">
-        <View className="w-1/3 flex justify-center items-center  bg-[#e0e1f3]">
+      <View className="flex flex-row w-full justify-around">
+        <View className="w-1/3  flex justify-center items-center  bg-[#e0e1f3] py-3">
           <Text className=" text-center font-normal text-[#13191e]">
             Coefficient
           </Text>
@@ -18,7 +18,7 @@ export default function NotesCard(props: { element: Element }) {
             {props.element.coefficient}
           </Text>
         </View>
-        <View className="w-1/3 flex justify-center items-center  bg-[#e0e1f3]">
+        <View className="w-1/3 border-x-[1px] border-[#13191e] flex justify-center items-center  bg-[#e0e1f3] py-3">
           <Text className="px-3 text-center font-normal text-[#13191e]">
             Note normal
           </Text>
@@ -26,7 +26,7 @@ export default function NotesCard(props: { element: Element }) {
             {props.element.note_n}
           </Text>
         </View>
-        <View className="w-1/3 flex justify-center items-center  bg-[#e0e1f3]">
+        <View className="w-1/3  flex justify-center items-center  bg-[#e0e1f3] py-3">
           <Text className=" text-center font-normal text-[#13191e]">
             Note rattrapage
           </Text>
