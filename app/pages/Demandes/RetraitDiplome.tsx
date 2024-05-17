@@ -36,6 +36,13 @@ export default function RetraitDiplome() {
                 data={item}
               />
             ))}
+          {status !== "loading" && data.length === 0 && (
+            <View className="flex my-14 justify-center items-center h-[30px] ">
+              <Text className="text-[#5156BE] font-bold text-xl">
+                Aucune demande
+              </Text>
+            </View>
+          )}
         </View>
       </ScrollView>
       <View className="flex  w-full items-center">
