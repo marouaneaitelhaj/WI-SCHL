@@ -3,7 +3,7 @@ import { View, Text, Pressable } from "react-native";
 
 export default function NotesCard(props: { element: Element }) {
   return (
-    <View className="flex flex-col w-full justify-center items-center py-5 my-3 bg-[#e0e1f3]  space-x-3">
+    <View className="flex flex-col w-full justify-center items-center  my-3 bg-[#e0e1f3]  space-x-3">
       <View className=" w-full flex border-b-[1px] py-3 border-[#13191e]  justify-center items-center bg-[#e0e1f3]">
         <Text className=" text-center font-bold text-[#13191e]">
           {props.element.libelle_fr}

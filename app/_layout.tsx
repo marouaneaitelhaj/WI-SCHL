@@ -10,7 +10,7 @@ import { getProfileAction } from "state/Auth/AuthActions";
 import Loading from "app/components/Loading";
 import Login from "@pages/Login";
 import Profile from "@pages/Profile";
-import { Button, Platform, Pressable, StatusBar, View } from "react-native";
+import { Button, Dimensions, Platform, Pressable, StatusBar, View } from "react-native";
 import "../static/LocaleConfig";
 import { NativeWindStyleSheet } from "nativewind";
 import { Text } from "react-native";
@@ -24,6 +24,7 @@ NativeWindStyleSheet.setOutput({
 export function HomeLayout() {
   const [checked, setIschecked] = useState(false);
   const dispatch = useAppDispatch();
+  const screenHeight = Dimensions.get('window').height;
   const { token, loading } = useSelector((state: RootState) => state.auth);
   const { showProfile } = useSelector((state: RootState) => state.profile);
 
@@ -68,13 +69,18 @@ export function HomeLayout() {
           {profileMemo}
           <Pressable
             onTouchStart={(e) => {
-              setStartY(e.nativeEvent.touches[0].pageY); // Set startY
+              setStartY(e.nativeEvent.pageY); // Set startY for React Native
             }}
             onTouchEnd={(e) => {
-              const endY = e.nativeEvent.changedTouches[0].pageY;
+              const endY = e.nativeEvent.pageY;
+              const deltaY = startY - endY; // Calculate the vertical scroll distance
+              const threshold = screenHeight * 0.6; // 60% of the screen height
 
-              if (endY < startY) {
-                dispatch(toggleTopBar());
+              console.log(deltaY, threshold, screenHeight, startY, endY);
+
+              if (deltaY > threshold) {
+                // Check if scrolled more than 60% of the screen height
+                dispatch(toggleTopBar()); // Dispatch the action if condition is met
               }
             }}
             className="bg-white p-2 py-7 w-screen min-h-screen rounded-tr-[50px]"

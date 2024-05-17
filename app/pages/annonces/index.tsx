@@ -1,6 +1,8 @@
 import AnnonceCard from "app/components/AnnonceCard";
+import AnnoncesWrapper from "app/components/AnnoounceWrapper";
 import { useEffect } from "react";
 import { View, Text, ScrollView } from "react-native";
+import { IconButton } from "react-native-paper";
 import { useSelector } from "react-redux";
 import { getAnnonces } from "state/Annonces/AnnoncesActions";
 import { RootState, useAppDispatch } from "state/store";
@@ -14,20 +16,17 @@ export default function Annonces() {
     dispatch(getAnnonces());
   }, []);
   return (
-    <View>
-      <Text className={" text-[#5156BE] px-5 font-bold text-xl"}>
-        Announce
-      </Text>
+    <View className="">
       <ScrollView
-        className="flex flex-col" 
+        className="bg-[#f2f3fa]"
         style={{ height: "85%" }}
-        showsVerticalScrollIndicator={false}
       >
-        <View className="flex flex-row flex-wrap">
-          {annonces.map((annonce) => (
-            <AnnonceCard key={annonce.annonce_body} annonce={annonce} />
-          ))}
-        </View>
+        <AnnoncesWrapper annonces={annonces} />
+        <AnnoncesWrapper title="Les offres de stage" annonces={annonces} />
+        <AnnoncesWrapper
+          title="Applications universitaire"
+          annonces={annonces}
+        />
       </ScrollView>
     </View>
   );

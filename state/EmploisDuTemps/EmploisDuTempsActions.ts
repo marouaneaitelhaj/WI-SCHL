@@ -49,3 +49,29 @@ export const getEmploisDuTempsByDay = createAsyncThunk<
     return data.events as Tevent[];
   }
 );
+
+// getEmploisDuTempsByDay day is today
+export const getEmploisDuTempsByDayToday = createAsyncThunk<
+  Tevent[],
+  void
+>(
+  "EmploisDuTemps/getEmploisDuTempsByDayToday",
+  async () => {
+    const token = await AsyncStorage.getItem("token");
+
+    // const date = new Date().toISOString().slice(0, 10);
+
+    const date = "2024-05-16";
+
+    const { data } = await axios.get(
+      "http://ensemc.irma-prod.net/api/etudiant/emploi-temps?day=" + date,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    return data.events as Tevent[];
+  }
+);
