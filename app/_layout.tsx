@@ -83,7 +83,7 @@ export function HomeLayout() {
                 dispatch(toggleTopBar()); // Dispatch the action if condition is met
               }
             }}
-            className="bg-white p-2 py-7 w-screen min-h-screen rounded-tr-[50px]"
+            className="bg-[#f2f3fa] p-2 py-7 w-screen min-h-screen rounded-tr-[50px]"
           >
             <Slot />
           </Pressable>

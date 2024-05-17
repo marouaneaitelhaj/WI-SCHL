@@ -20,7 +20,7 @@ export default function TopBar() {
   useEffect(() => {}, [navState]);
 
   return (
-    <View className="bg-white">
+    <View className="bg-[#f2f3fa]">
       <View
         className={
           "z-20 pt-3 pb-5  bg-[" +

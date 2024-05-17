@@ -8,7 +8,13 @@ import Animated, {
   useSharedValue,
 } from "react-native-reanimated";
 
-export default function EventCard(props: { event: Tevent }) {
+export default function EventCard({
+  event,
+  isWhite,
+}: {
+  event: Tevent;
+  isWhite?: boolean;
+}) {
   const [expanded, setExpanded] = useState(false);
   const animatedHeight = useSharedValue(64);
 
@@ -20,34 +26,37 @@ export default function EventCard(props: { event: Tevent }) {
 
   return (
     <Pressable
-      onLongPress={() => {}}
+      onPress={() => {
+        setExpanded(!expanded);
+        animatedHeight.value = withTiming(expanded ? 100 : 200);
+      }}
       className="flex flex-row w-full p-3 space-x-3 items-center"
     >
       <View
         className={"h-16 w-16 flex rounded-full justify-center items-center"}
         style={{
-          backgroundColor: props.event.color,
+          backgroundColor: event.color,
         }}
       >
         <Text
           className="text-xs"
           style={{
-            color: props.event.textColor,
+            color: isWhite ? "white" : event.textColor,
           }}
         >
-          {props.event.start.split("T")[1].split(":")[0] +
+          {event.start.split("T")[1].split(":")[0] +
             ":" +
-            props.event.start.split("T")[1].split(":")[1]}
+            event.start.split("T")[1].split(":")[1]}
         </Text>
         <Text
           className="text-xs"
           style={{
-            color: props.event.textColor,
+            color: isWhite ? "white" : event.textColor,
           }}
         >
-          {props.event.end.split("T")[1].split(":")[0] +
+          {event.end.split("T")[1].split(":")[0] +
             ":" +
-            props.event.end.split("T")[1].split(":")[1]}
+            event.end.split("T")[1].split(":")[1]}
         </Text>
       </View>
       <Animated.View
@@ -57,7 +66,7 @@ export default function EventCard(props: { event: Tevent }) {
         }
         style={[
           {
-            backgroundColor: props.event.color,
+            backgroundColor: event.color,
           },
           animatedStyles,
         ]}
@@ -66,10 +75,10 @@ export default function EventCard(props: { event: Tevent }) {
           className="font-bold w-[85%]"
           numberOfLines={expanded ? 5 : 1}
           style={{
-            color: props.event.textColor,
+            color: isWhite ? "white" : event.textColor,
           }}
         >
-          {props.event.title}
+          {event.title}
         </Text>
         <IconButton
           icon={expanded ? "chevron-up" : "chevron-down"}
@@ -77,7 +86,7 @@ export default function EventCard(props: { event: Tevent }) {
             setExpanded(!expanded);
             animatedHeight.value = withTiming(expanded ? 100 : 200);
           }}
-          iconColor={props.event.textColor}
+          iconColor={isWhite ? "white" : event.textColor}
         />
       </Animated.View>
     </Pressable>
