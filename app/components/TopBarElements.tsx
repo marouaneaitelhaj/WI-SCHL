@@ -58,7 +58,7 @@ export default function TopBarElements() {
               dispatch(toggleTopBar());
             }}
           />
-          <Text className="text-[#5156BE] uppercase font-bold">
+          <Text className="font-[Poppins-Black] text-[#5156BE] uppercase font-bold">
             {item.text}
           </Text>
         </View>
@@ -93,7 +93,7 @@ export default function TopBarElements() {
             );
           }}
         />
-        <Text className="text-[#5156BE]">{"Déconnexion"}</Text>
+        <Text className="font-[Poppins-Black] text-[#5156BE]">{"Déconnexion"}</Text>
       </View>
     </Animated.View>
   );

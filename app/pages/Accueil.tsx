@@ -33,7 +33,7 @@ export default function Accueil() {
   return (
     <View>
       <View>
-        <Text className={"my-4 text-[#5156BE] uppercase px-5 font-bold text-xl font-[Poppins-Black]"}>
+        <Text className={"font-[Poppins-Black] my-4 text-[#5156BE] uppercase px-5 font-bold text-xl"}>
           Announce
         </Text>
         <ScrollView horizontal={true}>
@@ -45,7 +45,7 @@ export default function Accueil() {
         </ScrollView>
       </View>
       <View>
-        <Text className={"my-4 text-[#5156BE] uppercase px-5 font-bold text-xl"}>
+        <Text className={"font-[Poppins-Black] my-4 text-[#5156BE] uppercase px-5 font-bold text-xl"}>
           Emploi du temps de aujourd'hui
         </Text>
         <ScrollView className=" w-full h-[45%]">
@@ -54,7 +54,7 @@ export default function Accueil() {
               events.map((event) => <EventCard isWhite={true} event={event} key={event.id} />)}
             {events.length === 0 && !loading && (
               <View className="flex  my-14 justify-center items-center h-[30px] ">
-                <Text className="text-[#5156BE] font-bold text-xl">
+                <Text className="font-[Poppins-Black] text-[#5156BE] font-bold text-xl">
                   No events
                 </Text>
               </View>

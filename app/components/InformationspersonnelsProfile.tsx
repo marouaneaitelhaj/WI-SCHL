@@ -22,70 +22,70 @@ export default function InformationspersonnelsProfile(props: {
     <Animated.View entering={SlideInRight} exiting={SlideOutLeft}>
       <View className="space-y-5 px-5 my-5">
         <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="text-[black] w-1/3">Prenom:</Text>
-          <Text className="text-[#5156BE] w-2/3">{user?.prenom_fr}</Text>
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">Prenom:</Text>
+          <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">{user?.prenom_fr}</Text>
         </View>
         <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="text-[black] w-1/3">Nom:</Text>
-          <Text className="text-[#5156BE] w-2/3">{user?.nom_fr}</Text>
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">Nom:</Text>
+          <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">{user?.nom_fr}</Text>
         </View>
         <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="text-[black] w-1/3">Email:</Text>
-          <Text className="text-[#5156BE] w-2/3">{user?.email}</Text>
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">Email:</Text>
+          <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">{user?.email}</Text>
         </View>
         <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="text-[black] w-1/3">E-mail académique:</Text>
-          <Text className="text-[#5156BE] w-2/3">{user?.email}</Text>
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">E-mail académique:</Text>
+          <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">{user?.email}</Text>
         </View>
         <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="text-[black] w-1/3">Fillier:</Text>
-          <Text className="text-[#5156BE] w-2/3">{user?.fillier}</Text>
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">Fillier:</Text>
+          <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">{user?.fillier}</Text>
         </View>
         <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="text-[black] w-1/3">Cin:</Text>
-          <Text className="text-[#5156BE] w-2/3">{user?.cin}</Text>
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">Cin:</Text>
+          <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">{user?.cin}</Text>
         </View>
         <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="text-[black] w-1/3">Cne:</Text>
-          <Text className="text-[#5156BE] w-2/3">{user?.cne}</Text>
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">Cne:</Text>
+          <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">{user?.cne}</Text>
         </View>
         <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="text-[black] w-1/3">Code inscription:</Text>
-          <Text className="text-[#5156BE] w-2/3">{user?.code_inscription}</Text>
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">Code inscription:</Text>
+          <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">{user?.code_inscription}</Text>
         </View>
         <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="text-[black] w-1/3">Date naissance:</Text>
-          <Text className="text-[#5156BE] w-2/3">{user?.date_naissance}</Text>
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">Date naissance:</Text>
+          <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">{user?.date_naissance}</Text>
         </View>
         <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="text-[black] w-1/3">Lieu naissance_fr:</Text>
-          <Text className="text-[#5156BE] w-2/3">
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">Lieu naissance_fr:</Text>
+          <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">
             {user?.lieu_naissance_fr}
           </Text>
         </View>
         <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="text-[black] w-1/3">Adresse fr:</Text>
-          <Text className="text-[#5156BE] w-2/3">{user?.adresse_fr}</Text>
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">Adresse fr:</Text>
+          <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">{user?.adresse_fr}</Text>
         </View>
         <View className="flex flex-row-reverse space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="text-[black] w-1/3">الاسم الشخصي:</Text>
-          <Text className="text-[#5156BE] w-2/3">{user?.prenom_ar}</Text>
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">الاسم الشخصي:</Text>
+          <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">{user?.prenom_ar}</Text>
         </View>
         <View className="flex flex-row-reverse space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="text-[black] w-1/3">الاسم العائلي:</Text>
-          <Text className="text-[#5156BE] w-2/3">
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">الاسم العائلي:</Text>
+          <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">
             {user?.lieu_naissance_ar}
           </Text>
         </View>
         <View className="flex flex-row-reverse space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="text-[black] w-1/3">مكان الازدياد:</Text>
-          <Text className="text-[#5156BE] w-2/3">
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">مكان الازدياد:</Text>
+          <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">
             {user?.lieu_naissance_ar}
           </Text>
         </View>
         <View className="flex flex-row-reverse space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="text-[black] w-1/3">العنوان الحالي:</Text>
-          <Text className="text-[#5156BE] w-2/3">{user?.adresse_ar}</Text>
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">العنوان الحالي:</Text>
+          <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">{user?.adresse_ar}</Text>
         </View>
         <View className="w-full flex justify-center items-center ">
           <Pressable
@@ -96,7 +96,7 @@ export default function InformationspersonnelsProfile(props: {
               "flex rounded-md w-[90%] justify-center items-center  p-5 bg-[#5156BE]"
             }
           >
-            <Text className="text-white text-[20px]">
+            <Text className="font-[Poppins-Black] text-white text-[20px]">
               Modifier le mot de pass
             </Text>
           </Pressable>

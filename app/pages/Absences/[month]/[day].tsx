@@ -36,7 +36,7 @@ export default function Absences() {
           icon={"cloud-upload-outline"}
         />
       </Pressable>
-      <Text className="text-[#5156BE] text-center px-10 text-lg font-bold mt-5">
+      <Text className="font-[Poppins-Black] text-[#5156BE] text-center px-10 text-lg font-bold mt-5">
         Télécharger un justificatif d'absence pour le {day}/{month}
       </Text>
       <Pressable
@@ -46,7 +46,7 @@ export default function Absences() {
           (file.uri === "" ? " bg-[#e0e1f3]" : "")
         }
       >
-        <Text className="text-white text-center">Télécharger</Text>
+        <Text className="font-[Poppins-Black] text-white text-center">Télécharger</Text>
       </Pressable>
     </View>
   );

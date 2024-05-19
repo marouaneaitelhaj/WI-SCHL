@@ -145,7 +145,7 @@ export default function Emploi() {
             ))}
           {eventsForDay.length === 0 && !loading && (
             <View className="flex  my-14 justify-center items-center h-[30px] ">
-              <Text className="text-[#5156BE] font-bold text-xl">
+              <Text className="font-[Poppins-Black] text-[#5156BE] font-bold text-xl">
                 No events
               </Text>
             </View>

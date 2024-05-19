@@ -80,7 +80,7 @@ export default function Demandes() {
                 router.push(item.key as never);
               }}
             />
-            <Text className="text-[#5156BE] text-center font-bold uppercase">{item.text}</Text>
+            <Text className="font-[Poppins-Black] text-[#5156BE] text-center font-bold uppercase">{item.text}</Text>
           </View>
         ))}
       </View>

@@ -55,7 +55,7 @@ export default function TopSectionForProfile() {
             }}
           >
             <Icon source="arrow-left" size={30} color="white" />
-            <Text className="text-white text-xl">Profile</Text>
+            <Text className="font-[Poppins-Black] text-white text-xl">Profile</Text>
           </Pressable>
           <View className="absolute right-7 flex flex-col space-y-3">
             <Pressable onPress={() => setShowDropDown(!showDropDown)}>
@@ -107,10 +107,10 @@ export default function TopSectionForProfile() {
             className="w-28 rounded-full h-28"
           />
           <View className="flex items-center">
-            <Text className="text-white text-lg">
+            <Text className="font-[Poppins-Black] text-white text-lg">
               {user?.prenom_fr + " " + user?.nom_fr}
             </Text>
-            <Text className="text-white text-sm">
+            <Text className="font-[Poppins-Black] text-white text-sm">
               {user?.prenom_fr + " " + user?.nom_fr}
             </Text>
           </View>

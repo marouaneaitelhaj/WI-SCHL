@@ -34,7 +34,7 @@ export default function CardWrapper({
     >
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <IconButton icon={expanded ? "chevron-up" : "chevron-down"} />
-        <Text className="font-bold uppercase">{title}</Text>
+        <Text className="font-[Poppins-Black] font-bold uppercase">{title}</Text>
       </View>
       {expanded && <Animated.View className={"ml-5"}>{children}</Animated.View>}
     </Pressable>

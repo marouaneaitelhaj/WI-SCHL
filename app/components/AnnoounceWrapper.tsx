@@ -15,7 +15,7 @@ export default function AnnoncesWrapper({
   return (
     <View className="bg-[#e0e1f3] my-2">
       <View className="flex flex-row items-center justify-between px-5">
-        <Text className="text-xl font-bold">
+        <Text className="font-[Poppins-Black] text-xl font-bold">
           {title} ({annonces.length})
         </Text>
         <IconButton

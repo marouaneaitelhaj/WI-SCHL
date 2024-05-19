@@ -38,7 +38,7 @@ export default function AttestationReussite() {
             ))}
           {status !== "loading" && data.length === 0 && (
             <View className="flex my-14 justify-center items-center h-[30px] ">
-              <Text className="text-[#5156BE] font-bold text-xl">
+              <Text className="font-[Poppins-Black] text-[#5156BE] font-bold text-xl">
                 Aucune demande
               </Text>
             </View>
@@ -81,7 +81,7 @@ export default function AttestationReussite() {
             );
           }}
         >
-          <Text className="text-white text-center">
+          <Text className="font-[Poppins-Black] text-white text-center">
             Déposer une nouvelle demande
           </Text>
         </Pressable>

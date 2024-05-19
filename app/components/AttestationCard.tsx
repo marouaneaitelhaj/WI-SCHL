@@ -74,7 +74,7 @@ export default function AttestationCard(props: {
       style={{ backgroundColor: statuts[props.data.etat_dem]?.color }}
     >
       <View className="">
-        <Text>
+        <Text className="font-[Poppins-Black]">
         {statuts[props.data.etat_dem]?.text}
         </Text>
       </View>
@@ -90,28 +90,28 @@ export default function AttestationCard(props: {
       />
       <Animated.View style={animatedStyles} className={"space-y-2"}>
         <View className="flex flex-row space-x-5 ">
-          <Text>Numéro de demande :</Text>
-          <Text>{props.data.num_dem}</Text>
+          <Text className="font-[Poppins-Black]">Numéro de demande :</Text>
+          <Text className="font-[Poppins-Black]">{props.data.num_dem}</Text>
         </View>
         <View className="flex flex-row space-x-5 ">
-          <Text>Date de demande :</Text>
-          <Text>{props.data.date_dem}</Text>
+          <Text className="font-[Poppins-Black]">Date de demande :</Text>
+          <Text className="font-[Poppins-Black]">{props.data.date_dem}</Text>
         </View>
         <View className="flex flex-row space-x-5 ">
-          <Text>Année scolaire :</Text>
-          <Text>{props.data.anneUniversitaire}</Text>
+          <Text className="font-[Poppins-Black]">Année scolaire :</Text>
+          <Text className="font-[Poppins-Black]">{props.data.anneUniversitaire}</Text>
         </View>
         <View className="flex flex-row space-x-5 ">
-          <Text>Statut :</Text>
-          <Text className="text-red-500">
+          <Text className="font-[Poppins-Black]">Statut :</Text>
+          <Text className="font-[Poppins-Black] text-red-500">
             {statuts[props.data.etat_dem]?.text}
           </Text>
         </View>
         {props.data.etat_dem !== "0" && (
           <View className="flex flex-row space-x-5  items-center ">
-            <Text>Actions :</Text>
+            <Text className="font-[Poppins-Black]">Actions :</Text>
             {expanded && (
-              <Text>
+              <Text className="font-[Poppins-Black]">
                 {props.data.etat_dem === "1"
                   ? "Annuler la demande"
                   : "Télécharger l'attestation"}

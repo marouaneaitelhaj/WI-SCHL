@@ -33,7 +33,7 @@ export default function AnnonceCard({
           {annonce.annonce_title}
         </Text>
       </View>
-      <Text className="font-light text-gray-400">12 Juin 2021</Text>
+      <Text className="font-[Poppins-Black] font-light text-gray-400">12 Juin 2021</Text>
     </Pressable>
   );
 }

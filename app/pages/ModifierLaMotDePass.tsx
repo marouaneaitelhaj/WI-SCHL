@@ -100,13 +100,13 @@ export default function ModifierLaMotDePass(props: { profileStatus: number }) {
                 name="motPassActuel"
               />
               {errors.motPassActuel && (
-                <Text className="text-red-400">
+                <Text className="font-[Poppins-Black] text-red-400">
                   {errors.motPassActuel.type === "required"
                     ? "Ce champ est obligatoire"
                     : "Mot de pass invalide"}
                 </Text>
               )}
-              {error && <Text className="text-red-400">{error}</Text>}
+              {error && <Text className="font-[Poppins-Black] text-red-400">{error}</Text>}
             </View>
 
             <View>
@@ -144,7 +144,7 @@ export default function ModifierLaMotDePass(props: { profileStatus: number }) {
                 name="nvMotPass"
               />
               {errors.nvMotPass && (
-                <Text className="text-red-400">
+                <Text className="font-[Poppins-Black] text-red-400">
                   {errors.nvMotPass.type === "required"
                     ? "Ce champ est obligatoire"
                     : errors.nvMotPass.type === "minLength"
@@ -154,7 +154,7 @@ export default function ModifierLaMotDePass(props: { profileStatus: number }) {
                     : ""}
                 </Text>
               )}
-              {error && <Text className="text-red-400">{error}</Text>}
+              {error && <Text className="font-[Poppins-Black] text-red-400">{error}</Text>}
             </View>
             <View>
               <Controller
@@ -194,7 +194,7 @@ export default function ModifierLaMotDePass(props: { profileStatus: number }) {
                 name="nvMotPass_confirmation"
               />
               {errors.nvMotPass_confirmation && (
-                <Text className="text-red-400">
+                <Text className="font-[Poppins-Black] text-red-400">
                   {errors.nvMotPass_confirmation.type === "required"
                     ? "Ce champ est obligatoire"
                     : errors.nvMotPass_confirmation.type === "minLength"
@@ -204,7 +204,7 @@ export default function ModifierLaMotDePass(props: { profileStatus: number }) {
                     : ""}
                 </Text>
               )}
-              {error && <Text className="text-red-400">{error}</Text>}
+              {error && <Text className="font-[Poppins-Black] text-red-400">{error}</Text>}
             </View>
             <View>
               <Pressable
@@ -214,7 +214,7 @@ export default function ModifierLaMotDePass(props: { profileStatus: number }) {
                 }
                 onPress={handleSubmit(onSubmit)}
               >
-                <Text className="text-white text-[20px]">
+                <Text className="font-[Poppins-Black] text-white text-[20px]">
                   {loadingForm ? "Chargement..." : "Modifier le mot de pass"}
                 </Text>
               </Pressable>

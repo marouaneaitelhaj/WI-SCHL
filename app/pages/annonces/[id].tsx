@@ -24,8 +24,8 @@ export default function Annonce() {
   return (
     <ScrollView style={{ height : "50%" }}>
       <View className="p-10 space-y-10">
-        <Text className="font-bold">{annonce.annonce_title}</Text>
-        <Text>{annonce.annonce_body}</Text>
+        <Text className="font-[Poppins-Black] font-bold">{annonce.annonce_title}</Text>
+        <Text className="font-[Poppins-Black]">{annonce.annonce_body}</Text>
       </View>
     </ScrollView>
   );

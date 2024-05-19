@@ -72,7 +72,7 @@ export default function RetraitBaccalaureatForm() {
           );
         }}
       >
-        <Text className="text-white">Confirmer</Text>
+        <Text className="font-[Poppins-Black] text-white">Confirmer</Text>
       </Pressable>
     </>
   );

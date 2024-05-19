@@ -63,13 +63,13 @@ export default function Login() {
             name="email"
           />
           {errors.email && (
-            <Text className="text-red-400">
+            <Text className="font-[Poppins-Black] text-red-400">
               {errors.email.type === "required"
                 ? "Ce champ est obligatoire"
                 : "Email invalide"}
             </Text>
           )}
-          {error && <Text className="text-red-400">{error}</Text>}
+          {error && <Text className="font-[Poppins-Black] text-red-400">{error}</Text>}
         </View>
 
         <View>
@@ -95,13 +95,13 @@ export default function Login() {
             name="password"
           />
           {errors.password && (
-            <Text className="text-red-400">
+            <Text className="font-[Poppins-Black] text-red-400">
               {errors.password.type === "required"
                 ? "Ce champ est obligatoire"
                 : "Mot de pass invalide"}
             </Text>
           )}
-          {error && <Text className="text-red-400">{error}</Text>}
+          {error && <Text className="font-[Poppins-Black] text-red-400">{error}</Text>}
         </View>
         <View>
           <Pressable
@@ -111,7 +111,7 @@ export default function Login() {
             }
             onPress={handleSubmit(onSubmit)}
           >
-            <Text className="text-white text-[20px]">
+            <Text className="font-[Poppins-Black] text-white text-[20px]">
               {loadingForm ? "Chargement..." : "Se connecter"}
             </Text>
           </Pressable>

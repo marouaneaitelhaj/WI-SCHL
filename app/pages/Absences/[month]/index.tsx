@@ -43,20 +43,20 @@ export default function Absences() {
       />
       <View className="flex flex-row justify-around py-6">
         <View className="w-20  flex justify-center items-center h-14 rounded-lg bg-[#D4FFEB]">
-          <Text className=" text-center font-bold text-[#25A168]">30</Text>
-          <Text className=" text-center font-normal text-[#25A168]">
+          <Text className="font-[Poppins-Black]  text-center font-bold text-[#25A168]">30</Text>
+          <Text className="font-[Poppins-Black]  text-center font-normal text-[#25A168]">
             Present
           </Text>
         </View>
         <View className="w-20  flex justify-center items-center  h-14 rounded-lg bg-[#FED4D5]">
-          <Text className=" text-center font-bold text-[#F83A6C]">30</Text>
-          <Text className=" text-center font-normal text-[#F83A6C]">
+          <Text className="font-[Poppins-Black]  text-center font-bold text-[#F83A6C]">30</Text>
+          <Text className="font-[Poppins-Black]  text-center font-normal text-[#F83A6C]">
             Absent
           </Text>
         </View>
         <View className="w-20  flex justify-center items-center  h-14 rounded-lg bg-[#e0e1f3]">
-          <Text className=" text-center font-bold text-[#607E97]">30</Text>
-          <Text className=" text-center font-normal text-[#607E97]">
+          <Text className="font-[Poppins-Black]  text-center font-bold text-[#607E97]">30</Text>
+          <Text className="font-[Poppins-Black]  text-center font-normal text-[#607E97]">
             .........
           </Text>
         </View>

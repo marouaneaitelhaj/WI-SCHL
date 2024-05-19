@@ -92,7 +92,7 @@ export default function Demande_reservationForm() {
           name="salle_id"
         />
         {errors.raison && (
-          <Text className="text-red-500">{errors.raison?.message}</Text>
+          <Text className="font-[Poppins-Black] text-red-500">{errors.raison?.message}</Text>
         )}
       </View>
       <View className="w-full  py-4 space-y-10 rounded-md">
@@ -100,7 +100,7 @@ export default function Demande_reservationForm() {
           onPress={() => setPicker(1)}
           className="w-full p-3 bg-gray-100"
         >
-          <Text className="text-gray-500">
+          <Text className="font-[Poppins-Black] text-gray-500">
             Date de début : {watch("date_debut")}
           </Text>
         </Pressable>
@@ -120,7 +120,7 @@ export default function Demande_reservationForm() {
           />
         )}
         {errors.raison && (
-          <Text className="text-red-500">{errors.raison?.message}</Text>
+          <Text className="font-[Poppins-Black] text-red-500">{errors.raison?.message}</Text>
         )}
       </View>
       <View className="w-full  py-4 space-y-10 rounded-md">
@@ -128,7 +128,7 @@ export default function Demande_reservationForm() {
           onPress={() => setPicker(2)}
           className="w-full p-3 bg-gray-100"
         >
-          <Text className="text-gray-500">Date fin : {watch("date_fin")}</Text>
+          <Text className="font-[Poppins-Black] text-gray-500">Date fin : {watch("date_fin")}</Text>
         </Pressable>
         {picker == 2 && (
           <DateTimePicker
@@ -146,7 +146,7 @@ export default function Demande_reservationForm() {
           />
         )}
         {errors.raison && (
-          <Text className="text-red-500">{errors.raison?.message}</Text>
+          <Text className="font-[Poppins-Black] text-red-500">{errors.raison?.message}</Text>
         )}
       </View>
       <View className="w-full  py-4 space-y-10 rounded-md">
@@ -154,7 +154,7 @@ export default function Demande_reservationForm() {
           onPress={() => setPicker(3)}
           className="w-full p-3 bg-gray-100"
         >
-          <Text className="text-gray-500">
+          <Text className="font-[Poppins-Black] text-gray-500">
             Heure début : {watch("hr_debut")}
           </Text>
         </Pressable>
@@ -177,7 +177,7 @@ export default function Demande_reservationForm() {
           />
         )}
         {errors.raison && (
-          <Text className="text-red-500">{errors.raison?.message}</Text>
+          <Text className="font-[Poppins-Black] text-red-500">{errors.raison?.message}</Text>
         )}
       </View>
       <View className="w-full  py-4 space-y-10 rounded-md">
@@ -185,7 +185,7 @@ export default function Demande_reservationForm() {
           onPress={() => setPicker(3)}
           className="w-full p-3 bg-gray-100"
         >
-          <Text className="text-gray-500">Heure fin : {watch("hr_fin")}</Text>
+          <Text className="font-[Poppins-Black] text-gray-500">Heure fin : {watch("hr_fin")}</Text>
         </Pressable>
         {picker == 3 && (
           <DateTimePicker
@@ -206,7 +206,7 @@ export default function Demande_reservationForm() {
           />
         )}
         {errors.raison && (
-          <Text className="text-red-500">{errors.raison?.message}</Text>
+          <Text className="font-[Poppins-Black] text-red-500">{errors.raison?.message}</Text>
         )}
       </View>
       <View className="w-full  py-4 space-y-10 rounded-md">
@@ -230,7 +230,7 @@ export default function Demande_reservationForm() {
           // rules={{ required: "Prenom est obligatoire" }}
         />
         {errors.raison && (
-          <Text className="text-red-500">{errors.raison?.message}</Text>
+          <Text className="font-[Poppins-Black] text-red-500">{errors.raison?.message}</Text>
         )}
       </View>
       <View className="flex justify-center flex-row space-x-5">
@@ -276,10 +276,10 @@ export default function Demande_reservationForm() {
             );
           })}
         >
-          <Text className="text-white text-center text-xs">Envoyer</Text>
+          <Text className="font-[Poppins-Black] text-white text-center text-xs">Envoyer</Text>
         </Pressable>
         {/* <Pressable className="flex  rounded-md w-[40%] justify-center items-center  p-3 bg-[#e0e1f3]">
-          <Text>Annuler</Text>
+          <Text className="font-[Poppins-Black]">Annuler</Text>
         </Pressable> */}
       </View>
     </View>

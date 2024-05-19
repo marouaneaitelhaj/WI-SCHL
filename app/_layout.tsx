@@ -25,6 +25,14 @@ import { Text } from "react-native";
 import { StyleSheet } from "react-native";
 import { toggleTopBar } from "@state/TopBar/TopBarSlice";
 
+NativeWindStyleSheet.create({
+  styles: {
+    "font-[Poppins-Black]": {
+      fontFamily: "Poppins-Black",
+    },
+  },
+});
+
 NativeWindStyleSheet.setOutput({
   default: "native",
 });
@@ -103,7 +111,7 @@ export function HomeLayout() {
 
 export default function Layout() {
   const [fontsLoaded, fontError] = useFonts({
-    "Poppins-Black": require("@assets/Poppins-Black.ttf"),
+    "Poppins-Black": require("@assets/pxiGyp8kv8JHgFVrJJLucHtA.ttf"),
   });
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded || fontError) {
@@ -111,7 +119,7 @@ export default function Layout() {
     }
   }, [fontsLoaded, fontError]);
   if (!fontsLoaded && !fontError) {
-    return <Text>Loading...</Text>;
+    return <Loading></Loading>;
   }
   return (
     <View

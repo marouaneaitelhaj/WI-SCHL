@@ -113,7 +113,7 @@ export default function Modal() {
           // rules={{ required: "Prenom est obligatoire" }}
         />
         {errors.raison && (
-          <Text className="text-red-500">{errors.raison?.message}</Text>
+          <Text className="font-[Poppins-Black] text-red-500">{errors.raison?.message}</Text>
         )}
       </View>
       <View className="w-full  py-4 space-y-10 rounded-md">
@@ -137,7 +137,7 @@ export default function Modal() {
           // rules={{ required: "Prenom est obligatoire" }}
         />
         {errors.raison && (
-          <Text className="text-red-500">{errors.raison?.message}</Text>
+          <Text className="font-[Poppins-Black] text-red-500">{errors.raison?.message}</Text>
         )}
       </View>
       <View className="flex justify-center flex-row space-x-5">
@@ -145,10 +145,10 @@ export default function Modal() {
           className="flex  rounded-md w-[100%] justify-center items-center  p-3 bg-[#5156BE]"
           onPress={handleSubmit(onSubmit)}
         >
-          <Text className="text-white text-center text-xs">Envoyer</Text>
+          <Text className="font-[Poppins-Black] text-white text-center text-xs">Envoyer</Text>
         </Pressable>
         {/* <Pressable className="flex  rounded-md w-[40%] justify-center items-center  p-3 bg-[#e0e1f3]">
-          <Text>Annuler</Text>
+          <Text className="font-[Poppins-Black]">Annuler</Text>
         </Pressable> */}
       </View>
     </View>

@@ -39,7 +39,14 @@
     },
     "plugins": [
       "expo-router",
-      "expo-font"
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/pxiGyp8kv8JHgFVrJJLucHtA.ttf"
+          ]
+        }
+      ]
     ],
     "runtimeVersion": {
       "policy": "appVersion"
