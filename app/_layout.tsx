@@ -7,7 +7,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { RootState, useAppDispatch } from "state/store";
 import { store } from "state/store";
 import { setToken } from "state/Auth/AuthSlice";
-import { getProfileAction } from "state/Auth/AuthActions";
+import { getProfileAction } from "@state/Auth/AuthActions";
 import Loading from "app/components/Loading";
 import Login from "@pages/Login";
 import Profile from "@pages/Profile";
