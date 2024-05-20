@@ -8,11 +8,11 @@ import EventCard from "../components/EventCard";
 import {
   setSelectedDay,
   setSelectedMonth,
-} from "../../state/EmploisDuTemps/EmploisDuTempsSlice";
+} from "../../state/EmploisDuTemps/SchedulesSlice";
 import {
   getEmploisDuTempsByDay,
   getEmploisDuTempsByMonth,
-} from "state/EmploisDuTemps/EmploisDuTempsActions";
+} from "@state/EmploisDuTemps/SchedulesSliceActions";
 import { useState } from "react";
 
 export default function Emploi() {

@@ -3,7 +3,7 @@ import {
   cancelDemande,
   createDemande,
   getDemandes,
-} from "./AttestationInscriptionActions";
+} from "./EnrollmentCertificateActions";
 import { TDemande } from "../../types";
 
 const initialState = {

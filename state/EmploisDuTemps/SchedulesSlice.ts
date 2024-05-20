@@ -3,7 +3,7 @@ import { Tevent, Tseance, eventsType } from "../types";
 import {
   getEmploisDuTempsByDay,
   getEmploisDuTempsByMonth,
-} from "./EmploisDuTempsActions";
+} from "./SchedulesSliceActions";
 
 type EmploisDuTempsState = {
   eventsForDay: Tevent[];

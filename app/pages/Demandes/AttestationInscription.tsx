@@ -8,7 +8,7 @@ import {
   createDemande,
   cancelDemande,
   getDemandes,
-} from "state/Demandes/AttestationInscription/AttestationInscriptionActions";
+} from "state/Demandes/AttestationInscription/EnrollmentCertificateActions";
 import { RootState, useAppDispatch } from "state/store";
 export default function AttestationInscription() {
   const dispatch = useAppDispatch();
