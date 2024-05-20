@@ -92,8 +92,6 @@ export function HomeLayout() {
               const deltaY = startY - endY; // Calculate the vertical scroll distance
               const threshold = screenHeight * 0.6; // 60% of the screen height
 
-              console.log(deltaY, threshold, screenHeight, startY, endY);
-
               if (deltaY > threshold) {
                 // Check if scrolled more than 60% of the screen height
                 dispatch(toggleTopBar()); // Dispatch the action if condition is met

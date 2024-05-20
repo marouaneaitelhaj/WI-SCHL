@@ -1,4 +1,4 @@
-import { View, Image, Pressable } from "react-native";
+import { View, Image, Pressable, Text } from "react-native";
 import TopBarElements from "./TopBarElements";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../state/store";
@@ -54,12 +54,22 @@ export default function TopBar() {
                 size={40}
               />
             ) : (
-              <IconButton
-                onPress={() => dispatch(toggleTopBar())}
-                icon="dots-grid"
-                iconColor="white"
-                size={40}
-              />
+              <>
+                <IconButton
+                  onPress={() => dispatch(toggleTopBar())}
+                  icon="dots-grid"
+                  iconColor="white"
+                  size={40}
+                />
+                <View>
+                  <Text className="text-white text-sm font-bold">
+                    {user?.nom_fr + " " + user?.prenom_fr}
+                  </Text>
+                  <Text className="text-white text-xs font-extralight">
+                    {user?.email}
+                  </Text>
+                </View>
+              </>
             ))}
         </View>
         <Pressable
