@@ -76,11 +76,10 @@ export default function Demandes() {
               iconColor={COLORS.primaryColor}
               icon={item.icon}
               onPress={() => {
-                // dispatch(enableGoBack());
                 router.push(item.key as never);
               }}
             />
-            <Text className="font-[Poppins-Black] text-[#5156BE] text-center font-bold uppercase">{item.text}</Text>
+            <Text className="font-[Poppins-Black] text-[#5156BE] text-center font-bold uppercase text-xs">{item.text}</Text>
           </View>
         ))}
       </View>
