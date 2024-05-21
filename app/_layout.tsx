@@ -109,7 +109,7 @@ export function HomeLayout() {
 
 export default function Layout() {
   const [fontsLoaded, fontError] = useFonts({
-    "Poppins-Black": require("@assets/pxiGyp8kv8JHgFVrJJLucHtA.ttf"),
+    "Poppins-Black": require("@assets/Poppins-Regular.ttf"),
   });
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded || fontError) {
