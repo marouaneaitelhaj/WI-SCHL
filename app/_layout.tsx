@@ -60,7 +60,9 @@ export function HomeLayout() {
       if (token) {
         dispatch(getProfileAction(token))
           .unwrap()
-          .then(() => {
+          .then((res) => {
+            console.log(res);
+            
             setIschecked(true);
           })
           .catch(() => {

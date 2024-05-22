@@ -1,13 +1,13 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { StudentRecord, Tannonce } from "state/types";
+import { StudentRecord } from "state/types";
 import { getNotes } from "./NotesActions";
 
-type AnnonceState = {
+type NoteState = {
     notes: StudentRecord;
     status ?: string;
 }
 
-const initialState: AnnonceState = {
+const initialState: NoteState = {
     notes: {} as StudentRecord,
     status: "idle"
 }

@@ -36,7 +36,7 @@ export default function AbsenceCard(props: {
           {props.beingProcessed}
         </Text>
         <Text className="font-[Poppins-Black]  text-center font-normal text-[#607E97]">
-          .........
+          ........
         </Text>
       </View>
     </Pressable>

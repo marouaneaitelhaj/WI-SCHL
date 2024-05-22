@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { Text } from "react-native";
 import { View, ScrollView, Pressable } from "react-native";
-import { Calendar } from "react-native-calendars";
+import {
+  Calendar,
+  CalendarProvider,
+  WeekCalendar,
+} from "react-native-calendars";
 import { MarkedDates } from "react-native-calendars/src/types";
 
 export default function DisponibiliteForm() {
@@ -33,94 +37,58 @@ export default function DisponibiliteForm() {
   }, [dateEnd, dateStart]);
   return (
     <View className="bg-white">
-      <ScrollView
-        style={{
-          height: "40%",
-        }}
-      >
-        <Calendar
-          markingType={"period"}
-          onDayPress={(day) => {
-            if (selectingType === "start") {
-              if (new Date(day.dateString) > new Date(dateEnd)) {
-                setDateEnd(day.dateString);
-              } else {
-                setDateStart(day.dateString);
-              }
-            } else if (selectingType === "end") {
-              if (new Date(day.dateString) < new Date(dateStart)) {
-                setDateStart(day.dateString);
-              } else {
-                setDateEnd(day.dateString);
-              }
-            } else if (selectingType === "hour") {
-            }
-          }}
-          markedDates={{
-            [dateStart]: {
-              startingDay: true,
-              color: "#5156BE",
-              textColor: "white",
-            },
-            [dateEnd]: {
-              endingDay: true,
-              color: "#5156BE",
-              textColor: "white",
-            },
-            ...markedDates,
-          }}
-        />
+      <ScrollView>
+        <View className="bg-red-600 w-full flex items-end">
+          <View className="w-[85%]">
+            <CalendarProvider date={new Date().toISOString().split("T")[0]}>
+              <WeekCalendar />
+            </CalendarProvider>
+          </View>
+        </View>
+        <View>
+          <View className="space-y-5 py-5 bg-pink-500 w-[15%] flex items-center">
+            <View className="flex justify-center h-12 w-12 border items-center">
+              <Text className="text-center">07 h</Text>
+            </View>
+            <View className="flex justify-center h-12 w-12 border items-center">
+              <Text className="text-center">08 h</Text>
+            </View>
+            <View className="flex justify-center h-12 w-12 border items-center">
+              <Text className="text-center">09 h</Text>
+            </View>
+            <View className="flex justify-center h-12 w-12 border items-center">
+              <Text className="text-center">10 h</Text>
+            </View>
+            <View className="flex justify-center h-12 w-12 border items-center">
+              <Text className="text-center">11 h</Text>
+            </View>
+            <View className="flex justify-center h-12 w-12 border items-center">
+              <Text className="text-center">12 h</Text>
+            </View>
+            <View className="flex justify-center h-12 w-12 border items-center">
+              <Text className="text-center">13 h</Text>
+            </View>
+            <View className="flex justify-center h-12 w-12 border items-center">
+              <Text className="text-center">14 h</Text>
+            </View>
+            <View className="flex justify-center h-12 w-12 border items-center">
+              <Text className="text-center">15 h</Text>
+            </View>
+            <View className="flex justify-center h-12 w-12 border items-center">
+              <Text className="text-center">16 h</Text>
+            </View>
+            <View className="flex justify-center h-12 w-12 border items-center">
+              <Text className="text-center">17 h</Text>
+            </View>
+            <View className="flex justify-center h-12 w-12 border items-center">
+              <Text className="text-center">18 h</Text>
+            </View>
+            <View className="flex justify-center h-12 w-12 border items-center">
+              <Text className="text-center">19 h</Text>
+            </View>
+          </View>
+        </View>
       </ScrollView>
-      <View className="flex justify-around flex-row py-2 w-full space-x-3">
-        <Pressable
-          className={
-            "flex rounded-md w-1/3  justify-center items-center  px-5 py-2 " +
-            (selectingType === "start" ? "bg-green-900" : "bg-green-500")
-          }
-          onPress={() => {
-            setSelectingType("start");
-          }}
-        >
-          <Text className="font-[Poppins-Black] text-white text-center w-full">
-            Début
-          </Text>
-        </Pressable>
-        <Pressable
-          className={
-            "flex rounded-md w-1/3  justify-center items-center  px-5 py-2 " +
-            (selectingType === "end" ? "bg-red-900" : "bg-red-500")
-          }
-          onPress={() => {
-            setSelectingType("end");
-          }}
-        >
-          <Text className="font-[Poppins-Black] text-white text-center w-full">
-            Fin
-          </Text>
-        </Pressable>
-        <Pressable
-          className={
-            "flex rounded-md w-1/3  justify-center items-center  px-5 py-2 " +
-            (selectingType === "hour" ? "bg-blue-900" : "bg-blue-500")
-          }
-          onPress={() => {
-            setSelectingType("hour");
-          }}
-        >
-          <Text className="font-[Poppins-Black] text-white text-center w-full">
-            Heure
-          </Text>
-        </Pressable>
-      </View>
-      <View className="flex justify-center flex-cols"> 
-        {Object.keys(markedDates).map((key) => {
-          return (
-            <Text key={key}>
-              {key}
-            </Text>
-          );
-        })}
-      </View>
     </View>
   );
 }

@@ -177,7 +177,7 @@ export type Tannonce = {
   titre: string;
   annonce_title: string;
   objet: string;
-  lien : string;
+  lien: string;
   image: string;
   date: string;
   piece_jointe: string;
@@ -190,9 +190,8 @@ export type TDemande = {
   date_dem: string;
   notes: string;
   inscription_id: string;
-  file : string;
+  file: string;
 };
-
 
 export type Tfiliere = {
   id: string;
@@ -200,8 +199,6 @@ export type Tfiliere = {
   libelle_fr: string;
   pole_id: string;
 };
-
-
 
 export type Element = {
   libelle_fr: string;
@@ -225,4 +222,8 @@ type Semester = {
 
 export type StudentRecord = {
   [semesterName: string]: Semester;
+};
+
+export type TAbsence = {
+  [semesterName: string]: { modules: TModule[] };
 };
