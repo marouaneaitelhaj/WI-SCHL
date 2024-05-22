@@ -1,35 +1,81 @@
 import { enableGoBack } from "@state/TopBar/TopBarSlice";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { View, Text, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  Pressable,
+  useWindowDimensions,
+} from "react-native";
 import { getAnnonce } from "state/Annonces/AnnoncesActions";
-import { useAppDispatch } from "state/store";
+import { RootState, useAppDispatch } from "state/store";
 import { Tannonce } from "state/types";
+import RenderHtml from "react-native-render-html";
+import { Linking } from "react-native";
+import { useSelector } from "react-redux";
+import { Icon } from "react-native-paper";
 
 export default function Annonce() {
-  // get param body
+  const { selectedAnnonce } = useSelector((state: RootState) => state.annonces);
+
   const { id } = useLocalSearchParams();
-  const [annonce, setAnnonce] = useState<Tannonce>({} as Tannonce);
+  console.log(selectedAnnonce);
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    // dispatch(enableGoBack())
-    dispatch(getAnnonce(id as string))
-      .unwrap()
-      .then((data) => {
-        setAnnonce(data[0]);
-      })
-      .catch((err) => {});
-  }, []);
+  // useEffect(() => {
+  //   // dispatch(enableGoBack())
+  //   dispatch(getAnnonce(id as string))
+  //     .unwrap()
+  //     .then((data) => {
+  //       setAnnonce(data[0]);
+  //     })
+  //     .catch((err) => {});
+  // }, []);
+
+  if (!selectedAnnonce) {
+    return <Text>loading...</Text>;
+  }
+
+  const annonce_body = {
+    html: selectedAnnonce.annonce_body || selectedAnnonce.objet,
+  };
+
+  const { width } = useWindowDimensions();
 
   return (
     <ScrollView style={{ height: "50%" }}>
       <View className="p-10 space-y-10">
         <Text className="font-[Poppins-Black] font-bold">
-          {annonce.annonce_title}
+          {selectedAnnonce.annonce_title || selectedAnnonce.titre}
         </Text>
-        <Text className="font-[Poppins-Black]">{annonce.annonce_body}</Text>
+        <View>
+          <RenderHtml source={annonce_body} contentWidth={width} />
+        </View>
+        {selectedAnnonce.date && (
+          <Text className="font-[Poppins-Black] font-light text-gray-400">
+            {selectedAnnonce.date}
+          </Text>
+        )}
+        {selectedAnnonce.lien && (
+          <Pressable
+            onPress={() => {
+              Linking.openURL(selectedAnnonce.lien);
+            }}
+            className="font-[Poppins-Black] bg-[#5156BE] px-3 py-5 text-center rounded-md font-light text-white flex flex-row justify-center space-x-2 items-center"
+          >
+            <Icon source={"link"} size={20} color="white" />
+            <Text className="text-white">{selectedAnnonce.lien}</Text>
+          </Pressable>
+        )}
+        {(selectedAnnonce.image || selectedAnnonce.piece_jointe) && (
+          <View className=" h-32">
+            <Image
+              src={selectedAnnonce.image || selectedAnnonce.piece_jointe}
+            />
+          </View>
+        )}
       </View>
-      <View className="bg-red-500 h-32"></View>
     </ScrollView>
   );
 }

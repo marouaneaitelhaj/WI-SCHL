@@ -4,16 +4,19 @@ import { useEffect } from "react";
 import { View, Text, ScrollView } from "react-native";
 import { IconButton } from "react-native-paper";
 import { useSelector } from "react-redux";
-import { getAnnonces } from "state/Annonces/AnnoncesActions";
+import { getAnnonces, getVisEntreprise, getVisScolaire } from "state/Annonces/AnnoncesActions";
 import { RootState, useAppDispatch } from "state/store";
 
 export default function Annonces() {
+  
   const dispatch = useAppDispatch();
 
-  const { annonces } = useSelector((state: RootState) => state.annonces);
+  const { annonces, VisEntreprise, VisScolaire } = useSelector((state: RootState) => state.annonces);
 
   useEffect(() => {
     dispatch(getAnnonces());
+    dispatch(getVisEntreprise());
+    dispatch(getVisScolaire());
   }, []);
   return (
     <View className="">
@@ -22,10 +25,10 @@ export default function Annonces() {
         style={{ height: "85%" }}
       >
         <AnnoncesWrapper annonces={annonces} />
-        <AnnoncesWrapper title="Les offres de stage" annonces={annonces} />
+        <AnnoncesWrapper title="Les offres de stage" annonces={VisEntreprise} />
         <AnnoncesWrapper
           title="Applications universitaire"
-          annonces={annonces}
+          annonces={VisScolaire}
         />
       </ScrollView>
     </View>

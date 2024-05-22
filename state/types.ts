@@ -174,7 +174,13 @@ export type Tseance_element = {
 export type Tannonce = {
   id: string;
   annonce_body: string;
+  titre: string;
   annonce_title: string;
+  objet: string;
+  lien : string;
+  image: string;
+  date: string;
+  piece_jointe: string;
 };
 
 export type TDemande = {

@@ -11,6 +11,7 @@ export default function AnnoncesWrapper({
   annonces: Tannonce[];
   title?: string;
 }) {
+  
   const [expended, setExpended] = useState(false);
   return (
     <View className="bg-[#e0e1f3] my-2">

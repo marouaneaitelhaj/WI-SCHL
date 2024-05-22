@@ -2,6 +2,8 @@ import { View, Text, Image, Pressable } from "react-native";
 import { Icon } from "react-native-paper";
 import { Tannonce } from "state/types";
 import { router } from "expo-router";
+import { useAppDispatch } from "@state/store";
+import { setAnnonce } from "@state/Annonces/AnnoncesSlice";
 
 export default function AnnonceCard({
   annonce,
@@ -10,9 +12,11 @@ export default function AnnonceCard({
   annonce: Tannonce;
   bg?: string;
 }) {
+  const dispatch = useAppDispatch();
   return (
     <Pressable
       onPress={() => {
+        dispatch(setAnnonce(annonce));
         router.push({ pathname: "/pages/annonces/" + annonce.id });
       }}
       style={{ backgroundColor: bg }}
@@ -30,10 +34,12 @@ export default function AnnonceCard({
           numberOfLines={3}
           style={{ flex: 1, flexWrap: "wrap" }}
         >
-          {annonce.annonce_title}
+          {annonce.annonce_title || annonce.titre}
         </Text>
       </View>
-      <Text className="font-[Poppins-Black] font-light text-gray-400">12 Juin 2021</Text>
+      {annonce.date && <Text className="font-[Poppins-Black] font-light text-gray-400">
+        {annonce.date}
+      </Text>}
     </Pressable>
   );
 }
