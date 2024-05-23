@@ -9,135 +9,53 @@ import { useSelector } from "react-redux";
 export default function Absences() {
   const dispatch = useAppDispatch();
   const { absences } = useSelector((state: RootState) => state.absence);
+  
   useEffect(() => {
     dispatch(getAbsences())
       .unwrap()
       .then((data) => {
         console.log(data);
       });
-  }, []);
+  }, [dispatch]);
+  
   useEffect(() => {
     console.log(absences);
   }, [absences]);
+  
   return (
-    <View className="flex flex-col items-start w-full">
+    <View className="flex flex-col items-start w-full h-full">
       <ScrollView
-        className="flex flex-col"
-        showsVerticalScrollIndicator={false}
-        style={{ height: "90%", width: "100%" }}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={{ width: "100%" }}
       >
-        {Object.entries(absences).map(([semesterName, semester]) => (
-          <CardWrapper
-            key={semesterName}
-            bg="#e0e1f3"
-            expandedProp={true}
-            title={semesterName}
-          >
-            {semester.modules.flatMap((moduleGroup, groupIndex) =>
-              moduleGroup.elements.map((element, elementIndex) => (
-                <AbsenceCard element={element.libelle_fr} key={element.libelle_fr} absent={element.absences.length} />
-              ))
-            )}
-          </CardWrapper>
-        ))}
-        {/* <CardWrapper bg="#e0e1f3" expandedProp={true} title="Semestre 2">
-          <CardWrapper title="module 1">
-            <AbsenceCard
-              month="JAN"
-              present={30}
-              beingProcessed={30}
-              absent={40}
-            />
-            <AbsenceCard
-              month="JAN"
-              present={30}
-              beingProcessed={30}
-              absent={40}
-            />
-            <AbsenceCard
-              month="JAN"
-              present={30}
-              beingProcessed={30}
-              absent={40}
-            />
-            <AbsenceCard
-              month="JAN"
-              present={30}
-              beingProcessed={30}
-              absent={40}
-            />
-            <AbsenceCard
-              month="JAN"
-              present={30}
-              beingProcessed={30}
-              absent={40}
-            />
-          </CardWrapper>
-          <CardWrapper title="module 2">
-            <AbsenceCard
-              month="JAN"
-              present={30}
-              beingProcessed={30}
-              absent={40}
-            />
-            <AbsenceCard
-              month="JAN"
-              present={30}
-              beingProcessed={30}
-              absent={40}
-            />
-            <AbsenceCard
-              month="JAN"
-              present={30}
-              beingProcessed={30}
-              absent={40}
-            />
-            <AbsenceCard
-              month="JAN"
-              present={30}
-              beingProcessed={30}
-              absent={40}
-            />
-            <AbsenceCard
-              month="JAN"
-              present={30}
-              beingProcessed={30}
-              absent={40}
-            />
-          </CardWrapper>
-          <CardWrapper title="module 3">
-            <AbsenceCard
-              month="JAN"
-              present={30}
-              beingProcessed={30}
-              absent={40}
-            />
-            <AbsenceCard
-              month="JAN"
-              present={30}
-              beingProcessed={30}
-              absent={40}
-            />
-            <AbsenceCard
-              month="JAN"
-              present={30}
-              beingProcessed={30}
-              absent={40}
-            />
-            <AbsenceCard
-              month="JAN"
-              present={30}
-              beingProcessed={30}
-              absent={40}
-            />
-            <AbsenceCard
-              month="JAN"
-              present={30}
-              beingProcessed={30}
-              absent={40}
-            />
-          </CardWrapper>
-        </CardWrapper> */}
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={{ height: "90%", width: "100%" }}
+        >
+          {Object.entries(absences).map(([semesterName, semester]) => (
+            <CardWrapper
+              key={semesterName}
+              bg="white"
+              expandedProp={true}
+              title={semesterName}
+            >
+              {semester.modules.flatMap((moduleGroup, groupIndex) =>
+                moduleGroup.elements.map((element, elementIndex) => (
+                  <AbsenceCard
+                    element={element.libelle_fr}
+                    key={element.libelle_fr}
+                    count_absence_non_justifie={element.count_absence_non_justifie}
+                    count_absence_justifie={element.count_absence_justifie}
+                    count_absence_en_cours_justifie={element.count_absence_en_cours_justifie}
+                    present={element.count_seance}
+                    absent={element.count_absence}
+                  />
+                ))
+              )}
+            </CardWrapper>
+          ))}
+        </ScrollView>
       </ScrollView>
     </View>
   );
