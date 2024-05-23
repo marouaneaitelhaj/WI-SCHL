@@ -16,21 +16,7 @@ export default function AbsenceCard(props: {
     >
       <View className=" h-14 w-14 flex rounded-full justify-center items-center bg-[#D0EBFE]">
         <Text className="font-[Poppins-Black] uppercase text-[10px] text-center font-bold text-[#5156BE]">
-          {props?.element
-            ? props.element.charAt(0) +
-              props.element.charAt(1) +
-              props.element.charAt(2) +
-              props.element.charAt(4) +
-              props.element.charAt(5) +
-              props.element.charAt(5) + '\n'+
-              props.element.charAt(7) +
-              props.element.charAt(8) +
-              props.element.charAt(9) +
-              props.element.charAt(10) +
-              props.element.charAt(11) +
-              props.element.charAt(12) + '\n'+
-              props.element.charAt(11)
-            : ""}
+            {props.element}
         </Text>
       </View>
       <View className="w-20  flex justify-center items-center h-14 rounded-lg bg-[#D4FFEB]">

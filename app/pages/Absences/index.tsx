@@ -35,12 +35,12 @@ export default function Absences() {
           >
             {semester.modules.flatMap((moduleGroup, groupIndex) =>
               moduleGroup.elements.map((element, elementIndex) => (
-                <AbsenceCard element={element.libelle_fr} absent={element.absences.length} />
+                <AbsenceCard element={element.libelle_fr} key={element.libelle_fr} absent={element.absences.length} />
               ))
             )}
           </CardWrapper>
         ))}
-        <CardWrapper bg="#e0e1f3" expandedProp={true} title="Semestre 2">
+        {/* <CardWrapper bg="#e0e1f3" expandedProp={true} title="Semestre 2">
           <CardWrapper title="module 1">
             <AbsenceCard
               month="JAN"
@@ -137,7 +137,7 @@ export default function Absences() {
               absent={40}
             />
           </CardWrapper>
-        </CardWrapper>
+        </CardWrapper> */}
       </ScrollView>
     </View>
   );
