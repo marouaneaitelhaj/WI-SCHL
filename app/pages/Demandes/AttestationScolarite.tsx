@@ -1,4 +1,4 @@
-import AttestationCard from "app/components/AttestationCard";
+import AttestationCard from "app/components/Demandes/AttestationCard";
 import { useEffect } from "react";
 import { ActivityIndicator } from "react-native";
 import { View, Text, Pressable, Alert, ScrollView } from "react-native";

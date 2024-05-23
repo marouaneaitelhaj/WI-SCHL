@@ -1,4 +1,4 @@
-import AttestationCard from "app/components/AttestationCard";
+import AttestationCard from "app/components/Demandes/AttestationCard";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { ActivityIndicator } from "react-native";

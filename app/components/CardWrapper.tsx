@@ -36,7 +36,7 @@ export default function CardWrapper({
         <IconButton icon={expanded ? "chevron-up" : "chevron-down"} />
         <Text className="font-[Poppins-Black] font-bold uppercase">{title}</Text>
       </View>
-      {expanded && <Animated.View className={"ml-5"}>{children}</Animated.View>}
+      {expanded && <Animated.View className={"ml-2"}>{children}</Animated.View>}
     </Pressable>
   );
 }

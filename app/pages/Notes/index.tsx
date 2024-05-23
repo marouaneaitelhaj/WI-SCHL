@@ -3,7 +3,7 @@ import { RootState, useAppDispatch } from "@state/store";
 import AbsenceCard from "app/components/Absence/AbsenceCard";
 import BottomSectionNotes from "app/components/BottomSectionNotes";
 import CardWrapper from "app/components/CardWrapper";
-import NotesCard from "app/components/NotesCard";
+import NotesCard from "app/components/Demandes/NotesCard";
 import { useEffect } from "react";
 import { View, Text, ScrollView, ActivityIndicator } from "react-native";
 import { useSelector } from "react-redux";

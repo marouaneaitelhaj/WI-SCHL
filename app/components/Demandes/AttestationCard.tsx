@@ -1,5 +1,5 @@
 import { Alert, Text, View } from "react-native";
-import { TDemande } from "../../state/types";
+import { TDemande } from "../../../state/types";
 import { IconButton } from "react-native-paper";
 import * as FileSystem from "expo-file-system";
 import { shareAsync } from "expo-sharing";

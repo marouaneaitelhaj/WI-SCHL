@@ -63,9 +63,9 @@ export default function Annonce() {
           </Text>
         </Pressable>
       )}
-      {(selectedAnnonce.image || selectedAnnonce.piece_jointe) && (
+      {(selectedAnnonce.image) && (
         <View className="h-32">
-          <Image src={selectedAnnonce.image || selectedAnnonce.piece_jointe} />
+          <Image src={selectedAnnonce.image} />
         </View>
       )}
     </ScrollView>
