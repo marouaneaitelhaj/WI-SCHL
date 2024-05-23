@@ -1,30 +1,27 @@
+import { setSelectedElement } from "@state/Absences/AbsencesSlice";
+import { useAppDispatch } from "@state/store";
+import { Element } from "@state/types";
 import { router } from "expo-router";
 import { View, Text, Pressable, ScrollView } from "react-native";
-
-export default function AbsenceCard(props: {
-  present?: number;
-  absent?: number;
-  element?: string;
-  beingProcessed?: number;
-  count_absence_en_cours_justifie?: number;
-  count_absence_non_justifie?: number;
-  count_absence_justifie?: number;
-}) {
+Element;
+export default function AbsenceCard({ element }: { element: Element }) {
+  const dispatch = useAppDispatch();
   return (
     <Pressable
       onPress={() => {
-        router.push("/pages/Absences/" + props.element);
+        dispatch(setSelectedElement(element));
+        router.push("/pages/Absences/" + element.libelle_fr);
       }}
       className="flex flex-row w-full justify-center my-3 space-x-3"
     >
       <View className=" h-14 w-14 flex rounded-full justify-center items-center bg-[#D0EBFE]">
         <Text className="font-[Poppins-Black] uppercase text-[10px] text-center font-bold text-[#5156BE]">
-          {props.element}
+          {element.libelle_fr}
         </Text>
       </View>
       <View className="w-20  flex justify-center items-center h-14 rounded-lg bg-green-100">
         <Text className="font-[Poppins-Black]  text-center font-bold text-green-700">
-          {props.present}
+          {element.count_seance}
         </Text>
         <Text className="font-[Poppins-Black]  text-center font-normal text-green-700">
           Present
@@ -32,7 +29,7 @@ export default function AbsenceCard(props: {
       </View>
       <View className="w-20  flex justify-center items-center  h-14 rounded-lg bg-red-100">
         <Text className="font-[Poppins-Black]  text-center font-bold text-red-700">
-          {props.absent}
+          {element.count_absence}
         </Text>
         <Text className="font-[Poppins-Black]  text-center font-normal text-red-700">
           Absent
@@ -40,7 +37,7 @@ export default function AbsenceCard(props: {
       </View>
       <View className="w-20  flex justify-center items-center  h-14 rounded-lg bg-blue-100">
         <Text className="font-[Poppins-Black]  text-center font-bold text-blue-700">
-          {props.count_absence_justifie}
+          {element.count_absence_justifie}
         </Text>
         <Text className="font-[Poppins-Black]  text-center font-normal text-blue-700">
           justifie
@@ -48,7 +45,7 @@ export default function AbsenceCard(props: {
       </View>
       <View className="w-20  flex justify-center items-center  h-14 rounded-lg bg-[#FED4D5]">
         <Text className="font-[Poppins-Black]  text-center font-bold text-[#F83A6C]">
-          {props.count_absence_non_justifie}
+          {element.count_absence_non_justifie}
         </Text>
         <Text className="font-[Poppins-Black]  text-center font-normal text-[#F83A6C]">
           non justifie
@@ -56,7 +53,7 @@ export default function AbsenceCard(props: {
       </View>
       <View className="w-20  flex justify-center items-center  h-14 rounded-lg bg-yellow-100">
         <Text className="font-[Poppins-Black]  text-center font-bold text-yellow-700">
-          {props.count_absence_en_cours_justifie}
+          {element.count_absence_en_cours_justifie}
         </Text>
         <Text className="font-[Poppins-Black]  text-center font-normal text-yellow-700">
           en cours

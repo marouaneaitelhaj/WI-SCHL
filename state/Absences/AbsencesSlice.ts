@@ -1,15 +1,18 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { StudentRecord, TAbsence } from "state/types";
+import { StudentRecord, TAbsence, Element } from "state/types";
 import { getAbsences } from "./AbsencesActions";
+import { set } from "react-hook-form";
 
 type AbsenceState = {
     absences: TAbsence;
     status ?: string;
+    selectedElement ?: Element;
 }
 
 const initialState: AbsenceState = {
     absences: {} as TAbsence,
-    status: "idle"
+    status: "idle",
+    selectedElement: {} as Element
 }
 
 export const AbsencesSlice = createSlice({
@@ -18,6 +21,9 @@ export const AbsencesSlice = createSlice({
     reducers: {
         setAbsences: (state, action: PayloadAction<TAbsence>) => {
             state.absences = action.payload;
+        },
+        setSelectedElement: (state, action: PayloadAction<Element>) => {
+            state.selectedElement = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -34,6 +40,6 @@ export const AbsencesSlice = createSlice({
     }
 });
 
-export const { setAbsences } = AbsencesSlice.actions;
+export const { setAbsences, setSelectedElement } = AbsencesSlice.actions;
 
 export default AbsencesSlice.reducer;

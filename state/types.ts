@@ -207,12 +207,18 @@ export type Element = {
   count_seance: number;
   count_absence_en_cours_justifie: number;
   count_absence_non_justifie: number;
-  count_absence_justifie : number;
-  count_absence : number;
+  count_absence_justifie: number;
+  element_absences: {
+    date_depot: string;
+    justifie_doc: string;
+    justifie ?: string;
+    statut: string;
+  };
+  count_absence: number;
   absences: {
-    statut ?: string;
-    date_depot ?: string;
-    justifie_doc ?: string;
+    statut?: string;
+    date_depot?: string;
+    justifie_doc?: string;
   }[];
   note_r: number | null;
 };

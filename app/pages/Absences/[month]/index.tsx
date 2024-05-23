@@ -5,12 +5,22 @@ import { SafeAreaView, ScrollView } from "react-native";
 import { Calendar } from "react-native-calendars";
 import { useSelector } from "react-redux";
 import { DateData } from "react-native-calendars/src/types";
+import { RootState } from "@state/store";
 
 export default function Absences() {
+  
 // props: { present?: number; absent: number; beingProcessed: number }
   const { month } = useLocalSearchParams();
 
-  useEffect(() => {}, []);
+  const {selectedElement} = useSelector((state : RootState) => state.absence);
+
+
+  useEffect(() => {
+    console.log(selectedElement?.element_absences);
+    
+  }, [
+    selectedElement
+  ]);
 
   return (
     <SafeAreaView className="h-screen bg-white">

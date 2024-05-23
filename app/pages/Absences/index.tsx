@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 export default function Absences() {
   const dispatch = useAppDispatch();
   const { absences } = useSelector((state: RootState) => state.absence);
-  
+
   useEffect(() => {
     dispatch(getAbsences())
       .unwrap()
@@ -17,21 +17,21 @@ export default function Absences() {
         console.log(data);
       });
   }, [dispatch]);
-  
+
   useEffect(() => {
     console.log(absences);
   }, [absences]);
-  
+
   return (
-    <View className="flex flex-col items-start w-full h-full">
+    <View className="flex flex-col items-start w-full h-screen">
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        style={{ width: "100%" }}
+        style={{ minWidth: "100%" }}
       >
         <ScrollView
           showsVerticalScrollIndicator={false}
-          style={{ height: "90%", width: "100%" }}
+          style={{ height: "90%", minWidth: "100%" }}
         >
           {Object.entries(absences).map(([semesterName, semester]) => (
             <CardWrapper
@@ -42,15 +42,7 @@ export default function Absences() {
             >
               {semester.modules.flatMap((moduleGroup, groupIndex) =>
                 moduleGroup.elements.map((element, elementIndex) => (
-                  <AbsenceCard
-                    element={element.libelle_fr}
-                    key={element.libelle_fr}
-                    count_absence_non_justifie={element.count_absence_non_justifie}
-                    count_absence_justifie={element.count_absence_justifie}
-                    count_absence_en_cours_justifie={element.count_absence_en_cours_justifie}
-                    present={element.count_seance}
-                    absent={element.count_absence}
-                  />
+                  <AbsenceCard element={element} />
                 ))
               )}
             </CardWrapper>
