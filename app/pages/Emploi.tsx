@@ -95,9 +95,6 @@ export default function Emploi() {
           <Calendar
             markingType={"multi-period"}
             markedDates={{
-              // [selectedMonth + "-" + selectedDay]: {
-              //   periods: [{ startingDay: true, endingDay: true, color: "#5156BE"}],
-              // },
               ...markedDates,
             }}
             onMonthChange={(month) => {

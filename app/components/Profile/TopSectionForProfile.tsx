@@ -27,7 +27,6 @@ export default function TopSectionForProfile() {
   const animatedHeight = useSharedValue(0);
 
   useEffect(() => {
-    // Animate height when showDropDown changes
     animatedHeight.value = withTiming(showDropDown ? 120 : 0, {
       duration: 300,
     });
@@ -71,7 +70,6 @@ export default function TopSectionForProfile() {
                   <Pressable
                     onPress={() => {
                       dispatch(setProfileStatus(0));
-                      // setShowDropDown(false);
                     }}
                   >
                     <Icon source="eye" size={30} color="white" />
@@ -79,7 +77,6 @@ export default function TopSectionForProfile() {
                   <Pressable
                     onPress={() => {
                       dispatch(setProfileStatus(1));
-                      // setShowDropDown(false);
                     }}
                   >
                     <Icon source="pen" size={30} color="white" />
@@ -87,7 +84,6 @@ export default function TopSectionForProfile() {
                   <Pressable
                     onPress={() => {
                       dispatch(setProfileStatus(2));
-                      // setShowDropDown(false);
                     }}
                   >
                     <Icon source="lock" size={30} color="white" />

@@ -1,6 +1,4 @@
-import { enableGoBack } from "@state/TopBar/TopBarSlice";
 import { useLocalSearchParams } from "expo-router";
-import { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -9,9 +7,7 @@ import {
   Pressable,
   useWindowDimensions,
 } from "react-native";
-import { getAnnonce } from "state/Annonces/AnnoncesActions";
 import { RootState, useAppDispatch } from "state/store";
-import { Tannonce } from "state/types";
 import RenderHtml from "react-native-render-html";
 import { Linking } from "react-native";
 import { useSelector } from "react-redux";
@@ -22,15 +18,6 @@ export default function Annonce() {
 
   const { id } = useLocalSearchParams();
   const dispatch = useAppDispatch();
-  // useEffect(() => {
-  //   // dispatch(enableGoBack())
-  //   dispatch(getAnnonce(id as string))
-  //     .unwrap()
-  //     .then((data) => {
-  //       setAnnonce(data[0]);
-  //     })
-  //     .catch((err) => {});
-  // }, []);
 
   if (!selectedAnnonce) {
     return <Text>loading...</Text>;
@@ -44,7 +31,6 @@ export default function Annonce() {
 
   return (
     <ScrollView className="p-10 space-y-10" style={{ height: "80%" }}>
-      {/* <View className="p-10 space-y-10"> */}
       <Text className="font-[Poppins-Black] font-bold">
         {selectedAnnonce.annonce_title || selectedAnnonce.titre}
       </Text>

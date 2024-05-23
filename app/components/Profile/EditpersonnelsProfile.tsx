@@ -22,7 +22,6 @@ export default function EditpersonnelsProfile(props: {
 
   const navigation = useNavigation();
 
-  // declare image use state
   const [image, setImage] = useState<{
     uri: string;
     base64: string;
@@ -126,7 +125,6 @@ export default function EditpersonnelsProfile(props: {
               />
             )}
             name="prenom_fr"
-            // rules={{ required: "Prenom est obligatoire" }}
           />
           {errors.prenom_fr && (
             <Text className="font-[Poppins-Black] text-red-500">{errors.prenom_fr.message}</Text>
@@ -148,7 +146,6 @@ export default function EditpersonnelsProfile(props: {
               />
             )}
             name="nom_fr"
-            // rules={{ required: "Nom est obligatoire" }}
           />
           {errors.nom_fr && (
             <Text className="font-[Poppins-Black] text-red-500">{errors.nom_fr.message}</Text>
@@ -170,7 +167,6 @@ export default function EditpersonnelsProfile(props: {
               />
             )}
             name="prenom_ar"
-            // rules={{ required: "Prenom est obligatoire" }}
           />
           {errors.prenom_ar && (
             <Text className="font-[Poppins-Black] text-red-500">{errors.prenom_ar.message}</Text>
@@ -192,7 +188,6 @@ export default function EditpersonnelsProfile(props: {
               />
             )}
             name="nom_ar"
-            // rules={{ required: "Nom est obligatoire" }}
           />
           {errors.nom_ar && (
             <Text className="font-[Poppins-Black] text-red-500">{errors.nom_ar.message}</Text>
@@ -214,7 +209,6 @@ export default function EditpersonnelsProfile(props: {
               />
             )}
             name="cin"
-            // rules={{ required: "Cin est obligatoire" }}
           />
           {errors.cin && (
             <Text className="font-[Poppins-Black] text-red-500">{errors.cin.message}</Text>
@@ -236,7 +230,6 @@ export default function EditpersonnelsProfile(props: {
               />
             )}
             name="cne"
-            // rules={{ required: "Cne est obligatoire" }}
           />
           {errors.cne && (
             <Text className="font-[Poppins-Black] text-red-500">{errors.cne.message}</Text>
@@ -258,7 +251,6 @@ export default function EditpersonnelsProfile(props: {
               />
             )}
             name="date_naissance"
-            // rules={{ required: "Date naissance est obligatoire" }}
           />
           {errors.date_naissance && (
             <Text className="font-[Poppins-Black] text-red-500">
@@ -282,7 +274,6 @@ export default function EditpersonnelsProfile(props: {
               />
             )}
             name="lieu_naissance_ar"
-            // rules={{ required: "Lieu naissance ar est obligatoire" }}
           />
           {errors.lieu_naissance_ar && (
             <Text className="font-[Poppins-Black] text-red-500">
@@ -306,7 +297,6 @@ export default function EditpersonnelsProfile(props: {
               />
             )}
             name="lieu_naissance_fr"
-            // rules={{ required: "Lieu naissance fr est obligatoire" }}
           />
           {errors.lieu_naissance_fr && (
             <Text className="font-[Poppins-Black] text-red-500">
@@ -330,7 +320,6 @@ export default function EditpersonnelsProfile(props: {
               />
             )}
             name="adresse_fr"
-            // rules={{ required: "Adresse fr est obligatoire" }}
           />
           {errors.adresse_fr && (
             <Text className="font-[Poppins-Black] text-red-500">{errors.adresse_fr.message}</Text>
@@ -352,7 +341,6 @@ export default function EditpersonnelsProfile(props: {
               />
             )}
             name="adresse_ar"
-            // rules={{ required: "Adresse ar est obligatoire" }}
           />
           {errors.adresse_ar && (
             <Text className="font-[Poppins-Black] text-red-500">{errors.adresse_ar.message}</Text>
@@ -395,7 +383,6 @@ export default function EditpersonnelsProfile(props: {
               />
             )}
             name="email"
-            // rules={{ required: "Email est obligatoire" }}
           />
           {errors.email && (
             <Text className="font-[Poppins-Black] text-red-500">{errors.email.message}</Text>

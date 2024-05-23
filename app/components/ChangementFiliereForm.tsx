@@ -42,7 +42,6 @@ export default function ChangementFiliereForm() {
     setData(newData);
   }, [filieres]);
 
-  // submit
   const onSubmit = (data: any) => {
     Alert.alert(
       "Envoyer la demande",
@@ -76,15 +75,6 @@ export default function ChangementFiliereForm() {
     );
   };
 
-  // const data = [
-  //   { key: "1", value: "Mobiles", disabled: true },
-  //   { key: "2", value: "Appliances" },
-  //   { key: "3", value: "Cameras" },
-  //   { key: "4", value: "Computers", disabled: true },
-  //   { key: "5", value: "Vegetables" },
-  //   { key: "6", value: "Diary Products" },
-  //   { key: "7", value: "Drinks" },
-  // ];
 
   return (
     <View className="bg-white p-5 flex items-center ">
@@ -101,7 +91,6 @@ export default function ChangementFiliereForm() {
             />
           )}
           name="raison"
-          // rules={{ required: "Prenom est obligatoire" }}
         />
         {errors.raison && (
           <Text className="font-[Poppins-Black] text-red-500">{errors.raison?.message}</Text>
@@ -125,7 +114,6 @@ export default function ChangementFiliereForm() {
             />
           )}
           name="raison"
-          // rules={{ required: "Prenom est obligatoire" }}
         />
         {errors.raison && (
           <Text className="font-[Poppins-Black] text-red-500">{errors.raison?.message}</Text>
@@ -138,9 +126,6 @@ export default function ChangementFiliereForm() {
         >
           <Text className="font-[Poppins-Black] text-white text-center text-xs">Envoyer</Text>
         </Pressable>
-        {/* <Pressable className="flex  rounded-md w-[40%] justify-center items-center  p-3 bg-[#e0e1f3]">
-          <Text className="font-[Poppins-Black]">Annuler</Text>
-        </Pressable> */}
       </View>
     </View>
   );

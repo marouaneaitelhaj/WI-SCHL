@@ -112,7 +112,6 @@ export function HomeLayout() {
               const threshold = screenHeight * 0.6; // 60% of the screen height
 
               if (deltaY > threshold) {
-                // Check if scrolled more than 60% of the screen height
                 dispatch(toggleTopBar()); // Dispatch the action if condition is met
               }
             }}
