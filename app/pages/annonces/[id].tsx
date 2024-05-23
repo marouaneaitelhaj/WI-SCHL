@@ -43,38 +43,45 @@ export default function Annonce() {
   const { width } = useWindowDimensions();
 
   return (
-    <ScrollView style={{ height: "50%" }}>
-      <View className="p-10 space-y-10">
-        <Text className="font-[Poppins-Black] font-bold">
-          {selectedAnnonce.annonce_title || selectedAnnonce.titre}
-        </Text>
-        <View>
-          <RenderHtml source={annonce_body} contentWidth={width} />
-        </View>
-        {selectedAnnonce.date && (
-          <Text className="font-[Poppins-Black] font-light text-gray-400">
-            {selectedAnnonce.date}
-          </Text>
-        )}
-        {selectedAnnonce.lien && (
-          <Pressable
-            onPress={() => {
-              Linking.openURL(selectedAnnonce.lien);
-            }}
-            className="font-[Poppins-Black] bg-[#5156BE] px-3 py-5 text-center rounded-md font-light text-white flex flex-row justify-center space-x-2 items-center"
-          >
-            <Icon source={"link"} size={20} color="white" />
-            <Text className="text-white">{selectedAnnonce.lien}</Text>
-          </Pressable>
-        )}
-        {(selectedAnnonce.image || selectedAnnonce.piece_jointe) && (
-          <View className=" h-32">
-            <Image
-              src={selectedAnnonce.image || selectedAnnonce.piece_jointe}
-            />
-          </View>
-        )}
+    <ScrollView className="p-10 space-y-10" style={{ height: "80%" }}>
+      {/* <View className="p-10 space-y-10"> */}
+      <Text className="font-[Poppins-Black] font-bold">
+        {selectedAnnonce.annonce_title || selectedAnnonce.titre}
+      </Text>
+      <View>
+        <RenderHtml source={annonce_body} contentWidth={width} />
       </View>
+      {selectedAnnonce.date && (
+        <Text className="font-[Poppins-Black] font-light text-gray-400">
+          {selectedAnnonce.date}
+        </Text>
+      )}
+      {selectedAnnonce.lien && (
+        <Pressable
+          onPress={() => {
+            Linking.openURL(selectedAnnonce.lien);
+          }}
+          className="font-[Poppins-Black] bg-[#5156BE] px-3 py-5 text-center rounded-md font-light text-white flex flex-row justify-center space-x-2 items-center"
+        >
+          <Icon source={"link"} size={20} color="white" />
+          <Text className="text-white">Ovrir le lien</Text>
+        </Pressable>
+      )}
+      {selectedAnnonce.piece_jointe && (
+        <Pressable
+          className="font-[Poppins-Black] bg-[#5156BE] px-3 py-5 text-center rounded-md font-light text-white flex flex-row justify-center space-x-2 items-center"
+          onPress={() => Linking.openURL(selectedAnnonce.piece_jointe)}
+        >
+          <Text className="font-[Poppins-Black] font-light text-white">
+            Ovrir le fichier
+          </Text>
+        </Pressable>
+      )}
+      {(selectedAnnonce.image || selectedAnnonce.piece_jointe) && (
+        <View className="h-32">
+          <Image src={selectedAnnonce.image || selectedAnnonce.piece_jointe} />
+        </View>
+      )}
     </ScrollView>
   );
 }
