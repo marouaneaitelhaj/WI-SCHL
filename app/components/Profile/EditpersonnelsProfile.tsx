@@ -1,15 +1,15 @@
 import { Alert, Image, Pressable } from "react-native";
 import { View } from "react-native";
 import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../../state/store";
+import { RootState, useAppDispatch } from "../../../state/store";
 import { Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { Tuser } from "../../state/types";
+import { Tuser } from "../../../state/types";
 import { Controller, useForm } from "react-hook-form";
 import * as ImagePicker from "expo-image-picker";
 import { TextInput } from "react-native-paper";
 import Animated, { SlideInRight, SlideOutLeft } from "react-native-reanimated";
-import { changeInformation } from "../../state/Profile/ProfileActions";
+import { changeInformation } from "../../../state/Profile/ProfileActions";
 import { useEffect, useState } from "react";
 import { Platform } from "react-native";
 import * as FileSystem from "expo-file-system";
@@ -28,22 +28,6 @@ export default function EditpersonnelsProfile(props: {
     base64: string;
   }>({} as any);
 
-  useEffect(() => {
-    (async () => {
-      if (Platform.OS !== "web") {
-        const libraryStatus =
-          await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (libraryStatus.status !== "granted") {
-          alert("Sorry, we need camera roll permissions to make this work!");
-        }
-
-        const cameraStatus = await ImagePicker.requestCameraPermissionsAsync();
-        if (cameraStatus.status !== "granted") {
-          alert("Sorry, we need camera permissions to make this work!");
-        }
-      }
-    })();
-  }, []);
 
   const {
     control,

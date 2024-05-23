@@ -1,6 +1,6 @@
 import { getNotes } from "@state/Notes/NotesActions";
 import { RootState, useAppDispatch } from "@state/store";
-import AbsenceCard from "app/components/AbsenceCard";
+import AbsenceCard from "app/components/Absence/AbsenceCard";
 import BottomSectionNotes from "app/components/BottomSectionNotes";
 import CardWrapper from "app/components/CardWrapper";
 import NotesCard from "app/components/NotesCard";

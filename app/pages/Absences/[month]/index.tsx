@@ -1,76 +1,167 @@
 import { router, useLocalSearchParams } from "expo-router";
-import { Text, View } from "react-native";
-import React, { useEffect } from "react";
+import { Linking, Pressable, Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, ScrollView } from "react-native";
 import { Calendar } from "react-native-calendars";
 import { useSelector } from "react-redux";
-import { DateData } from "react-native-calendars/src/types";
+import * as DocumentPicker from "expo-document-picker";
+import * as FileSystem from "expo-file-system";
+import { DateData, MarkedDates } from "react-native-calendars/src/types";
 import { RootState } from "@state/store";
+import { Icon } from "react-native-paper";
 
 export default function Absences() {
-  
-// props: { present?: number; absent: number; beingProcessed: number }
+  // props: { present?: number; absent: number; beingProcessed: number }
   const { month } = useLocalSearchParams();
 
-  const {selectedElement} = useSelector((state : RootState) => state.absence);
+  const selectedElement = useSelector(
+    (state: RootState) => state.absence.selectedElement
+  );
 
+  const [file, setFile] = useState({ uri: "", base64: "" });
+
+  const [absence, setAbsence] = useState<{
+    date_depot: string;
+    id?: string;
+    justifie_doc: string;
+    justifie?: string | undefined;
+    statut: string;
+    date_absence: string;
+  }>({} as any);
+
+  const [markedDates, setMarkedDates] = useState<MarkedDates>({});
 
   useEffect(() => {
-    console.log(selectedElement?.element_absences);
-    
-  }, [
-    selectedElement
-  ]);
+    let markedDates: { [key: string]: any } = {};
+    selectedElement?.element_absences.forEach(
+      (absence: {
+        date_depot: string;
+        justifie_doc: string;
+        justifie?: string | undefined;
+        statut: string;
+        date_absence: string;
+      }) => {
+        markedDates[absence.date_absence] = {
+          selected: true,
+          selectedColor: absence.statut === "Justifié" ? "#D4FFEB" : "#FED4D5",
+          textColor: "black",
+          color: "black",
+        };
+      }
+    );
+    setMarkedDates(markedDates);
+  }, [selectedElement]);
+
+  const findAbsence = (date: string) => {
+    setAbsence({} as any);
+    selectedElement?.element_absences.map(
+      (absence: {
+        date_depot: string;
+        id?: string;
+        justifie_doc: string;
+        justifie?: string | undefined;
+        statut: string;
+        date_absence: string;
+      }) => {
+        if (absence.date_absence === date) {
+          console.log(absence);
+          setAbsence(absence);
+          return absence;
+        }
+      }
+    );
+  };
+
+  const pickFile = async () => {
+    let result = await DocumentPicker.getDocumentAsync({
+      type: "application/pdf",
+    });
+
+    if (!result.canceled) {
+      let base64 = await FileSystem.readAsStringAsync(result.assets[0].uri, {
+        encoding: FileSystem.EncodingType.Base64,
+      });
+
+      setFile({ uri: result.assets[0].uri, base64 });
+    }
+  };
 
   return (
     <SafeAreaView className="h-screen bg-white">
       <Calendar
-        onMonthChange={(month) => {
-          //   setSelectedMonth(
-          //     month.dateString.split("-")[0] +
-          //       "-" +
-          //       month.dateString.split("-")[1]
-          //   );
-        }}
-        markedDates={{
-          ["2024-05-12"]: {
-            selected: true,
-            selectedColor: "#D4FFEB",
-            textColor: "black",
-            color: "black",
-          },
-        }}
+        markedDates={markedDates}
         onDayPress={(date: DateData) => {
-          const day =
-            date.day.toString().length === 1 ? "0" + date.day : date.day;
-          const month =
-            date.month.toString().length === 1 ? "0" + date.month : date.month;
-            router.push(`/pages/Absences/${month}/${day}`);
-          //   disptach(setSelectedDay(day));
-          //   disptach(setSelectedMonth(date.year + "-" + month));
+          findAbsence(date.dateString);
         }}
+        date="2024-02-15"
         className=""
       />
-      <View className="flex flex-row justify-around py-6">
-        <View className="w-20  flex justify-center items-center h-14 rounded-lg bg-[#D4FFEB]">
-          <Text className="font-[Poppins-Black]  text-center font-bold text-[#25A168]">30</Text>
-          <Text className="font-[Poppins-Black]  text-center font-normal text-[#25A168]">
+      <View className="flex flex-row justify-around flex-wrap py-6 w-full">
+        <View className="w-[17%]  flex justify-center items-center h-14 rounded-lg bg-green-100">
+          <Text className="font-[Poppins-Black]  text-center text-xs font-bold text-green-700">
+            {selectedElement?.count_seance}
+          </Text>
+          <Text className="font-[Poppins-Black]  text-center text-xs font-normal text-green-700">
             Present
           </Text>
         </View>
-        <View className="w-20  flex justify-center items-center  h-14 rounded-lg bg-[#FED4D5]">
-          <Text className="font-[Poppins-Black]  text-center font-bold text-[#F83A6C]">30</Text>
-          <Text className="font-[Poppins-Black]  text-center font-normal text-[#F83A6C]">
+        <View className="w-[17%]  flex justify-center items-center  h-14 rounded-lg bg-red-100">
+          <Text className="font-[Poppins-Black]  text-center text-xs font-bold text-red-700">
+            {selectedElement?.count_absence}
+          </Text>
+          <Text className="font-[Poppins-Black]  text-center text-xs font-normal text-red-700">
             Absent
           </Text>
         </View>
-        <View className="w-20  flex justify-center items-center  h-14 rounded-lg bg-[#e0e1f3]">
-          <Text className="font-[Poppins-Black]  text-center font-bold text-[#607E97]">30</Text>
-          <Text className="font-[Poppins-Black]  text-center font-normal text-[#607E97]">
-            .........
+        <View className="w-[17%]  flex justify-center items-center  h-14 rounded-lg bg-blue-100">
+          <Text className="font-[Poppins-Black]  text-center text-xs font-bold text-blue-700">
+            {selectedElement?.count_absence_justifie}
+          </Text>
+          <Text className="font-[Poppins-Black]  text-center text-xs font-normal text-blue-700">
+            justifie
+          </Text>
+        </View>
+        <View className="w-[17%]  flex justify-center items-center  h-14 rounded-lg bg-[#FED4D5]">
+          <Text className="font-[Poppins-Black]  text-center text-xs font-bold text-[#F83A6C]">
+            {selectedElement?.count_absence_non_justifie}
+          </Text>
+          <Text className="font-[Poppins-Black]  text-center text-xs font-normal text-[#F83A6C]">
+            non justifie
+          </Text>
+        </View>
+        <View className="w-[17%]  flex justify-center items-center  h-14 rounded-lg bg-yellow-100">
+          <Text className="font-[Poppins-Black]  text-center text-xs font-bold text-yellow-700">
+            {selectedElement?.count_absence_en_cours_justifie}
+          </Text>
+          <Text className="font-[Poppins-Black]  text-center text-xs font-normal text-yellow-700">
+            en cours
           </Text>
         </View>
       </View>
+      {(absence.date_absence && absence.statut == 'Justifié') && <View>
+        <Pressable
+          onPress={() => {
+            Linking.openURL(absence.justifie_doc);
+          }}
+          className="font-[Poppins-Black] bg-[#5156BE] px-3 py-5 text-center rounded-md font-light text-white flex flex-row justify-center space-x-2 items-center"
+        >
+          <Icon source={"link"} size={20} color="white" />
+          <Text className="text-white">Aficher le document justificatif</Text>
+        </Pressable>
+      </View>}
+      {(absence.date_absence && absence.statut != 'Justifié') && <View>
+        <Pressable
+          onPress={() => {
+            pickFile();
+          }}
+          className="font-[Poppins-Black] bg-red-500 px-3 py-5 text-center rounded-md font-light text-white flex flex-row justify-center space-x-2 items-center"
+        >
+          <Icon source={"upload"} size={20} color="white" />
+          <Text className="text-white">
+            Telecharger le document justificatif
+          </Text>
+        </Pressable>
+      </View>}
     </SafeAreaView>
   );
 }

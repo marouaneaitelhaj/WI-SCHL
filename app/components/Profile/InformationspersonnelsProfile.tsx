@@ -1,7 +1,7 @@
 import { Image, Pressable } from "react-native";
 import { View } from "react-native";
 import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../../state/store";
+import { RootState, useAppDispatch } from "../../../state/store";
 import { Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Animated, { SlideInRight, SlideOutLeft } from "react-native-reanimated";

@@ -1,5 +1,4 @@
 import { View, Text, ScrollView, ActivityIndicator } from "react-native";
-import AnnonceCard from "../components/AnnonceCard";
 import { RootState, useAppDispatch } from "state/store";
 import { getAnnonces } from "state/Annonces/AnnoncesActions";
 import { useEffect, useRef, useState } from "react";
@@ -7,6 +6,7 @@ import { useSelector } from "react-redux";
 import { getEmploisDuTempsByDayToday } from "@state/EmploisDuTemps/SchedulesSliceActions";
 import { Tevent } from "@state/types";
 import EventCard from "app/components/EventCard";
+import AnnonceCard from "app/components/Annonce/AnnonceCard";
 
 export default function Accueil() {
   const dispatch = useAppDispatch();

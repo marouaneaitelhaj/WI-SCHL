@@ -1,7 +1,7 @@
 import { ScrollView } from "react-native";
-import InformationspersonnelsProfile from "../components/InformationspersonnelsProfile";
-import TopSectionForProfile from "../components/TopSectionForProfile";
-import EditpersonnelsProfile from "../components/EditpersonnelsProfile";
+import InformationspersonnelsProfile from "../components/Profile/InformationspersonnelsProfile";
+import TopSectionForProfile from "../components/Profile/TopSectionForProfile";
+import EditpersonnelsProfile from "../components/Profile/EditpersonnelsProfile";
 import Animated, {
   Easing,
   SlideInRight,

@@ -209,11 +209,13 @@ export type Element = {
   count_absence_non_justifie: number;
   count_absence_justifie: number;
   element_absences: {
+    id ?: string;
     date_depot: string;
     justifie_doc: string;
     justifie ?: string;
     statut: string;
-  };
+    date_absence: string;
+  }[];
   count_absence: number;
   absences: {
     statut?: string;
@@ -243,3 +245,4 @@ export type StudentRecord = {
 export type TAbsence = {
   [semesterName: string]: { modules: TModule[] };
 };
+

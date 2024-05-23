@@ -1,11 +1,11 @@
 import { View, Image, Pressable, Text } from "react-native";
 import TopBarElements from "./TopBarElements";
 import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../../state/store";
+import { RootState, useAppDispatch } from "../../../state/store";
 import { IconButton } from "react-native-paper";
-import { toggleTopBar } from "../../state/TopBar/TopBarSlice";
-import { COLORS } from "../../static/colors";
-import { setShowProfile } from "../../state/Profile/ProfileSlice";
+import { toggleTopBar } from "../../../state/TopBar/TopBarSlice";
+import { COLORS } from "../../../static/colors";
+import { setShowProfile } from "../../../state/Profile/ProfileSlice";
 import { router, useRootNavigationState } from "expo-router";
 import { useEffect } from "react";
 

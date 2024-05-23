@@ -11,8 +11,8 @@ export default function AnnoncesWrapper({
   annonces: Tannonce[];
   title?: string;
 }) {
-  
-  const [expended, setExpended] = useState(false);
+  const [expended, setExpended] = useState(true);
+
   return (
     <View className="bg-[#e0e1f3] my-2">
       <View className="flex flex-row items-center justify-between px-5">
@@ -29,8 +29,12 @@ export default function AnnoncesWrapper({
       {expended && (
         <View>
           <View className="flex flex-row flex-wrap">
-            {annonces.map((annonce) => (
-              <AnnonceCard bg="#ffffff" key={annonce.id} annonce={annonce} />
+            {annonces.map((annonce, index) => (
+              <AnnonceCard
+                bg="#ffffff"
+                key={`${index}-${annonce?.id}-${title}`}
+                annonce={annonce}
+              />
             ))}
           </View>
         </View>

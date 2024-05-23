@@ -14,7 +14,7 @@ export default function AbsenceCard({ element }: { element: Element }) {
       }}
       className="flex flex-row w-full justify-center my-3 space-x-3"
     >
-      <View className=" h-14 w-14 flex rounded-full justify-center items-center bg-[#D0EBFE]">
+      <View className=" h-14 w-32 px-2 flex rounded-full justify-center items-center bg-[#D0EBFE]">
         <Text className="font-[Poppins-Black] uppercase text-[10px] text-center font-bold text-[#5156BE]">
           {element.libelle_fr}
         </Text>

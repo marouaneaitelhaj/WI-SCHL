@@ -21,7 +21,6 @@ export default function Annonce() {
   const { selectedAnnonce } = useSelector((state: RootState) => state.annonces);
 
   const { id } = useLocalSearchParams();
-  console.log(selectedAnnonce);
   const dispatch = useAppDispatch();
   // useEffect(() => {
   //   // dispatch(enableGoBack())

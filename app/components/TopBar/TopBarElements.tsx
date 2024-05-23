@@ -3,7 +3,7 @@ import { View, Text, Alert, StatusBar } from "react-native";
 import { IconButton } from "react-native-paper";
 import { useSelector } from "react-redux";
 import { useNavigation } from "expo-router";
-import { RootState, useAppDispatch } from "../../state/store";
+import { RootState, useAppDispatch } from "../../../state/store";
 import Animated, {
   Easing,
   SlideInUp,
@@ -11,10 +11,10 @@ import Animated, {
   SlideOutUp,
   SlideOutDown,
 } from "react-native-reanimated";
-import { toggleTopBar, closeTopBar } from "../../state/TopBar/TopBarSlice";
-import { logout } from "../../state/Auth/AuthSlice";
+import { toggleTopBar, closeTopBar } from "../../../state/TopBar/TopBarSlice";
+import { logout } from "../../../state/Auth/AuthSlice";
 import { router } from "expo-router";
-import { COLORS } from "../../static/colors";
+import { COLORS } from "../../../static/colors";
 
 const data = [
   { key: "/pages/Accueil", text: "Accueil", icon: "home-circle" },

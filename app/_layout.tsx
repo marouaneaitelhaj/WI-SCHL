@@ -1,5 +1,5 @@
 import { useFonts } from "expo-font";
-import TopBar from "app/components/TopBar";
+import TopBar from "app/components/TopBar/TopBar";
 import { Slot, SplashScreen, router } from "expo-router";
 import { Provider, useSelector } from "react-redux";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -10,6 +10,7 @@ import { setToken } from "state/Auth/AuthSlice";
 import { getProfileAction } from "@state/Auth/AuthActions";
 import Loading from "app/components/Loading";
 import Login from "@pages/Login";
+import * as ImagePicker from "expo-image-picker";
 import Profile from "@pages/Profile";
 import {
   Button,
@@ -53,6 +54,23 @@ export function HomeLayout() {
   const [startY, setStartY] = useState(0); // Initialize startY state
 
   useEffect(() => {
+    (async () => {
+      if (Platform.OS !== "web") {
+        const libraryStatus =
+          await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (libraryStatus.status !== "granted") {
+          alert("Sorry, we need camera roll permissions to make this work!");
+        }
+
+        const cameraStatus = await ImagePicker.requestCameraPermissionsAsync();
+        if (cameraStatus.status !== "granted") {
+          alert("Sorry, we need camera permissions to make this work!");
+        }
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
     StatusBar.setBackgroundColor("#5156BE", true);
     StatusBar.setBarStyle("light-content", true);
     AsyncStorage.getItem("token").then((token) => {
@@ -61,7 +79,6 @@ export function HomeLayout() {
         dispatch(getProfileAction(token))
           .unwrap()
           .then((res) => {
-            console.log(res);
             
             setIschecked(true);
           })

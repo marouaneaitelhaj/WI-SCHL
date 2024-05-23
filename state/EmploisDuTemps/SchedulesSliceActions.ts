@@ -59,9 +59,9 @@ export const getEmploisDuTempsByDayToday = createAsyncThunk<
   async () => {
     const token = await AsyncStorage.getItem("token");
 
-    // const date = new Date().toISOString().slice(0, 10);
+    const date = new Date().toISOString().slice(0, 10);
 
-    const date = "2024-05-16";
+    // const date = "2024-05-16";
 
     const { data } = await axios.get(
       "http://ensemc.irma-prod.net/api/etudiant/emploi-temps?day=" + date,
