@@ -5,10 +5,10 @@
     "version": "1.0.0",
     "scheme": "your-app-scheme",
     "orientation": "portrait",
-    "icon": "./assets/app_icon.png",
+    "icon": "./assets/fadaafaviconepng.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/logo-letter-w-blue-glowing-vector-22855325.jpg",
+      "image": "./assets/fadaafaviconepng.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,7 +21,7 @@
     "android": {
       "usesCleartextTraffic": true,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo-letter-w-blue-glowing-vector-22855325.jpg",
+        "foregroundImage": "./assets/fadaafaviconepng.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.marwaneaitelhaj001.wiensem"

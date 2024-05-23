@@ -204,6 +204,11 @@ export type Element = {
   libelle_fr: string;
   coefficient: string;
   note_n: number | null;
+  absences: {
+    statut ?: string;
+    date_depot ?: string;
+    justifie_doc ?: string;
+  }[];
   note_r: number | null;
 };
 

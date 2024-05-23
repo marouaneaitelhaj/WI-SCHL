@@ -26,7 +26,7 @@ export default function Absences() {
         showsVerticalScrollIndicator={false}
         style={{ height: "90%", width: "100%" }}
       >
-        {/* {Object.entries(absences).map(([semesterName, semester]) => (
+        {Object.entries(absences).map(([semesterName, semester]) => (
           <CardWrapper
             key={semesterName}
             bg="#e0e1f3"
@@ -35,12 +35,11 @@ export default function Absences() {
           >
             {semester.modules.flatMap((moduleGroup, groupIndex) =>
               moduleGroup.elements.map((element, elementIndex) => (
-                <AbsenceCard absent={element} />
-                <Text>{element.libelle_fr}</Text>
+                <AbsenceCard element={element.libelle_fr} absent={element.absences.length} />
               ))
             )}
           </CardWrapper>
-        ))} */}
+        ))}
         <CardWrapper bg="#e0e1f3" expandedProp={true} title="Semestre 2">
           <CardWrapper title="module 1">
             <AbsenceCard
