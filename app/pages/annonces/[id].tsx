@@ -63,10 +63,17 @@ export default function Annonce() {
           </Text>
         </Pressable>
       )}
-      {(selectedAnnonce.image) && (
-        <View className="h-32">
-          <Image src={selectedAnnonce.image} />
-        </View>
+      {selectedAnnonce.image && (
+        <Pressable
+          onPress={() => {
+            Linking.openURL(selectedAnnonce.image);
+          }}
+        >
+          <Image
+            className="h-52 w-full object-cover"
+            src={selectedAnnonce.image}
+          />
+        </Pressable>
       )}
     </ScrollView>
   );

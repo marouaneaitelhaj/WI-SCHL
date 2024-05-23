@@ -138,30 +138,54 @@ export default function Absences() {
           </Text>
         </View>
       </View>
-      {(absence.date_absence && absence.statut == 'Justifié') && <View>
-        <Pressable
-          onPress={() => {
-            Linking.openURL(absence.justifie_doc);
-          }}
-          className="font-[Poppins-Black] bg-[#5156BE] px-3 py-5 text-center rounded-md font-light text-white flex flex-row justify-center space-x-2 items-center"
-        >
-          <Icon source={"link"} size={20} color="white" />
-          <Text className="text-white">Aficher le document justificatif</Text>
-        </Pressable>
-      </View>}
-      {(absence.date_absence && absence.statut != 'Justifié') && <View>
-        <Pressable
-          onPress={() => {
-            pickFile();
-          }}
-          className="font-[Poppins-Black] bg-red-500 px-3 py-5 text-center rounded-md font-light text-white flex flex-row justify-center space-x-2 items-center"
-        >
-          <Icon source={"upload"} size={20} color="white" />
-          <Text className="text-white">
-            Telecharger le document justificatif
-          </Text>
-        </Pressable>
-      </View>}
+      {absence.date_absence && absence.statut == "Justifié" && (
+        <View>
+          <Pressable
+            onPress={() => {
+              Linking.openURL(absence.justifie_doc);
+            }}
+            className="font-[Poppins-Black] bg-[#5156BE] px-3 py-5 text-center rounded-md font-light text-white flex flex-row justify-center space-x-2 items-center"
+          >
+            <Icon source={"link"} size={20} color="white" />
+            <Text className="text-white">Aficher le document justificatif</Text>
+          </Pressable>
+        </View>
+      )}
+      {absence.date_absence && absence.statut != "Justifié" && (
+        <View className="space-y-5">
+          <Pressable
+            onPress={() => {
+              if (file.base64) {
+                setFile({ uri: "", base64: "" });
+              } else {
+                pickFile();
+              }
+            }}
+            className={
+              "font-[Poppins-Black] relative px-3 py-5 text-center rounded-md font-light text-white flex flex-row justify-center space-x-2 items-center " +
+              (file.base64 ? "bg-gray-500" : "bg-red-500")
+            }
+          >
+            <Icon source={"upload"} size={20} color="white" />
+            <Text className="text-white">
+              Telecharger le document justificatif
+            </Text>
+            {file.base64 && <View className="absolute right-3">
+              <Icon source={"cancel"} size={20} color="white" />
+            </View>}
+          </Pressable>
+          {file.base64 && (
+            <Pressable
+              onPress={() => {
+                pickFile();
+              }}
+              className="font-[Poppins-Black] bg-blue-500 px-3 py-5 text-center rounded-md font-light text-white flex flex-row justify-center space-x-2 items-center"
+            >
+              <Text className="text-white">Valider</Text>
+            </Pressable>
+          )}
+        </View>
+      )}
     </SafeAreaView>
   );
 }
