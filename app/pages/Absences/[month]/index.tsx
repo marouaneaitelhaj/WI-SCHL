@@ -137,7 +137,7 @@ export default function Absences() {
           </Text>
         </View>
       </View>
-      {absence.date_absence && absence.statut == "Justifié" && (
+      {absence.date_absence && absence.statut == "Justifié" || "En cours de traitement" && (
         <View>
           <Pressable
             onPress={() => {
@@ -150,7 +150,7 @@ export default function Absences() {
           </Pressable>
         </View>
       )}
-      {absence.date_absence && absence.statut != "Justifié" && (
+      {absence.date_absence && absence.statut != "Justifié" || "En cours de traitement" && (
         <View className="space-y-5">
           <Pressable
             onPress={() => {

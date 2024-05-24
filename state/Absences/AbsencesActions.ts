@@ -15,6 +15,8 @@ export const getAbsences = createAsyncThunk<TAbsence, void>(
         },
       }
     );
+    console.log(data);
+
     return data as TAbsence;
   }
 );
@@ -24,6 +26,8 @@ export const justifierAbsence = createAsyncThunk<
   { id: string; file: string }
 >("Absences/justifierAbsence", async ({ id, file }) => {
   const token = await AsyncStorage.getItem("token");
+  console.log(file);
+
   const { data } = await axios.post(
     "http://ensemc.irma-prod.net/api/etudiant/justifier",
     { pdf: file, absence_id: id },
@@ -33,8 +37,10 @@ export const justifierAbsence = createAsyncThunk<
       },
     }
   );
-  console.log(file);
-  console.log(id);
-  
+  console.log(data);
+
+  // console.log(file);
+  // console.log(id);
+
   return data as TAbsence;
 });
