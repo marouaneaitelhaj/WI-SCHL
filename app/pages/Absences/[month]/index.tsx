@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from "expo-router";
-import { Linking, Pressable, Text, View } from "react-native";
+import { Alert, Linking, Pressable, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, ScrollView } from "react-native";
 import { Calendar } from "react-native-calendars";
@@ -7,8 +7,9 @@ import { useSelector } from "react-redux";
 import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system";
 import { DateData, MarkedDates } from "react-native-calendars/src/types";
-import { RootState } from "@state/store";
+import { RootState, useAppDispatch } from "@state/store";
 import { Icon } from "react-native-paper";
+import { justifierAbsence } from "@state/Absences/AbsencesActions";
 
 export default function Absences() {
   // props: { present?: number; absent: number; beingProcessed: number }
@@ -19,6 +20,8 @@ export default function Absences() {
   );
 
   const [file, setFile] = useState({ uri: "", base64: "" });
+
+  const dispatch = useAppDispatch();
 
   const [absence, setAbsence] = useState<{
     date_depot: string;
@@ -170,14 +173,37 @@ export default function Absences() {
             <Text className="text-white">
               Telecharger le document justificatif
             </Text>
-            {file.base64 && <View className="absolute right-3">
-              <Icon source={"cancel"} size={20} color="white" />
-            </View>}
+            {file.base64 && (
+              <View className="absolute right-3">
+                <Icon source={"cancel"} size={20} color="white" />
+              </View>
+            )}
           </Pressable>
           {file.base64 && (
             <Pressable
               onPress={() => {
-                pickFile();
+                Alert.alert(
+                  "Confirmer",
+                  "Voulez-vous vraiment justifier cette absence?",
+                  [
+                    {
+                      text: "Annuler",
+                      style: "cancel",
+                    },
+                    {
+                      text: "Confirmer",
+                      onPress: () => {
+                        if (absence?.id && file.base64)
+                          dispatch(
+                            justifierAbsence({
+                              id: absence?.id,
+                              file: file.base64,
+                            })
+                          );
+                      },
+                    },
+                  ]
+                );
               }}
               className="font-[Poppins-Black] bg-blue-500 px-3 py-5 text-center rounded-md font-light text-white flex flex-row justify-center space-x-2 items-center"
             >

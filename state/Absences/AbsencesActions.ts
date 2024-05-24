@@ -18,3 +18,20 @@ export const getAbsences = createAsyncThunk<TAbsence, void>(
     return data as TAbsence;
   }
 );
+
+export const justifierAbsence = createAsyncThunk<
+  TAbsence,
+  { id: string; file: string }
+>("Absences/justifierAbsence", async ({ id, file }) => {
+  const token = await AsyncStorage.getItem("token");
+  const { data } = await axios.post(
+    "http://ensemc.irma-prod.net/api/etudiant/justifier",
+    { pdf: file, absence_id: id },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  return data as TAbsence;
+});
