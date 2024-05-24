@@ -7,6 +7,7 @@ import {
   WeekCalendar,
 } from "react-native-calendars";
 import { MarkedDates } from "react-native-calendars/src/types";
+import { days, hours, sessions } from "./data";
 
 export default function DisponibiliteForm() {
   const [dateStart, setDateStart] = useState<string>(
@@ -37,55 +38,30 @@ export default function DisponibiliteForm() {
   }, [dateEnd, dateStart]);
   return (
     <View className="bg-white">
-      <ScrollView>
-        <View className="bg-red-600 w-full flex items-end">
-          <View className="w-[85%]">
-            <CalendarProvider date={new Date().toISOString().split("T")[0]}>
-              <WeekCalendar />
-            </CalendarProvider>
+      <ScrollView className="h-[85%]">
+        <View className="w-full flex items-end">
+          <View className="w-[88%] flex flex-row">
+            {days.map((day) => (
+              <View className="flex justify-center h-12 w-12 border items-center">
+                <Text className="text-center">{day}</Text>
+              </View>
+            ))}
           </View>
         </View>
-        <View>
-          <View className="space-y-5 py-5 bg-pink-500 w-[15%] flex items-center">
-            <View className="flex justify-center h-12 w-12 border items-center">
-              <Text className="text-center">07 h</Text>
-            </View>
-            <View className="flex justify-center h-12 w-12 border items-center">
-              <Text className="text-center">08 h</Text>
-            </View>
-            <View className="flex justify-center h-12 w-12 border items-center">
-              <Text className="text-center">09 h</Text>
-            </View>
-            <View className="flex justify-center h-12 w-12 border items-center">
-              <Text className="text-center">10 h</Text>
-            </View>
-            <View className="flex justify-center h-12 w-12 border items-center">
-              <Text className="text-center">11 h</Text>
-            </View>
-            <View className="flex justify-center h-12 w-12 border items-center">
-              <Text className="text-center">12 h</Text>
-            </View>
-            <View className="flex justify-center h-12 w-12 border items-center">
-              <Text className="text-center">13 h</Text>
-            </View>
-            <View className="flex justify-center h-12 w-12 border items-center">
-              <Text className="text-center">14 h</Text>
-            </View>
-            <View className="flex justify-center h-12 w-12 border items-center">
-              <Text className="text-center">15 h</Text>
-            </View>
-            <View className="flex justify-center h-12 w-12 border items-center">
-              <Text className="text-center">16 h</Text>
-            </View>
-            <View className="flex justify-center h-12 w-12 border items-center">
-              <Text className="text-center">17 h</Text>
-            </View>
-            <View className="flex justify-center h-12 w-12 border items-center">
-              <Text className="text-center">18 h</Text>
-            </View>
-            <View className="flex justify-center h-12 w-12 border items-center">
-              <Text className="text-center">19 h</Text>
-            </View>
+        <View className="flex flex-row">
+          <View className="w-[12%] flex items-center">
+            {hours.map((hour) => (
+              <View className="flex justify-center h-12 w-12 border items-center">
+                <Text className="text-center">{hour}</Text>
+              </View>
+            ))}
+          </View>
+          <View className="w-[88%] flex flex-col flex-wrap">
+            {sessions.map((session) => (
+              <View className="flex justify-center h-12 w-12 border items-center">
+                <Text className="text-center">{session.day + "/" + session.hour}</Text>
+              </View>
+            ))}
           </View>
         </View>
       </ScrollView>

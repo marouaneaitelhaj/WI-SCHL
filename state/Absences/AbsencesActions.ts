@@ -33,7 +33,8 @@ export const justifierAbsence = createAsyncThunk<
       },
     }
   );
-  console.log(data);
+  console.log(file);
+  console.log(id);
   
   return data as TAbsence;
 });

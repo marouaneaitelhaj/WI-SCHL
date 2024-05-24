@@ -1,4 +1,4 @@
-import { ScrollView } from "react-native";
+import { ScrollView, View } from "react-native";
 import InformationspersonnelsProfile from "../components/Profile/InformationspersonnelsProfile";
 import TopSectionForProfile from "../components/Profile/TopSectionForProfile";
 import EditpersonnelsProfile from "../components/Profile/EditpersonnelsProfile";
@@ -11,6 +11,8 @@ import ModifierLaMotDePass from "./ModifierLaMotDePass";
 import { memo, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@state/store";
+import { Text } from "react-native";
+import Tabs from "app/components/Profile/Tabs";
 
 function Profile(props: { showProfile: boolean }) {
   const { profileStatus } = useSelector((state: RootState) => state.profile);
@@ -41,6 +43,7 @@ function Profile(props: { showProfile: boolean }) {
     >
       <ScrollView className="h-screen">
         <TopSectionForProfile />
+        <Tabs />
         {InformationspersonnelsProfileMemo}
         {EditpersonnelsProfileMemo}
         {ModifierLaMotDePassMemo}
