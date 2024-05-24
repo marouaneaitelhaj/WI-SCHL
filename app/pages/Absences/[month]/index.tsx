@@ -12,8 +12,6 @@ import { Icon } from "react-native-paper";
 import { justifierAbsence } from "@state/Absences/AbsencesActions";
 
 export default function Absences() {
-  // props: { present?: number; absent: number; beingProcessed: number }
-  const { month } = useLocalSearchParams();
 
   const selectedElement = useSelector(
     (state: RootState) => state.absence.selectedElement
@@ -67,7 +65,6 @@ export default function Absences() {
         date_absence: string;
       }) => {
         if (absence.date_absence === date) {
-          console.log(absence);
           setAbsence(absence);
           return absence;
         }
@@ -93,11 +90,10 @@ export default function Absences() {
     <SafeAreaView className="h-screen bg-white">
       <Calendar
         markedDates={markedDates}
+        initialDate={selectedElement?.element_absences[0]?.date_absence}
         onDayPress={(date: DateData) => {
           findAbsence(date.dateString);
         }}
-        date="2024-02-15"
-        className=""
       />
       <View className="flex flex-row justify-around flex-wrap py-6 w-full">
         <View className="w-[17%]  flex justify-center items-center h-14 rounded-lg bg-green-100">
