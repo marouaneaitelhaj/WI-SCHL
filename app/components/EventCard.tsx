@@ -7,13 +7,16 @@ import Animated, {
   withTiming,
   useSharedValue,
 } from "react-native-reanimated";
+import { router } from "expo-router";
 
 export default function EventCard({
   event,
   isWhite,
+  link,
 }: {
   event: Tevent;
   isWhite?: boolean;
+  link?: string;
 }) {
   const [expanded, setExpanded] = useState(false);
   const animatedHeight = useSharedValue(64);
@@ -27,36 +30,40 @@ export default function EventCard({
   return (
     <Pressable
       onPress={() => {
-        setExpanded(!expanded);
-        animatedHeight.value = withTiming(expanded ? 100 : 200);
+        if (link) {
+          router.push(link);
+        } else {
+          setExpanded(!expanded);
+          animatedHeight.value = withTiming(expanded ? 100 : 200);
+        }
       }}
       className="flex flex-row w-full p-3 space-x-3 items-center"
     >
       <View
         className={"h-16 w-16 flex rounded-full justify-center items-center"}
         style={{
-          backgroundColor: event.color,
+          backgroundColor: event?.color,
         }}
       >
         <Text
           className="text-xs"
           style={{
-            color: isWhite ? "white" : event.textColor,
+            color: isWhite ? "white" : event?.textColor,
           }}
         >
-          {event.start.split("T")[1].split(":")[0] +
+          {event?.start?.split("T")[1]?.split(":")[0] +
             ":" +
-            event.start.split("T")[1].split(":")[1]}
+            event?.start?.split("T")[1]?.split(":")[1]}
         </Text>
         <Text
           className="text-xs"
           style={{
-            color: isWhite ? "white" : event.textColor,
+            color: isWhite ? "white" : event?.textColor,
           }}
         >
-          {event.end.split("T")[1].split(":")[0] +
+          {event?.end?.split("T")[1]?.split(":")[0] +
             ":" +
-            event.end.split("T")[1].split(":")[1]}
+            event?.end?.split("T")[1]?.split(":")[1]}
         </Text>
       </View>
       <Animated.View
@@ -66,7 +73,7 @@ export default function EventCard({
         }
         style={[
           {
-            backgroundColor: event.color,
+            backgroundColor: event?.color,
           },
           animatedStyles,
         ]}
@@ -75,10 +82,10 @@ export default function EventCard({
           className="font-bold w-[85%]"
           numberOfLines={expanded ? 5 : 1}
           style={{
-            color: isWhite ? "white" : event.textColor,
+            color: isWhite ? "white" : event?.textColor,
           }}
         >
-          {event.title}
+          {event?.title}
         </Text>
         <IconButton
           icon={expanded ? "chevron-up" : "chevron-down"}
@@ -86,7 +93,7 @@ export default function EventCard({
             setExpanded(!expanded);
             animatedHeight.value = withTiming(expanded ? 100 : 200);
           }}
-          iconColor={isWhite ? "white" : event.textColor}
+          iconColor={isWhite ? "white" : event?.textColor}
         />
       </Animated.View>
     </Pressable>
