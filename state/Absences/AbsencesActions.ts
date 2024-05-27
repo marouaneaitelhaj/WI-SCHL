@@ -24,9 +24,9 @@ export const getAbsences = createAsyncThunk<TAbsence, void>(
 export const justifierAbsence = createAsyncThunk<
   TAbsence,
   { id: string; file: string }
->("Absences/justifierAbsence", async ({ id, file }) => {
+>("Absences/justifierAbsence", async ({ id, file }, api) => {
   const token = await AsyncStorage.getItem("token");
-  console.log(file);
+  console.log(id);
 
   const { data } = await axios.post(
     "http://ensemc.irma-prod.net/api/etudiant/justifier",
@@ -37,7 +37,7 @@ export const justifierAbsence = createAsyncThunk<
       },
     }
   );
-  console.log(data);
+  api.dispatch(getAbsences());
 
   // console.log(file);
   // console.log(id);

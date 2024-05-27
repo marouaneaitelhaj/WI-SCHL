@@ -212,6 +212,7 @@ export default function Absences() {
                                     {
                                       text: "OK",
                                       onPress: () => {
+                                        router.back();
                                         setFile({ uri: "", base64: "" });
                                       },
                                     },
