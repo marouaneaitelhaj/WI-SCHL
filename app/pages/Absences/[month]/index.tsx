@@ -45,7 +45,7 @@ export default function Absences() {
       }) => {
         markedDates[absence.date_absence] = {
           selected: true,
-          selectedColor: absence.statut === "Justifié" ? "#D4FFEB" : "#FED4D5",
+          selectedColor: absence.statut === "Justifié" ? "#D4FFEB" : absence.statut === "En cours de traitement" ? "#FFD6A5" : "#FED4D5",
           textColor: "black",
           color: "black",
         };

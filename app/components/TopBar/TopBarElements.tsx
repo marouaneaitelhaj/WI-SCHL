@@ -24,6 +24,7 @@ const data = [
   { key: "/pages/Emploi", text: "Emploi", icon: "clock-time-eight" },
   { key: "/pages/annonces", text: "Annonces", icon: "bullhorn" },
   { key: "/pages/Disponibilite", text: "Disponibilite", icon: "calendar-blank-multiple" },
+  { key: "/pages/Absences", text: "Absences", icon: "table-account" },
 ];
 
 export default function TopBarElements() {
