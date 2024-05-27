@@ -17,7 +17,7 @@ export default function AnnonceCard({
     <Pressable
       onPress={() => {
         dispatch(setAnnonce(annonce));
-        router.push({ pathname: "/pages/annonces/" + annonce.id });
+        router.push({ pathname: "/student/annonces/" + annonce.id });
       }}
       style={{ backgroundColor: bg }}
       className={"flex space-y-4 p-3 m-3 rounded-xl w-40"}

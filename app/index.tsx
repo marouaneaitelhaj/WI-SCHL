@@ -1,4 +1,4 @@
-import Accueil from "@pages/Accueil";
+import Accueil from "@student/Accueil";
 
 export default function Main() {
   return <Accueil></Accueil>;

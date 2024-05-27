@@ -8,52 +8,52 @@ import { enableGoBack } from "state/TopBar/TopBarSlice";
 export default function Demandes() {
   const data = [
     {
-      key: "/pages/Demandes/AttestationInscription",
+      key: "/student/Demandes/AttestationInscription",
       text: "Attestations d'inscription",
       icon: "file-document",
     },
     {
-      key: "/pages/Demandes/AttestationScolarite",
+      key: "/student/Demandes/AttestationScolarite",
       text: "Attestations de scolarité",
       icon: "file-document",
     },
     {
-      key: "/pages/Demandes/AttestationReussite",
+      key: "/student/Demandes/AttestationReussite",
       text: "Attestations de réussite",
       icon: "file-document",
     },
     {
-      key: "/pages/Demandes/ConventionStage",
+      key: "/student/Demandes/ConventionStage",
       text: "Conventions de stage",
       icon: "file-document",
     },
     {
-      key: "/pages/Demandes/ReleveNote",
+      key: "/student/Demandes/ReleveNote",
       text: "Relevé de notes",
       icon: "file-document",
     },
     {
-      key: "/pages/Demandes/RetraitDiplome",
+      key: "/student/Demandes/RetraitDiplome",
       text: "Retrait de diplôme",
       icon: "file-document",
     },
     {
-      key: "/pages/Demandes/RetraitBaccalaureat",
+      key: "/student/Demandes/RetraitBaccalaureat",
       text: "Retrait du Baccalauréat",
       icon: "file-document",
     },
     {
-      key: "/pages/Demandes/CarteEtudiant",
+      key: "/student/Demandes/CarteEtudiant",
       text: "Carte d'étudiant",
       icon: "file-document",
     },
     {
-      key: "/pages/Demandes/ChangementFiliere",
+      key: "/student/Demandes/ChangementFiliere",
       text: "Changement de filière",
       icon: "file-document",
     },
     {
-      key: "/pages/Demandes/Demande_reservation",
+      key: "/student/Demandes/Demande_reservation",
       text: "Demande de réservation de locaux",
       icon: "file-document",
     },

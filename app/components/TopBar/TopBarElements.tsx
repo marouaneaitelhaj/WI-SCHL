@@ -17,14 +17,15 @@ import { router } from "expo-router";
 import { COLORS } from "../../../static/colors";
 
 const data = [
-  { key: "/pages/Accueil", text: "Accueil", icon: "home-circle" },
-  { key: "/pages/Demandes", text: "Demandes", icon: "inbox" },
-  { key: "/pages/Notes", text: "Notes", icon: "numeric" },
-  { key: "/pages/Absences", text: "Absences", icon: "table-account" },
-  { key: "/pages/Emploi", text: "Emploi", icon: "clock-time-eight" },
-  { key: "/pages/annonces", text: "Annonces", icon: "bullhorn" },
-  { key: "/pages/Disponibilite", text: "Disponibilite", icon: "calendar-blank-multiple" },
-  { key: "/pages/Absences", text: "Absences", icon: "table-account" },
+  { key: "/student/Accueil", text: "Accueil", icon: "home-circle" },
+  { key: "/student/Demandes", text: "Demandes", icon: "inbox" },
+  { key: "/student/Notes", text: "Notes", icon: "numeric" },
+  { key: "/student/Absences", text: "Absences", icon: "table-account" },
+  { key: "/student/Emploi", text: "Emploi", icon: "clock-time-eight" },
+  { key: "/student/annonces", text: "Annonces", icon: "bullhorn" },
+  { key: "/prof/Disponibilite", text: "Disponibilite", icon: "calendar-blank-multiple" },
+  { key: "/student/Absences", text: "Absences", icon: "table-account" },
+  { key: "/prof/Notes", text: "Notes", icon: "numeric" },
 ];
 
 export default function TopBarElements() {

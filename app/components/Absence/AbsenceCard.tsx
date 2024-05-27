@@ -10,7 +10,7 @@ export default function AbsenceCard({ element }: { element: Element }) {
     <Pressable
       onPress={() => {
         dispatch(setSelectedElement(element));
-        router.push("/pages/Absences/" + element.libelle_fr);
+        router.push("/student/Absences/" + element.libelle_fr);
       }}
       className="flex flex-row w-full justify-center my-3 space-x-3"
     >
