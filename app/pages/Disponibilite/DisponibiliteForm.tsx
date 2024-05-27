@@ -104,8 +104,9 @@ export default function DisponibiliteForm() {
                         {session.day.charAt(0) +
                           "/" +
                           session.hour.charAt(0) +
-                          (session.hour.charAt(1) === ":" ? "" : session.hour.charAt(1)
-                          )}
+                          (session.hour.charAt(1) === ":"
+                            ? ""
+                            : session.hour.charAt(1))}
                       </Text>
                     </Pressable>
                   )
