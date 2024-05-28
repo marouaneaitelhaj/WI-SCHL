@@ -21,7 +21,7 @@ export default function id() {
         <Text className="text-[#495057] w-1/4">Code</Text>
         <Text className="text-[#495057] w-1/4">Nom</Text>
         <Text className="text-[#495057] w-1/4">Prénom</Text>
-        <Checkbox status="indeterminate" />
+        <Checkbox status="unchecked" />
       </View>
       <View className="bg-[#F8F9FA] flex flex-row p-3">
         <Text className="text-[#495057] w-1/4">Code</Text>
@@ -33,7 +33,7 @@ export default function id() {
         <Text className="text-[#495057] w-1/4">Code</Text>
         <Text className="text-[#495057] w-1/4">Nom</Text>
         <Text className="text-[#495057] w-1/4">Prénom</Text>
-        <Checkbox status="indeterminate" />
+        <Checkbox status="unchecked" />
       </View>
     </View>
   );

@@ -25,6 +25,7 @@ const data = [
   { key: "/student/annonces", text: "Annonces", icon: "bullhorn" },
   { key: "/prof/Disponibilite", text: "Disponibilite", icon: "calendar-blank-multiple" },
   { key: "/prof/Absences", text: "Absences", icon: "table-account" },
+  { key: "/prof/Notes", text: "Notes", icon: "numeric" },
 ];
 
 export default function TopBarElements() {
