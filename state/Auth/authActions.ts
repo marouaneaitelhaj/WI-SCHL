@@ -7,15 +7,16 @@ export const loginAction = createAsyncThunk<
   { user: Tuser; token: string },
   Tuser
 >("auth/login", async ({ email, password }) => {
+  
   const { data } = await axios.post(
     "http://ensemc.irma-prod.net/api/loginscolarite",
     { email, password }
   );
+  
   AsyncStorage.setItem("token", data.token);
 
-  console.log(data);
+  // console.log(data);
   
-
   return { user: data.user, token: data.token };
 });
 
