@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Tuser } from "../types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { getProfileAction, loginAction, updateProfilePasswordAction } from "./AuthActions";
+import {
+  getProfileAction,
+  loginAction,
+  updateProfilePasswordAction,
+} from "./AuthActions";
 
 type AuthState = {
   loading: boolean;
@@ -11,6 +15,7 @@ type AuthState = {
   error: string | null;
   success: boolean;
   message: string | null;
+  type: string | null;
 };
 
 const initialState: AuthState = {
@@ -21,6 +26,7 @@ const initialState: AuthState = {
   error: null,
   success: false,
   message: null,
+  type: null,
 };
 
 const AuthSlice = createSlice({
@@ -68,11 +74,14 @@ const AuthSlice = createSlice({
       .addCase(getProfileAction.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
+        state.type = action.payload.type;
         state.success = true;
-        state.user = action.payload.etudiant;
+        state.user = action.payload.user;
         state.user.fillier = action.payload.fillier;
       })
-      .addCase(getProfileAction.rejected, (state) => {
+      .addCase(getProfileAction.rejected, (state, action) => {
+        console.log(action.error.message);
+
         state.loading = false;
         // state.error = "Erreur lors de la récupération des données";
         state.success = false;

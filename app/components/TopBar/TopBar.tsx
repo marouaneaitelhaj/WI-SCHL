@@ -9,12 +9,31 @@ import { setShowProfile } from "../../../state/Profile/ProfileSlice";
 import { router, useRootNavigationState } from "expo-router";
 import { useEffect } from "react";
 
+const dataS = [
+  // { key: "/student/Accueil", text: "Accueil", icon: "home-circle" },
+  { key: "/student/Demandes", text: "Demandes", icon: "inbox" },
+  { key: "/student/Notes", text: "Notes", icon: "numeric" },
+  { key: "/student/Absences", text: "Absences", icon: "table-account" },
+  { key: "/student/Emploi", text: "Emploi", icon: "clock-time-eight" },
+  { key: "/student/annonces", text: "Annonces", icon: "bullhorn" }
+];
+
+const dataP = [
+  {
+    key: "/prof/Disponibilite",
+    text: "Disponibilite",
+    icon: "calendar-blank-multiple",
+  },
+  { key: "/prof/Absences", text: "Absences", icon: "table-account" },
+  { key: "/prof/Notes", text: "Notes", icon: "numeric" },
+];
+
 export default function TopBar() {
   const { open } = useSelector((state: RootState) => state.topBar);
 
   const dispatch = useAppDispatch();
 
-  const { user } = useSelector((state: RootState) => state.auth);
+  const { user, type } = useSelector((state: RootState) => state.auth);
   const navState = useRootNavigationState();
 
   useEffect(() => {}, [navState]);
@@ -23,9 +42,7 @@ export default function TopBar() {
     <View className="bg-[#f2f3fa]">
       <View
         className={
-          "z-20 pt-3 pb-5  bg-[" +
-          COLORS.primaryColor +
-          "] w-screen rounded-bl-[50px]  flex flex-row items-center justify-between px-5"
+          "z-20 pt-3 pb-5  bg-[#5156BE] w-screen rounded-bl-[50px]  flex flex-row items-center justify-between px-5"
         }
       >
         <Image
@@ -94,7 +111,8 @@ export default function TopBar() {
         }}
         className="absolute w-32 bg-[#5156BE] z-50  h-32 -bottom-28 right-0 "
       ></View>
-      {open && <TopBarElements />}
+      {(open && type == "prof") && <TopBarElements data={dataP} />}
+      {(open && type == "etudiant") && <TopBarElements data={dataS} />}
     </View>
   );
 }

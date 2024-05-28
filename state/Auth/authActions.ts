@@ -15,25 +15,28 @@ export const loginAction = createAsyncThunk<
   
   AsyncStorage.setItem("token", data.token);
 
-  // console.log(data);
+  console.log(data);
   
   return { user: data.user, token: data.token };
 });
 
 // 'auth/profile',
 export const getProfileAction = createAsyncThunk<
-  { etudiant: Tuser; fillier: string; correction: string },
+  { user: Tuser; fillier: string; correction: string, type : string },
   string
 >("auth/profile", async (token) => {
   
   const { data } = await axios.get(
-    "http://ensemc.irma-prod.net/api/etudiant/profile",
+    "http://ensemc.irma-prod.net/api/profile",
     {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     }
   );
+
+  console.log(data);
+  
   return data;
 });
 

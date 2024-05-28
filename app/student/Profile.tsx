@@ -43,7 +43,7 @@ function Profile(props: { showProfile: boolean }) {
     >
       <ScrollView className="h-screen">
         <TopSectionForProfile />
-        <Tabs />
+        {/* <Tabs /> */}
         {InformationspersonnelsProfileMemo}
         {EditpersonnelsProfileMemo}
         {ModifierLaMotDePassMemo}

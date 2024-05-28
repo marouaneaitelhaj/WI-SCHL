@@ -16,28 +16,12 @@ import { logout } from "../../../state/Auth/AuthSlice";
 import { router } from "expo-router";
 import { COLORS } from "../../../static/colors";
 
-const data = [
-  { key: "/student/Accueil", text: "Accueil", icon: "home-circle" },
-  { key: "/student/Demandes", text: "Demandes", icon: "inbox" },
-  { key: "/student/Notes", text: "Notes", icon: "numeric" },
-  { key: "/student/Absences", text: "Absences", icon: "table-account" },
-  { key: "/student/Emploi", text: "Emploi", icon: "clock-time-eight" },
-  { key: "/student/annonces", text: "Annonces", icon: "bullhorn" },
-  // { key: "/prof/Disponibilite", text: "Disponibilite", icon: "calendar-blank-multiple" },
-  // { key: "/prof/Absences", text: "Absences", icon: "table-account" },
-  // { key: "/prof/Notes", text: "Notes", icon: "numeric" },
-];
-
-export default function TopBarElements() {
-  const statusBarHeight = StatusBar.currentHeight || 0;
-  // const { open } = useSelector((state: RootState) => state.topBar);
-
+export default function TopBarElements(
+  props : {data : { key: string; text: string; icon: string }[]}
+) {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-  }, [router]);
-
-  const navigation = useNavigation();
+  useEffect(() => {}, [router]);
 
   return (
     <Animated.View
@@ -45,7 +29,7 @@ export default function TopBarElements() {
       exiting={SlideOutDown.duration(100).easing(Easing.ease)}
       className="w-screen z-20 space-y-5 rounded-t-[50px] flex flex-row items-center justify-start py-7 px-5 flex-wrap h-screen"
     >
-      {data.map((item, index) => (
+      {props.data.map((item, index) => (
         <View className="flex w-1/3 items-center " key={index}>
           <IconButton
             className={"border-2 border-[ " + COLORS.primaryColor + +"]"}
@@ -57,7 +41,7 @@ export default function TopBarElements() {
             iconColor={COLORS.primaryColor}
             icon={item.icon}
             onPress={() => {
-              router.push(item.key as never)
+              router.push(item.key as never);
               dispatch(toggleTopBar());
             }}
           />
@@ -96,7 +80,9 @@ export default function TopBarElements() {
             );
           }}
         />
-        <Text className="font-[Poppins-Black] text-[#5156BE]">{"Déconnexion"}</Text>
+        <Text className="font-[Poppins-Black] text-[#5156BE]">
+          {"Déconnexion"}
+        </Text>
       </View>
     </Animated.View>
   );
