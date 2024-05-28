@@ -30,23 +30,15 @@
       "favicon": "./assets/menu_icon.png"
     },
     "extra": {
-      "eas": {
-        "projectId": "80424be7-bf5c-4fde-8522-12fd714396fe"
-      },
       "router": {
         "origin": false
+      },
+      "eas": {
+        "projectId": "8ca48576-1420-4cd6-9de4-0ff1a63c5cab"
       }
     },
     "plugins": [
-      "expo-router",
-      [
-        "expo-font",
-        {
-          "fonts": [
-            "./assets/pxiGyp8kv8JHgFVrJJLucHtA.ttf"
-          ]
-        }
-      ]
+      "expo-router"
     ],
     "runtimeVersion": {
       "policy": "appVersion"
