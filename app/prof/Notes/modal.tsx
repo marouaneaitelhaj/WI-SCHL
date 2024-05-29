@@ -1,9 +1,10 @@
-import { View, Text } from 'react-native'
+import { View, Text } from "react-native";
+import { Checkbox } from "react-native-paper";
 
 export default function modal() {
   return (
-    <View>
-      <Text>modal</Text>
+    <View className="bg-red-600">
+      
     </View>
-  )
+  );
 }

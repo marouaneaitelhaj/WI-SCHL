@@ -15,7 +15,7 @@ const dataS = [
   { key: "/student/Notes", text: "Notes", icon: "numeric" },
   { key: "/student/Absences", text: "Absences", icon: "table-account" },
   { key: "/student/Emploi", text: "Emploi", icon: "clock-time-eight" },
-  { key: "/student/annonces", text: "Annonces", icon: "bullhorn" }
+  { key: "/student/annonces", text: "Annonces", icon: "bullhorn" },
 ];
 
 const dataP = [
@@ -100,7 +100,7 @@ export default function TopBar() {
             src={
               user?.img
                 ? "http://ensemc.irma-prod.net/storage/" + user?.img
-                : "http://ensemc.irma-prod.net/" + user?.image
+                : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
             }
           />
         </Pressable>
@@ -111,8 +111,8 @@ export default function TopBar() {
         }}
         className="absolute w-32 bg-[#5156BE] z-50  h-32 -bottom-28 right-0 "
       ></View>
-      {(open && type == "prof") && <TopBarElements data={dataP} />}
-      {(open && type == "etudiant") && <TopBarElements data={dataS} />}
+      {open && type == "prof" && <TopBarElements data={dataP} />}
+      {open && type == "etudiant" && <TopBarElements data={dataS} />}
     </View>
   );
 }

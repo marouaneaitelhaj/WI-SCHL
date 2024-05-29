@@ -33,7 +33,6 @@ export default function Absences() {
 
   useEffect(() => {
     let markedDates: { [key: string]: any } = {};
-    console.log(selectedElement);
     
     selectedElement?.element_absences.forEach(
       (absence: {

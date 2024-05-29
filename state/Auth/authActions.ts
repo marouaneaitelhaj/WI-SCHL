@@ -15,7 +15,6 @@ export const loginAction = createAsyncThunk<
   
   AsyncStorage.setItem("token", data.token);
 
-  console.log(data);
   
   return { user: data.user, token: data.token };
 });
@@ -35,7 +34,6 @@ export const getProfileAction = createAsyncThunk<
     }
   );
 
-  console.log(data);
   
   return data;
 });

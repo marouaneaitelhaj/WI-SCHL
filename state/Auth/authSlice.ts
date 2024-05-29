@@ -80,7 +80,6 @@ const AuthSlice = createSlice({
         state.user.fillier = action.payload.fillier;
       })
       .addCase(getProfileAction.rejected, (state, action) => {
-        console.log(action.error.message);
 
         state.loading = false;
         // state.error = "Erreur lors de la récupération des données";

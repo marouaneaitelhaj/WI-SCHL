@@ -1,39 +1,39 @@
-// import { Stack } from "expo-router";
-// import { StatusBar } from "expo-status-bar";
-// import { SafeAreaView } from "react-native-safe-area-context";
-// import { View, StyleSheet } from "react-native";
+import { Stack } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { View, StyleSheet, Platform, StatusBar } from "react-native";
+import { Text } from "react-native";
 
-// export default function Layout() {
-//   return (
-//     <SafeAreaView style={styles.container}>
-//       <StatusBar style="auto" />
-//       <Stack
-//         screenOptions={{
-//           headerShown: false,
-//         }}
-//       >
-//         <Stack.Screen
-//           name="index"
-//           options={{
-//             // Hide the header for all other routes.
-//             headerShown: false,
-//           }}
-//         />
-//         <Stack.Screen
-//           name="modal"
-//           options={{
-//             // Set the presentation mode to modal for our modal route.
-//             presentation: "modal",
-//           }}
-//         />
-//       </Stack>
-//     </SafeAreaView>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "red",
-//   },
-// });
+export default function Layout() {
+  return (
+    <View
+      style={{
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        flex: 1,
+      }}
+    >
+      <View className="bg-[#f2f3fa] w-screen min-h-screen rounded-tr-[50px]">
+        <Stack>
+          <Stack.Screen
+            name="index"
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="modal"
+            options={{
+              presentation: "modal",
+              animation: "slide_from_bottom",
+              header: () => (
+                // <View className="py-5 flex justify-center items-center">
+                //   <Text>Modal</Text>
+                // </View>
+                <></>
+              ),
+            }}
+          />
+        </Stack>
+      </View>
+    </View>
+  );
+}
