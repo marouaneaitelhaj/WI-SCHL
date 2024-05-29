@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Tevent, Tseance, eventsType } from "../types";
 import {
   getEmploisDuTempsByDay,
+  getEmploisDuTempsByDayToday,
   getEmploisDuTempsByMonth,
 } from "./SchedulesSliceActions";
 
@@ -11,7 +12,7 @@ type EmploisDuTempsState = {
   eventsTypes: eventsType[];
   selectedMonth: string;
   selectedDay: string;
-  loading : boolean;
+  loading: boolean;
 };
 
 const initialState: EmploisDuTempsState = {
@@ -20,7 +21,7 @@ const initialState: EmploisDuTempsState = {
   eventsTypes: [],
   selectedMonth: "",
   selectedDay: "",
-  loading : false
+  loading: false,
 };
 
 export const EmploisDuTempsSlice = createSlice({
@@ -35,7 +36,6 @@ export const EmploisDuTempsSlice = createSlice({
     },
   },
   extraReducers(builder) {
-
     builder
       .addCase(getEmploisDuTempsByMonth.pending, (state) => {
         state.eventsForMonth = [];
@@ -45,13 +45,12 @@ export const EmploisDuTempsSlice = createSlice({
       .addCase(getEmploisDuTempsByMonth.fulfilled, (state, action) => {
         state.eventsForMonth = action.payload;
         console.log("here 1");
-        
+
         // state.eventsForDay = action.payload;
         state.loading = false;
       })
       .addCase(getEmploisDuTempsByMonth.rejected, (state) => {
         state.loading = false;
-
       });
 
     builder
@@ -61,11 +60,26 @@ export const EmploisDuTempsSlice = createSlice({
       })
       .addCase(getEmploisDuTempsByDay.fulfilled, (state, action) => {
         console.log("here 2");
-        
+
         state.eventsForDay = action.payload;
         state.loading = false;
       })
       .addCase(getEmploisDuTempsByDay.rejected, (state) => {
+        state.loading = false;
+      });
+
+    builder
+      .addCase(getEmploisDuTempsByDayToday.pending, (state) => {
+        state.eventsForDay = [];
+        state.loading = true;
+      })
+      .addCase(getEmploisDuTempsByDayToday.fulfilled, (state, action) => {
+        console.log("here 3");
+
+        state.eventsForDay = action.payload;
+        state.loading = false;
+      })
+      .addCase(getEmploisDuTempsByDayToday.rejected, (state) => {
         state.loading = false;
       });
   },

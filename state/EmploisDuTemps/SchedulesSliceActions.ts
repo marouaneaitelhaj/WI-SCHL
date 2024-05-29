@@ -17,13 +17,17 @@ export const getEmploisDuTempsByMonth = createAsyncThunk<
       },
     }
   );
-
-  api.dispatch(
-    getEmploisDuTempsByDay({
-      selectedMonth: selectedMonth,
-      selectedDay: "01",
-    })
-  );
+  
+  if (selectedMonth === new Date().toISOString().slice(0, 7)) {
+    api.dispatch(getEmploisDuTempsByDayToday());
+  } else {
+    api.dispatch(
+      getEmploisDuTempsByDay({
+        selectedMonth: selectedMonth,
+        selectedDay: "01",
+      })
+    );
+  }
 
   return data.events as Tevent[];
 });
