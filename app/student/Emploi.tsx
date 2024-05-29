@@ -14,6 +14,7 @@ import {
   getEmploisDuTempsByMonth,
 } from "@state/EmploisDuTemps/SchedulesSliceActions";
 import { useState } from "react";
+import EmploiEventsForDay from "app/components/Emploi/EmploiEventsForDay";
 
 export default function Emploi() {
   const { eventsForMonth, eventsForDay, loading } = useSelector(
@@ -87,11 +88,7 @@ export default function Emploi() {
   return (
     <>
       <View className="bg-white">
-        <ScrollView
-          style={{
-            height: "45%",
-          }}
-        >
+        <ScrollView>
           <Calendar
             markingType={"multi-period"}
             markedDates={{
@@ -112,7 +109,6 @@ export default function Emploi() {
                 })
               );
             }}
-            initialDate="2024-05-04"
             onDayPress={(date: DateData) => {
               const day =
                 date.day.toString().length === 1 ? "0" + date.day : date.day;
@@ -133,25 +129,10 @@ export default function Emploi() {
         </ScrollView>
         <ScrollView
           style={{
-            height: "45%",
+            height: "33%",
           }}
         >
-          {eventsForDay &&
-            eventsForDay.map((event) => (
-              <EventCard event={event} key={event.id} />
-            ))}
-          {eventsForDay.length === 0 && !loading && (
-            <View className="flex  my-14 justify-center items-center h-[30px] ">
-              <Text className="font-[Poppins-Black] text-[#5156BE] font-bold text-xl">
-                No events
-              </Text>
-            </View>
-          )}
-          {loading && (
-            <View className="flex my-14 justify-center items-center">
-              <ActivityIndicator size="large" color="#5156BE" />
-            </View>
-          )}
+          <EmploiEventsForDay eventsForDay={eventsForDay} loading={loading} />
         </ScrollView>
       </View>
     </>

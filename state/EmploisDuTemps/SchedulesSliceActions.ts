@@ -6,8 +6,7 @@ import axios from "axios";
 export const getEmploisDuTempsByMonth = createAsyncThunk<
   Tevent[],
   { selectedMonth: string }
->("EmploisDuTemps/getEmploisDuTempsByMonth", async ({ selectedMonth }) => {
-  
+>("EmploisDuTemps/getEmploisDuTempsByMonth", async ({ selectedMonth }, api) => {
   const token = await AsyncStorage.getItem("token");
   const { data } = await axios.get(
     "http://ensemc.irma-prod.net/api/etudiant/emploi-temps?mois=" +
@@ -19,7 +18,12 @@ export const getEmploisDuTempsByMonth = createAsyncThunk<
     }
   );
 
-  
+  api.dispatch(
+    getEmploisDuTempsByDay({
+      selectedMonth: selectedMonth,
+      selectedDay: "01",
+    })
+  );
 
   return data.events as Tevent[];
 });
@@ -30,7 +34,7 @@ export const getEmploisDuTempsByDay = createAsyncThunk<
 >(
   "EmploisDuTemps/getEmploisDuTempsByDay",
   async ({ selectedDay, selectedMonth }) => {
-    const token = await AsyncStorage.getItem("token");  
+    const token = await AsyncStorage.getItem("token");
 
     const { data } = await axios.get(
       "http://ensemc.irma-prod.net/api/etudiant/emploi-temps?day=" +
@@ -44,17 +48,12 @@ export const getEmploisDuTempsByDay = createAsyncThunk<
       }
     );
 
-
-
     return data.events as Tevent[];
   }
 );
 
 // getEmploisDuTempsByDay day is today
-export const getEmploisDuTempsByDayToday = createAsyncThunk<
-  Tevent[],
-  void
->(
+export const getEmploisDuTempsByDayToday = createAsyncThunk<Tevent[], void>(
   "EmploisDuTemps/getEmploisDuTempsByDayToday",
   async () => {
     const token = await AsyncStorage.getItem("token");

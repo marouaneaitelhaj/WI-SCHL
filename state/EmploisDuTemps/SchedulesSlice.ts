@@ -44,7 +44,9 @@ export const EmploisDuTempsSlice = createSlice({
       })
       .addCase(getEmploisDuTempsByMonth.fulfilled, (state, action) => {
         state.eventsForMonth = action.payload;
-        state.eventsForDay = action.payload;
+        console.log("here 1");
+        
+        // state.eventsForDay = action.payload;
         state.loading = false;
       })
       .addCase(getEmploisDuTempsByMonth.rejected, (state) => {
@@ -58,6 +60,8 @@ export const EmploisDuTempsSlice = createSlice({
         state.loading = true;
       })
       .addCase(getEmploisDuTempsByDay.fulfilled, (state, action) => {
+        console.log("here 2");
+        
         state.eventsForDay = action.payload;
         state.loading = false;
       })
