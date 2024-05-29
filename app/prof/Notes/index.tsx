@@ -2,8 +2,10 @@ import { View, Text, Pressable } from "react-native";
 import React from "react";
 import { router } from "expo-router";
 import { Picker } from "@react-native-picker/picker";
+import { useForm } from "react-hook-form";
 
 export default function Notes() {
+  // const {} = useForm
   return (
     <View className="space-y-2 mx-5 my-5">
       <View className="space-y-2">

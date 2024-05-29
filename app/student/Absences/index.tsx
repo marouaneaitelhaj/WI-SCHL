@@ -36,20 +36,32 @@ export default function Absences() {
             showsHorizontalScrollIndicator={false}
             style={{ height: "85%", minWidth: "100%" }}
           >
-            {Object.entries(absences).reverse().map(([semesterName, semester], groupIndex) => (
-              <CardWrapper
-                key={groupIndex + semesterName + semester.modules.length}
-                bg="white"
-                expandedProp={true}
-                title={semesterName}
-              >
-                {semester.modules.flatMap((moduleGroup, groupIndex) =>
-                  moduleGroup.elements.map((element, elementIndex) => (
-                    <AbsenceCard key={elementIndex + element.libelle_fr + groupIndex + moduleGroup.libelle_fr} element={element} />
-                  ))
-                )}
-              </CardWrapper>
-            ))}
+            {Object.entries(absences)
+              .reverse()
+              .map(([semesterName, semester], groupIndex) => (
+                <CardWrapper
+                  key={groupIndex + semesterName + semester.modules.length}
+                  bg="white"
+                  expandedProp={true}
+                  title={semesterName}
+                >
+                  {semester.modules.flatMap((moduleGroup, groupIndex) => {
+                    return (
+                      <CardWrapper
+                        key={groupIndex}
+                        expandedProp={true}
+                        title={moduleGroup.libelle_fr}
+                      >
+                        <View className="px-5">
+                          {moduleGroup.elements.map((element, elementIndex) => (
+                            <AbsenceCard element={element} key={elementIndex} />
+                          ))}
+                        </View>
+                      </CardWrapper>
+                    );
+                  })}
+                </CardWrapper>
+              ))}
           </ScrollView>
         </ScrollView>
       )}
