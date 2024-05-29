@@ -1,13 +1,12 @@
-import Animated, { SlideInRight, SlideOutLeft } from "react-native-reanimated";
 import { View, Text, Alert, Pressable } from "react-native";
 import { Controller, useForm } from "react-hook-form";
-import { SelectList } from "react-native-dropdown-select-list";
 import { TextInput } from "react-native-paper";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "@state/store";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { createDemande } from "@state/Demandes/Demande_reservation/Demande_reservationActions";
+import { Picker } from "@react-native-picker/picker";
 
 export default function Demande_reservationForm() {
   const [picker, setPicker] = useState(0);
@@ -67,27 +66,37 @@ export default function Demande_reservationForm() {
         <Controller
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
-            <SelectList
-              placeholder="Sélectionner une salle"
-              setSelected={(val: any) => {
-                setValue("salle_id", val);
+            // <SelectList
+            //   placeholder="Sélectionner une salle"
+            //   setSelected={(val: any) => {
+            //     setValue("salle_id", val);
+            //   }}
+            //   boxStyles={{
+            //     borderColor: "#5156BE",
+            //     borderWidth: 1,
+            //     borderRadius: 5,
+            //     padding: 10,
+            //     backgroundColor: "white",
+            //   }}
+            //   inputStyles={{
+            //     color: "black",
+            //     fontSize: 16,
+            //     padding: 0,
+            //     borderColor: "#5156BE",
+            //   }}
+            //   data={data}
+            //   save="key"
+            // />
+            <Picker
+              selectedValue={value}
+              onValueChange={(itemValue, itemIndex) => {
+                onChange(itemValue);
               }}
-              boxStyles={{
-                borderColor: "#5156BE",
-                borderWidth: 1,
-                borderRadius: 5,
-                padding: 10,
-                backgroundColor: "white",
-              }}
-              inputStyles={{
-                color: "black",
-                fontSize: 16,
-                padding: 0,
-                borderColor: "#5156BE",
-              }}
-              data={data}
-              save="key"
-            />
+            >
+              {data.map((item: any) => (
+                <Picker.Item label={item.value} value={item.key} />
+              ))}
+            </Picker>
           )}
           name="salle_id"
         />
