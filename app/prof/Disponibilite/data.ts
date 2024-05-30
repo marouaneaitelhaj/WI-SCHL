@@ -1,3 +1,5 @@
+import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
+
 export type TSession = {
   id: number;
   day: string;
@@ -8,17 +10,17 @@ export const sessions: TSession[] = [
   {
     id: 1,
     day: "lun",
-    hour: "7:00",
+    hour: "07:00",
   },
   {
     id: 2,
     day: "lun",
-    hour: "8:00",
+    hour: "08:00",
   },
   {
     id: 3,
     day: "lun",
-    hour: "9:00",
+    hour: "09:00",
   },
   {
     id: 4,
@@ -73,17 +75,17 @@ export const sessions: TSession[] = [
   {
     id: 14,
     day: "mar",
-    hour: "7:00",
+    hour: "07:00",
   },
   {
     id: 15,
     day: "mar",
-    hour: "8:00",
+    hour: "08:00",
   },
   {
     id: 16,
     day: "mar",
-    hour: "9:00",
+    hour: "09:00",
   },
   {
     id: 17,
@@ -138,17 +140,17 @@ export const sessions: TSession[] = [
   {
     id: 27,
     day: "mer",
-    hour: "7:00",
+    hour: "07:00",
   },
   {
     id: 28,
     day: "mer",
-    hour: "8:00",
+    hour: "08:00",
   },
   {
     id: 29,
     day: "mer",
-    hour: "9:00",
+    hour: "09:00",
   },
   {
     id: 30,
@@ -203,17 +205,17 @@ export const sessions: TSession[] = [
   {
     id: 40,
     day: "jeu",
-    hour: "7:00",
+    hour: "07:00",
   },
   {
     id: 41,
     day: "jeu",
-    hour: "8:00",
+    hour: "08:00",
   },
   {
     id: 42,
     day: "jeu",
-    hour: "9:00",
+    hour: "09:00",
   },
   {
     id: 43,
@@ -268,17 +270,17 @@ export const sessions: TSession[] = [
   {
     id: 53,
     day: "ven",
-    hour: "7:00",
+    hour: "07:00",
   },
   {
     id: 54,
     day: "ven",
-    hour: "8:00",
+    hour: "08:00",
   },
   {
     id: 55,
     day: "ven",
-    hour: "9:00",
+    hour: "09:00",
   },
   {
     id: 56,
@@ -333,17 +335,17 @@ export const sessions: TSession[] = [
   {
     id: 66,
     day: "sam",
-    hour: "7:00",
+    hour: "07:00",
   },
   {
     id: 67,
     day: "sam",
-    hour: "8:00",
+    hour: "08:00",
   },
   {
     id: 68,
     day: "sam",
-    hour: "9:00",
+    hour: "09:00",
   },
   {
     id: 69,
@@ -395,14 +397,79 @@ export const sessions: TSession[] = [
     day: "sam",
     hour: "19:00",
   },
+  {
+    id: 79,
+    day: "dim",
+    hour: "07:00",
+  },
+  {
+    id: 80,
+    day: "dim",
+    hour: "08:00",
+  },
+  {
+    id: 81,
+    day: "dim",
+    hour: "09:00",
+  },
+  {
+    id: 82,
+    day: "dim",
+    hour: "10:00",
+  },
+  {
+    id: 83,
+    day: "dim",
+    hour: "11:00",
+  },
+  {
+    id: 84,
+    day: "dim",
+    hour: "12:00",
+  },
+  {
+    id: 85,
+    day: "dim",
+    hour: "13:00",
+  },
+  {
+    id: 86,
+    day: "dim",
+    hour: "14:00",
+  },
+  {
+    id: 87,
+    day: "dim",
+    hour: "15:00",
+  },
+  {
+    id: 88,
+    day: "dim",
+    hour: "16:00",
+  },
+  {
+    id: 89,
+    day: "dim",
+    hour: "17:00",
+  },
+  {
+    id: 90,
+    day: "dim",
+    hour: "18:00",
+  },
+  {
+    id: 91,
+    day: "dim",
+    hour: "19:00",
+  },
 ];
 
-export const days = ["lun", "mar", "mer", "jeu", "ven", "sam"];
+export const days = ["lun", "mar", "mer", "jeu", "ven", "sam", "dim"];
 
 export const hours = [
-  "7:00",
-  "8:00",
-  "9:00",
+  "07:00",
+  "08:00",
+  "09:00",
   "10:00",
   "11:00",
   "12:00",
@@ -428,3 +495,6 @@ export const getSessionsByHour = (hour: string) => {
 
   return sessionsByHour;
 };
+
+
+

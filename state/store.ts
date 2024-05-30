@@ -17,6 +17,7 @@ import ReleveNoteReducer from "./Demandes/ReleveNote/ReleveNoteSlice";
 import Demande_reservationReducer from "./Demandes/Demande_reservation/Demande_reservationSlice";
 import NoteReducer from "./Notes/NotesSlice";
 import AbsencesReducer from "./Absences/AbsencesSlice";
+import DisponibiliteReducer from "./Disponibilite/DisponibiliteSlice";
 
 export const store = configureStore({
   reducer: {
@@ -37,6 +38,7 @@ export const store = configureStore({
     demande_reservation : Demande_reservationReducer,
     note : NoteReducer,
     absence : AbsencesReducer,
+    disponibilite : DisponibiliteReducer,
   },
 });
 

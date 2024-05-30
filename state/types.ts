@@ -246,3 +246,20 @@ export type TAbsence = {
   [semesterName: string]: { modules: TModule[] };
 };
 
+
+
+export type Disponibilite = {
+  day: string;
+  hour: string;
+};
+
+export type TPeriode = {
+  periode: string;
+  date_debut: string;
+  date_fin: string;
+  disponibilites: Disponibilite[];
+};
+
+export type DisponibiliteRecord = {
+  periodes: TPeriode[];
+};
