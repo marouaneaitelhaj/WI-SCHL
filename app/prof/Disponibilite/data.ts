@@ -482,6 +482,11 @@ export const hours = [
   "19:00",
 ];
 
+// get the index of the day in the days array
+export const getDayIndex = (day: string) => {
+  return days.indexOf(day) + 1;
+};
+
 export const getSessionsByHour = (hour: string) => {
   const sessionsByHour = [] as any;
 
