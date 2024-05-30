@@ -26,6 +26,7 @@ const dataP = [
   },
   { key: "/prof/Absences", text: "Absences", icon: "table-account" },
   { key: "/prof/Notes", text: "Notes", icon: "numeric" },
+  { key: "/prof/Etudiants", text: "Etudiants", icon: "account-group" },
 ];
 
 export default function TopBar() {
