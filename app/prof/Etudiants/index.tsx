@@ -1,7 +1,7 @@
 import { View, Text, Pressable, Image, ScrollView } from "react-native";
 import React from "react";
 import { Picker } from "@react-native-picker/picker";
-import { Checkbox } from "react-native-paper";
+import { Checkbox, DataTable } from "react-native-paper";
 
 export default function index() {
   return (
@@ -35,7 +35,7 @@ export default function index() {
           </Pressable>
         </View>
       </View>
-      <ScrollView horizontal={true} style={{
+      {/* <ScrollView horizontal={true} style={{
         // width: "50%",
       }}>
         <ScrollView className="h-[65%]">
@@ -261,6 +261,162 @@ export default function index() {
               <Text className="text-[#495057] w-1/4">S1 - S2</Text>
             </View>
           </View>
+        </ScrollView>
+      </ScrollView> */}
+      <ScrollView horizontal={true}>
+        <ScrollView className="h-[90%]">
+          <DataTable
+            style={{
+              width: 1000,
+            }}
+            className="space-y-5"
+          >
+            <DataTable.Header className="bg-[#5156BE]">
+              <DataTable.Title>
+                <Text className="text-white">Code</Text>
+              </DataTable.Title>
+              <DataTable.Title>
+                <Text className="text-white">Nom</Text>
+              </DataTable.Title>
+              <DataTable.Title>
+                <Text className="text-white">Prénom</Text>
+              </DataTable.Title>
+              <DataTable.Title>
+                <Text className="text-white">Télé</Text>
+              </DataTable.Title>
+              <DataTable.Title>
+                <Text className="text-white">Email</Text>
+              </DataTable.Title>
+              <DataTable.Title>
+                <Text className="text-white">Filière</Text>
+              </DataTable.Title>
+              <DataTable.Title>
+                <Text className="text-white">Image</Text>
+              </DataTable.Title>
+              <DataTable.Title>
+                <Text className="text-white">Niveau</Text>
+              </DataTable.Title>
+            </DataTable.Header>
+            <DataTable.Row>
+              <DataTable.Cell>23023196</DataTable.Cell>
+              <DataTable.Cell>AFOUKAL</DataTable.Cell>
+              <DataTable.Cell>ABDALLAH</DataTable.Cell>
+              <DataTable.Cell>0688470111</DataTable.Cell>
+              <DataTable.Cell>heloo@gmail.components</DataTable.Cell>
+              <DataTable.Cell>GSE</DataTable.Cell>
+              <DataTable.Cell>
+                <Image
+                  source={{
+                    uri: "http://ensemc.irma-prod.net/storage/scolarite/etudiant/profile_image/valide/JH76590__1694559786.jpg#/",
+                  }}
+                  style={{ width: 50, height: 50 }}
+                />
+              </DataTable.Cell>
+              <DataTable.Cell>S1 - S2</DataTable.Cell>
+            </DataTable.Row>
+            <DataTable.Row>
+              <DataTable.Cell>23023196</DataTable.Cell>
+              <DataTable.Cell>AFOUKAL</DataTable.Cell>
+              <DataTable.Cell>ABDALLAH</DataTable.Cell>
+              <DataTable.Cell>0688470111</DataTable.Cell>
+              <DataTable.Cell>heloo@gmail.components</DataTable.Cell>
+              <DataTable.Cell>GSE</DataTable.Cell>
+              <DataTable.Cell>
+                <Image
+                  source={{
+                    uri: "http://ensemc.irma-prod.net/storage/scolarite/etudiant/profile_image/valide/JH76590__1694559786.jpg#/",
+                  }}
+                  style={{ width: 50, height: 50 }}
+                />
+              </DataTable.Cell>
+              <DataTable.Cell>S1 - S2</DataTable.Cell>
+            </DataTable.Row>
+            <DataTable.Row>
+              <DataTable.Cell>23023196</DataTable.Cell>
+              <DataTable.Cell>AFOUKAL</DataTable.Cell>
+              <DataTable.Cell>ABDALLAH</DataTable.Cell>
+              <DataTable.Cell>0688470111</DataTable.Cell>
+              <DataTable.Cell>heloo@gmail.components</DataTable.Cell>
+              <DataTable.Cell>GSE</DataTable.Cell>
+              <DataTable.Cell>
+                <Image
+                  source={{
+                    uri: "http://ensemc.irma-prod.net/storage/scolarite/etudiant/profile_image/valide/JH76590__1694559786.jpg#/",
+                  }}
+                  style={{ width: 50, height: 50 }}
+                />
+              </DataTable.Cell>
+              <DataTable.Cell>S1 - S2</DataTable.Cell>
+            </DataTable.Row>
+            <DataTable.Row>
+              <DataTable.Cell>23023196</DataTable.Cell>
+              <DataTable.Cell>AFOUKAL</DataTable.Cell>
+              <DataTable.Cell>ABDALLAH</DataTable.Cell>
+              <DataTable.Cell>0688470111</DataTable.Cell>
+              <DataTable.Cell>heloo@gmail.components</DataTable.Cell>
+              <DataTable.Cell>GSE</DataTable.Cell>
+              <DataTable.Cell>
+                <Image
+                  source={{
+                    uri: "http://ensemc.irma-prod.net/storage/scolarite/etudiant/profile_image/valide/JH76590__1694559786.jpg#/",
+                  }}
+                  style={{ width: 50, height: 50 }}
+                />
+              </DataTable.Cell>
+              <DataTable.Cell>S1 - S2</DataTable.Cell>
+            </DataTable.Row>
+            <DataTable.Row>
+              <DataTable.Cell>23023196</DataTable.Cell>
+              <DataTable.Cell>AFOUKAL</DataTable.Cell>
+              <DataTable.Cell>ABDALLAH</DataTable.Cell>
+              <DataTable.Cell>0688470111</DataTable.Cell>
+              <DataTable.Cell>heloo@gmail.components</DataTable.Cell>
+              <DataTable.Cell>GSE</DataTable.Cell>
+              <DataTable.Cell>
+                <Image
+                  source={{
+                    uri: "http://ensemc.irma-prod.net/storage/scolarite/etudiant/profile_image/valide/JH76590__1694559786.jpg#/",
+                  }}
+                  style={{ width: 50, height: 50 }}
+                />
+              </DataTable.Cell>
+              <DataTable.Cell>S1 - S2</DataTable.Cell>
+            </DataTable.Row>
+            <DataTable.Row>
+              <DataTable.Cell>23023196</DataTable.Cell>
+              <DataTable.Cell>AFOUKAL</DataTable.Cell>
+              <DataTable.Cell>ABDALLAH</DataTable.Cell>
+              <DataTable.Cell>0688470111</DataTable.Cell>
+              <DataTable.Cell>heloo@gmail.components</DataTable.Cell>
+              <DataTable.Cell>GSE</DataTable.Cell>
+              <DataTable.Cell>
+                <Image
+                  source={{
+                    uri: "http://ensemc.irma-prod.net/storage/scolarite/etudiant/profile_image/valide/JH76590__1694559786.jpg#/",
+                  }}
+                  style={{ width: 50, height: 50 }}
+                />
+              </DataTable.Cell>
+              <DataTable.Cell>S1 - S2</DataTable.Cell>
+            </DataTable.Row>
+            <DataTable.Row>
+              <DataTable.Cell>23023196</DataTable.Cell>
+              <DataTable.Cell>AFOUKAL</DataTable.Cell>
+              <DataTable.Cell>ABDALLAH</DataTable.Cell>
+              <DataTable.Cell>0688470111</DataTable.Cell>
+              <DataTable.Cell>heloo@gmail.components</DataTable.Cell>
+              <DataTable.Cell>GSE</DataTable.Cell>
+              <DataTable.Cell>
+                <Image
+                  source={{
+                    uri: "http://ensemc.irma-prod.net/storage/scolarite/etudiant/profile_image/valide/JH76590__1694559786.jpg#/",
+                  }}
+                  style={{ width: 50, height: 50 }}
+                />
+              </DataTable.Cell>
+              <DataTable.Cell>S1 - S2</DataTable.Cell>
+            </DataTable.Row>
+          </DataTable>
         </ScrollView>
       </ScrollView>
     </View>

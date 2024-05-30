@@ -10,7 +10,6 @@ import { router, useRootNavigationState } from "expo-router";
 import { useEffect } from "react";
 
 const dataS = [
-  // { key: "/student/Accueil", text: "Accueil", icon: "home-circle" },
   { key: "/student/Demandes", text: "Demandes", icon: "inbox" },
   { key: "/student/Notes", text: "Notes", icon: "numeric" },
   { key: "/student/Absences", text: "Absences", icon: "table-account" },
@@ -19,6 +18,7 @@ const dataS = [
 ];
 
 const dataP = [
+  { key: "/prof/Etudiants", text: "Etudiants", icon: "account-group" },
   {
     key: "/prof/Disponibilite",
     text: "Disponibilite",
@@ -26,7 +26,6 @@ const dataP = [
   },
   { key: "/prof/Absences", text: "Absences", icon: "table-account" },
   { key: "/prof/Notes", text: "Notes", icon: "numeric" },
-  { key: "/prof/Etudiants", text: "Etudiants", icon: "account-group" },
 ];
 
 export default function TopBar() {
