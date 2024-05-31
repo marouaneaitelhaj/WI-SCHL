@@ -214,7 +214,7 @@ export default function ModifierLaMotDePass(props: { profileStatus: number }) {
                 }
                 onPress={handleSubmit(onSubmit)}
               >
-                <Text className="font-[Poppins-Black] text-white text-[20px]">
+                <Text className="font-[Poppins-Black] text-white">
                   {loadingForm ? "Chargement..." : "Modifier le mot de pass"}
                 </Text>
               </Pressable>

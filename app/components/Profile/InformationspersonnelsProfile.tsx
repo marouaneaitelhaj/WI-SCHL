@@ -58,7 +58,7 @@ export default function InformationspersonnelsProfile(props: {
           <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">{user?.date_naissance}</Text>
         </View>
         <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="font-[Poppins-Black] text-[black] w-1/3">Lieu naissance_fr:</Text>
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">Lieu naissance:</Text>
           <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">
             {user?.lieu_naissance_fr}
           </Text>
@@ -96,7 +96,7 @@ export default function InformationspersonnelsProfile(props: {
               "flex rounded-md w-[90%] justify-center items-center  p-5 bg-[#5156BE]"
             }
           >
-            <Text className="font-[Poppins-Black] text-white text-[20px]">
+            <Text className="font-[Poppins-Black] text-white">
               Modifier le mot de pass
             </Text>
           </Pressable>

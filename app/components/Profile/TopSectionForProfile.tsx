@@ -106,8 +106,8 @@ export default function TopSectionForProfile() {
             <Text className="font-[Poppins-Black] text-white text-lg">
               {user?.prenom_fr + " " + user?.nom_fr}
             </Text>
-            <Text className="font-[Poppins-Black] text-white text-sm">
-              {user?.prenom_fr + " " + user?.nom_fr}
+            <Text className="font-[Poppins-Black] text-center font-extralight text-white text-xs">
+              {user?.fillier}
             </Text>
           </View>
         </View>

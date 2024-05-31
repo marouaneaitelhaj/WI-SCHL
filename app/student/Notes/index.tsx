@@ -16,15 +16,17 @@ export default function Notes() {
   }, []);
   return (
     <View className="flex flex-col items-start w-full">
-      <ScrollView horizontal>
+      {status == "loading" && (
+        <View className="flex flex-1 justify-center items-center h-full">
+          <ActivityIndicator size="large" color="#5156BE" />
+        </View>
+      )}
+      <ScrollView horizontal={true}>
         <ScrollView
           className="flex flex-col"
           showsVerticalScrollIndicator={false}
           style={{ height: "90%", width: "100%" }}
         >
-          {status == "loading" && (
-            <ActivityIndicator size="large" color="#5156BE" />
-          )}
           {status == "success" &&
             Object.entries(notes).map(([semesterName, semester]) => (
               <CardWrapper

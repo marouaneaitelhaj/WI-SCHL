@@ -131,6 +131,8 @@ export default function Emploi() {
         <ScrollView
           style={{
             height: "33%",
+            minHeight: "33%",
+            borderTopColor: "#5156BE",
           }}
         >
           <EmploiEventsForDay eventsForDay={eventsForDay} loading={loading} />
