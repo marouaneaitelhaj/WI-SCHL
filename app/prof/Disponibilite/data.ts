@@ -484,6 +484,7 @@ export const hours = [
 
 // get the index of the day in the days array
 export const getDayIndex = (day: string) => {
+  if((days.indexOf(day) + 1) === 7) return 0;
   return days.indexOf(day) + 1;
 };
 
@@ -500,6 +501,3 @@ export const getSessionsByHour = (hour: string) => {
 
   return sessionsByHour;
 };
-
-
-

@@ -191,7 +191,7 @@ export default function DisponibiliteForm() {
                   onPress: () => {
                     dispatch(
                       addDisponibilite({
-                        day: start.day,
+                        day: getDayIndex(start.day).toString(),
                         heure_d: start.hour,
                         heure_f: end.hour,
                         periode: periode,
