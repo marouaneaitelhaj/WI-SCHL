@@ -64,7 +64,7 @@ export default function InformationspersonnelsProfile(props: {
           </Text>
         </View>
         <View className="flex flex-row space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">
-          <Text className="font-[Poppins-Black] text-[black] w-1/3">Adresse fr:</Text>
+          <Text className="font-[Poppins-Black] text-[black] w-1/3">Adresse:</Text>
           <Text className="font-[Poppins-Black] text-[#5156BE] w-2/3">{user?.adresse_fr}</Text>
         </View>
         <View className="flex flex-row-reverse space-x-2 w-full border-b-[0.25px] pb-4 border-[#5156BE]">

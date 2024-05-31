@@ -17,21 +17,24 @@ export default function Disponibilite() {
   );
   return (
     <View className="space-y-3">
-      {status === "loading" && (
-        <View className="w-screen flex justify-center items-center bg-transparent opacity-70">
-          <ActivityIndicator size="large" color="#5156BE" />
-        </View>
-      )}
-      <ScrollView className="h-[75%]">
-        {data?.periodes?.map((periode, index) => (
-          <DisponibiliteCalendar
-            key={index}
-            title={periode.periode}
-            periode={periode}
-          />
-        ))}
-      </ScrollView>
-      {/* <DisponibiliteCalendar /> */}
+      <View className="h-[83%]">
+        {status === "loading" && (
+          <View className="w-screen h-full flex justify-center items-center bg-transparent opacity-70">
+            <ActivityIndicator size="large" color="#5156BE" />
+          </View>
+        )}
+        {status !== "loading" && (
+          <ScrollView className="h-full">
+            {data?.periodes?.map((periode, index) => (
+              <DisponibiliteCalendar
+                key={index}
+                title={periode.periode}
+                periode={periode}
+              />
+            ))}
+          </ScrollView>
+        )}
+      </View>
       <Pressable
         className="flex  rounded-md w-[100%] justify-center items-center  p-5 bg-[#5156BE]"
         onPress={() => {

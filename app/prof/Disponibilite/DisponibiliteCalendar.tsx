@@ -8,7 +8,7 @@ function DisponibiliteCalendar(props: {
   title: string;
   periode: TPeriode;
 }) {
-  const [expended, setExpended] = useState<boolean>(false);
+  const [expended, setExpended] = useState<boolean>(true);
 
   const findSession = (day: string, hour: string) => {
     return props.periode.disponibilites.some((dispo) => {
@@ -30,7 +30,7 @@ function DisponibiliteCalendar(props: {
       <ScrollView
         horizontal={true}
         style={{
-          height: expended ? "100%" : 0,
+          height: !expended ? 0 : "auto",
         }}
       >
         <ScrollView>

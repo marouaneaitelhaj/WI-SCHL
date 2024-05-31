@@ -7,7 +7,7 @@ export const getEmploisDuTempsByMonth = createAsyncThunk<
   Tevent[],
   { selectedMonth: string }
 >("EmploisDuTemps/getEmploisDuTempsByMonth", async ({ selectedMonth }, api) => {
-  const token = await AsyncStorage.getItem("token");
+  const token = await AsyncStorage.getItem("token");  
   const { data } = await axios.get(
     "http://ensemc.irma-prod.net/api/etudiant/emploi-temps?mois=" +
       selectedMonth,

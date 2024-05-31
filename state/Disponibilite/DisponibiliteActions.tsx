@@ -15,8 +15,39 @@ export const getDisponibilites = createAsyncThunk<DisponibiliteRecord, void>(
         },
       }
     );
-    console.log(data.data.periodes[0]);
-    
+
     return data.data as DisponibiliteRecord;
   }
 );
+
+export const addDisponibilite = createAsyncThunk<
+  string,
+  {
+    day: string;
+    heure_d: string;
+    heure_f: string;
+    periode: string;
+  }
+>("disponibilite/addDisponibilite", async (disponibilite, { dispatch }) => {
+  console.log(disponibilite);
+
+  const token = await AsyncStorage.getItem("token");
+  try {
+    const data = await axios.post(
+      `http://ensemc.irma-prod.net/api/prof/disponibilite/ajouter?heure_d=${disponibilite.heure_d}&heure_f=${disponibilite.heure_f}&periode=${disponibilite.periode}&day=${disponibilite.day}`,
+      disponibilite,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log(data);
+  } catch (e) {
+    console.log(e);
+  }
+
+  dispatch(getDisponibilites());
+
+  return {} as string;
+});

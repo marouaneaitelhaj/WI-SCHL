@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { Text } from "react-native";
+import { Alert, Text } from "react-native";
 import { View, ScrollView, Pressable } from "react-native";
 import { TSession, days, getDayIndex, getSessionsByHour, hours } from "./data";
 import { Picker } from "@react-native-picker/picker";
 import { useSelector } from "react-redux";
-import { RootState } from "@state/store";
+import { RootState, useAppDispatch } from "@state/store";
 import { Disponibilite } from "@state/types";
+import { addDisponibilite } from "@state/Disponibilite/DisponibiliteActions";
+import { router } from "expo-router";
 
 export default function DisponibiliteForm() {
   const [start, setStart] = useState<TSession | null>(null);
@@ -14,13 +16,6 @@ export default function DisponibiliteForm() {
   const picker = useRef(null);
   const { data } = useSelector((state: RootState) => state.disponibilite);
   const [periode, setPeriode] = useState<string>("1");
-
-  const [formData, setFormData] = useState<{
-    day: number;
-    heure_d: string;
-    heure_f: string;
-    periode: string;
-  }>({} as any);
 
   const [disponibilites, setDisponibilites] = useState<Disponibilite[]>([]);
 
@@ -32,6 +27,8 @@ export default function DisponibiliteForm() {
       return false;
     });
   };
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     data.periodes.forEach((periodeD, index) => {
@@ -179,13 +176,46 @@ export default function DisponibiliteForm() {
           if (!start?.hour || !end?.hour) {
             console.log("Please select a start and end session");
           } else {
-            setFormData({
-              day: getDayIndex(end.day),
-              heure_d: start.hour,
-              heure_f: end.hour,
-              periode: periode,
-            });
-            console.log(formData);
+            console.log(start, end);
+            Alert.alert(
+              "Confirmation",
+              "Voulez-vous vraiment ajouter cette disponibilité?",
+              [
+                {
+                  text: "Annuler",
+                  onPress: () => console.log("Cancel Pressed"),
+                  style: "cancel",
+                },
+                {
+                  text: "Confirmer",
+                  onPress: () => {
+                    dispatch(
+                      addDisponibilite({
+                        day: start.day,
+                        heure_d: start.hour,
+                        heure_f: end.hour,
+                        periode: periode,
+                      })
+                    )
+                      .unwrap()
+                      .then(() => {
+                        Alert.alert(
+                          "Succès",
+                          "Disponibilité ajoutée avec succès",
+                          [
+                            {
+                              text: "OK",
+                              onPress: () => {
+                                router.back();
+                              },
+                            },
+                          ]
+                        );
+                      });
+                  },
+                },
+              ]
+            );
           }
         }}
       >
