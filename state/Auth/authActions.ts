@@ -8,9 +8,9 @@ export const loginAction = createAsyncThunk<
   Tuser
 >("auth/login", async ({ email, password }) => {
   
-  const { data } = await axios.post(
-    "http://ensemc.irma-prod.net/api/loginscolarite",
-    { email, password }
+  const { data } = await axios.get(
+    'http://localhost:3000/login',
+    // { username: 'emilys',password: 'emilyspass',expiresInMins: 30 }
   );
   
   AsyncStorage.setItem("token", data.token);
@@ -26,7 +26,7 @@ export const getProfileAction = createAsyncThunk<
 >("auth/profile", async (token) => {
   
   const { data } = await axios.get(
-    "http://ensemc.irma-prod.net/api/profile",
+    "http://localhost:3000/profile",
     {
       headers: {
         Authorization: `Bearer ${token}`,

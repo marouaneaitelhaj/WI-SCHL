@@ -52,7 +52,7 @@ export default function Accueil() {
           <View className="flex flex-col ">
             {events &&
               events.map((event) => <EventCard isWhite={true} event={event} key={event.id} />)}
-            {events.length === 0 && !loading && (
+            {events?.length === 0 && !loading && (
               <View className="flex  my-14 justify-center items-center h-[30px] ">
                 <Text className="font-[Poppins-Black] text-[#5156BE] font-bold text-xl">
                   No events

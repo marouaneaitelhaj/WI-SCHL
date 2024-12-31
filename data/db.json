@@ -1,0 +1,425 @@
+{
+	"annonces": [
+		{
+			"id": "1",
+			"annonce_body": "This is the body of the first announcement.",
+			"titre": "First Announcement",
+			"annonce_title": "Announcement Title 1",
+			"objet": "Object 1",
+			"lien": "http://example.com/1",
+			"image": "http://example.com/image1.jpg",
+			"date": "2023-10-01",
+			"piece_jointe": "http://example.com/piece1.pdf"
+		},
+		{
+			"id": "2",
+			"annonce_body": "This is the body of the second announcement.",
+			"titre": "Second Announcement",
+			"annonce_title": "Announcement Title 2",
+			"objet": "Object 2",
+			"lien": "http://example.com/2",
+			"image": "http://example.com/image2.jpg",
+			"date": "2023-10-02",
+			"piece_jointe": "http://example.com/piece2.pdf"
+		},
+		{
+			"id": "1",
+			"annonce_body": "This is the body of the first announcement.",
+			"titre": "First Announcement",
+			"annonce_title": "Announcement Title 1",
+			"objet": "Object 1",
+			"lien": "http://example.com/1",
+			"image": "http://example.com/image1.jpg",
+			"date": "2023-10-01",
+			"piece_jointe": "http://example.com/piece1.pdf"
+		},
+		{
+			"id": "2",
+			"annonce_body": "This is the body of the second announcement.",
+			"titre": "Second Announcement",
+			"annonce_title": "Announcement Title 2",
+			"objet": "Object 2",
+			"lien": "http://example.com/2",
+			"image": "http://example.com/image2.jpg",
+			"date": "2023-10-02",
+			"piece_jointe": "http://example.com/piece2.pdf"
+		},
+		{
+			"id": "1",
+			"annonce_body": "This is the body of the first announcement.",
+			"titre": "First Announcement",
+			"annonce_title": "Announcement Title 1",
+			"objet": "Object 1",
+			"lien": "http://example.com/1",
+			"image": "http://example.com/image1.jpg",
+			"date": "2023-10-01",
+			"piece_jointe": "http://example.com/piece1.pdf"
+		},
+		{
+			"id": "2",
+			"annonce_body": "This is the body of the second announcement.",
+			"titre": "Second Announcement",
+			"annonce_title": "Announcement Title 2",
+			"objet": "Object 2",
+			"lien": "http://example.com/2",
+			"image": "http://example.com/image2.jpg",
+			"date": "2023-10-02",
+			"piece_jointe": "http://example.com/piece2.pdf"
+		},
+		{
+			"id": "1",
+			"annonce_body": "This is the body of the first announcement.",
+			"titre": "First Announcement",
+			"annonce_title": "Announcement Title 1",
+			"objet": "Object 1",
+			"lien": "http://example.com/1",
+			"image": "http://example.com/image1.jpg",
+			"date": "2023-10-01",
+			"piece_jointe": "http://example.com/piece1.pdf"
+		},
+		{
+			"id": "2",
+			"annonce_body": "This is the body of the second announcement.",
+			"titre": "Second Announcement",
+			"annonce_title": "Announcement Title 2",
+			"objet": "Object 2",
+			"lien": "http://example.com/2",
+			"image": "http://example.com/image2.jpg",
+			"date": "2023-10-02",
+			"piece_jointe": "http://example.com/piece2.pdf"
+		},
+		{
+			"id": "1",
+			"annonce_body": "This is the body of the first announcement.",
+			"titre": "First Announcement",
+			"annonce_title": "Announcement Title 1",
+			"objet": "Object 1",
+			"lien": "http://example.com/1",
+			"image": "http://example.com/image1.jpg",
+			"date": "2023-10-01",
+			"piece_jointe": "http://example.com/piece1.pdf"
+		},
+		{
+			"id": "2",
+			"annonce_body": "This is the body of the second announcement.",
+			"titre": "Second Announcement",
+			"annonce_title": "Announcement Title 2",
+			"objet": "Object 2",
+			"lien": "http://example.com/2",
+			"image": "http://example.com/image2.jpg",
+			"date": "2023-10-02",
+			"piece_jointe": "http://example.com/piece2.pdf"
+		},
+		{
+			"id": "1",
+			"annonce_body": "This is the body of the first announcement.",
+			"titre": "First Announcement",
+			"annonce_title": "Announcement Title 1",
+			"objet": "Object 1",
+			"lien": "http://example.com/1",
+			"image": "http://example.com/image1.jpg",
+			"date": "2023-10-01",
+			"piece_jointe": "http://example.com/piece1.pdf"
+		},
+		{
+			"id": "2",
+			"annonce_body": "This is the body of the second announcement.",
+			"titre": "Second Announcement",
+			"annonce_title": "Announcement Title 2",
+			"objet": "Object 2",
+			"lien": "http://example.com/2",
+			"image": "http://example.com/image2.jpg",
+			"date": "2023-10-02",
+			"piece_jointe": "http://example.com/piece2.pdf"
+		},
+		{
+			"id": "1",
+			"annonce_body": "This is the body of the first announcement.",
+			"titre": "First Announcement",
+			"annonce_title": "Announcement Title 1",
+			"objet": "Object 1",
+			"lien": "http://example.com/1",
+			"image": "http://example.com/image1.jpg",
+			"date": "2023-10-01",
+			"piece_jointe": "http://example.com/piece1.pdf"
+		},
+		{
+			"id": "2",
+			"annonce_body": "This is the body of the second announcement.",
+			"titre": "Second Announcement",
+			"annonce_title": "Announcement Title 2",
+			"objet": "Object 2",
+			"lien": "http://example.com/2",
+			"image": "http://example.com/image2.jpg",
+			"date": "2023-10-02",
+			"piece_jointe": "http://example.com/piece2.pdf"
+		},
+		{
+			"id": "1",
+			"annonce_body": "This is the body of the first announcement.",
+			"titre": "First Announcement",
+			"annonce_title": "Announcement Title 1",
+			"objet": "Object 1",
+			"lien": "http://example.com/1",
+			"image": "http://example.com/image1.jpg",
+			"date": "2023-10-01",
+			"piece_jointe": "http://example.com/piece1.pdf"
+		},
+		{
+			"id": "2",
+			"annonce_body": "This is the body of the second announcement.",
+			"titre": "Second Announcement",
+			"annonce_title": "Announcement Title 2",
+			"objet": "Object 2",
+			"lien": "http://example.com/2",
+			"image": "http://example.com/image2.jpg",
+			"date": "2023-10-02",
+			"piece_jointe": "http://example.com/piece2.pdf"
+		},
+		{
+			"id": "1",
+			"annonce_body": "This is the body of the first announcement.",
+			"titre": "First Announcement",
+			"annonce_title": "Announcement Title 1",
+			"objet": "Object 1",
+			"lien": "http://example.com/1",
+			"image": "http://example.com/image1.jpg",
+			"date": "2023-10-01",
+			"piece_jointe": "http://example.com/piece1.pdf"
+		},
+		{
+			"id": "2",
+			"annonce_body": "This is the body of the second announcement.",
+			"titre": "Second Announcement",
+			"annonce_title": "Announcement Title 2",
+			"objet": "Object 2",
+			"lien": "http://example.com/2",
+			"image": "http://example.com/image2.jpg",
+			"date": "2023-10-02",
+			"piece_jointe": "http://example.com/piece2.pdf"
+		},
+		{
+			"id": "1",
+			"annonce_body": "This is the body of the first announcement.",
+			"titre": "First Announcement",
+			"annonce_title": "Announcement Title 1",
+			"objet": "Object 1",
+			"lien": "http://example.com/1",
+			"image": "http://example.com/image1.jpg",
+			"date": "2023-10-01",
+			"piece_jointe": "http://example.com/piece1.pdf"
+		},
+		{
+			"id": "2",
+			"annonce_body": "This is the body of the second announcement.",
+			"titre": "Second Announcement",
+			"annonce_title": "Announcement Title 2",
+			"objet": "Object 2",
+			"lien": "http://example.com/2",
+			"image": "http://example.com/image2.jpg",
+			"date": "2023-10-02",
+			"piece_jointe": "http://example.com/piece2.pdf"
+		},
+		{
+			"id": "1",
+			"annonce_body": "This is the body of the first announcement.",
+			"titre": "First Announcement",
+			"annonce_title": "Announcement Title 1",
+			"objet": "Object 1",
+			"lien": "http://example.com/1",
+			"image": "http://example.com/image1.jpg",
+			"date": "2023-10-01",
+			"piece_jointe": "http://example.com/piece1.pdf"
+		},
+		{
+			"id": "2",
+			"annonce_body": "This is the body of the second announcement.",
+			"titre": "Second Announcement",
+			"annonce_title": "Announcement Title 2",
+			"objet": "Object 2",
+			"lien": "http://example.com/2",
+			"image": "http://example.com/image2.jpg",
+			"date": "2023-10-02",
+			"piece_jointe": "http://example.com/piece2.pdf"
+		},
+		{
+			"id": "1",
+			"annonce_body": "This is the body of the first announcement.",
+			"titre": "First Announcement",
+			"annonce_title": "Announcement Title 1",
+			"objet": "Object 1",
+			"lien": "http://example.com/1",
+			"image": "http://example.com/image1.jpg",
+			"date": "2023-10-01",
+			"piece_jointe": "http://example.com/piece1.pdf"
+		},
+		{
+			"id": "2",
+			"annonce_body": "This is the body of the second announcement.",
+			"titre": "Second Announcement",
+			"annonce_title": "Announcement Title 2",
+			"objet": "Object 2",
+			"lien": "http://example.com/2",
+			"image": "http://example.com/image2.jpg",
+			"date": "2023-10-02",
+			"piece_jointe": "http://example.com/piece2.pdf"
+		}
+	],
+	"profile": {
+		"user":{
+			"id": "1",
+			"username": "johndoe",
+			"email": "johndoe@example.com",
+			"first_name": "John",
+			"nom_fr": "Doe",
+			"prenom_fr": "prenom_fr",
+			"last_name": "Doe",
+			"role": "admin",
+			"fillier": "filier",
+			"last_login": "2023-10-10T12:34:56Z"
+		},
+		"fillier" : "fillier"
+	},
+	"login": {
+		"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3MzU1Nzk5NjAsImV4cCI6MTczNTU4MTc2MH0.RzqMT-apkJjUZ9O23n-T0rwRQrPjUWLV3LVT-67ku8w",
+		"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3MzU1Nzk5NjAsImV4cCI6MTczODE3MTk2MH0.4VuyX0wxmSX07F_NHM7hn-IZmuRZG4clcXfIxqXN__o",
+		"firstName": "Emily",
+		"lastName": "Johnson",
+        "fillier" : "fillier",
+		"gender": "female",
+		"image": "https://dummyjson.com/icon/emilys/128",
+		"email": "johndoe@example.com",
+		"first_name": "John",
+		"nom_fr": "Doe",
+		"prenom_fr": "prenom_fr",
+		"last_name": "Doe",
+		"role": "admin",
+		"last_login": "2023-10-10T12:34:56Z",
+		"id": "3c96",
+		"username": "emilys",
+		"password": "emilyspass",
+		"expiresInMins": 30
+	},
+	"emploi-temps": [
+		{
+			"color": "blue",
+			"end": "2023-10-15T10:00:00Z",
+			"id": "1",
+			"textColor": "white",
+			"id_reserv": "123",
+			"start": "2023-10-15T08:00:00Z",
+			"title": "Meeting with Team",
+			"type": 1
+		},
+		{
+			"color": "blue",
+			"end": "2023-10-15T10:00:00Z",
+			"id": "1",
+			"textColor": "white",
+			"id_reserv": "123",
+			"start": "2023-10-15T08:00:00Z",
+			"title": "Meeting with Team",
+			"type": 1
+		},
+		{
+			"color": "blue",
+			"end": "2023-10-15T10:00:00Z",
+			"id": "1",
+			"textColor": "white",
+			"id_reserv": "123",
+			"start": "2023-10-15T08:00:00Z",
+			"title": "Meeting with Team",
+			"type": 1
+		},
+		{
+			"color": "blue",
+			"end": "2023-10-15T10:00:00Z",
+			"id": "1",
+			"textColor": "white",
+			"id_reserv": "123",
+			"start": "2023-10-15T08:00:00Z",
+			"title": "Meeting with Team",
+			"type": 1
+		},
+		{
+			"color": "blue",
+			"end": "2023-10-15T10:00:00Z",
+			"id": "1",
+			"textColor": "white",
+			"id_reserv": "123",
+			"start": "2023-10-15T08:00:00Z",
+			"title": "Meeting with Team",
+			"type": 1
+		},
+		{
+			"color": "blue",
+			"end": "2023-10-15T10:00:00Z",
+			"id": "1",
+			"textColor": "white",
+			"id_reserv": "123",
+			"start": "2023-10-15T08:00:00Z",
+			"title": "Meeting with Team",
+			"type": 1
+		},
+		{
+			"color": "blue",
+			"end": "2023-10-15T10:00:00Z",
+			"id": "1",
+			"textColor": "white",
+			"id_reserv": "123",
+			"start": "2023-10-15T08:00:00Z",
+			"title": "Meeting with Team",
+			"type": 1
+		},
+		{
+			"color": "blue",
+			"end": "2023-10-15T10:00:00Z",
+			"id": "1",
+			"textColor": "white",
+			"id_reserv": "123",
+			"start": "2023-10-15T08:00:00Z",
+			"title": "Meeting with Team",
+			"type": 1
+		},
+		{
+			"color": "blue",
+			"end": "2023-10-15T10:00:00Z",
+			"id": "1",
+			"textColor": "white",
+			"id_reserv": "123",
+			"start": "2023-10-15T08:00:00Z",
+			"title": "Meeting with Team",
+			"type": 1
+		},
+		{
+			"color": "blue",
+			"end": "2023-10-15T10:00:00Z",
+			"id": "1",
+			"textColor": "white",
+			"id_reserv": "123",
+			"start": "2023-10-15T08:00:00Z",
+			"title": "Meeting with Team",
+			"type": 1
+		},
+		{
+			"color": "blue",
+			"end": "2023-10-15T10:00:00Z",
+			"id": "1",
+			"textColor": "white",
+			"id_reserv": "123",
+			"start": "2023-10-15T08:00:00Z",
+			"title": "Meeting with Team",
+			"type": 1
+		},
+		{
+			"color": "blue",
+			"end": "2023-10-15T10:00:00Z",
+			"id": "1",
+			"textColor": "white",
+			"id_reserv": "123",
+			"start": "2023-10-15T08:00:00Z",
+			"title": "Meeting with Team",
+			"type": 1
+		}
+	]
+}

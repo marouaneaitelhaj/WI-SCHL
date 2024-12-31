@@ -8,7 +8,7 @@ export const getAnnonces = createAsyncThunk<Tannonce[], void>(
   async () => {
     const token = await AsyncStorage.getItem("token");
     const { data } = await axios.get(
-      "http://ensemc.irma-prod.net/api/etudiant/annonces",
+      "http://localhost:3000/annonces",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -57,7 +57,7 @@ export const getAnnonce = createAsyncThunk<Tannonce[], string>(
   async (id) => {
     const token = await AsyncStorage.getItem("token");
     const { data } = await axios.get(
-      "http://ensemc.irma-prod.net/api/etudiant/annonces?id=" + id,
+      "http://localhost:3000/annonces",
       {
         headers: {
           Authorization: `Bearer ${token}`,
