@@ -2,7 +2,7 @@
 	"annonces": [
 		{
 			"id": "1",
-			"annonce_body": "This is the body of the first announcement.",
+			"annonce_body": " 1 This is the body of the first announcement.",
 			"titre": "First Announcement",
 			"annonce_title": "Announcement Title 1",
 			"objet": "Object 1",
@@ -13,7 +13,7 @@
 		},
 		{
 			"id": "2",
-			"annonce_body": "This is the body of the second announcement.",
+			"annonce_body": " 2 This is the body of the second announcement.",
 			"titre": "Second Announcement",
 			"annonce_title": "Announcement Title 2",
 			"objet": "Object 2",
@@ -23,8 +23,8 @@
 			"piece_jointe": "http://example.com/piece2.pdf"
 		},
 		{
-			"id": "1",
-			"annonce_body": "This is the body of the first announcement.",
+			"id": "3",
+			"annonce_body": " 3 This is the body of the first announcement.",
 			"titre": "First Announcement",
 			"annonce_title": "Announcement Title 1",
 			"objet": "Object 1",
@@ -34,8 +34,8 @@
 			"piece_jointe": "http://example.com/piece1.pdf"
 		},
 		{
-			"id": "2",
-			"annonce_body": "This is the body of the second announcement.",
+			"id": "4",
+			"annonce_body": " 4 This is the body of the second announcement.",
 			"titre": "Second Announcement",
 			"annonce_title": "Announcement Title 2",
 			"objet": "Object 2",
@@ -45,8 +45,8 @@
 			"piece_jointe": "http://example.com/piece2.pdf"
 		},
 		{
-			"id": "1",
-			"annonce_body": "This is the body of the first announcement.",
+			"id": "5",
+			"annonce_body": " 5 This is the body of the first announcement.",
 			"titre": "First Announcement",
 			"annonce_title": "Announcement Title 1",
 			"objet": "Object 1",
@@ -56,8 +56,8 @@
 			"piece_jointe": "http://example.com/piece1.pdf"
 		},
 		{
-			"id": "2",
-			"annonce_body": "This is the body of the second announcement.",
+			"id": "6",
+			"annonce_body": " 6 This is the body of the second announcement.",
 			"titre": "Second Announcement",
 			"annonce_title": "Announcement Title 2",
 			"objet": "Object 2",
@@ -67,8 +67,8 @@
 			"piece_jointe": "http://example.com/piece2.pdf"
 		},
 		{
-			"id": "1",
-			"annonce_body": "This is the body of the first announcement.",
+			"id": "7",
+			"annonce_body": " 7 This is the body of the first announcement.",
 			"titre": "First Announcement",
 			"annonce_title": "Announcement Title 1",
 			"objet": "Object 1",
@@ -78,8 +78,8 @@
 			"piece_jointe": "http://example.com/piece1.pdf"
 		},
 		{
-			"id": "2",
-			"annonce_body": "This is the body of the second announcement.",
+			"id": "8",
+			"annonce_body": " 8 This is the body of the second announcement.",
 			"titre": "Second Announcement",
 			"annonce_title": "Announcement Title 2",
 			"objet": "Object 2",
@@ -89,8 +89,8 @@
 			"piece_jointe": "http://example.com/piece2.pdf"
 		},
 		{
-			"id": "1",
-			"annonce_body": "This is the body of the first announcement.",
+			"id": "9",
+			"annonce_body": " 9 This is the body of the first announcement.",
 			"titre": "First Announcement",
 			"annonce_title": "Announcement Title 1",
 			"objet": "Object 1",
@@ -100,8 +100,8 @@
 			"piece_jointe": "http://example.com/piece1.pdf"
 		},
 		{
-			"id": "2",
-			"annonce_body": "This is the body of the second announcement.",
+			"id": "10",
+			"annonce_body": " 10 This is the body of the second announcement.",
 			"titre": "Second Announcement",
 			"annonce_title": "Announcement Title 2",
 			"objet": "Object 2",
@@ -111,8 +111,8 @@
 			"piece_jointe": "http://example.com/piece2.pdf"
 		},
 		{
-			"id": "1",
-			"annonce_body": "This is the body of the first announcement.",
+			"id": "11",
+			"annonce_body": " 11 This is the body of the first announcement.",
 			"titre": "First Announcement",
 			"annonce_title": "Announcement Title 1",
 			"objet": "Object 1",
@@ -122,8 +122,8 @@
 			"piece_jointe": "http://example.com/piece1.pdf"
 		},
 		{
-			"id": "2",
-			"annonce_body": "This is the body of the second announcement.",
+			"id": "12",
+			"annonce_body": " 12 This is the body of the second announcement.",
 			"titre": "Second Announcement",
 			"annonce_title": "Announcement Title 2",
 			"objet": "Object 2",
@@ -133,8 +133,8 @@
 			"piece_jointe": "http://example.com/piece2.pdf"
 		},
 		{
-			"id": "1",
-			"annonce_body": "This is the body of the first announcement.",
+			"id": "13",
+			"annonce_body": " 13 This is the body of the first announcement.",
 			"titre": "First Announcement",
 			"annonce_title": "Announcement Title 1",
 			"objet": "Object 1",
@@ -144,8 +144,8 @@
 			"piece_jointe": "http://example.com/piece1.pdf"
 		},
 		{
-			"id": "2",
-			"annonce_body": "This is the body of the second announcement.",
+			"id": "14",
+			"annonce_body": " 14 This is the body of the second announcement.",
 			"titre": "Second Announcement",
 			"annonce_title": "Announcement Title 2",
 			"objet": "Object 2",
@@ -155,8 +155,8 @@
 			"piece_jointe": "http://example.com/piece2.pdf"
 		},
 		{
-			"id": "1",
-			"annonce_body": "This is the body of the first announcement.",
+			"id": "15",
+			"annonce_body": " 15 This is the body of the first announcement.",
 			"titre": "First Announcement",
 			"annonce_title": "Announcement Title 1",
 			"objet": "Object 1",
@@ -166,8 +166,8 @@
 			"piece_jointe": "http://example.com/piece1.pdf"
 		},
 		{
-			"id": "2",
-			"annonce_body": "This is the body of the second announcement.",
+			"id": "16",
+			"annonce_body": " 16 This is the body of the second announcement.",
 			"titre": "Second Announcement",
 			"annonce_title": "Announcement Title 2",
 			"objet": "Object 2",
@@ -177,8 +177,8 @@
 			"piece_jointe": "http://example.com/piece2.pdf"
 		},
 		{
-			"id": "1",
-			"annonce_body": "This is the body of the first announcement.",
+			"id": "17",
+			"annonce_body": " 17 This is the body of the first announcement.",
 			"titre": "First Announcement",
 			"annonce_title": "Announcement Title 1",
 			"objet": "Object 1",
@@ -188,8 +188,8 @@
 			"piece_jointe": "http://example.com/piece1.pdf"
 		},
 		{
-			"id": "2",
-			"annonce_body": "This is the body of the second announcement.",
+			"id": "18",
+			"annonce_body": " 18 This is the body of the second announcement.",
 			"titre": "Second Announcement",
 			"annonce_title": "Announcement Title 2",
 			"objet": "Object 2",
@@ -199,8 +199,8 @@
 			"piece_jointe": "http://example.com/piece2.pdf"
 		},
 		{
-			"id": "1",
-			"annonce_body": "This is the body of the first announcement.",
+			"id": "19",
+			"annonce_body": " 19 This is the body of the first announcement.",
 			"titre": "First Announcement",
 			"annonce_title": "Announcement Title 1",
 			"objet": "Object 1",
@@ -210,8 +210,8 @@
 			"piece_jointe": "http://example.com/piece1.pdf"
 		},
 		{
-			"id": "2",
-			"annonce_body": "This is the body of the second announcement.",
+			"id": "20",
+			"annonce_body": " 20 This is the body of the second announcement.",
 			"titre": "Second Announcement",
 			"annonce_title": "Announcement Title 2",
 			"objet": "Object 2",
@@ -221,8 +221,8 @@
 			"piece_jointe": "http://example.com/piece2.pdf"
 		},
 		{
-			"id": "1",
-			"annonce_body": "This is the body of the first announcement.",
+			"id": "21",
+			"annonce_body": " 21 This is the body of the first announcement.",
 			"titre": "First Announcement",
 			"annonce_title": "Announcement Title 1",
 			"objet": "Object 1",
@@ -232,8 +232,8 @@
 			"piece_jointe": "http://example.com/piece1.pdf"
 		},
 		{
-			"id": "2",
-			"annonce_body": "This is the body of the second announcement.",
+			"id": "22",
+			"annonce_body": " 22 This is the body of the second announcement.",
 			"titre": "Second Announcement",
 			"annonce_title": "Announcement Title 2",
 			"objet": "Object 2",
@@ -243,8 +243,8 @@
 			"piece_jointe": "http://example.com/piece2.pdf"
 		},
 		{
-			"id": "1",
-			"annonce_body": "This is the body of the first announcement.",
+			"id": "23",
+			"annonce_body": " 23 This is the body of the first announcement.",
 			"titre": "First Announcement",
 			"annonce_title": "Announcement Title 1",
 			"objet": "Object 1",
@@ -254,8 +254,8 @@
 			"piece_jointe": "http://example.com/piece1.pdf"
 		},
 		{
-			"id": "2",
-			"annonce_body": "This is the body of the second announcement.",
+			"id": "24",
+			"annonce_body": " 24 This is the body of the second announcement.",
 			"titre": "Second Announcement",
 			"annonce_title": "Announcement Title 2",
 			"objet": "Object 2",
@@ -267,7 +267,7 @@
 	],
 	"profile": {
 		"user":{
-			"id": "1",
+			"id": "25",
 			"username": "johndoe",
 			"email": "johndoe@example.com",
 			"first_name": "John",
@@ -278,10 +278,11 @@
 			"fillier": "filier",
 			"last_login": "2023-10-10T12:34:56Z"
 		},
+		"type" : "etudiant",
 		"fillier" : "fillier"
 	},
 	"login": {
-		"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3MzU1Nzk5NjAsImV4cCI6MTczNTU4MTc2MH0.RzqMT-apkJjUZ9O23n-T0rwRQrPjUWLV3LVT-67ku8w",
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3MzU1Nzk5NjAsImV4cCI6MTczNTU4MTc2MH0.RzqMT-apkJjUZ9O23n-T0rwRQrPjUWLV3LVT-67ku8w",
 		"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3MzU1Nzk5NjAsImV4cCI6MTczODE3MTk2MH0.4VuyX0wxmSX07F_NHM7hn-IZmuRZG4clcXfIxqXN__o",
 		"firstName": "Emily",
 		"lastName": "Johnson",
@@ -295,131 +296,362 @@
 		"last_name": "Doe",
 		"role": "admin",
 		"last_login": "2023-10-10T12:34:56Z",
-		"id": "3c96",
+		"id": "26",
 		"username": "emilys",
 		"password": "emilyspass",
 		"expiresInMins": 30
 	},
-	"emploi-temps": [
+	"emploi-temps": {
+		"events" : [
+			{
+				"color": "#693183",
+				"end": "2023-10-15T10:00:00Z",
+				"id": "27",
+				"textColor": "white",
+				"id_reserv": "123",
+				"start": "2023-10-15T08:00:00Z",
+				"title": "Meeting with TeamMeeting with TeamMeeting with TeamMeeting with Team",
+				"type": 1
+			},
+			{
+				"color": "#693183",
+				"end": "2023-10-15T10:00:00Z",
+				"id": "28",
+				"textColor": "white",
+				"id_reserv": "123",
+				"start": "2023-10-15T08:00:00Z",
+				"title": "Meeting with TeamMeeting with TeamMeeting with TeamMeeting with Team",
+				"type": 1
+			},
+			{
+				"color": "#5659a2",
+				"end": "2023-10-15T10:00:00Z",
+				"id": "29",
+				"textColor": "white",
+				"id_reserv": "123",
+				"start": "2023-10-15T08:00:00Z",
+				"title": "Meeting with TeamMeeting with TeamMeeting with TeamMeeting with Team",
+				"type": 1
+			},
+			{
+				"color": "#5659a2",
+				"end": "2023-10-15T10:00:00Z",
+				"id": "30",
+				"textColor": "white",
+				"id_reserv": "123",
+				"start": "2023-10-15T08:00:00Z",
+				"title": "Meeting with TeamMeeting with TeamMeeting with TeamMeeting with Team",
+				"type": 1
+			},
+			{
+				"color": "#b166bd",
+				"end": "2023-10-15T10:00:00Z",
+				"id": "31",
+				"textColor": "white",
+				"id_reserv": "123",
+				"start": "2023-10-15T08:00:00Z",
+				"title": "Meeting with TeamMeeting with TeamMeeting with TeamMeeting with Team",
+				"type": 1
+			},
+			{
+				"color": "#b166bd",
+				"end": "2023-10-15T10:00:00Z",
+				"id": "32",
+				"textColor": "white",
+				"id_reserv": "123",
+				"start": "2023-10-15T08:00:00Z",
+				"title": "Meeting with TeamMeeting with TeamMeeting with TeamMeeting with Team",
+				"type": 1
+			},
+			{
+				"color": "#fb2ff6",
+				"end": "2023-10-15T10:00:00Z",
+				"id": "33",
+				"textColor": "white",
+				"id_reserv": "123",
+				"start": "2023-10-15T08:00:00Z",
+				"title": "Meeting with TeamMeeting with TeamMeeting with TeamMeeting with Team",
+				"type": 1
+			},
+			{
+				"color": "#fb2ff6",
+				"end": "2023-10-15T10:00:00Z",
+				"id": "34",
+				"textColor": "white",
+				"id_reserv": "123",
+				"start": "2023-10-15T08:00:00Z",
+				"title": "Meeting with TeamMeeting with TeamMeeting with TeamMeeting with Team",
+				"type": 1
+			},
+			{
+				"color": "#d95bce",
+				"end": "2023-10-15T10:00:00Z",
+				"id": "35",
+				"textColor": "white",
+				"id_reserv": "123",
+				"start": "2023-10-15T08:00:00Z",
+				"title": "Meeting with TeamMeeting with TeamMeeting with TeamMeeting with Team",
+				"type": 1
+			},
+			{
+				"color": "#d95bce",
+				"end": "2023-10-15T10:00:00Z",
+				"id": "36",
+				"textColor": "white",
+				"id_reserv": "123",
+				"start": "2023-10-15T08:00:00Z",
+				"title": "Meeting with TeamMeeting with TeamMeeting with TeamMeeting with Team",
+				"type": 1
+			},
+			{
+				"color": "#6286e1",
+				"end": "2023-10-15T10:00:00Z",
+				"id": "37",
+				"textColor": "white",
+				"id_reserv": "123",
+				"start": "2023-10-15T08:00:00Z",
+				"title": "Meeting with TeamMeeting with TeamMeeting with TeamMeeting with Team",
+				"type": 1
+			},
+			{
+				"color": "#6286e1",
+				"end": "2023-10-15T10:00:00Z",
+				"id": "38",
+				"textColor": "white",
+				"id_reserv": "123",
+				"start": "2023-10-15T08:00:00Z",
+				"title": "Meeting with TeamMeeting with TeamMeeting with TeamMeeting with Team",
+				"type": 1
+			}
+		]
+	},
+	"note" : {
+		"notes" : 
 		{
-			"color": "blue",
-			"end": "2023-10-15T10:00:00Z",
-			"id": "1",
-			"textColor": "white",
-			"id_reserv": "123",
-			"start": "2023-10-15T08:00:00Z",
-			"title": "Meeting with Team",
-			"type": 1
-		},
-		{
-			"color": "blue",
-			"end": "2023-10-15T10:00:00Z",
-			"id": "1",
-			"textColor": "white",
-			"id_reserv": "123",
-			"start": "2023-10-15T08:00:00Z",
-			"title": "Meeting with Team",
-			"type": 1
-		},
-		{
-			"color": "blue",
-			"end": "2023-10-15T10:00:00Z",
-			"id": "1",
-			"textColor": "white",
-			"id_reserv": "123",
-			"start": "2023-10-15T08:00:00Z",
-			"title": "Meeting with Team",
-			"type": 1
-		},
-		{
-			"color": "blue",
-			"end": "2023-10-15T10:00:00Z",
-			"id": "1",
-			"textColor": "white",
-			"id_reserv": "123",
-			"start": "2023-10-15T08:00:00Z",
-			"title": "Meeting with Team",
-			"type": 1
-		},
-		{
-			"color": "blue",
-			"end": "2023-10-15T10:00:00Z",
-			"id": "1",
-			"textColor": "white",
-			"id_reserv": "123",
-			"start": "2023-10-15T08:00:00Z",
-			"title": "Meeting with Team",
-			"type": 1
-		},
-		{
-			"color": "blue",
-			"end": "2023-10-15T10:00:00Z",
-			"id": "1",
-			"textColor": "white",
-			"id_reserv": "123",
-			"start": "2023-10-15T08:00:00Z",
-			"title": "Meeting with Team",
-			"type": 1
-		},
-		{
-			"color": "blue",
-			"end": "2023-10-15T10:00:00Z",
-			"id": "1",
-			"textColor": "white",
-			"id_reserv": "123",
-			"start": "2023-10-15T08:00:00Z",
-			"title": "Meeting with Team",
-			"type": 1
-		},
-		{
-			"color": "blue",
-			"end": "2023-10-15T10:00:00Z",
-			"id": "1",
-			"textColor": "white",
-			"id_reserv": "123",
-			"start": "2023-10-15T08:00:00Z",
-			"title": "Meeting with Team",
-			"type": 1
-		},
-		{
-			"color": "blue",
-			"end": "2023-10-15T10:00:00Z",
-			"id": "1",
-			"textColor": "white",
-			"id_reserv": "123",
-			"start": "2023-10-15T08:00:00Z",
-			"title": "Meeting with Team",
-			"type": 1
-		},
-		{
-			"color": "blue",
-			"end": "2023-10-15T10:00:00Z",
-			"id": "1",
-			"textColor": "white",
-			"id_reserv": "123",
-			"start": "2023-10-15T08:00:00Z",
-			"title": "Meeting with Team",
-			"type": 1
-		},
-		{
-			"color": "blue",
-			"end": "2023-10-15T10:00:00Z",
-			"id": "1",
-			"textColor": "white",
-			"id_reserv": "123",
-			"start": "2023-10-15T08:00:00Z",
-			"title": "Meeting with Team",
-			"type": 1
-		},
-		{
-			"color": "blue",
-			"end": "2023-10-15T10:00:00Z",
-			"id": "1",
-			"textColor": "white",
-			"id_reserv": "123",
-			"start": "2023-10-15T08:00:00Z",
-			"title": "Meeting with Team",
-			"type": 1
+			"semester1": {
+				"modules": [
+					[
+						{
+							"id": 1,
+							"libelle_fr": "Mathematics",
+							"resultat_n": 15,
+							"resultat_r": null,
+							"decision_g": "Pass",
+							"elements": []
+						},
+						{
+							"id": 2,
+							"libelle_fr": "Physics",
+							"resultat_n": 12,
+							"resultat_r": null,
+							"decision_g": "Pass",
+							"elements": []
+						}
+					],
+					[
+						{
+							"id": 3,
+							"libelle_fr": "Chemistry",
+							"resultat_n": 10,
+							"resultat_r": null,
+							"decision_g": "Pass",
+							"elements": []
+						},
+						{
+							"id": 4,
+							"libelle_fr": "Biology",
+							"resultat_n": 8,
+							"resultat_r": 12,
+							"decision_g": "Retake",
+							"elements": []
+						}
+					]
+				]
+			},
+			"semester2": {
+				"modules": [
+					[
+						{
+							"id": 5,
+							"libelle_fr": "Computer Science",
+							"resultat_n": 18,
+							"resultat_r": null,
+							"decision_g": "Pass",
+							"elements": []
+						},
+						{
+							"id": 6,
+							"libelle_fr": "History",
+							"resultat_n": 14,
+							"resultat_r": null,
+							"decision_g": "Pass",
+							"elements": []
+						}
+					],
+					[
+						{
+							"id": 7,
+							"libelle_fr": "Geography",
+							"resultat_n": 9,
+							"resultat_r": 11,
+							"decision_g": "Retake",
+							"elements": []
+						},
+						{
+							"id": 8,
+							"libelle_fr": "Philosophy",
+							"resultat_n": 13,
+							"resultat_r": null,
+							"decision_g": "Pass",
+							"elements": []
+						}
+					]
+				]
+			}
 		}
-	]
+	},
+	"absences" : 
+	{
+		"semester1": {
+			"modules": [
+				{
+					"id": 1,
+					"libelle_fr": "Mathematics",
+					"resultat_n": 15,
+					"resultat_r": null,
+					"decision_g": "Pass",
+					"elements": [
+						{
+							"libelle_fr": "Algebra",
+							"coefficient": "1.5",
+							"note_n": 15,
+							"count_seance": 10,
+							"count_absence_en_cours_justifie": 0,
+							"count_absence_non_justifie": 1,
+							"count_absence_justifie": 0,
+							"element_absences": [
+								{
+									"id": "1",
+									"date_depot": "2023-10-01",
+									"justifie_doc": "http://example.com/justification1.pdf",
+									"justifie": "non",
+									"statut": "non-justifie",
+									"date_absence": "2023-09-15"
+								}
+							],
+							"count_absence": 1,
+							"absences": [
+								{
+									"statut": "non-justifie",
+									"date_depot": "2023-10-01",
+									"justifie_doc": "http://example.com/justification1.pdf"
+								}
+							],
+							"note_r": null
+						}
+					]
+				},
+				{
+					"id": 2,
+					"libelle_fr": "Physics",
+					"resultat_n": 12,
+					"resultat_r": null,
+					"decision_g": "Pass",
+					"elements": [
+						{
+							"libelle_fr": "Mechanics",
+							"coefficient": "1.2",
+							"note_n": 12,
+							"count_seance": 8,
+							"count_absence_en_cours_justifie": 0,
+							"count_absence_non_justifie": 2,
+							"count_absence_justifie": 0,
+							"element_absences": [
+								{
+									"id": "2",
+									"date_depot": "2023-10-02",
+									"justifie_doc": "http://example.com/justification2.pdf",
+									"justifie": "non",
+									"statut": "non-justifie",
+									"date_absence": "2023-09-16"
+								}
+							],
+							"count_absence": 2,
+							"absences": [
+								{
+									"statut": "non-justifie",
+									"date_depot": "2023-10-02",
+									"justifie_doc": "http://example.com/justification2.pdf"
+								}
+							],
+							"note_r": null
+						}
+					]
+				}
+			]
+		},
+		"semester2": {
+			"modules": [
+				{
+					"id": 5,
+					"libelle_fr": "Computer Science",
+					"resultat_n": 18,
+					"resultat_r": null,
+					"decision_g": "Pass",
+					"elements": [
+						{
+							"libelle_fr": "Programming",
+							"coefficient": "2.0",
+							"note_n": 18,
+							"count_seance": 12,
+							"count_absence_en_cours_justifie": 0,
+							"count_absence_non_justifie": 0,
+							"count_absence_justifie": 0,
+							"element_absences": [],
+							"count_absence": 0,
+							"absences": [],
+							"note_r": null
+						}
+					]
+				},
+				{
+					"id": 6,
+					"libelle_fr": "History",
+					"resultat_n": 14,
+					"resultat_r": null,
+					"decision_g": "Pass",
+					"elements": [
+						{
+							"libelle_fr": "Modern History",
+							"coefficient": "1.3",
+							"note_n": 14,
+							"count_seance": 9,
+							"count_absence_en_cours_justifie": 0,
+							"count_absence_non_justifie": 1,
+							"count_absence_justifie": 0,
+							"element_absences": [
+								{
+									"id": "3",
+									"date_depot": "2023-10-03",
+									"justifie_doc": "http://example.com/justification3.pdf",
+									"justifie": "non",
+									"statut": "non-justifie",
+									"date_absence": "2023-09-17"
+								}
+							],
+							"count_absence": 1,
+							"absences": [
+								{
+									"statut": "non-justifie",
+									"date_depot": "2023-10-03",
+									"justifie_doc": "http://example.com/justification3.pdf"
+								}
+							],
+							"note_r": null
+						}
+					]
+				}
+			]
+		}
+	}
 }

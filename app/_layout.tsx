@@ -141,7 +141,7 @@ export default function Layout() {
     <View
       onLayout={onLayoutRootView}
       style={{
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
         flex: 1,
       }}
     >

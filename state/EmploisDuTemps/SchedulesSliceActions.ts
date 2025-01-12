@@ -9,7 +9,7 @@ export const getEmploisDuTempsByMonth = createAsyncThunk<
 >("EmploisDuTemps/getEmploisDuTempsByMonth", async ({ selectedMonth }, api) => {
   const token = await AsyncStorage.getItem("token");  
   const { data } = await axios.get(
-    "http://localhost:3000/emploi-temps?mois=" +
+    "http://192.168.0.251:3000/emploi-temps?mois=" +
       selectedMonth,
     {
       headers: {
@@ -41,7 +41,7 @@ export const getEmploisDuTempsByDay = createAsyncThunk<
     const token = await AsyncStorage.getItem("token");
 
     const { data } = await axios.get(
-      "http://localhost:3000/emploi-temps?day=" +
+      "http://192.168.0.251:3000/emploi-temps?day=" +
         selectedMonth +
         "-" +
         selectedDay,
@@ -67,7 +67,7 @@ export const getEmploisDuTempsByDayToday = createAsyncThunk<Tevent[], void>(
     // const date = "2024-05-16";
 
     const { data } = await axios.get(
-      "http://localhost:3000/emploi-temps?day=" + date,
+      "http://192.168.0.251:3000/emploi-temps?day=" + date,
       {
         headers: {
           Authorization: `Bearer ${token}`,

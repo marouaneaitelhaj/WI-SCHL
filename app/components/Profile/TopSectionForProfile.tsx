@@ -98,7 +98,7 @@ export default function TopSectionForProfile() {
             src={
               user?.img
                 ? "http://ensemc.irma-prod.net/storage/" + user?.img
-                : "http://ensemc.irma-prod.net/" + user?.image
+                : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
             }
             className="w-28 rounded-full h-28"
           />

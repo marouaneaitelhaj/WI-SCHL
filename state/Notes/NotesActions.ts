@@ -9,7 +9,7 @@ export const getNotes = createAsyncThunk<StudentRecord, void>(
     
     const token = await AsyncStorage.getItem("token");
     const { data } = await axios.get(
-      "http://ensemc.irma-prod.net/api/etudiant/note",
+      "http://192.168.0.251:3000/note",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -17,6 +17,7 @@ export const getNotes = createAsyncThunk<StudentRecord, void>(
       }
     );
 
+    console.log(data.notes);
     
 
     return data.notes as StudentRecord;

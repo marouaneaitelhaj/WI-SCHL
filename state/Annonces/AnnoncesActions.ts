@@ -8,7 +8,7 @@ export const getAnnonces = createAsyncThunk<Tannonce[], void>(
   async () => {
     const token = await AsyncStorage.getItem("token");
     const { data } = await axios.get(
-      "http://localhost:3000/annonces",
+      "http://192.168.0.251:3000/annonces",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -57,7 +57,7 @@ export const getAnnonce = createAsyncThunk<Tannonce[], string>(
   async (id) => {
     const token = await AsyncStorage.getItem("token");
     const { data } = await axios.get(
-      "http://localhost:3000/annonces",
+      "http://192.168.0.251:3000/annonces",
       {
         headers: {
           Authorization: `Bearer ${token}`,

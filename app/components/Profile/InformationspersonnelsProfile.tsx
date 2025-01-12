@@ -12,7 +12,7 @@ export default function InformationspersonnelsProfile(props: {
 }) {
   const { user } = useSelector((state: RootState) => state.auth);
 
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
   const dispatch = useAppDispatch();
   if (props.profileStatus != 0) {

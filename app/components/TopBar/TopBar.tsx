@@ -99,7 +99,7 @@ export default function TopBar() {
         style={{
           shadowColor: "#000",
         }}
-        className="absolute w-32 bg-[#5156BE] z-50  h-32 -bottom-28 right-0 "
+        className="absolute w-32 bg-[#5156BE] z-2  h-32 -bottom-28 right-0 "
       ></View>
       {open && type == "prof" && <TopBarElements data={dataP} />}
       {open && type == "etudiant" && <TopBarElements data={dataS} />}

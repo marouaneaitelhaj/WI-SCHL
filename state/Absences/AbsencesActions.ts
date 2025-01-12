@@ -8,7 +8,7 @@ export const getAbsences = createAsyncThunk<TAbsence, void>(
   async () => {
     const token = await AsyncStorage.getItem("token");
     const { data } = await axios.get(
-      "http://ensemc.irma-prod.net/api/etudiant/absences",
+      "http://192.168.0.251:3000/absences",
       {
         headers: {
           Authorization: `Bearer ${token}`,

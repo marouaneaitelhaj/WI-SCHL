@@ -9,7 +9,7 @@ export const loginAction = createAsyncThunk<
 >("auth/login", async ({ email, password }) => {
   
   const { data } = await axios.get(
-    'http://localhost:3000/login',
+    'http://192.168.0.251:3000/login',
     // { username: 'emilys',password: 'emilyspass',expiresInMins: 30 }
   );
   
@@ -26,7 +26,7 @@ export const getProfileAction = createAsyncThunk<
 >("auth/profile", async (token) => {
   
   const { data } = await axios.get(
-    "http://localhost:3000/profile",
+    "http://192.168.0.251:3000/profile",
     {
       headers: {
         Authorization: `Bearer ${token}`,
